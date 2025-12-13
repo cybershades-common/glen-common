@@ -34,6 +34,18 @@
   &.is-active {
     transform: translateY(0);
   }
+  
+  // Remove all focus outlines and tab effects
+  * {
+    outline: none !important;
+    border: none !important;
+    
+    &:focus, &:active, &:focus-visible {
+      outline: none !important;
+      border: none !important;
+      box-shadow: none !important;
+    }
+  }
 }
 
 // Menu Inner Wrapper
@@ -297,23 +309,6 @@
   list-style: none;
   position: relative;
   
-  // Left arrow (appears on hover before text)
-  &::before {
-    content: '';
-    width: 20px;
-    height: 20px;
-    flex-shrink: 0;
-    opacity: 0;
-    transition: opacity 0.2s ease;
-    background-image: url('data:image/svg+xml;utf8,<svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M8 4L14 10L8 16" stroke="%23db574e" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>');
-    background-repeat: no-repeat;
-    background-position: center;
-    margin-right: 10px;
-  }
-  
-  &:hover::before {
-    opacity: 1;
-  }
   
   a {
     font-family: @font-primary;
@@ -325,9 +320,22 @@
     text-decoration: none;
     transition: font-weight 0.2s ease;
     flex: 1;
+    outline: none;
+    border: none;
     
     &:hover {
       font-weight: 700;
+      color: @color-navy; // Keep same color on hover
+    }
+    
+    &:focus {
+      outline: none;
+      border: none;
+    }
+    
+    &:active {
+      outline: none;
+      border: none;
     }
     
     &.is-active {
@@ -340,22 +348,122 @@
     height: 20px;
     flex-shrink: 0;
     opacity: 0.3;
-    transition: opacity 0.2s ease;
+    transition: all 0.2s ease;
     display: flex;
     align-items: center;
     justify-content: center;
     margin-left: 10px;
+    transform: scale(0.85);
     
     svg {
       width: 100%;
       height: 100%;
       display: block;
+      transition: all 0.2s ease;
+      
+      path {
+        fill: @color-navy !important;
+        stroke: @color-navy !important;
+        transition: all 0.2s ease;
+      }
     }
   }
   
   &:hover .mega-menu__subnav-icon {
-    opacity: 0.6;
+    opacity: 1;
+    transform: scale(1);
+    
+    svg path {
+      fill: #0a1629 !important;
+      stroke: #0a1629 !important;
+    }
   }
+}
+
+// Layer Navigation Styles
+.mega-menu__subnav[data-layer] {
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+  
+  &.is-active {
+    opacity: 1;
+    visibility: visible;
+  }
+}
+
+// Clickable submenu items (for navigating to next layer)
+.mega-menu__subnav-item--clickable {
+  cursor: pointer;
+  
+  a {
+    pointer-events: none; // Prevent link navigation, use JS click handler instead
+    transition: font-weight 0.2s ease;
+    
+    &:hover {
+      font-weight: 700;
+      color: @color-navy;
+    }
+  }
+  
+  &:hover {
+    a {
+      font-weight: 700;
+    }
+    
+    .mega-menu__subnav-icon {
+      opacity: 1;
+      transform: scale(1);
+      
+      svg path {
+        fill: #0a1629 !important;
+        stroke: #0a1629 !important;
+      }
+    }
+  }
+}
+
+// Back button styles
+.mega-menu__subnav-item--back {
+  margin-bottom: 10px;
+  
+  a {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: @color-navy !important;
+    font-weight: 400;
+    
+    &:hover {
+      font-weight: 700;
+    }
+  }
+}
+
+// Title items for layer headers
+.mega-menu__subnav-item--title {
+  margin-bottom: 15px;
+  
+  span {
+    font-family: @font-primary;
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: @color-navy;
+    line-height: 1.3;
+  }
+}
+
+// Remove old hover-based submenu styles
+.mega-menu__subnav-item--has-children {
+  position: relative;
+}
+
+.mega-menu__sub-subnav {
+  display: none;
+}
+
+.mega-menu__sub-subnav-item {
+  display: none;
 }
 
 // Menu Footer

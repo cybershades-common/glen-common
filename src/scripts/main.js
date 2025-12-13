@@ -24,36 +24,9 @@
   // ==========================================================================
 
   function initMenuToggle() {
-    const menuToggle = document.getElementById('menuToggle');
-    const hamburgerIcon = document.getElementById('hamburgerIcon');
-
-    if (!menuToggle || !hamburgerIcon) return;
-
-    menuToggle.addEventListener('click', function () {
-      const isExpanded = menuToggle.getAttribute('aria-expanded') === 'true';
-      
-      // Toggle state
-      menuToggle.setAttribute('aria-expanded', !isExpanded);
-      hamburgerIcon.classList.toggle('is-active');
-      
-      // Toggle body scroll lock when menu is open (for future offcanvas/mega menu)
-      document.body.classList.toggle('menu-open');
-
-      // Dispatch custom event for other components to listen to
-      const event = new CustomEvent('menuToggle', { 
-        detail: { isOpen: !isExpanded } 
-      });
-      document.dispatchEvent(event);
-    });
-
-    // Close menu on Escape key
-    document.addEventListener('keydown', function (e) {
-      if (e.key === 'Escape' && menuToggle.getAttribute('aria-expanded') === 'true') {
-        menuToggle.setAttribute('aria-expanded', 'false');
-        hamburgerIcon.classList.remove('is-active');
-        document.body.classList.remove('menu-open');
-      }
-    });
+    // This function is now handled by initMegaMenu()
+    // Keeping empty to avoid breaking existing function calls
+    return;
   }
 
   // ==========================================================================
@@ -89,6 +62,12 @@
       body.classList.remove('mega-menu-open');
       menuToggle.setAttribute('aria-expanded', 'false');
       
+      // Reset hamburger icon
+      const hamburgerIcon = document.getElementById('hamburgerIcon');
+      if (hamburgerIcon) {
+        hamburgerIcon.classList.remove('is-active');
+      }
+      
       // Return focus to menu toggle
       menuToggle.focus();
     }
@@ -97,11 +76,16 @@
     menuToggle.addEventListener('click', function (e) {
       e.preventDefault();
       const isOpen = megaMenu.classList.contains('is-active');
+      const hamburgerIcon = document.getElementById('hamburgerIcon');
       
       if (isOpen) {
         closeMenu();
       } else {
         openMenu();
+        // Add active state to hamburger icon
+        if (hamburgerIcon) {
+          hamburgerIcon.classList.add('is-active');
+        }
       }
     });
 
@@ -119,8 +103,8 @@
       }
     });
 
-    // Close menu when clicking any navigation link
-    const menuLinks = megaMenu.querySelectorAll('.mega-menu__nav a, .mega-menu__subnav a');
+    // Close menu when clicking main navigation links only (exclude all submenu links)
+    const menuLinks = megaMenu.querySelectorAll('.mega-menu__nav a');
     menuLinks.forEach(link => {
       link.addEventListener('click', function () {
         // Small delay for smooth transition before closing
@@ -128,13 +112,13 @@
       });
     });
 
-    // Hide all submenus initially
+    // Hide all submenus initially and show only layer 1 for learning
     const allSubmenus = megaMenu.querySelectorAll('.mega-menu__subnav[data-submenu-content]');
     allSubmenus.forEach(submenu => {
       submenu.classList.remove('is-active');
     });
 
-    // Submenu switching on hover
+    // Submenu switching on hover for main navigation
     const mainNavItems = megaMenu.querySelectorAll('.mega-menu__nav-item a[data-submenu]');
 
     mainNavItems.forEach(navLink => {
@@ -146,13 +130,71 @@
           submenu.classList.remove('is-active');
         });
         
-        // Show the corresponding submenu
-        const targetSubmenu = megaMenu.querySelector(`.mega-menu__subnav[data-submenu-content="${submenuId}"]`);
+        // Show the corresponding submenu (always layer 1)
+        const targetSubmenu = megaMenu.querySelector(`.mega-menu__subnav[data-submenu-content="${submenuId}"][data-layer="1"]`);
         if (targetSubmenu) {
           targetSubmenu.classList.add('is-active');
+        } else {
+          // Fallback for submenus without layers
+          const fallbackSubmenu = megaMenu.querySelector(`.mega-menu__subnav[data-submenu-content="${submenuId}"]:not([data-layer])`);
+          if (fallbackSubmenu) {
+            fallbackSubmenu.classList.add('is-active');
+          }
         }
       });
     });
+
+    // Layer navigation - click handlers for navigating between layers
+    function handleLayerNavigation() {
+      // Handle clicking on items that navigate to next layer
+      const clickableItems = megaMenu.querySelectorAll('.mega-menu__subnav-item--clickable');
+      clickableItems.forEach(item => {
+        item.addEventListener('click', function(e) {
+          e.preventDefault();
+          const nextLayer = this.getAttribute('data-next-layer');
+          
+          if (nextLayer) {
+            // Hide current layer
+            const currentLayer = this.closest('.mega-menu__subnav');
+            if (currentLayer) {
+              currentLayer.classList.remove('is-active');
+            }
+            
+            // Show next layer
+            const targetLayer = megaMenu.querySelector(`.mega-menu__subnav[data-submenu-content="${nextLayer}"]`);
+            if (targetLayer) {
+              targetLayer.classList.add('is-active');
+            }
+          }
+        });
+      });
+
+      // Handle back button clicks
+      const backButtons = megaMenu.querySelectorAll('.mega-menu__subnav-item--back');
+      backButtons.forEach(backButton => {
+        backButton.addEventListener('click', function(e) {
+          e.preventDefault();
+          const backTo = this.getAttribute('data-back-to');
+          
+          if (backTo) {
+            // Hide current layer
+            const currentLayer = this.closest('.mega-menu__subnav');
+            if (currentLayer) {
+              currentLayer.classList.remove('is-active');
+            }
+            
+            // Show target layer
+            const targetLayer = megaMenu.querySelector(`.mega-menu__subnav[data-submenu-content="${backTo}"]`);
+            if (targetLayer) {
+              targetLayer.classList.add('is-active');
+            }
+          }
+        });
+      });
+    }
+
+    // Initialize layer navigation
+    handleLayerNavigation();
 
     // Quick Links Accordion
     const quickLinksToggle = document.getElementById('quickLinksToggle');
