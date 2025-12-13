@@ -1,0 +1,118 @@
+// ==========================================================================
+// BUTTON STYLES
+// ==========================================================================
+
+// --------------------------------------------------------------------------
+// BASE BUTTON
+// --------------------------------------------------------------------------
+
+.btn-custom {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: @spacing-sm;
+  padding: @btn-padding-y @btn-padding-x;
+  font-family: @font-primary;
+  font-size: @font-size-base;
+  font-weight: @font-weight-regular;
+  line-height: @line-height-normal;
+  text-align: center;
+  text-decoration: none;
+  white-space: nowrap;
+  border: none;
+  border-radius: @btn-radius;
+  cursor: pointer;
+  transition: background-color @transition-fast, 
+              transform @transition-fast, 
+              box-shadow @transition-fast;
+
+  &:hover {
+    transform: translateY(-1px);
+  }
+
+  &:active {
+    transform: translateY(0);
+  }
+
+  &:focus-visible {
+    outline: 2px solid @color-navy;
+    outline-offset: 2px;
+  }
+}
+
+// --------------------------------------------------------------------------
+// BUTTON VARIANTS
+// --------------------------------------------------------------------------
+
+// Primary Button - Blue Dark
+.btn-primary-blue {
+  &:extend(.btn-custom);
+  background-color: @color-blue-dark;
+  color: @color-white;
+
+  &:hover {
+    background-color: darken(@color-blue-dark, 5%);
+    color: @color-white;
+  }
+
+  &:active {
+    background-color: darken(@color-blue-dark, 10%);
+  }
+}
+
+// Primary Button - Coral
+.btn-primary-coral {
+  &:extend(.btn-custom);
+  background-color: @color-coral;
+  color: @color-white;
+
+  &:hover {
+    background-color: darken(@color-coral, 5%);
+    color: @color-white;
+  }
+
+  &:active {
+    background-color: darken(@color-coral, 10%);
+  }
+}
+
+// Secondary Button - Outline White
+.btn-outline-white {
+  &:extend(.btn-custom);
+  background-color: transparent;
+  color: @color-white;
+  border: 1.5px solid @color-white;
+
+  &:hover {
+    background-color: @color-white;
+    color: @color-navy;
+  }
+}
+
+// Secondary Button - Outline Navy
+.btn-outline-navy {
+  &:extend(.btn-custom);
+  background-color: transparent;
+  color: @color-navy;
+  border: 1.5px solid @color-navy;
+
+  &:hover {
+    background-color: @color-navy;
+    color: @color-white;
+  }
+}
+
+// --------------------------------------------------------------------------
+// BUTTON SIZES
+// --------------------------------------------------------------------------
+
+.btn-sm {
+  padding: 8px 16px;
+  font-size: @font-size-sm;
+}
+
+.btn-lg {
+  padding: 14px 28px;
+  font-size: @font-size-lg;
+}
+

@@ -1,0 +1,46 @@
+// ==========================================================================
+// RESPONSIVE OVERRIDES
+// ==========================================================================
+
+// This file contains any additional responsive adjustments
+// that don't fit neatly into component files.
+
+// --------------------------------------------------------------------------
+// CONTAINER ADJUSTMENTS
+// --------------------------------------------------------------------------
+
+@media (max-width: (@breakpoint-sm - 1)) {
+  .container {
+    padding-left: @spacing-md;
+    padding-right: @spacing-md;
+  }
+}
+
+// --------------------------------------------------------------------------
+// HIDE/SHOW UTILITIES
+// --------------------------------------------------------------------------
+
+.d-mobile-none {
+  @media (max-width: (@breakpoint-md - 1)) {
+    display: none !important;
+  }
+}
+
+.d-mobile-block {
+  @media (max-width: (@breakpoint-md - 1)) {
+    display: block !important;
+  }
+}
+
+.d-desktop-none {
+  @media (min-width: @breakpoint-md) {
+    display: none !important;
+  }
+}
+
+.d-desktop-block {
+  @media (min-width: @breakpoint-md) {
+    display: block !important;
+  }
+}
+

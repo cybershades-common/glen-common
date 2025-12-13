@@ -1,0 +1,289 @@
+// ==========================================================================
+// FOOTER STYLES - Bootstrap First + Custom Positioning (5%)
+// ==========================================================================
+
+.site-footer {
+  background-image: url('../../figma-design-images/section-bg.jpg');
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+
+  color: @tertiary-blue-dark;
+  position: relative;
+  padding: 8.25rem  2rem 1.5rem;
+
+  .container-fluid {
+    position: relative;   
+
+    .footer__newsletter-col {
+   
+      color: @tertiary-blue-dark; // #1C3666
+      font-family: @font-family-averta;
+      font-size: 1.5625rem;
+      font-style: normal;
+      font-weight: 400;
+      line-height: 110%; // 27.5px
+      letter-spacing: -0.5px;
+
+      .footer__newsletter {
+
+        .footer__newsletter-title {
+          font-size: 1.5625rem;
+          line-height: 1.1;
+          letter-spacing: -0.5px;
+          color: @tertiary-blue-dark;
+          margin: 0;
+          font-weight: 400;
+        }
+
+        .footer__newsletter-form {
+          display: flex;
+          flex-direction: column;
+
+          .footer__newsletter-input {
+            flex: 1;
+            min-width: 0;
+            padding: 10px 0 0 0; // Remove bottom padding to eliminate gap
+            border: none;
+            border-bottom: none; // No border, line acts as visual guide
+            background: transparent;
+            font-family: @font-family-averta;
+            font-size: 0.9375rem;
+            line-height: 1.4;
+            color: @tertiary-blue-dark;
+            outline: none;
+
+            &::placeholder {
+              color: fade(@tertiary-blue-dark, 60%);
+            }
+
+            &:focus {
+              outline: none;
+            }
+          }
+
+          // Sign Up Button
+          .btn-primary {
+            background-color: @tertiary-blue-dark;
+            border-color: @tertiary-blue-dark;
+            color: @base-white;
+            padding: 15px 18px;
+            border-radius: 10px;
+            font-size: 1.125rem;
+            line-height: 1.15;
+
+            &:hover {
+              background-color: darken(@tertiary-blue-dark, 10%);
+              border-color: darken(@tertiary-blue-dark, 10%);
+            }
+          }
+
+          .footer__newsletter-line {
+            flex: 1;
+            height: 2px;
+            min-width: 0;
+            display: block;
+            margin-top: -2px;
+          }
+
+          .footer__newsletter-line-spacer {
+            width: 107px; // Match button width (from btn-lg padding + text)
+            height: 48px; // Match button height
+          }
+        }
+      }
+
+
+
+    }
+
+    .footer__title {
+      font-family: @font-family-born-ready;
+      font-size: 6.25rem;
+      line-height: 1;
+      color: @tertiary-blue-dark;
+      margin: 0;
+
+
+      @media (max-width: @breakpoint-lg) {
+        font-size: 3.75rem;
+      }
+
+      @media (max-width: @breakpoint-md) {
+        font-size: 2.5rem;
+        text-align: center;
+      }
+    }
+
+
+    .footer__acknowledgement {
+  
+      color: @tertiary-blue-dark; // #1C3666
+      font-family: @font-family-averta; // Averta
+      font-size: 0.8125rem; // font-size-body-small
+      font-style: normal;
+      font-weight: 400;
+      line-height: 140%; // 18.2px
+
+      p {
+        margin: 0;
+        color: inherit;
+        font-family: inherit;
+        font-size: inherit;
+        font-style: inherit;
+        font-weight: inherit;
+        line-height: inherit;
+      }
+    }
+
+    .footer__links-container {
+      .footer-links-columns {
+        display: flex;
+        gap: 1rem 3.75rem;
+      }
+
+      .footer__social-col {
+        flex: 0 0 auto; // Auto width based on content
+      }
+
+
+
+
+    }
+  }
+}
+
+
+
+
+// Footer Links Container - Groups Links, Social, and Contact together
+
+
+// Row 2 spacing - More gap between newsletter and acknowledgement
+.footer__row-2 {
+  margin-top: 5rem !important; // Increased gap from Row 1
+}
+ 
+// Footer Links - Now using Bootstrap Grid (removed absolute positioning)
+
+.footer__link {
+  color: @tertiary-blue-dark;
+  text-decoration: none;
+  font-size: 0.9375rem;
+  line-height: 1.4;
+  transition: color 0.2s ease;
+  margin-bottom: 0.3125rem; // spacing-xs from Figma
+
+  &:hover {
+    color: @primary-coral;
+  }
+}
+
+// Contact column has 10px gap (spacing-sm)
+.footer__links div:last-child {
+  gap: 0.625rem !important; // spacing-sm from Figma
+}
+
+// Utilities - Bootstrap Grid (2 columns)
+.footer__utilities {
+ 
+  position: relative; // For absolute positioning of button
+
+  p {
+    margin: 0;
+    font-size: 0.9375rem;
+    line-height: 1.4;
+    color: @tertiary-blue-dark;
+  }
+
+  .footer__language-btn {
+    position: absolute;
+    left: 120px; // Position between the two time lines
+    top: 50%;
+    transform: translateY(-50%);
+    color: @tertiary-blue-dark;
+    border-color: @tertiary-blue-dark;
+    background-color: transparent;
+    padding: 10px 13px;
+    border-radius: 5px;
+    font-size: 0.9375rem;
+    line-height: 1.15;
+    border: 1px solid;
+
+    &:hover {
+      background-color: @tertiary-blue-dark;
+      border-color: @tertiary-blue-dark;
+      color: @base-white;
+    }
+  }
+}
+
+// Member Logos - Bootstrap Grid (3 columns), aligned with upper links
+.footer__logos {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 20px;
+  mix-blend-mode: luminosity;
+ 
+
+  img {
+    width: 9.84375rem;
+    height: auto;
+  }
+}
+
+// Large GLENAEON Logo 
+
+
+.footer__brand-logo {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  object-position: center;
+  padding-top: 40px;
+  padding-bottom: 20px;
+}
+
+// Bottom Copyright Bar - Bootstrap Grid (border-top removed)
+
+// Small text color override
+.site-footer .small {
+  color: @tertiary-blue-dark;
+}
+
+// Responsive
+@media (max-width: @breakpoint-lg) {
+  .site-footer {
+    min-height: auto;
+    padding: 40px 0;
+  }
+
+  .footer__newsletter,
+  .footer__title,
+  .footer__acknowledgement,
+  .footer__links,
+  .footer__logos,
+  .footer__utilities,
+  .footer__brand,
+  .footer__bottom {
+    position: static;
+    width: 100%;
+    max-width: 100%;
+    margin-bottom: 30px;
+  }
+
+  .footer__title {
+    text-align: center;
+  }
+
+  .footer__links .col-auto {
+    padding-right: 20px;
+  }
+
+  .footer__bottom {
+    flex-direction: column;
+    gap: 20px;
+    text-align: center;
+  }
+}

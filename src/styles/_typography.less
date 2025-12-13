@@ -1,0 +1,169 @@
+// ==========================================================================
+// TYPOGRAPHY STYLES
+// ==========================================================================
+
+// --------------------------------------------------------------------------
+// FONT FACE (Placeholder - Replace with actual font files)
+// --------------------------------------------------------------------------
+
+// Note: Add your Averta font files to assets/fonts/ and uncomment below
+// @font-face {
+//   font-family: 'Averta';
+//   src: url('../../assets/fonts/Averta-Regular.woff2') format('woff2'),
+//        url('../../assets/fonts/Averta-Regular.woff') format('woff');
+//   font-weight: 400;
+//   font-style: normal;
+//   font-display: swap;
+// }
+
+// @font-face {
+//   font-family: 'Averta';
+//   src: url('../../assets/fonts/Averta-Semibold.woff2') format('woff2'),
+//        url('../../assets/fonts/Averta-Semibold.woff') format('woff');
+//   font-weight: 600;
+//   font-style: normal;
+//   font-display: swap;
+// }
+
+// @font-face {
+//   font-family: 'Born Ready';
+//   src: url('../../assets/fonts/BornReady.woff2') format('woff2'),
+//        url('../../assets/fonts/BornReady.woff') format('woff');
+//   font-weight: 400;
+//   font-style: normal;
+//   font-display: swap;
+// }
+
+// --------------------------------------------------------------------------
+// BASE TYPOGRAPHY
+// --------------------------------------------------------------------------
+
+body {
+  font-family: @font-primary;
+  font-size: @font-size-base;
+  font-weight: @font-weight-regular;
+  line-height: @line-height-normal;
+  color: @color-navy;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+// --------------------------------------------------------------------------
+// HEADINGS
+// --------------------------------------------------------------------------
+
+h1, h2, h3, h4, h5, h6,
+.h1, .h2, .h3, .h4, .h5, .h6 {
+  font-family: @font-primary;
+  font-weight: @font-weight-semibold;
+  line-height: @line-height-tight;
+  color: @color-navy;
+  margin-bottom: 0.5em;
+}
+
+h1, .h1 {
+  font-size: @font-size-h1;
+
+  @media (max-width: (@breakpoint-md - 1)) {
+    font-size: @font-size-3xl;
+  }
+}
+
+h2, .h2 {
+  font-size: @font-size-3xl;
+
+  @media (max-width: (@breakpoint-md - 1)) {
+    font-size: @font-size-2xl;
+  }
+}
+
+h3, .h3 {
+  font-size: @font-size-2xl;
+
+  @media (max-width: (@breakpoint-md - 1)) {
+    font-size: @font-size-xl;
+  }
+}
+
+h4, .h4 {
+  font-size: @font-size-xl;
+}
+
+h5, .h5 {
+  font-size: @font-size-lg;
+}
+
+h6, .h6 {
+  font-size: @font-size-base;
+}
+
+// --------------------------------------------------------------------------
+// DISPLAY TEXT (Hero)
+// --------------------------------------------------------------------------
+
+.display-1 {
+  font-family: @font-script;
+  font-size: @font-size-display-1;
+  font-weight: @font-weight-regular;
+  line-height: @line-height-tight;
+  color: @color-white;
+
+  @media (max-width: (@breakpoint-lg - 1)) {
+    font-size: @font-size-display-2;
+  }
+
+  @media (max-width: (@breakpoint-md - 1)) {
+    font-size: @font-size-h1;
+  }
+}
+
+.display-2 {
+  font-family: @font-script;
+  font-size: @font-size-display-2;
+  font-weight: @font-weight-regular;
+  line-height: @line-height-tight;
+  color: @color-white;
+
+  @media (max-width: (@breakpoint-md - 1)) {
+    font-size: @font-size-3xl;
+  }
+}
+
+// --------------------------------------------------------------------------
+// BODY TEXT
+// --------------------------------------------------------------------------
+
+.body-base {
+  font-size: @font-size-base;
+  line-height: @line-height-normal;
+  letter-spacing: @letter-spacing-normal;
+}
+
+.body-large {
+  font-size: @font-size-lg;
+  line-height: @line-height-snug;
+  letter-spacing: @letter-spacing-tight;
+}
+
+.body-small {
+  font-size: @font-size-sm;
+  line-height: @line-height-normal;
+}
+
+// --------------------------------------------------------------------------
+// TEXT UTILITIES
+// --------------------------------------------------------------------------
+
+.text-white { color: @color-white; }
+.text-navy { color: @color-navy; }
+.text-coral { color: @color-coral; }
+
+.text-center { text-align: center; }
+.text-left { text-align: left; }
+.text-right { text-align: right; }
+
+.font-weight-regular { font-weight: @font-weight-regular; }
+.font-weight-medium { font-weight: @font-weight-medium; }
+.font-weight-semibold { font-weight: @font-weight-semibold; }
+.font-weight-bold { font-weight: @font-weight-bold; }
+

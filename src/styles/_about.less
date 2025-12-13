@@ -1,0 +1,172 @@
+// ==========================================================================
+// ABOUT SECTION STYLES - Pixel-perfect Figma Implementation
+// ==========================================================================
+
+.about-section {
+  position: relative;
+  padding:0;
+  background: url(../../figma-design-images/section-bg.jpg) @color-beige;
+  overflow: hidden;
+
+  @media (max-width: (@breakpoint-lg - 1)) {
+    padding: 60px 0;
+  }
+}
+
+// --------------------------------------------------------------------------
+// IMAGE (LEFT SIDE)
+// --------------------------------------------------------------------------
+
+.about-section__image-wrapper {
+  position: relative;
+  width: 100%;
+  max-width: 723px;
+  margin: 0 auto;
+  padding: 0 30px;
+
+  @media (max-width: (@breakpoint-lg - 1)) {
+    max-width: 500px;
+    margin-bottom: 40px;
+  }
+}
+
+.about-section__image {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 50%;
+}
+
+// --------------------------------------------------------------------------
+// CONTENT (RIGHT SIDE)
+// --------------------------------------------------------------------------
+
+.about-section__content {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  max-width: 546px;
+  padding: 0 30px;
+
+  @media (max-width: (@breakpoint-lg - 1)) {
+    max-width: 100%;
+    text-align: center;
+  }
+}
+
+// --------------------------------------------------------------------------
+// HEADING
+// --------------------------------------------------------------------------
+
+.about-section__heading {
+  margin-bottom: 0;
+}
+
+.about-section__title {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  margin: 0;
+  line-height: 1;
+  color: @color-blue-dark;
+  font-size: 3.75rem;
+
+  @media (max-width: (@breakpoint-md - 1)) {
+    font-size: clamp(2.25rem, 8vw, 3.75rem);
+  }
+}
+
+.about-section__title-script {
+  font-family: @font-script;
+  font-weight: @font-weight-regular;
+  font-size: 3.75rem;
+  line-height: 1;
+  letter-spacing: 0;
+  display: block;
+
+  @media (max-width: (@breakpoint-md - 1)) {
+    font-size: clamp(2.25rem, 8vw, 3.75rem);
+  }
+}
+
+.about-section__title-bold {
+  font-family: @font-primary;
+  font-weight: @font-weight-extrabold;
+  font-size: 3.75rem;
+  line-height: 1;
+  letter-spacing: -1.2px;
+  text-transform: uppercase;
+  display: block;
+  margin-top: 0;
+
+  @media (max-width: (@breakpoint-md - 1)) {
+    font-size: clamp(2.25rem, 8vw, 3.75rem);
+    letter-spacing: clamp(-0.125rem, -0.02em, -0.075rem);
+  }
+}
+
+// --------------------------------------------------------------------------
+// DESCRIPTION
+// --------------------------------------------------------------------------
+
+.about-section__description {
+  font-family: @font-primary;
+  font-weight: @font-weight-regular;
+  font-size: 0.9375rem;
+  line-height: 1.4;
+  color: @color-blue-dark;
+  max-width: 406px;
+  margin: 0;
+
+  @media (max-width: (@breakpoint-md - 1)) {
+    max-width: 100%;
+  }
+}
+
+// --------------------------------------------------------------------------
+// CTA BUTTON
+// --------------------------------------------------------------------------
+
+.about-section__cta {
+  margin-top: 0;
+  align-self: flex-start;
+}
+
+
+
+.circle-mask-wrap {
+  position: relative;
+  text-align: center;
+
+
+  .frame {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    img{
+      z-index: 11;
+      position: relative;
+      width: 100%;
+    }
+  }
+
+  .image-wrap {
+    position: absolute;
+    border-radius: 50%;
+    overflow: hidden;
+    max-width: 70%;
+    aspect-ratio: 1/1;
+    top: 2%;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+    z-index: 0;
+  }
+
+  img,
+  video {
+    min-height: 100%;
+  }
+}

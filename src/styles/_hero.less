@@ -1,0 +1,447 @@
+// ==========================================================================
+// HERO SECTION STYLES - Pixel-perfect Figma Implementation
+// Based on Frame 454: 1440x900
+// ==========================================================================
+
+// --------------------------------------------------------------------------
+// HERO CONTAINER
+// --------------------------------------------------------------------------
+
+.hero {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  height: 100svh;
+  max-height: 900px;
+ 
+
+  @media (min-width: 1920px) {
+    max-height: 1080px;
+  }
+
+  .bottom-edge{
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    z-index: 1;
+
+    background: url(../../figma-design-images/section-bg.jpg) repeat-x;
+    background-size: 20%;
+    background-position: 0px 25px;
+
+   
+  }
+
+// --------------------------------------------------------------------------
+// SLIDER LAYER (Swiper)
+// --------------------------------------------------------------------------
+
+.hero__slider {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  width: 100%;
+  height: 100%;
+
+  .hero__slide {
+    position: relative;
+    width: 100%;
+    height: 100%;
+
+    &-image,
+    &-video {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center 50%;
+    }
+
+    &-video {
+      // Ensure video doesn't show controls
+      pointer-events: none;
+    }
+
+    &-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(0deg, rgba(0, 0, 0, 0.20) 0%, rgba(0, 0, 0, 0.20) 100%);
+      padding: 6.5rem 2.5rem 7.5rem;
+      align-items: flex-end;
+      display: flex;
+
+    }
+
+
+   
+  }
+}
+
+}
+
+
+
+
+
+// --------------------------------------------------------------------------
+// CONTENT CONTAINER
+// --------------------------------------------------------------------------
+
+
+
+
+h1 {
+  display: block;
+  margin: 0;
+  padding: 0;
+
+  // Typography
+  font-family: @font-primary;
+  font-size: 6.25rem;
+  font-weight: @font-weight-extrabold;
+  line-height: 0.9;
+  letter-spacing: -3px;
+  text-transform: uppercase;
+  color: @color-white;
+
+  @media (max-width: (@breakpoint-xl - 1)) {
+    font-size: clamp(3rem, 7vw, 6.25rem);
+  }
+
+  @media (max-width: (@breakpoint-lg - 1)) {
+    font-size: clamp(2.5rem, 7vw, 5rem);
+  }
+
+  @media (max-width: (@breakpoint-md - 1)) {
+    font-size: clamp(2.25rem, 11vw, 3.5rem);
+    letter-spacing: -2px;
+  }
+
+
+
+  .hero__title-script {
+    display: block;
+    margin: 0 0 -10px 0; // Negative margin to bring bold text closer
+    padding: 0;
+
+    // Typography
+    font-family: @font-script;
+    font-size: 9.375rem;
+    font-weight: @font-weight-regular;
+    line-height: 1;
+    letter-spacing: 0;
+    color: @color-white;
+    white-space: nowrap;
+    text-transform: none;
+
+    @media (max-width: (@breakpoint-xl - 1)) {
+      font-size: clamp(3.75rem, 10vw, 9.375rem);
+    }
+
+    @media (max-width: (@breakpoint-lg - 1)) {
+      font-size: clamp(3rem, 10vw, 6.25rem);
+    }
+
+    @media (max-width: (@breakpoint-md - 1)) {
+      font-size: clamp(2.5rem, 12vw, 4.5rem);
+      margin-bottom: 0;
+    }
+  }
+
+}
+
+// Each line as a block
+.hero__title-line {
+  display: block;
+}
+
+// --------------------------------------------------------------------------
+// DESCRIPTION TEXT (Right Side)
+// Position: left: 1088px, top: 515px from Figma
+// --------------------------------------------------------------------------
+
+.hero__description {
+
+  padding:2.5rem  0 1rem .75rem;
+
+  // Typography
+  font-family: @font-primary;
+  font-size: @font-size-base;
+  font-weight: @font-weight-regular;
+  line-height: @line-height-normal;
+  color: @color-white;
+
+  @media (max-width: (@breakpoint-xl - 1)) {
+
+  }
+
+  @media (max-width: (@breakpoint-lg - 1)) {
+    display: none; // Hide on tablet/mobile for cleaner layout
+  }
+}
+
+// --------------------------------------------------------------------------
+// PLAY BUTTON (Video Button)
+// Figma Frame: 1440×900
+// Button: x: 999.33px, y: 773.33px
+// Size: 185.85px × 187.169px
+// From right: 254.82px (17.7% of 1440)
+// From top: 773.33px (85.9% of 900)
+// --------------------------------------------------------------------------
+
+.play-button {
+     position: absolute;
+    right: 17.7%;
+    bottom: -14%;
+    transform: translateY(-50%);
+    width: 185.85px;
+    height: 187.169px;
+    padding: 0;
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    z-index: 3;
+
+  // Hover effect handled by icon itself
+
+  &:focus-visible {
+    outline: 2px solid @color-white;
+    outline-offset: 4px;
+    border-radius: 50%;
+  }
+
+  // Responsive sizing
+  @media (max-width: (@breakpoint-xl - 1)) {
+    width: 150px;
+    height: 151px;
+  }
+
+  @media (max-width: (@breakpoint-lg - 1)) {
+    right: 5%;
+    top: auto;
+    bottom: 8%;
+    transform: none;
+    width: 120px;
+    height: 121px;
+  }
+
+  @media (max-width: (@breakpoint-md - 1)) {
+    display: none;
+  }
+}
+
+// Rotating Text Ring - Must be on top, continuously rotating
+.play-button__text-ring {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 2; // Above circles, below icon
+  animation: rotateText 25s linear infinite; // Slow continuous rotation
+  pointer-events: none;
+
+  text {
+    text-transform: uppercase;
+    font-weight: @font-weight-medium;
+  }
+}
+
+@keyframes rotateText {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+// Circle Shapes (Outer & Inner) - Background layer
+.play-button__circle {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1; // Below text ring
+  pointer-events: none;
+
+  &--outer {
+    width: 100%;
+    height: 100%;
+  }
+
+  &--inner {
+    top: 1.5%;
+    left: 1.5%;
+    width: 97%;
+    height: 97%;
+  }
+}
+
+// Play Triangle Icon - centered in button, on top
+// SVG path points UP, rotate 90deg to point RIGHT
+.play-button__icon {
+  position: absolute;
+  top: 50%;
+  left: 54%; // Optically center the triangle (accounts for pointy end)
+  transform: translate(-50%, -50%) rotate(90deg);
+  width: 26%; // ~49px relative to 186px container
+  height: auto;
+  aspect-ratio: 49 / 42;
+  z-index: 3; // Above everything
+  transition: transform @transition-base;
+  pointer-events: none;
+
+  .play-button:hover & {
+    transform: translate(-50%, -50%) rotate(90deg) scale(1.15);
+  }
+}
+
+// --------------------------------------------------------------------------
+// ARROW NAVIGATION
+// --------------------------------------------------------------------------
+
+.arrow-navigation {
+  position: absolute;
+  right: @arrow-group-right;
+  bottom: @arrow-group-bottom;
+  display: flex;
+  gap: @arrow-gap;
+  align-items: center;
+  z-index: 4; // Above play button
+  pointer-events: none; // Allow clicks to pass through container
+
+  // Enable pointer events on buttons
+  button {
+    pointer-events: auto;
+  }
+
+  // Responsive adjustments
+  @media (max-width: @breakpoint-lg) {
+    right: 40px;
+    bottom: 40px;
+    transform: scale(0.8);
+  }
+}
+
+.arrow-navigation__arrow {
+  position: relative;
+  width: @arrow-width;
+  height: @arrow-height;
+  padding: 0;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  flex-shrink: 0;
+  transition: opacity @transition-base;
+
+  &:hover {
+    opacity: 0.8;
+  }
+
+  &:active {
+    opacity: 0.6;
+  }
+}
+
+// Left Arrow (normal orientation)
+.arrow-navigation__arrow--left {
+  // All elements positioned normally
+}
+
+// Right Arrow (rotated 180deg and flipped vertically)
+.arrow-navigation__arrow--right {
+  // Transform applied to the entire button
+  transform: rotate(180deg) scaleY(-1);
+
+  // The inner content needs to be centered after rotation
+  >* {
+    position: relative;
+  }
+}
+
+// Main arrow shape
+.arrow-navigation__main {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+
+  &-img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    max-width: none;
+  }
+}
+
+// Horizontal line (middle of arrow)
+.arrow-navigation__line {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 51%; // Line width relative to arrow container
+  height: 3px;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  &-img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    max-width: none;
+  }
+}
+
+// Feather/arrowhead detail
+.arrow-navigation__feather {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 28%;
+  height: 47%;
+  z-index: 3;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  &-img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    max-width: none;
+  }
+}
+
+// Left arrow feather positioning (at the left end, pointing left)
+.arrow-navigation__arrow--left .arrow-navigation__feather {
+  left: 24%;
+}
+
+// Right arrow feather positioning (needs opposite due to rotation+flip)
+.arrow-navigation__arrow--right .arrow-navigation__feather {
+  left: 24%; // Same as left arrow because rotation/flip reverses everything
+}
+
+// --------------------------------------------------------------------------
+// RESPONSIVE ADJUSTMENTS
+// --------------------------------------------------------------------------
+
+@media (max-width: (@breakpoint-md - 1)) {
+  .hero {
+    max-height: none;
+  }
+
+  .arrow-navigation {
+    // Hide on mobile or adjust positioning
+    display: none;
+  }
+}
+.arrow-navigation__main-img,
+.arrow-navigation__line-img,
+.arrow-navigation__feather-img {
+  object-fit: initial;
+}

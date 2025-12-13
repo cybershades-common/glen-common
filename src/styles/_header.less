@@ -1,0 +1,461 @@
+// ==========================================================================
+// HEADER STYLES
+// ==========================================================================
+
+// Header Container
+.site-header {
+  position: relative;
+  z-index: @z-sticky;
+  width: 100%;
+  padding: .675rem 1.125rem;
+  min-height: @header-height;
+  transition: background @transition-base, box-shadow @transition-base, border-bottom @transition-base;
+
+  // Transparent variant (sits on colored/textured background)
+.header-logo{
+  a{
+    svg{
+  
+      pointer-events:none ;
+      path{
+            transition: all ease .5s;
+      }
+    }
+  }
+}
+
+  &--transparent {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    background: transparent;
+  }
+
+  // Sticky header variant
+  &--sticky {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    background: @color-sand-20;
+    transition: background @transition-base, box-shadow @transition-base;
+
+    &.is-scrolled {
+      background: @color-white;
+      box-shadow: @shadow-md;
+    }
+  }
+}
+
+// Header changes when mega menu is open
+body.mega-menu-open {
+  .site-header {
+    position: fixed;
+    background-color: @color-white;
+    border-bottom: none;
+    z-index: 1000;
+
+    // Add dotted line below header with padding
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 1.90625rem;
+      right: 1.84375rem;
+      height: 2px;
+      background-image: repeating-linear-gradient(to right,
+          @color-blue-dark 0,
+          @color-blue-dark 0.25rem,
+          transparent 0.25rem,
+          transparent 0.5rem);
+      background-repeat: repeat-x;
+      background-size: 0.5rem 0.125rem;
+      background-position: 0 50%;
+    }
+
+    // Change logo to dark
+    .header-logo {
+      a {
+        svg {
+          path {
+            fill: var(--tertiary-blue-dark, #1C3666);
+          }
+        }
+
+      }
+    }
+
+    // Show Quick Links when menu is open
+    .header-quick-links {
+      display: flex;
+    }
+
+    // Change icons to navy
+    .header-icon--white {
+      color: @color-navy;
+
+      svg {
+        stroke: @color-navy;
+      }
+    }
+
+    // Change menu button to navy with X icon
+    .menu-button__text {
+      color: @color-navy;
+    }
+
+    .hamburger__line {
+      background-color: @color-navy;
+    }
+
+    .hamburger {
+      .hamburger__line {
+        &:nth-child(1) {
+          transform: translateY(0.40625rem) rotate(45deg);
+        }
+
+        &:nth-child(2) {
+          opacity: 0;
+        }
+
+        &:nth-child(3) {
+          transform: translateY(-0.40625rem) rotate(-45deg);
+        }
+      }
+    }
+  }
+}
+
+// --------------------------------------------------------------------------
+// LOGO
+// --------------------------------------------------------------------------
+
+.header-logo {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+
+  a {
+    display: block;
+    text-decoration: none;
+
+
+    svg {
+      height: 4.89014rem;
+      width: auto;
+      pointer-events: none;
+    }
+
+
+  }
+}
+
+// --------------------------------------------------------------------------
+// QUICK LINKS (In Header - Only visible when menu is open)
+// --------------------------------------------------------------------------
+
+
+.header-right-block {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.header-quick-links {
+  position: relative;
+  flex-grow: 1;
+  display: none; // Hidden by default
+  justify-content: center;
+  max-width: 327px;
+  margin: 0 auto;
+
+  button {
+    width: 100%;
+    height: 41px;
+    padding: 10px 20px;
+    background-color: @color-sand-20;
+    border: none;
+    border-radius: 10px;
+    font-family: @font-primary;
+    font-size: 0.9375rem;
+    line-height: 1.4;
+    color: @color-blue-dark;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    transition: background-color 0.2s ease;
+
+    &:hover {
+      background-color: darken(@color-sand-20, 3%);
+    }
+
+    &:focus {
+      outline: 2px solid @color-coral;
+      outline-offset: 2px;
+    }
+
+    svg {
+      width: 20px;
+      height: 20px;
+      transition: transform 0.3s ease;
+    }
+
+    &.is-open svg {
+      transform: rotate(180deg);
+    }
+  }
+}
+
+.header-quick-links-dropdown {
+  display: none;
+  position: absolute;
+  top: calc(100% + 10px);
+  left: 50%;
+  transform: translateX(-50%);
+  width: 327px;
+  background-color: @color-white;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  z-index: @z-dropdown;
+
+  &.is-open {
+    display: block;
+  }
+
+  a {
+    display: block;
+    padding: 12px 20px;
+    font-family: @font-primary;
+    font-size: 0.9375rem;
+    line-height: 1.4;
+    color: @color-blue-dark;
+    text-decoration: none;
+    transition: background-color 0.2s ease;
+
+    &:hover {
+      background-color: @color-sand-20;
+    }
+  }
+}
+
+// --------------------------------------------------------------------------
+// HEADER ACTIONS (Right Side)
+// --------------------------------------------------------------------------
+
+.header-actions {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: @header-gap;
+}
+
+// CTA Buttons Container
+.header-cta {
+  display: flex;
+  align-items: center;
+  gap: @header-btn-gap;
+
+  // Hide on mobile, show on desktop
+  @media (max-width: (@breakpoint-lg - 1)) {
+    display: none;
+  }
+}
+
+// --------------------------------------------------------------------------
+// HEADER ICONS
+// --------------------------------------------------------------------------
+
+.header-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  padding: 0;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  transition: opacity @transition-fast;
+
+  &:hover {
+    opacity: 0.8;
+  }
+
+
+  svg {
+    width: 100%;
+    height: 100%;
+  }
+
+  // White icon variant
+  &--white {
+    color: @color-white; // For currentColor in SVGs
+
+    svg {
+      stroke: @color-white;
+      fill: none;
+    }
+  }
+
+  // Dark icon variant
+  &--dark {
+    color: @color-navy; // For currentColor in SVGs
+
+    svg {
+      stroke: @color-navy;
+      fill: none;
+    }
+  }
+
+  // Hide on mobile
+  &--desktop-only {
+    @media (max-width: (@breakpoint-lg - 1)) {
+      display: none;
+    }
+  }
+}
+
+// Search Icon
+.header-search {
+  width: 22px;
+  height: 22px;
+}
+
+// Profile Icon
+.header-profile {
+  width: 30px;
+  height: 30px;
+}
+
+// --------------------------------------------------------------------------
+// MENU BUTTON (Hamburger)
+// --------------------------------------------------------------------------
+
+.menu-button {
+  display: flex;
+  align-items: center;
+  gap: @spacing-sm;
+  padding: 0;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  transition: opacity @transition-fast;
+
+  &:hover {
+    opacity: 0.8;
+  }
+
+  &__text {
+    font-family: @font-primary;
+    font-size: @font-size-lg;
+    font-weight: @font-weight-regular;
+    line-height: @line-height-snug;
+    letter-spacing: @letter-spacing-tight;
+    color: @color-white;
+
+    // Dark variant
+    .menu-button--dark & {
+      color: @color-navy;
+    }
+  }
+
+  // Close button in mega menu
+  &--close {
+    .hamburger__line {
+      background-color: @color-navy;
+      border-color: @color-navy;
+    }
+
+    .menu-button__text {
+      color: @color-navy;
+    }
+  }
+}
+
+// Hamburger Icon (3 lines)
+.hamburger {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 33px;
+  height: 25px;
+  gap: 5px;
+
+  &__line {
+    display: block;
+    width: 100%;
+    height: 1.5px;
+    background-color: @color-white;
+    border-radius: @radius-full;
+    transition: transform @transition-base, opacity @transition-fast;
+
+    // Dark variant
+    .menu-button--dark & {
+      background-color: @color-navy;
+    }
+  }
+
+  // Animated state (X icon when menu is open)
+  &.is-active {
+    .hamburger__line {
+      &:nth-child(1) {
+        transform: translateY(6.5px) rotate(45deg);
+      }
+
+      &:nth-child(2) {
+        opacity: 0;
+      }
+
+      &:nth-child(3) {
+        transform: translateY(-6.5px) rotate(-45deg);
+      }
+    }
+  }
+
+  // Close variant (X icon for mega menu close button)
+  &--close {
+    .hamburger__line {
+      background-color: @color-navy;
+
+      &:nth-child(1) {
+        transform: translateY(6.5px) rotate(45deg);
+      }
+
+      &:nth-child(2) {
+        opacity: 0;
+      }
+
+      &:nth-child(3) {
+        transform: translateY(-6.5px) rotate(-45deg);
+      }
+    }
+  }
+}
+
+// --------------------------------------------------------------------------
+// RESPONSIVE
+// --------------------------------------------------------------------------
+
+@media (max-width: (@breakpoint-md - 1)) {
+  .site-header {
+    padding-left: @spacing-md;
+    padding-right: @spacing-md;
+  }
+
+  .header-actions {
+    gap: @spacing-md;
+  }
+
+  .header-logo__image {
+    max-height: 45px;
+  }
+
+  .menu-button__text {
+    // Hide "Menu" text on mobile
+    display: none;
+  }
+}
