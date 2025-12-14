@@ -71,6 +71,11 @@
       align-items: flex-end;
       display: flex;
 
+      @media (max-width: (@breakpoint-md - 1)) {
+        background: rgba(0, 0, 0, 0.3);
+        padding: 0;
+        align-items: flex-start;
+      }
     }
 
 
@@ -114,8 +119,9 @@ h1 {
   }
 
   @media (max-width: (@breakpoint-md - 1)) {
-    font-size: clamp(2.25rem, 11vw, 3.5rem);
-    letter-spacing: -2px;
+    font-size: 55.806px;
+    letter-spacing: -1.1161px;
+    line-height: 1;
   }
 
 
@@ -144,8 +150,9 @@ h1 {
     }
 
     @media (max-width: (@breakpoint-md - 1)) {
-      font-size: clamp(2.5rem, 12vw, 4.5rem);
-      margin-bottom: 0;
+      font-size: 55.806px;
+      margin-bottom: 1.86px;
+      white-space: normal;
     }
   }
 
@@ -154,6 +161,18 @@ h1 {
 // Each line as a block
 .hero__title-line {
   display: block;
+
+  @media (max-width: (@breakpoint-md - 1)) {
+    position: absolute;
+    left: 18px;
+    top: 97px;
+    display: flex;
+    flex-direction: column;
+    gap: 1.86px;
+    align-items: flex-start;
+    width: auto;
+    z-index: 2;
+  }
 }
 
 // --------------------------------------------------------------------------
@@ -177,7 +196,32 @@ h1 {
   }
 
   @media (max-width: (@breakpoint-lg - 1)) {
-    display: none; // Hide on tablet/mobile for cleaner layout
+    @media (min-width: @breakpoint-md) {
+      // Hide on tablet only
+      display: none;
+    }
+    
+    @media (max-width: (@breakpoint-md - 1)) {
+      // Show and reposition on mobile
+      display: block;
+      position: absolute;
+      left: 18px;
+      top: 416.5px;
+      width: 361.651px;
+      max-width: calc(100% - 36px);
+      z-index: 2;
+      padding: 0;
+
+      p {
+        margin: 0;
+        padding: 0;
+        font-family: @font-primary;
+        font-size: 18px;
+        font-weight: @font-weight-regular;
+        line-height: 1.3;
+        color: @color-white;
+      }
+    }
   }
 }
 
@@ -347,7 +391,8 @@ h1 {
 
 // Left Arrow (normal orientation)
 .arrow-navigation__arrow--left {
-  // All elements positioned normally
+  // Positioned normally, no transforms needed
+  transform: none;
 }
 
 // Right Arrow (rotated 180deg and flipped vertically)
@@ -430,14 +475,130 @@ h1 {
 // RESPONSIVE ADJUSTMENTS
 // --------------------------------------------------------------------------
 
+// --------------------------------------------------------------------------
+// HERO CONTENT CONTAINER - Responsive
+// --------------------------------------------------------------------------
+
+.hero__content {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  z-index: 2;
+
+  @media (max-width: (@breakpoint-md - 1)) {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    position: relative;
+  }
+}
+
+// Mobile Actions (Buttons Section)
+.hero__mobile-actions {
+  display: none;
+
+  @media (max-width: (@breakpoint-md - 1)) {
+    display: flex;
+    flex-direction: column;
+    gap: @spacing-sm;
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    right: 20px;
+    z-index: 3;
+  }
+}
+
+.hero__video-btn {
+  display: none;
+
+  @media (max-width: (@breakpoint-md - 1)) {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: @spacing-sm;
+    padding: @btn-padding-y @btn-padding-x;
+    background: @color-white;
+    border-radius: @btn-radius;
+    font-family: @font-primary;
+    font-size: @font-size-base;
+    font-weight: @font-weight-regular;
+    line-height: @line-height-normal;
+    color: @tertiary-blue-dark;
+    text-decoration: none;
+    width: 100%;
+    transition: opacity @transition-fast;
+
+    svg {
+      width: 20px;
+      height: 20px;
+      flex-shrink: 0;
+    }
+
+    &:hover {
+      opacity: 0.9;
+    }
+
+    &:active {
+      opacity: 0.8;
+    }
+  }
+}
+
+.hero__mobile-cta {
+  display: none;
+
+  @media (max-width: (@breakpoint-md - 1)) {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: @spacing-sm;
+    width: 100%;
+
+    a {
+      width: 100%;
+      text-align: center;
+    }
+  }
+}
+
 @media (max-width: (@breakpoint-md - 1)) {
   .hero {
     max-height: none;
+    min-height: 100vh;
+    min-height: 100svh;
+  }
+
+  .hero__slider {
+    .hero__slide {
+      min-height: 100vh;
+      min-height: 100svh;
+    }
   }
 
   .arrow-navigation {
     // Hide on mobile or adjust positioning
     display: none;
+  }
+
+  // Reposition content on mobile but keep structure
+  .hero__content {
+    .row {
+      // Keep row but adjust columns
+      margin: 0;
+      
+      .col-lg-6 {
+        @media (max-width: (@breakpoint-md - 1)) {
+          position: static;
+        }
+      }
+      
+      .col-lg-3 {
+        @media (max-width: (@breakpoint-md - 1)) {
+          position: static;
+          width: 100%;
+        }
+      }
+    }
   }
 }
 .arrow-navigation__main-img,
