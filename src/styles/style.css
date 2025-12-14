@@ -584,7 +584,7 @@ body.mega-menu-open .site-header .hamburger .hamburger__line:nth-child(3) {
   padding-left: 30px;
   padding-right: 30px;
   background-color: #ffffff;
-  background-image: url('data:image/svg+xml;base64,...');
+  background-image: url("data:image/svg+xml;base64,...");
   background-repeat: repeat;
   background-size: 819.2px 409.6px;
   position: relative;
@@ -690,7 +690,6 @@ body.mega-menu-open .site-header .hamburger .hamburger__line:nth-child(3) {
   justify-content: flex-start;
   width: 100%;
   max-width: 1380px;
-  padding: 0 30px;
   gap: 60px;
   position: relative;
 }
@@ -946,20 +945,15 @@ body.mega-menu-open .site-header .hamburger .hamburger__line:nth-child(3) {
   display: none;
 }
 .mega-menu__footer {
-  display: flex;
   width: 100%;
   max-width: 1360px;
-  flex-direction: row;
-  align-items: flex-end;
-  justify-content: space-between;
   margin-top: 20px;
 }
 .mega-menu__footer-links {
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  width: 186px;
-  margin-right: auto;
+  justify-content: flex-start;
+  gap: 20px;
 }
 .mega-menu__footer-links a {
   font-family: 'DM Sans', 'Averta', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
@@ -976,7 +970,7 @@ body.mega-menu-open .site-header .hamburger .hamburger__line:nth-child(3) {
   display: flex;
   align-items: center;
   gap: 18.75px;
-  margin-left: auto;
+  justify-content: flex-end;
 }
 .mega-menu__social a {
   width: 30px;
