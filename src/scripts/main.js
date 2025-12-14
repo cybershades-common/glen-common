@@ -195,6 +195,9 @@
 
     // Initialize layer navigation
     handleLayerNavigation();
+    
+    // Initialize circle image layer switching
+    initCircleImageLayerSwitching();
 
     // Quick Links Accordion
     const quickLinksToggle = document.getElementById('quickLinksToggle');
@@ -224,6 +227,70 @@
         closeMenu();
       });
     }
+  }
+
+  // ==========================================================================
+  // CIRCLE IMAGE LAYER SWITCHING
+  // ==========================================================================
+  
+  function initCircleImageLayerSwitching() {
+    const circleImageContainer = document.querySelector('.mega-menu__circle-image');
+    if (!circleImageContainer) return;
+    
+    const circleImages = {
+      layer1: circleImageContainer.querySelector('.circle-image-layer-1'),
+      layer2: circleImageContainer.querySelector('.circle-image-layer-2'),
+      layer3: circleImageContainer.querySelector('.circle-image-layer-3')
+    };
+    
+    // Function to switch to specific layer image
+    function switchToLayerImage(layerNumber) {
+      // Remove active class from all images
+      Object.values(circleImages).forEach(img => {
+        if (img) img.classList.remove('active');
+      });
+      
+      // Add active class to target layer image
+      const targetImage = circleImages[`layer${layerNumber}`];
+      if (targetImage) {
+        targetImage.classList.add('active');
+      }
+      
+      // Update container data attribute
+      circleImageContainer.setAttribute('data-layer', layerNumber);
+    }
+    
+    // Listen for submenu changes to switch circle images
+    const observer = new MutationObserver(function(mutations) {
+      mutations.forEach(function(mutation) {
+        if (mutation.type === 'attributes' && mutation.attributeName === 'class') {
+          const target = mutation.target;
+          
+          if (target.classList.contains('mega-menu__subnav') && 
+              target.classList.contains('is-active') && 
+              target.hasAttribute('data-layer')) {
+            
+            const layerNumber = target.getAttribute('data-layer');
+            switchToLayerImage(layerNumber);
+          }
+        }
+      });
+    });
+    
+    // Start observing all submenus for class changes
+    const allSubmenus = document.querySelectorAll('.mega-menu__subnav[data-layer]');
+    allSubmenus.forEach(submenu => {
+      observer.observe(submenu, { attributes: true, attributeFilter: ['class'] });
+    });
+    
+    // Also listen for main nav hover to reset to layer 1
+    const mainNavItems = document.querySelectorAll('.mega-menu__nav-item a[data-submenu]');
+    mainNavItems.forEach(navLink => {
+      navLink.addEventListener('mouseenter', function() {
+        // Reset to layer 1 image when hovering main nav items
+        switchToLayerImage(1);
+      });
+    });
   }
 
   // ==========================================================================
