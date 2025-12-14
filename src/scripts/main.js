@@ -17,6 +17,8 @@
     initStickyHeader();
     initSmoothScroll();
     initHeroSlider();
+    initVideoTestimonials();
+    initCoCurricularCarousel();
   });
 
   // ==========================================================================
@@ -460,6 +462,233 @@
         });
       }
     });
+  }
+
+  // ==========================================================================
+  // VIDEO TESTIMONIALS
+  // ==========================================================================
+
+  function initVideoTestimonials() {
+    const cards = document.querySelectorAll('.video-testimonials__card');
+    const modal = document.getElementById('videoTestimonialModal');
+    const modalVideo = document.getElementById('videoTestimonialPlayer');
+    const modalClose = document.querySelector('.video-testimonials__modal-close');
+    const modalBackdrop = document.querySelector('.video-testimonials__modal-backdrop');
+
+    if (!cards.length || !modal || !modalVideo) return;
+
+    // Handle hover to play video muted
+    cards.forEach(card => {
+      const video = card.querySelector('.video-testimonials__video');
+      const playButton = card.querySelector('.video-testimonials__play-button');
+
+      if (!video) return;
+
+      // Play on hover
+      card.addEventListener('mouseenter', function() {
+        if (video.paused) {
+          video.play().catch(err => {
+            console.log('Video autoplay prevented:', err);
+          });
+        }
+      });
+
+      // Pause on mouse leave
+      card.addEventListener('mouseleave', function() {
+        if (!video.paused) {
+          video.pause();
+          video.currentTime = 0; // Reset to start
+        }
+      });
+
+      // Open modal on play button click
+      if (playButton) {
+        playButton.addEventListener('click', function(e) {
+          e.stopPropagation();
+          const videoSrc = playButton.getAttribute('data-video-src') || card.getAttribute('data-video-src');
+          
+          if (videoSrc) {
+            // Set video source
+            modalVideo.src = videoSrc;
+            modalVideo.load();
+            
+            // Show modal
+            modal.classList.add('is-active');
+            document.body.style.overflow = 'hidden';
+            
+            // Play video
+            modalVideo.play().catch(err => {
+              console.log('Video play error:', err);
+            });
+          }
+        });
+      }
+    });
+
+    // Close modal function
+    function closeModal() {
+      modal.classList.remove('is-active');
+      document.body.style.overflow = '';
+      modalVideo.pause();
+      modalVideo.currentTime = 0;
+      modalVideo.src = ''; // Clear source to stop loading
+    }
+
+    // Close on close button click
+    if (modalClose) {
+      modalClose.addEventListener('click', closeModal);
+    }
+
+    // Close on backdrop click
+    if (modalBackdrop) {
+      modalBackdrop.addEventListener('click', closeModal);
+    }
+
+    // Close on Escape key
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape' && modal.classList.contains('is-active')) {
+        closeModal();
+      }
+    });
+  }
+
+  // ==========================================================================
+  // CO-CURRICULAR OPPORTUNITIES CAROUSEL
+  // ==========================================================================
+
+  function initCoCurricularCarousel() {
+    // Check if Swiper is loaded
+    if (typeof Swiper === 'undefined') {
+      console.warn('Swiper not loaded');
+      return;
+    }
+
+    const carouselSlider = document.querySelector('.co-curricular-carousel__slider');
+    if (!carouselSlider) return;
+
+    const paginationDots = document.querySelectorAll('.co-curricular-carousel__pagination-dot');
+    const prevArrow = document.querySelector('.co-curricular-carousel__navigation .arrow-navigation__arrow--left');
+    const nextArrow = document.querySelector('.co-curricular-carousel__navigation .arrow-navigation__arrow--right');
+    const counterCurrent = document.querySelector('.co-curricular-carousel__counter-current');
+    const counterTotal = document.querySelector('.co-curricular-carousel__counter-total');
+
+    // Initialize Swiper with smooth transitions
+    const swiper = new Swiper('.co-curricular-carousel__slider', {
+      loop: true,
+      speed: 800,
+      effect: 'slide',
+      slidesPerView: 1,
+      spaceBetween: 0,
+      centeredSlides: true,
+      
+      // Smooth easing
+      resistanceRatio: 0,
+      touchRatio: 1,
+      threshold: 5,
+      followFinger: true,
+      
+      // Autoplay
+      autoplay: {
+        delay: 5000,
+        disableOnInteraction: false,
+        pauseOnMouseEnter: true
+      },
+
+      // Keyboard control
+      keyboard: {
+        enabled: true,
+        onlyInViewport: true
+      },
+
+      // Accessibility
+      a11y: {
+        prevSlideMessage: 'Previous slide',
+        nextSlideMessage: 'Next slide',
+        paginationBulletMessage: 'Go to slide {{index}}'
+      }
+    });
+
+    // Update pagination dots
+    function updatePagination(activeIndex) {
+      paginationDots.forEach((dot, index) => {
+        if (index === activeIndex) {
+          dot.classList.add('co-curricular-carousel__pagination-dot--active');
+        } else {
+          dot.classList.remove('co-curricular-carousel__pagination-dot--active');
+        }
+      });
+    }
+
+    // Update counter
+    function updateCounter(activeIndex, total) {
+      if (counterCurrent) {
+        counterCurrent.textContent = activeIndex + 1;
+      }
+      if (counterTotal) {
+        counterTotal.textContent = total;
+      }
+    }
+
+    // Connect navigation arrows
+    if (prevArrow) {
+      prevArrow.addEventListener('click', function() {
+        swiper.slidePrev();
+      });
+    }
+
+    if (nextArrow) {
+      nextArrow.addEventListener('click', function() {
+        swiper.slideNext();
+      });
+    }
+
+    // Connect pagination dots
+    paginationDots.forEach((dot, index) => {
+      dot.addEventListener('click', function() {
+        swiper.slideToLoop(index);
+      });
+    });
+
+    // Handle video playback on slide change
+    function handleVideoPlayback() {
+      const slides = swiper.slides;
+      slides.forEach((slide, index) => {
+        const video = slide.querySelector('.co-curricular-carousel__video');
+        const slideElement = slide.querySelector('.co-curricular-carousel__slide');
+        if (video && slideElement) {
+          if (index === swiper.realIndex) {
+            // Play video in active slide
+            video.play().then(() => {
+              video.classList.add('is-playing');
+              slideElement.classList.add('video-playing');
+            }).catch(err => {
+              console.log('Video autoplay prevented:', err);
+              // Keep fallback image visible if video fails
+              slideElement.classList.remove('video-playing');
+            });
+          } else {
+            // Pause videos in other slides
+            video.pause();
+            video.currentTime = 0;
+            video.classList.remove('is-playing');
+            slideElement.classList.remove('video-playing');
+          }
+        }
+      });
+    }
+
+    // Update on slide change
+    swiper.on('slideChange', function () {
+      const realIndex = swiper.realIndex;
+      updatePagination(realIndex);
+      updateCounter(realIndex, swiper.slides.length);
+      handleVideoPlayback();
+    });
+
+    // Initial update
+    updatePagination(0);
+    updateCounter(0, swiper.slides.length);
+    handleVideoPlayback();
   }
 
 })();

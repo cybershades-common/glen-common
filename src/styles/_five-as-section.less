@@ -1,0 +1,178 @@
+// ==========================================================================
+// FIVE AS EDUCATION SECTION
+// ==========================================================================
+
+.five-as-section {
+  padding: @spacing-xl 0;
+  background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), 
+              url(../../figma-design-images/section-bg.jpg) center/cover;
+  background-color: @color-navy-dark;
+  color: @color-white;
+
+  // Title
+  &__title {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    margin-bottom: @spacing-lg;
+    text-align: center;
+
+    &-script {
+      font-family: @font-script;
+      font-weight: @font-weight-regular;
+      font-size: @font-size-h1;
+      line-height: 1;
+      letter-spacing: 0;
+      color: @color-white;
+      text-align: center;
+      margin: 0;
+
+      @media (max-width: (@breakpoint-md - 1)) {
+        font-size: clamp(36px, 8vw, 60px);
+      }
+    }
+
+    &-bold {
+      font-family: @font-primary;
+      font-weight: @font-weight-extrabold;
+      font-size: @font-size-h1;
+      line-height: 1;
+      letter-spacing: -2px;
+      text-transform: uppercase;
+      color: @color-white;
+      text-align: center;
+      margin: 0;
+
+      @media (max-width: (@breakpoint-md - 1)) {
+        font-size: clamp(36px, 8vw, 60px);
+        letter-spacing: -1.2px;
+      }
+    }
+  }
+
+  // Filter Tabs
+  &__filters {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: @spacing-md;
+    flex-wrap: wrap;
+    margin-bottom: @spacing-xl;
+
+    @media (max-width: (@breakpoint-md - 1)) {
+      gap: @spacing-sm;
+      margin-bottom: @spacing-lg;
+    }
+  }
+
+  &__filter-tab {
+    font-family: @font-primary;
+    font-weight: @font-weight-regular;
+    font-size: @font-size-base;
+    line-height: 1.4;
+    color: @color-white;
+    background-color: transparent;
+    border: 1px solid @color-white;
+    border-radius: @radius-lg;
+    padding: @spacing-sm @spacing-md;
+    cursor: pointer;
+    transition: background-color @transition-base, color @transition-base, border-color @transition-base;
+    white-space: nowrap;
+
+    &:hover {
+      background-color: @color-white;
+      color: @color-navy-dark;
+    }
+
+    &--active {
+      background-color: @color-coral;
+      color: @color-white;
+      border-color: @color-coral;
+    }
+
+    @media (max-width: (@breakpoint-md - 1)) {
+      font-size: @font-size-sm;
+      padding: 8px @spacing-sm;
+    }
+  }
+
+  // Content Layout
+  .row.align-items-center {
+    margin-top: @spacing-xl;
+
+    @media (max-width: (@breakpoint-lg - 1)) {
+      margin-top: @spacing-lg;
+    }
+  }
+
+  // Image Section
+  &__image {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0 @spacing-lg;
+
+    img {
+      width: 100%;
+      max-width: 400px;
+      height: auto;
+      border-radius: 50%;
+      object-fit: cover;
+      aspect-ratio: 1/1;
+    }
+
+    @media (max-width: (@breakpoint-lg - 1)) {
+      margin-bottom: @spacing-lg;
+      padding: 0 @spacing-md;
+    }
+
+    @media (max-width: (@breakpoint-md - 1)) {
+      max-width: 300px;
+      margin: 0 auto @spacing-lg auto;
+    }
+  }
+
+  // Content Section
+  &__content {
+    padding: 0 @spacing-lg;
+
+    @media (max-width: (@breakpoint-lg - 1)) {
+      text-align: center;
+      padding: 0 @spacing-md;
+    }
+  }
+
+  &__heading {
+    font-family: @font-primary;
+    font-weight: @font-weight-bold;
+    font-size: @font-size-2xl;
+    line-height: 1.2;
+    color: @color-white;
+    margin: 0 0 @spacing-md 0;
+
+    @media (max-width: (@breakpoint-md - 1)) {
+      font-size: @font-size-xl;
+    }
+  }
+
+  &__description {
+    font-family: @font-primary;
+    font-weight: @font-weight-regular;
+    font-size: @font-size-base;
+    line-height: 1.6;
+    color: @color-white;
+    margin: 0 0 @spacing-lg 0;
+    opacity: 0.9;
+
+    @media (max-width: (@breakpoint-md - 1)) {
+      font-size: @font-size-sm;
+    }
+  }
+
+  // Button
+  .btn-primary-coral.btn-lg {
+    @media (max-width: (@breakpoint-lg - 1)) {
+      align-self: center;
+    }
+  }
+}

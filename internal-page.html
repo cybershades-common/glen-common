@@ -1387,7 +1387,7 @@
     <section class="video-testimonials">
       <div class="container-fluid">
         <div class="row">
-          <div class="col-12">
+          <div class="col-lg-12">
             <div class="video-testimonials__title">
               <p class="video-testimonials__title-script mb-0">What makes</p>
               <p class="video-testimonials__title-bold mb-0">glenaeon special?</p>
@@ -1395,101 +1395,560 @@
           </div>
         </div>
         <div class="row justify-content-center">
-          <div class="col-12">
+          <div class="col-lg-12">
             <div class="video-testimonials__cards">
               <!-- Card 1: Alexis -->
-              <div class="video-testimonials__card">
+              <div class="video-testimonials__card" data-video-src="assets/videos/alexis-testimonial.mp4">
                 <div class="video-testimonials__card-inner">
-                  <div class="position-absolute top-0 start-0 w-100 h-100" aria-hidden="true">
-                    <img src="https://www.figma.com/api/mcp/asset/d719f862-e041-456b-ba14-d104e226f3b2" alt="" class="video-testimonials__card-bg" />
-                    <div class="position-absolute top-0 start-0 w-100 h-100 overflow-hidden rounded-4">
-                      <img src="https://www.figma.com/api/mcp/asset/c0c4f22a-bf70-478c-a8f3-b823838cb027" alt="" class="position-absolute" style="height: 102.84%; left: -18.43%; top: -2.84%; width: 172.69%;" />
-                    </div>
-                    <div class="video-testimonials__card-overlay"></div>
-                    <div class="position-absolute top-0 start-0 w-100 h-100 overflow-hidden rounded-4">
-                      <img src="https://www.figma.com/api/mcp/asset/97427413-fb48-440a-825a-135e96c4a2e2" alt="" class="position-absolute" style="height: 152.04%; left: -16.66%; top: -52.04%; width: 170.27%;" />
-                    </div>
-                  </div>
+                  <video 
+                    class="video-testimonials__video" 
+                    loop 
+                    muted 
+                    playsinline
+                    preload="metadata"
+                    poster="https://www.figma.com/api/mcp/asset/01f63231-21c3-4b0b-afcd-83d9338b17fe"
+                  >
+                    <source src="assets/videos/alexis-testimonial.mp4" type="video/mp4">
+                    <source src="assets/videos/alexis-testimonial.webm" type="video/webm">
+                  </video>
+                  <div class="video-testimonials__card-overlay"></div>
                   <div class="video-testimonials__card-content">
                     <div class="video-testimonials__card-info">
                       <p class="video-testimonials__card-name">Alexis</p>
                       <p class="video-testimonials__card-title">Year 4 Student</p>
                     </div>
-                    <button class="video-testimonials__play-button" aria-label="Play video">
-                      <svg width="24.5" height="24.5" viewBox="0 0 24.5 24.5" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M8 6L18 12.25L8 18.5V6Z" fill="white" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                      </svg>
-                    </button>
+                    <div class="video-testimonials__play-button-wrapper">
+                      <button class="video-testimonials__play-button" type="button" aria-label="Play video" data-video-src="assets/videos/alexis-testimonial.mp4">
+                        <div class="video-testimonials__play-button-circle">
+                          <img src="https://www.figma.com/api/mcp/asset/db918687-f020-4fef-9c58-2bd75968ef63" alt="" class="video-testimonials__play-button-bg" />
+                          <div class="video-testimonials__play-button-icon">
+                            <img src="https://www.figma.com/api/mcp/asset/7f03ea6b-6632-40ae-8d79-0bf9516bb76b" alt="" class="video-testimonials__play-icon" />
+                          </div>
+                        </div>
+                      </button>
+                    </div>
                   </div>
                 </div>
               </div>
 
               <!-- Card 2: Jarrod -->
-              <div class="video-testimonials__card">
+              <div class="video-testimonials__card" data-video-src="assets/videos/jarrod-testimonial.mp4">
                 <div class="video-testimonials__card-inner">
-                  <div class="position-absolute top-0 start-0 w-100 h-100" aria-hidden="true">
-                    <img src="https://www.figma.com/api/mcp/asset/d719f862-e041-456b-ba14-d104e226f3b2" alt="" class="video-testimonials__card-bg" />
-                    <img src="https://www.figma.com/api/mcp/asset/9b9a10da-8ab1-442c-848f-8472ec6ccc63" alt="" class="video-testimonials__card-bg" />
-                    <div class="video-testimonials__card-overlay"></div>
-                  </div>
+                  <video 
+                    class="video-testimonials__video" 
+                    loop 
+                    muted 
+                    playsinline
+                    preload="metadata"
+                    poster="https://www.figma.com/api/mcp/asset/d719f862-e041-456b-ba14-d104e226f3b2"
+                  >
+                    <source src="assets/videos/jarrod-testimonial.mp4" type="video/mp4">
+                    <source src="assets/videos/jarrod-testimonial.webm" type="video/webm">
+                  </video>
+                  <div class="video-testimonials__card-overlay"></div>
                   <div class="video-testimonials__card-content">
                     <div class="video-testimonials__card-info">
                       <p class="video-testimonials__card-name">Jarrod</p>
                       <p class="video-testimonials__card-title">Year 9 Student</p>
                     </div>
-                    <button class="video-testimonials__play-button" aria-label="Play video">
-                      <svg width="24.5" height="24.5" viewBox="0 0 24.5 24.5" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M8 6L18 12.25L8 18.5V6Z" fill="white" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                      </svg>
-                    </button>
+                    <div class="video-testimonials__play-button-wrapper">
+                      <button class="video-testimonials__play-button" type="button" aria-label="Play video" data-video-src="assets/videos/jarrod-testimonial.mp4">
+                        <div class="video-testimonials__play-button-circle">
+                          <img src="https://www.figma.com/api/mcp/asset/db918687-f020-4fef-9c58-2bd75968ef63" alt="" class="video-testimonials__play-button-bg" />
+                          <div class="video-testimonials__play-button-icon">
+                            <img src="https://www.figma.com/api/mcp/asset/7f03ea6b-6632-40ae-8d79-0bf9516bb76b" alt="" class="video-testimonials__play-icon" />
+                          </div>
+                        </div>
+                      </button>
+                    </div>
                   </div>
                 </div>
               </div>
 
               <!-- Card 3: Student '98 -->
-              <div class="video-testimonials__card">
+              <div class="video-testimonials__card" data-video-src="assets/videos/student98-testimonial.mp4">
                 <div class="video-testimonials__card-inner">
-                  <div class="position-absolute top-0 start-0 w-100 h-100" aria-hidden="true">
-                    <img src="https://www.figma.com/api/mcp/asset/d719f862-e041-456b-ba14-d104e226f3b2" alt="" class="video-testimonials__card-bg" />
-                    <div class="video-testimonials__card-overlay"></div>
-                  </div>
+                  <video 
+                    class="video-testimonials__video" 
+                    loop 
+                    muted 
+                    playsinline
+                    preload="metadata"
+                    poster="https://www.figma.com/api/mcp/asset/0121f8ea-2acb-4141-9db2-69198625c4f6"
+                  >
+                    <source src="assets/videos/student98-testimonial.mp4" type="video/mp4">
+                    <source src="assets/videos/student98-testimonial.webm" type="video/webm">
+                  </video>
+                  <div class="video-testimonials__card-overlay"></div>
                   <div class="video-testimonials__card-content">
                     <div class="video-testimonials__card-info">
                       <p class="video-testimonials__card-name">Student '98</p>
                       <p class="video-testimonials__card-title">Current Parent</p>
                     </div>
-                    <button class="video-testimonials__play-button" aria-label="Play video">
-                      <svg width="24.5" height="24.5" viewBox="0 0 24.5 24.5" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M8 6L18 12.25L8 18.5V6Z" fill="white" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                      </svg>
-                    </button>
+                    <div class="video-testimonials__play-button-wrapper">
+                      <button class="video-testimonials__play-button" type="button" aria-label="Play video" data-video-src="assets/videos/student98-testimonial.mp4">
+                        <div class="video-testimonials__play-button-circle">
+                          <img src="https://www.figma.com/api/mcp/asset/db918687-f020-4fef-9c58-2bd75968ef63" alt="" class="video-testimonials__play-button-bg" />
+                          <div class="video-testimonials__play-button-icon">
+                            <img src="https://www.figma.com/api/mcp/asset/7f03ea6b-6632-40ae-8d79-0bf9516bb76b" alt="" class="video-testimonials__play-icon" />
+                          </div>
+                        </div>
+                      </button>
+                    </div>
                   </div>
                 </div>
               </div>
 
               <!-- Card 4: Jordan -->
-              <div class="video-testimonials__card">
+              <div class="video-testimonials__card" data-video-src="assets/videos/jordan-testimonial.mp4">
                 <div class="video-testimonials__card-inner">
-                  <div class="position-absolute top-0 start-0 w-100 h-100" aria-hidden="true">
-                    <img src="https://www.figma.com/api/mcp/asset/d719f862-e041-456b-ba14-d104e226f3b2" alt="" class="video-testimonials__card-bg" />
-                    <div class="position-absolute top-0 start-0 w-100 h-100 overflow-hidden rounded-4">
-                      <img src="https://www.figma.com/api/mcp/asset/93ef548d-6520-49fd-8f0a-a84ecad25be2" alt="" class="position-absolute" style="height: 158.07%; left: -236.12%; top: -30.33%; width: 353.88%;" />
-                    </div>
-                    <div class="video-testimonials__card-overlay"></div>
-                  </div>
+                  <video 
+                    class="video-testimonials__video" 
+                    loop 
+                    muted 
+                    playsinline
+                    preload="metadata"
+                    poster="https://www.figma.com/api/mcp/asset/d719f862-e041-456b-ba14-d104e226f3b2"
+                  >
+                    <source src="assets/videos/jordan-testimonial.mp4" type="video/mp4">
+                    <source src="assets/videos/jordan-testimonial.webm" type="video/webm">
+                  </video>
+                  <div class="video-testimonials__card-overlay"></div>
                   <div class="video-testimonials__card-content">
                     <div class="video-testimonials__card-info">
                       <p class="video-testimonials__card-name">Jordan</p>
                       <p class="video-testimonials__card-title">Year 12 Student</p>
                     </div>
-                    <button class="video-testimonials__play-button" aria-label="Play video">
-                      <svg width="24.5" height="24.5" viewBox="0 0 24.5 24.5" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M8 6L18 12.25L8 18.5V6Z" fill="white" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                      </svg>
-                    </button>
+                    <div class="video-testimonials__play-button-wrapper">
+                      <button class="video-testimonials__play-button" type="button" aria-label="Play video" data-video-src="assets/videos/jordan-testimonial.mp4">
+                        <div class="video-testimonials__play-button-circle">
+                          <img src="https://www.figma.com/api/mcp/asset/db918687-f020-4fef-9c58-2bd75968ef63" alt="" class="video-testimonials__play-button-bg" />
+                          <div class="video-testimonials__play-button-icon">
+                            <img src="https://www.figma.com/api/mcp/asset/7f03ea6b-6632-40ae-8d79-0bf9516bb76b" alt="" class="video-testimonials__play-icon" />
+                          </div>
+                        </div>
+                      </button>
+                    </div>
                   </div>
                 </div>
               </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-lg-12">
+            <div class="video-testimonials__button-wrapper">
+              <button class="video-testimonials__all-videos-btn btn-primary-coral" type="button">
+                All Videos
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Video Modal -->
+    <div class="video-testimonials__modal" id="videoTestimonialModal" role="dialog" aria-modal="true" aria-labelledby="videoModalTitle">
+      <div class="video-testimonials__modal-backdrop"></div>
+      <div class="video-testimonials__modal-content">
+        <button class="video-testimonials__modal-close" type="button" aria-label="Close video">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M18 6L6 18M6 6L18 18" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </button>
+        <div class="video-testimonials__modal-video-wrapper">
+          <video 
+            class="video-testimonials__modal-video" 
+            controls 
+            playsinline
+            id="videoTestimonialPlayer"
+          >
+            Your browser does not support the video tag.
+          </video>
+        </div>
+      </div>
+    </div>
+
+    <!-- ========================================================================
+     CO-CURRICULAR OPPORTUNITIES CAROUSEL SECTION
+     ======================================================================== -->
+    <section class="co-curricular-carousel">
+      <!-- Dark Overlay -->
+      <div class="co-curricular-carousel__overlay"></div>
+
+      <!-- Title -->
+      <div class="co-curricular-carousel__title">
+        <p class="co-curricular-carousel__title-text">Co-Curricular<br aria-hidden="true" />Opporuntities</p>
+      </div>
+
+      <!-- Slide Counter -->
+      <div class="co-curricular-carousel__counter">
+        <span class="co-curricular-carousel__counter-current">1</span>
+        <span class="co-curricular-carousel__counter-separator"> / </span>
+        <span class="co-curricular-carousel__counter-total">5</span>
+      </div>
+
+      <!-- Swiper Container -->
+      <div class="co-curricular-carousel__slider swiper">
+        <div class="swiper-wrapper">
+          <!-- Slide 1 -->
+          <div class="swiper-slide">
+            <div class="co-curricular-carousel__slide">
+              <video 
+                class="co-curricular-carousel__video" 
+                loop 
+                muted 
+                playsinline
+                preload="metadata"
+                poster="assets/images/hero-slide-1.jpg"
+              >
+                <source src="assets/videos/co-curricular-1.mp4" type="video/mp4">
+                <source src="assets/videos/co-curricular-1.webm" type="video/webm">
+              </video>
+              <img src="assets/images/hero-slide-1.jpg" alt="Co-curricular activity 1" class="co-curricular-carousel__fallback-image" />
+              <div class="co-curricular-carousel__slide-content">
+                <p class="co-curricular-carousel__slide-title">Outdoor Education.</p>
+                <a href="https://www.instagram.com/glenaeonrudolfsteinerschool" class="co-curricular-carousel__slide-button">
+                  Explore Outdoor Education
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Slide 2 -->
+          <div class="swiper-slide">
+            <div class="co-curricular-carousel__slide">
+              <video 
+                class="co-curricular-carousel__video" 
+                loop 
+                muted 
+                playsinline
+                preload="metadata"
+                poster="assets/images/hero-slide-2.jpg"
+              >
+                <source src="assets/videos/co-curricular-2.mp4" type="video/mp4">
+                <source src="assets/videos/co-curricular-2.webm" type="video/webm">
+              </video>
+              <!-- TODO: Replace with Figma image URL for slide 2 -->
+              <img src="assets/images/hero-slide-2.jpg" alt="Co-curricular activity 2" class="co-curricular-carousel__fallback-image" />
+              <div class="co-curricular-carousel__slide-content">
+                <p class="co-curricular-carousel__slide-title">Slide Title</p>
+                <a href="#" class="co-curricular-carousel__slide-button">
+                  Btn Text Here
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Slide 3 -->
+          <div class="swiper-slide">
+            <div class="co-curricular-carousel__slide">
+              <video 
+                class="co-curricular-carousel__video" 
+                loop 
+                muted 
+                playsinline
+                preload="metadata"
+                poster="assets/images/hero-slide-3.jpg"
+              >
+                <source src="assets/videos/co-curricular-3.mp4" type="video/mp4">
+                <source src="assets/videos/co-curricular-3.webm" type="video/webm">
+              </video>
+              <!-- TODO: Replace with Figma image URL for slide 3 -->
+              <img src="assets/images/hero-slide-3.jpg" alt="Co-curricular activity 3" class="co-curricular-carousel__fallback-image" />
+              <div class="co-curricular-carousel__slide-content">
+                <p class="co-curricular-carousel__slide-title">Slide Title</p>
+                <a href="#" class="co-curricular-carousel__slide-button">
+                  Btn Text Here
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Slide 4 -->
+          <div class="swiper-slide">
+            <div class="co-curricular-carousel__slide">
+              <video 
+                class="co-curricular-carousel__video" 
+                loop 
+                muted 
+                playsinline
+                preload="metadata"
+                poster="assets/images/main-bg.jpg"
+              >
+                <source src="assets/videos/co-curricular-4.mp4" type="video/mp4">
+                <source src="assets/videos/co-curricular-4.webm" type="video/webm">
+              </video>
+              <!-- TODO: Replace with Figma image URL for slide 4 -->
+              <img src="assets/images/main-bg.jpg" alt="Co-curricular activity 4" class="co-curricular-carousel__fallback-image" />
+              <div class="co-curricular-carousel__slide-content">
+                <p class="co-curricular-carousel__slide-title">Slide Title</p>
+                <a href="#" class="co-curricular-carousel__slide-button">
+                  Btn Text Here
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Slide 5 -->
+          <div class="swiper-slide">
+            <div class="co-curricular-carousel__slide">
+              <video 
+                class="co-curricular-carousel__video" 
+                loop 
+                muted 
+                playsinline
+                preload="metadata"
+                poster="assets/images/section-bg.jpg"
+              >
+                <source src="assets/videos/co-curricular-5.mp4" type="video/mp4">
+                <source src="assets/videos/co-curricular-5.webm" type="video/webm">
+              </video>
+              <img src="assets/images/hero-slide-2.jpg" alt="Co-curricular activity 5" class="co-curricular-carousel__fallback-image" />
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Pagination and Navigation Container -->
+      <div class="co-curricular-carousel__controls">
+        <div class="container-fluid">
+          <div class="row align-items-center">
+            <!-- Pagination Dots -->
+            <div class="col-auto">
+              <div class="co-curricular-carousel__pagination">
+                <div class="co-curricular-carousel__pagination-dot co-curricular-carousel__pagination-dot--active"></div>
+                <div class="co-curricular-carousel__pagination-dot"></div>
+                <div class="co-curricular-carousel__pagination-dot"></div>
+                <div class="co-curricular-carousel__pagination-dot"></div>
+                <div class="co-curricular-carousel__pagination-dot"></div>
+              </div>
+            </div>
+
+            <!-- Navigation Arrows -->
+            <div class="col-auto ms-auto">
+              <div class="co-curricular-carousel__navigation arrow-navigation">
+                <!-- Left Arrow -->
+                <button
+                  class="arrow-navigation__arrow arrow-navigation__arrow--left co-curricular-carousel__arrow--prev"
+                  type="button"
+                  aria-label="Previous"
+                >
+                  <div class="arrow-navigation__main">
+                    <img
+                      src="assets/images/arrow-left-main.svg"
+                      alt=""
+                      class="arrow-navigation__main-img"
+                    />
+                  </div>
+                  <div class="arrow-navigation__line">
+                    <img
+                      src="assets/images/arrow-left-line.svg"
+                      alt=""
+                      class="arrow-navigation__line-img"
+                    />
+                  </div>
+                  <div class="arrow-navigation__feather">
+                    <img
+                      src="assets/images/arrow-left-feather.svg"
+                      alt=""
+                      class="arrow-navigation__feather-img"
+                    />
+                  </div>
+                </button>
+
+                <!-- Right Arrow -->
+                <button
+                  class="arrow-navigation__arrow arrow-navigation__arrow--right co-curricular-carousel__arrow--next"
+                  type="button"
+                  aria-label="Next"
+                >
+                  <div class="arrow-navigation__main">
+                    <img
+                      src="assets/images/arrow-right-main.svg"
+                      alt=""
+                      class="arrow-navigation__main-img"
+                    />
+                  </div>
+                  <div class="arrow-navigation__line">
+                    <img
+                      src="assets/images/arrow-right-line.svg"
+                      alt=""
+                      class="arrow-navigation__line-img"
+                    />
+                  </div>
+                  <div class="arrow-navigation__feather">
+                    <img
+                      src="assets/images/arrow-right-feather.svg"
+                      alt=""
+                      class="arrow-navigation__feather-img"
+                    />
+                  </div>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================================================
+     STAFF SECTION
+     ======================================================================== -->
+    <section class="staff-section">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-lg-12">
+            <div class="staff-section__title">
+              <p class="staff-section__title-script">Our Amazing</p>
+              <h2 class="staff-section__title-bold">Staff Team</h2>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-lg-12">
+            <div class="staff-section__filters">
+              <button class="staff-section__filter-tab staff-section__filter-tab--active" type="button" data-filter="all">
+                All
+              </button>
+              <button class="staff-section__filter-tab" type="button" data-filter="category1">
+                Category 1
+              </button>
+              <button class="staff-section__filter-tab" type="button" data-filter="category2">
+                Category 2
+              </button>
+              <button class="staff-section__filter-tab" type="button" data-filter="category3">
+                Category 3
+              </button>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-lg-12">
+            <div class="staff-section__grid">
+              <div class="staff-section__card" data-category="category1">
+                <div class="staff-section__image">
+                  <img src="assets/images/staff-images/image-circle (1).png" alt="Staff Member 1">
+                </div>
+                <h3 class="staff-section__name">Example Name</h3>
+                <p class="staff-section__position">Position Title</p>
+              </div>
+              <div class="staff-section__card" data-category="category2">
+                <div class="staff-section__image">
+                  <img src="assets/images/staff-images/image-circle (2).png" alt="Staff Member 2">
+                </div>
+                <h3 class="staff-section__name">Example Name</h3>
+                <p class="staff-section__position">Position Title</p>
+              </div>
+              <div class="staff-section__card" data-category="category1">
+                <div class="staff-section__image">
+                  <img src="assets/images/staff-images/image-circle (3).png" alt="Staff Member 3">
+                </div>
+                <h3 class="staff-section__name">Example Name</h3>
+                <p class="staff-section__position">Position Title</p>
+              </div>
+              <div class="staff-section__card" data-category="category3">
+                <div class="staff-section__image">
+                  <img src="assets/images/staff-images/image-circle (4).png" alt="Staff Member 4">
+                </div>
+                <h3 class="staff-section__name">Example Name</h3>
+                <p class="staff-section__position">Position Title</p>
+              </div>
+              <div class="staff-section__card" data-category="category2">
+                <div class="staff-section__image">
+                  <img src="assets/images/staff-images/image-circle (5).png" alt="Staff Member 5">
+                </div>
+                <h3 class="staff-section__name">Example Name</h3>
+                <p class="staff-section__position">Position Title</p>
+              </div>
+              <div class="staff-section__card" data-category="category1">
+                <div class="staff-section__image">
+                  <img src="assets/images/staff-images/image-circle (6).png" alt="Staff Member 6">
+                </div>
+                <h3 class="staff-section__name">Example Name</h3>
+                <p class="staff-section__position">Position Title</p>
+              </div>
+              <div class="staff-section__card" data-category="category3">
+                <div class="staff-section__image">
+                  <img src="assets/images/staff-images/image-circle (7).png" alt="Staff Member 7">
+                </div>
+                <h3 class="staff-section__name">Example Name</h3>
+                <p class="staff-section__position">Position Title</p>
+              </div>
+              <div class="staff-section__card" data-category="category2">
+                <div class="staff-section__image">
+                  <img src="assets/images/staff-images/image-circle (8).png" alt="Staff Member 8">
+                </div>
+                <h3 class="staff-section__name">Example Name</h3>
+                <p class="staff-section__position">Position Title</p>
+              </div>
+              <div class="staff-section__card" data-category="category1">
+                <div class="staff-section__image">
+                  <img src="assets/images/staff-images/image-circle (1).png" alt="Staff Member 9">
+                </div>
+                <h3 class="staff-section__name">Example Name</h3>
+                <p class="staff-section__position">Position Title</p>
+              </div>
+              <div class="staff-section__card" data-category="category3">
+                <div class="staff-section__image">
+                  <img src="assets/images/staff-images/image-circle (2).png" alt="Staff Member 10">
+                </div>
+                <h3 class="staff-section__name">Example Name</h3>
+                <p class="staff-section__position">Position Title</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================================================
+     FIVE AS EDUCATION SECTION
+     ======================================================================== -->
+    <section class="five-as-section">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-lg-12">
+            <div class="five-as-section__title">
+              <p class="five-as-section__title-script">The Five As of a</p>
+              <h2 class="five-as-section__title-bold">GLENAEON EDUCATION</h2>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-lg-12">
+            <div class="five-as-section__filters">
+              <button class="five-as-section__filter-tab five-as-section__filter-tab--active" type="button" data-filter="academic">
+                Academic
+              </button>
+              <button class="five-as-section__filter-tab" type="button" data-filter="action">
+                Action
+              </button>
+              <button class="five-as-section__filter-tab" type="button" data-filter="aesthetic">
+                Aesthetic
+              </button>
+              <button class="five-as-section__filter-tab" type="button" data-filter="active-wilderness">
+                Active Wilderness
+              </button>
+              <button class="five-as-section__filter-tab" type="button" data-filter="athletic">
+                Athletic
+              </button>
+            </div>
+          </div>
+        </div>
+        <div class="row align-items-center">
+          <div class="col-lg-6">
+            <div class="five-as-section__image">
+              <img src="assets/images/staff-images/image-circle (1).png" alt="Active Wilderness">
+            </div>
+          </div>
+          <div class="col-lg-6">
+            <div class="five-as-section__content">
+              <h3 class="five-as-section__heading">Active Wilderness</h3>
+              <p class="five-as-section__description">
+                A comprehensive wilderness and outdoor education program that challenges students to explore and discover the natural world through hands-on learning experiences. Our Active Wilderness program develops resilience, leadership, and environmental stewardship while building strong connections with nature and peers.
+              </p>
+              <a href="#" class="btn-primary-coral btn-lg">Explore Outdoor Learning</a>
             </div>
           </div>
         </div>
