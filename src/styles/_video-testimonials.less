@@ -1,0 +1,162 @@
+// ==========================================================================
+// VIDEO TESTIMONIALS SECTION
+// ==========================================================================
+
+.video-testimonials {
+  padding: @spacing-xl 0;
+  background-color: @color-white;
+
+  &__title {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    margin-bottom: @spacing-lg;
+    text-align: center;
+
+    &-script {
+      font-family: @font-script;
+      font-weight: @font-weight-regular;
+      font-size: @font-size-h1;
+      line-height: 1;
+      letter-spacing: 0;
+      color: @color-blue-dark;
+      text-align: center;
+
+      @media (max-width: (@breakpoint-md - 1)) {
+        font-size: clamp(36px, 8vw, 60px);
+      }
+    }
+
+    &-bold {
+      font-family: @font-primary;
+      font-weight: @font-weight-extrabold;
+      font-size: @font-size-h1;
+      line-height: 1;
+      letter-spacing: -2px;
+      text-transform: uppercase;
+      color: @color-blue-dark;
+      text-align: center;
+
+      @media (max-width: (@breakpoint-md - 1)) {
+        font-size: clamp(36px, 8vw, 60px);
+        letter-spacing: -1.2px;
+      }
+    }
+  }
+
+  &__cards {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+    flex-wrap: wrap;
+
+    @media (max-width: (@breakpoint-lg - 1)) {
+      gap: @spacing-md;
+    }
+  }
+
+  &__card {
+    position: relative;
+    width: 300px;
+    height: 503.731px;
+    border: 7.063px solid @color-white;
+    border-radius: 20px;
+    overflow: hidden;
+    flex-shrink: 0;
+
+    @media (max-width: (@breakpoint-md - 1)) {
+      width: 100%;
+      max-width: 300px;
+      height: auto;
+      aspect-ratio: 300 / 503.731;
+    }
+  }
+
+  &__card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    border-radius: 20px;
+    overflow: hidden;
+  }
+
+  &__card-bg {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: 50% 50%;
+    border-radius: 20px;
+  }
+
+  &__card-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 67.244%, rgba(0, 0, 0, 0.65) 100%);
+    border-radius: 20px;
+    pointer-events: none;
+  }
+
+  &__card-content {
+    position: absolute;
+    bottom: 31.48px;
+    left: 0;
+    right: 0;
+    z-index: 2;
+  }
+
+  &__card-info {
+    position: absolute;
+    bottom: 31.48px;
+    right: 124.15px;
+    width: 143px;
+    color: @color-white;
+    text-align: left;
+  }
+
+  &__card-name {
+    font-family: @font-primary;
+    font-weight: @font-weight-bold;
+    font-size: 25px;
+    line-height: 1.1;
+    letter-spacing: -0.5px;
+    margin: 0 0 0 0;
+    white-space: pre-wrap;
+  }
+
+  &__card-title {
+    font-family: @font-primary;
+    font-weight: @font-weight-regular;
+    font-size: 15px;
+    line-height: 1.4;
+    margin: 0;
+    white-space: pre-wrap;
+  }
+
+  &__play-button {
+    position: absolute;
+    bottom: 31.48px;
+    right: 27.5px;
+    width: 54.65px;
+    height: 55.454px;
+    background-color: @color-coral;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: transform @transition-fast;
+
+    &:hover {
+      transform: scale(1.05);
+    }
+
+    svg {
+      width: 24.5px;
+      height: 24.5px;
+      transform: rotate(90deg);
+    }
+  }
+}
+

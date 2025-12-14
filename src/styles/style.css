@@ -1665,6 +1665,233 @@ h1 .hero__title-script {
 .arrow-navigation__feather-img {
   object-fit: initial;
 }
+.full-width-image-words-animation {
+  position: relative;
+  min-height: 100vh;
+  overflow: hidden;
+  width: 100%;
+}
+.full-width-image-words-animation > div:first-child {
+  pointer-events: none;
+  z-index: 1;
+}
+.full-width-image-words-animation .container-fluid {
+  position: relative;
+  z-index: 2;
+  height: 100vh;
+}
+.full-width-image-words-animation__text {
+  position: absolute;
+  left: -270px;
+  top: 361.5px;
+  display: flex;
+  align-items: center;
+  gap: 165px;
+  line-height: 1;
+  white-space: nowrap;
+}
+@media (max-width: 1199px) {
+  .full-width-image-words-animation__text {
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    gap: clamp(40px, 8vw, 165px);
+    justify-content: center;
+    width: 100%;
+  }
+}
+.full-width-image-words-animation__word {
+  font-size: 150px;
+  line-height: 1;
+  color: #ffffff;
+  white-space: nowrap;
+  margin: 0;
+}
+.full-width-image-words-animation__word--bold {
+  font-family: 'DM Sans', 'Averta', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-weight: 800;
+  letter-spacing: -6px;
+}
+.full-width-image-words-animation__word--script {
+  font-family: 'Caveat', 'Born Ready', cursive;
+  font-weight: 400;
+  letter-spacing: 0;
+}
+@media (max-width: 1199px) {
+  .full-width-image-words-animation__word {
+    font-size: clamp(60px, 12vw, 150px);
+  }
+}
+@media (max-width: 991px) {
+  .full-width-image-words-animation__text {
+    flex-wrap: wrap;
+    gap: clamp(20px, 4vw, 80px);
+  }
+  .full-width-image-words-animation__word {
+    font-size: clamp(48px, 10vw, 120px);
+  }
+}
+@media (max-width: 767px) {
+  .full-width-image-words-animation {
+    min-height: 80vh;
+  }
+  .full-width-image-words-animation__text {
+    gap: clamp(15px, 3vw, 50px);
+  }
+  .full-width-image-words-animation__word {
+    font-size: clamp(36px, 8vw, 80px);
+    letter-spacing: -2px;
+  }
+  .full-width-image-words-animation__word--script {
+    letter-spacing: 0;
+  }
+}
+.video-testimonials {
+  padding: 40px 0;
+  background-color: #ffffff;
+}
+.video-testimonials__title {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  margin-bottom: 30px;
+  text-align: center;
+}
+.video-testimonials__title-script {
+  font-family: 'Caveat', 'Born Ready', cursive;
+  font-weight: 400;
+  font-size: 60px;
+  line-height: 1;
+  letter-spacing: 0;
+  color: #1c3666;
+  text-align: center;
+}
+@media (max-width: 767px) {
+  .video-testimonials__title-script {
+    font-size: clamp(36px, 8vw, 60px);
+  }
+}
+.video-testimonials__title-bold {
+  font-family: 'DM Sans', 'Averta', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-weight: 800;
+  font-size: 60px;
+  line-height: 1;
+  letter-spacing: -2px;
+  text-transform: uppercase;
+  color: #1c3666;
+  text-align: center;
+}
+@media (max-width: 767px) {
+  .video-testimonials__title-bold {
+    font-size: clamp(36px, 8vw, 60px);
+    letter-spacing: -1.2px;
+  }
+}
+.video-testimonials__cards {
+  display: flex;
+  gap: 15px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+@media (max-width: 991px) {
+  .video-testimonials__cards {
+    gap: 20px;
+  }
+}
+.video-testimonials__card {
+  position: relative;
+  width: 300px;
+  height: 503.731px;
+  border: 7.063px solid #ffffff;
+  border-radius: 20px;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+@media (max-width: 767px) {
+  .video-testimonials__card {
+    width: 100%;
+    max-width: 300px;
+    height: auto;
+    aspect-ratio: 300 / 503.731;
+  }
+}
+.video-testimonials__card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  border-radius: 20px;
+  overflow: hidden;
+}
+.video-testimonials__card-bg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 50% 50%;
+  border-radius: 20px;
+}
+.video-testimonials__card-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 67.244%, rgba(0, 0, 0, 0.65) 100%);
+  border-radius: 20px;
+  pointer-events: none;
+}
+.video-testimonials__card-content {
+  position: absolute;
+  bottom: 31.48px;
+  left: 0;
+  right: 0;
+  z-index: 2;
+}
+.video-testimonials__card-info {
+  position: absolute;
+  bottom: 31.48px;
+  right: 124.15px;
+  width: 143px;
+  color: #ffffff;
+  text-align: left;
+}
+.video-testimonials__card-name {
+  font-family: 'DM Sans', 'Averta', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-weight: 700;
+  font-size: 25px;
+  line-height: 1.1;
+  letter-spacing: -0.5px;
+  margin: 0 0 0 0;
+  white-space: pre-wrap;
+}
+.video-testimonials__card-title {
+  font-family: 'DM Sans', 'Averta', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-weight: 400;
+  font-size: 15px;
+  line-height: 1.4;
+  margin: 0;
+  white-space: pre-wrap;
+}
+.video-testimonials__play-button {
+  position: absolute;
+  bottom: 31.48px;
+  right: 27.5px;
+  width: 54.65px;
+  height: 55.454px;
+  background-color: #db574e;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: transform 150ms ease;
+}
+.video-testimonials__play-button:hover {
+  transform: scale(1.05);
+}
+.video-testimonials__play-button svg {
+  width: 24.5px;
+  height: 24.5px;
+  transform: rotate(90deg);
+}
 .site-footer {
   background-image: url('../../figma-design-images/section-bg.jpg');
   background-size: cover;

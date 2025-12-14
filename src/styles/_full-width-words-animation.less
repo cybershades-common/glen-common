@@ -1,0 +1,103 @@
+// ==========================================================================
+// FULL WIDTH IMAGE WORDS ANIMATION
+// ==========================================================================
+
+.full-width-image-words-animation {
+  position: relative;
+  min-height: 100vh;
+  overflow: hidden;
+  width: 100%;
+
+  // Background images container
+  > div:first-child {
+    pointer-events: none;
+    z-index: 1;
+  }
+
+  // Container for text
+  .container-fluid {
+    position: relative;
+    z-index: 2;
+    height: 100vh;
+  }
+
+  // Text Content - positioned exactly as per Figma
+  &__text {
+    position: absolute;
+    left: -270px;
+    top: 361.5px;
+    display: flex;
+    align-items: center;
+    gap: 165px;
+    line-height: 1;
+    white-space: nowrap;
+
+    @media (max-width: (@breakpoint-xl - 1)) {
+      left: 0;
+      top: 50%;
+      transform: translateY(-50%);
+      gap: clamp(40px, 8vw, 165px);
+      justify-content: center;
+      width: 100%;
+    }
+  }
+
+  // Words styling
+  &__word {
+    font-size: 150px;
+    line-height: 1;
+    color: @color-white;
+    white-space: nowrap;
+    margin: 0;
+
+    // Bold text (Discover, Grow.)
+    &--bold {
+      font-family: @font-primary;
+      font-weight: @font-weight-extrabold;
+      letter-spacing: -6px;
+    }
+
+    // Script text (Express.)
+    &--script {
+      font-family: @font-script;
+      font-weight: @font-weight-regular;
+      letter-spacing: 0;
+    }
+  }
+
+  // Responsive adjustments
+  @media (max-width: (@breakpoint-xl - 1)) {
+    &__word {
+      font-size: clamp(60px, 12vw, 150px);
+    }
+  }
+
+  @media (max-width: (@breakpoint-lg - 1)) {
+    &__text {
+      flex-wrap: wrap;
+      gap: clamp(20px, 4vw, 80px);
+    }
+
+    &__word {
+      font-size: clamp(48px, 10vw, 120px);
+    }
+  }
+
+  @media (max-width: (@breakpoint-md - 1)) {
+    min-height: 80vh;
+
+    &__text {
+      gap: clamp(15px, 3vw, 50px);
+    }
+
+    &__word {
+      font-size: clamp(36px, 8vw, 80px);
+      letter-spacing: -2px;
+
+      &--script {
+        letter-spacing: 0;
+      }
+    }
+  }
+}
+
