@@ -318,6 +318,15 @@ body.mega-menu-open {
   }
 }
 
+// Override desktop-only for profile icon on mobile
+@media (max-width: (@breakpoint-md - 1)) {
+  .header-profile.header-icon--desktop-only {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+  }
+}
+
 // Search Icon
 .header-search {
   width: 22px;
@@ -442,27 +451,39 @@ body.mega-menu-open {
 
 @media (max-width: (@breakpoint-md - 1)) {
   .site-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
     padding: 0 1.25rem;
     min-height: 4rem;
     height: 4rem;
+    width: 100%;
   }
 
   .site-header .container-fluid {
     padding: 0;
+    margin: 0;
+    width: 100%;
     height: 100%;
+    display: flex;
+    align-items: center;
   }
 
   .site-header .row {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    width: 100%;
     height: 100%;
     margin: 0;
+    padding: 0;
   }
 
   .col-lg-3 {
     display: flex;
     align-items: center;
+    height: 100%;
+    padding-top: 0.75rem;
   }
 
   .header-logo {
@@ -472,6 +493,7 @@ body.mega-menu-open {
     align-items: flex-end;
     gap: 0.19919rem;
     flex-shrink: 0;
+    margin: 0;
 
     a {
       display: flex;
@@ -481,8 +503,10 @@ body.mega-menu-open {
       gap: 0.19919rem;
 
       svg {
-        width: 100%;
-        height: auto;
+        width: 10.19125rem !important;
+        height: 2.91156rem !important;
+        max-height: 2.91156rem !important;
+        min-height: 2.91156rem !important;
       }
     }
   }
@@ -491,33 +515,45 @@ body.mega-menu-open {
     display: flex;
     align-items: center;
     justify-content: flex-end;
+    height: 100%;
   }
 
   .header-right-block {
     display: flex;
     align-items: center;
     gap: @spacing-md;
+    height: 100%;
   }
 
   .header-actions {
     display: flex;
     align-items: center;
     gap: @spacing-md;
+    height: 100%;
   }
 
-  .header-profile {
+  .header-profile,
+  .header-profile.header-icon--desktop-only {
     display: flex !important;
-    align-items: center;
+    align-items: center !important;
+    justify-content: center !important;
+    height: 30px !important;
+    width: 30px !important;
   }
 
   .hamburger {
     display: flex;
     align-items: center;
+    justify-content: center;
+    height: 25px;
+    width: 33px;
   }
 
   .menu-button {
     display: flex;
     align-items: center;
+    justify-content: center;
+    height: 25px;
   }
 
   .menu-button__text {
