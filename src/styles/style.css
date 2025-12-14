@@ -578,9 +578,9 @@ body.mega-menu-open .site-header .hamburger .hamburger__line:nth-child(3) {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  gap: 50px;
+  gap: 30px;
   padding-top: 130px;
-  padding-bottom: 40px;
+  padding-bottom: 30px;
   padding-left: 30px;
   padding-right: 30px;
   background-color: #ffffff;
@@ -588,7 +588,8 @@ body.mega-menu-open .site-header .hamburger .hamburger__line:nth-child(3) {
   background-repeat: repeat;
   background-size: 819.2px 409.6px;
   position: relative;
-  min-height: 100vh;
+  min-height: auto;
+  height: auto;
 }
 .mega-menu__quick-links {
   position: absolute;
@@ -696,17 +697,18 @@ body.mega-menu-open .site-header .hamburger .hamburger__line:nth-child(3) {
 .mega-menu__nav {
   display: flex;
   flex-direction: column;
-  gap: 0;
+  gap: 5px;
   list-style: none;
   padding: 0;
   margin: 0;
 }
 .mega-menu__nav-item {
   display: flex;
-  padding: 2px 0;
+  padding: 0;
   align-items: center;
   align-self: stretch;
   list-style: none;
+  position: relative;
 }
 .mega-menu__nav-item a {
   font-family: 'DM Sans', 'Averta', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
@@ -717,30 +719,53 @@ body.mega-menu-open .site-header .hamburger .hamburger__line:nth-child(3) {
   text-transform: uppercase;
   color: #183153;
   text-decoration: none;
-  transition: all 0.3s ease;
   display: inline-flex;
   align-items: center;
   gap: 25px;
   position: relative;
+  min-width: auto;
+  width: auto;
+  padding: 0;
+  contain: layout style;
+  transform: translateZ(0);
+  transition: transform 0.2s ease, color 0.2s ease;
 }
-.mega-menu__nav-item a:hover {
-  color: #db574e;
+.mega-menu__nav-item a .menu-text-normal {
+  opacity: 1;
+  transition: opacity 0.2s ease;
+}
+.mega-menu__nav-item a .menu-text-script {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  transform: translateY(-50%);
+  opacity: 0;
   font-family: 'Caveat', 'Born Ready', cursive;
-  text-transform: none;
   font-weight: 400;
+  text-transform: none;
   letter-spacing: 0;
+  color: #db574e;
+  transition: opacity 0.2s ease;
+  pointer-events: none;
+  white-space: nowrap;
+  max-width: 100%;
+}
+.mega-menu__nav-item a:hover .menu-text-normal {
+  opacity: 0;
+}
+.mega-menu__nav-item a:hover .menu-text-script {
+  opacity: 1;
 }
 .mega-menu__nav-item a:hover .mega-menu__nav-arrow {
   opacity: 1;
   visibility: visible;
   transform: translateX(0);
 }
-.mega-menu__nav-item a.is-active {
-  color: #db574e;
-  font-family: 'Caveat', 'Born Ready', cursive;
-  text-transform: none;
-  font-weight: 400;
-  letter-spacing: 0;
+.mega-menu__nav-item a.is-active .menu-text-normal {
+  opacity: 0;
+}
+.mega-menu__nav-item a.is-active .menu-text-script {
+  opacity: 1;
 }
 .mega-menu__nav-item a.is-active .mega-menu__nav-arrow {
   opacity: 1;
@@ -927,7 +952,7 @@ body.mega-menu-open .site-header .hamburger .hamburger__line:nth-child(3) {
   flex-direction: row;
   align-items: flex-end;
   justify-content: space-between;
-  margin-top: auto;
+  margin-top: 20px;
 }
 .mega-menu__footer-links {
   display: flex;

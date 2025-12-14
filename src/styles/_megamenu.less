@@ -53,9 +53,9 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  gap: 50px;
+  gap: 30px;
   padding-top: 130px; // Space for fixed header
-  padding-bottom: 40px;
+  padding-bottom: 30px;
   padding-left: 30px;
   padding-right: 30px;
   background-color: @color-white;
@@ -63,7 +63,8 @@
   background-repeat: repeat;
   background-size: 819.2px 409.6px;
   position: relative;
-  min-height: 100vh;
+  min-height: auto;
+  height: auto;
 }
 
 .mega-menu__quick-links {
@@ -190,7 +191,7 @@
 .mega-menu__nav {
   display: flex;
   flex-direction: column;
-  gap: 0;
+  gap: 5px;
   list-style: none;
   padding: 0;
   margin: 0;
@@ -198,10 +199,11 @@
 
 .mega-menu__nav-item {
   display: flex;
-  padding: 2px 0;
+  padding: 0;
   align-items: center;
   align-self: stretch;
   list-style: none;
+  position: relative;
   
   a {
     font-family: @font-primary;
@@ -212,19 +214,55 @@
     text-transform: uppercase;
     color: @color-navy;
     text-decoration: none;
-    transition: all 0.3s ease;
     display: inline-flex;
     align-items: center;
     gap: 25px;
     position: relative;
+    // Minimal width to prevent layout shifts
+    min-width: auto;
+    // Prevent font changes from causing dimension changes
+    width: auto;
+    // Remove extra padding to save space
+    padding: 0;
+    // Prevent layout recalculation on font changes
+    contain: layout style;
+    // Transform instead of changing font properties directly
+    transform: translateZ(0); // Force hardware acceleration
+    // Use transform transitions instead of font changes for stability
+    transition: transform 0.2s ease, color 0.2s ease;
     
-    // On hover, change to script font with arrow
-    &:hover {
-      color: @color-coral;
+    // Create two text versions - one normal, one script
+    .menu-text-normal {
+      opacity: 1;
+      transition: opacity 0.2s ease;
+    }
+    
+    .menu-text-script {
+      position: absolute;
+      top: 50%;
+      left: 0;
+      transform: translateY(-50%);
+      opacity: 0;
       font-family: @font-script;
-      text-transform: none;
       font-weight: 400;
+      text-transform: none;
       letter-spacing: 0;
+      color: @color-coral;
+      transition: opacity 0.2s ease;
+      pointer-events: none;
+      white-space: nowrap;
+      max-width: 100%;
+    }
+    
+    // On hover, swap text versions with opacity
+    &:hover {
+      .menu-text-normal {
+        opacity: 0;
+      }
+      
+      .menu-text-script {
+        opacity: 1;
+      }
       
       .mega-menu__nav-arrow {
         opacity: 1;
@@ -235,11 +273,13 @@
     
     // Active state (expanded submenu)
     &.is-active {
-      color: @color-coral;
-      font-family: @font-script;
-      text-transform: none;
-      font-weight: 400;
-      letter-spacing: 0;
+      .menu-text-normal {
+        opacity: 0;
+      }
+      
+      .menu-text-script {
+        opacity: 1;
+      }
       
       .mega-menu__nav-arrow {
         opacity: 1;
@@ -474,7 +514,7 @@
   flex-direction: row;
   align-items: flex-end;
   justify-content: space-between;
-  margin-top: auto; 
+  margin-top: 20px; 
 }
 
 .mega-menu__footer-links {
