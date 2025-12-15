@@ -100,7 +100,7 @@ h1 {
   display: block;
   margin: 0;
   padding: 0;
-
+text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
   // Typography
   font-family: @font-primary;
   font-size: 6.25rem;
@@ -135,7 +135,11 @@ h1 {
 
     // Typography
     font-family: @font-script;
-    font-size: 9.375rem;
+    font-size: 6.25rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 100%;
+    /* 100px */
     font-weight: @font-weight-regular;
     line-height: 1;
     letter-spacing: 0;
@@ -396,10 +400,10 @@ h1 {
   transform: none;
 }
 
-// Right Arrow (rotated 180deg and flipped vertically)
+// Right Arrow (rotated 180deg)
 .arrow-navigation__arrow--right {
-  // Transform applied to the entire button
-  transform: rotate(180deg) scaleY(-1);
+  // Transform applied to the entire button - just rotate 180deg
+  transform: rotate(180deg);
 
   // The inner content needs to be centered after rotation
   >* {
@@ -418,6 +422,7 @@ h1 {
     width: 100%;
     height: 100%;
     max-width: none;
+    object-fit: initial;
   }
 }
 
@@ -439,6 +444,7 @@ h1 {
     width: 100%;
     height: 100%;
     max-width: none;
+     object-fit: initial;
   }
 }
 
@@ -459,6 +465,7 @@ h1 {
     width: 100%;
     height: 100%;
     max-width: none;
+    object-fit: initial;
   }
 }
 
@@ -578,6 +585,7 @@ h1 {
 
     .container-fluid {
       height: 100%;
+
       .audio-btn {
         display: none;
       }
