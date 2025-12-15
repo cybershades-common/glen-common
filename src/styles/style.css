@@ -3727,6 +3727,1265 @@ button {
   margin: 0;
   white-space: normal;
 }
+.what-we-do-section .btn-philosophy {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  font-family: 'Averta', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-weight: 400;
+  font-size: 15px;
+  line-height: 1.4;
+  color: #ffffff;
+  background-color: #db574e;
+  border-radius: 10px;
+  text-decoration: none;
+  border: none;
+  cursor: pointer;
+  transition: background-color 150ms ease, transform 150ms ease;
+}
+.what-we-do-section .btn-philosophy:hover {
+  background-color: #d74339;
+  color: #ffffff;
+  transform: translateY(-1px);
+}
+.what-we-do-section .btn-philosophy:active {
+  transform: translateY(0);
+}
+.what-we-do-section .btn-philosophy:focus-visible {
+  outline: 2px solid #183153;
+  outline-offset: 2px;
+}
+.full-width-video-promo {
+  position: relative;
+  width: 100%;
+  height: 810px;
+  overflow: hidden;
+}
+.full-width-video-promo .video-promo-bg {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  width: 100%;
+  height: 100%;
+}
+.full-width-video-promo .video-promo-bg .video-promo-video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center center;
+  max-width: none;
+}
+.full-width-video-promo .video-promo-bg .video-promo-video .video-promo-poster-fallback {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center center;
+  display: none;
+}
+.full-width-video-promo .video-promo-bg .video-promo-dark-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.2);
+  z-index: 1;
+}
+.full-width-video-promo .video-promo-content {
+  position: relative;
+  z-index: 1;
+  width: 1440px;
+  max-width: 100%;
+  height: 810px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 100px 292px;
+  margin: 0 auto;
+}
+@media (max-width: 1440px) {
+  .full-width-video-promo .video-promo-content {
+    width: 100%;
+    padding-left: 292px;
+    padding-right: 292px;
+  }
+}
+@media (max-width: 1399px) {
+  .full-width-video-promo .video-promo-content {
+    padding: 100px 1.875rem;
+  }
+}
+@media (max-width: 991px) {
+  .full-width-video-promo .video-promo-content {
+    height: auto;
+    min-height: 600px;
+    padding: 4rem 1.875rem;
+  }
+}
+.full-width-video-promo .video-promo-text-content {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+  align-items: center;
+  width: 100%;
+}
+.full-width-video-promo .video-promo-headings {
+  display: flex;
+  flex-direction: column;
+  gap: 33px;
+  align-items: center;
+  width: 100%;
+}
+.full-width-video-promo .video-promo-headings .video-promo-kicker {
+  font-family: 'Averta', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-weight: 600;
+  font-size: 15px;
+  line-height: 1;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: #ffffff;
+  text-align: center;
+  margin: 0;
+  white-space: pre-wrap;
+}
+.full-width-video-promo .video-promo-headings .video-promo-title-group {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-items: center;
+  text-align: center;
+  width: 100%;
+}
+.full-width-video-promo .video-promo-headings .video-promo-title-group .video-promo-title-script {
+  font-family: 'Born Ready', cursive;
+  font-weight: 400;
+  font-size: 80px;
+  line-height: 0.9;
+  color: #ffffff;
+  margin: 0;
+  white-space: pre-wrap;
+}
+.full-width-video-promo .video-promo-headings .video-promo-title-group .video-promo-title-bold {
+  font-family: 'Averta', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-weight: 800;
+  font-size: 60px;
+  line-height: 1;
+  letter-spacing: -1.2px;
+  text-transform: uppercase;
+  color: #ffffff;
+  margin: 0;
+  white-space: pre-wrap;
+}
+@media (max-width: 991px) {
+  .full-width-video-promo .video-promo-headings .video-promo-title-group .video-promo-title-script {
+    font-size: clamp(3rem, 10vw, 80px);
+  }
+  .full-width-video-promo .video-promo-headings .video-promo-title-group .video-promo-title-bold {
+    font-size: clamp(2rem, 8vw, 60px);
+  }
+}
+.full-width-video-promo .video-promo-description-group {
+  display: flex;
+  flex-direction: column;
+  gap: 43px;
+  align-items: center;
+  width: 633.461px;
+  max-width: 100%;
+}
+.full-width-video-promo .video-promo-description-group .video-promo-description {
+  font-family: 'Averta', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 1.3;
+  letter-spacing: -0.4px;
+  color: #ffffff;
+  text-align: center;
+  margin: 0;
+  white-space: pre-wrap;
+  width: min-content;
+  min-width: 100%;
+}
+@media (max-width: 991px) {
+  .full-width-video-promo .video-promo-description-group .video-promo-description {
+    font-size: clamp(16px, 4vw, 20px);
+  }
+}
+.full-width-video-promo .video-promo-description-group .btn-philosophy {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px 25px;
+  font-family: 'Averta', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-weight: 400;
+  font-size: 15px;
+  line-height: 1.4;
+  color: #ffffff;
+  background-color: #db574e;
+  border-radius: 10px;
+  text-decoration: none;
+  border: none;
+  cursor: pointer;
+  transition: background-color 150ms ease, transform 150ms ease;
+}
+.full-width-video-promo .video-promo-description-group .btn-philosophy:hover {
+  background-color: #d74339;
+  color: #ffffff;
+  transform: translateY(-1px);
+}
+.full-width-video-promo .video-promo-description-group .btn-philosophy:active {
+  transform: translateY(0);
+}
+.full-width-video-promo .video-promo-description-group .btn-philosophy:focus-visible {
+  outline: 2px solid #183153;
+  outline-offset: 2px;
+}
+.wellbeing-section {
+  position: relative;
+  width: 100%;
+  min-height: 960px;
+  overflow: hidden;
+  padding-top: calc(3 * 1.875rem);
+  padding-bottom: 100px;
+}
+@media (max-width: 991px) {
+  .wellbeing-section {
+    min-height: auto;
+    padding-top: 4rem;
+    padding-bottom: 4rem;
+  }
+}
+.wellbeing-section .wellbeing-bg {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+}
+.wellbeing-section .wellbeing-bg .wellbeing-gradient {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom, #fff1b0 0%, #ffc1aa 100%);
+}
+.wellbeing-section .wellbeing-bg .wellbeing-texture {
+  position: absolute;
+  inset: 0;
+  mix-blend-mode: multiply;
+  opacity: 0.3;
+  overflow: hidden;
+}
+.wellbeing-section .wellbeing-bg .wellbeing-texture img {
+  position: absolute;
+  width: 103.6%;
+  height: 110.51%;
+  left: -1.8%;
+  top: 41.41%;
+  max-width: none;
+  object-fit: cover;
+}
+.wellbeing-section .container-fluid {
+  position: relative;
+  z-index: 1;
+}
+@media (max-width: 991px) {
+  .wellbeing-section .wellbeing-content-row .col-lg-1 {
+    display: none;
+  }
+}
+.wellbeing-section .wellbeing-image {
+  width: 100%;
+  max-width: 100%;
+  aspect-ratio: 1/1;
+  position: relative;
+}
+.wellbeing-section .wellbeing-image .frame {
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  right: 0;
+}
+.wellbeing-section .wellbeing-image > img {
+  width: 98%;
+  height: 99%;
+  object-fit: cover;
+  border-radius: 50%;
+  margin: 2px;
+}
+@media (max-width: 991px) {
+  .wellbeing-section .wellbeing-image {
+    max-width: 450px;
+    margin: 0 auto 3rem;
+  }
+}
+@media (max-width: 575px) {
+  .wellbeing-section .wellbeing-image {
+    max-width: 80%;
+  }
+}
+.wellbeing-section .wellbeing-content {
+  padding-top: 1rem;
+}
+@media (max-width: 991px) {
+  .wellbeing-section .wellbeing-content {
+    padding-top: 0;
+  }
+}
+.wellbeing-section .wellbeing-title-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  align-items: flex-start;
+  margin-bottom: 124px;
+}
+@media (max-width: 991px) {
+  .wellbeing-section .wellbeing-title-group {
+    margin-bottom: 3rem;
+  }
+}
+.wellbeing-section .wellbeing-title-group .wellbeing-title-script {
+  font-family: 'Born Ready', cursive;
+  font-weight: 400;
+  font-size: 3.75rem;
+  line-height: 1;
+  color: #1c3666;
+  margin: 0;
+  white-space: pre-wrap;
+}
+@media (max-width: 991px) {
+  .wellbeing-section .wellbeing-title-group .wellbeing-title-script {
+    font-size: clamp(2.5rem, 8vw, 60px);
+  }
+}
+.wellbeing-section .wellbeing-title-group .wellbeing-title-bold {
+  font-family: 'Averta', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-weight: 800;
+  font-size: 3.75rem;
+  line-height: 1;
+  letter-spacing: -1.2px;
+  text-transform: uppercase;
+  color: #1c3666;
+  margin: 0;
+  white-space: pre-wrap;
+}
+@media (max-width: 991px) {
+  .wellbeing-section .wellbeing-title-group .wellbeing-title-bold {
+    font-size: clamp(2.5rem, 8vw, 60px);
+  }
+}
+.wellbeing-section .wellbeing-text-blocks-row {
+  display: flex;
+  gap: 51px;
+  align-items: flex-start;
+}
+@media (max-width: 767px) {
+  .wellbeing-section .wellbeing-text-blocks-row {
+    flex-direction: column;
+    gap: 2rem;
+  }
+}
+.wellbeing-section .wellbeing-text-block {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  align-items: flex-start;
+  flex-shrink: 0;
+}
+.wellbeing-section .wellbeing-text-block.wellbeing-text-block-left {
+  width: 301px;
+}
+@media (max-width: 767px) {
+  .wellbeing-section .wellbeing-text-block.wellbeing-text-block-left {
+    width: 100%;
+  }
+}
+.wellbeing-section .wellbeing-text-block.wellbeing-text-block-right {
+  width: 300px;
+}
+@media (max-width: 767px) {
+  .wellbeing-section .wellbeing-text-block.wellbeing-text-block-right {
+    width: 100%;
+  }
+}
+.wellbeing-section .wellbeing-text-block .wellbeing-text-heading {
+  font-family: 'Averta', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-weight: 800;
+  font-size: 20px;
+  line-height: 1.1;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: #1c3666;
+  margin: 0;
+  white-space: pre-wrap;
+}
+@media (max-width: 991px) {
+  .wellbeing-section .wellbeing-text-block .wellbeing-text-heading {
+    font-size: clamp(16px, 3vw, 20px);
+  }
+}
+.wellbeing-section .wellbeing-text-block.wellbeing-text-block-left .wellbeing-text-heading {
+  width: 260px;
+  max-width: 100%;
+}
+.wellbeing-section .wellbeing-text-block.wellbeing-text-block-right .wellbeing-text-heading {
+  width: 142.887px;
+  max-width: 100%;
+}
+.wellbeing-section .wellbeing-text-block .wellbeing-text-body {
+  font-family: 'Averta', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-weight: 400;
+  font-size: 15px;
+  line-height: 1.4;
+  color: #1c3666;
+  margin: 0;
+  white-space: pre-wrap;
+  width: min-content;
+  min-width: 100%;
+}
+.wellbeing-section .wellbeing-text-block .wellbeing-text-body p {
+  margin: 0;
+}
+@media (max-width: 991px) {
+  .wellbeing-section .wellbeing-text-block .wellbeing-text-body {
+    font-size: clamp(14px, 2vw, 15px);
+  }
+}
+.full-width-testimonial-audio {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+}
+.full-width-testimonial-audio .testimonial-audio-bg {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+}
+.full-width-testimonial-audio .testimonial-audio-bg .testimonial-audio-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 1;
+}
+.full-width-testimonial-audio .testimonial-audio-slide {
+  position: relative;
+  height: 100vh;
+}
+.full-width-testimonial-audio .testimonial-audio-slide::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: url('https://www.figma.com/api/mcp/asset/4ba339e7-9150-417e-9a42-e4a33dbb974b');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  z-index: 0;
+}
+.full-width-testimonial-audio .testimonial-audio-slide::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 1;
+}
+.full-width-testimonial-audio .testimonial-audio-slider {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  z-index: 1;
+}
+.full-width-testimonial-audio .testimonial-audio-slide .container-fluid {
+  position: relative;
+  z-index: 2;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  padding: 0 80px;
+}
+@media (max-width: 991px) {
+  .full-width-testimonial-audio .testimonial-audio-slide .container-fluid {
+    padding: 0 40px;
+  }
+}
+@media (max-width: 767px) {
+  .full-width-testimonial-audio .testimonial-audio-slide .container-fluid {
+    padding: 0 20px;
+  }
+}
+.full-width-testimonial-audio .testimonial-audio-image {
+  width: 100%;
+  max-width: 100%;
+  aspect-ratio: 1/1;
+  position: relative;
+}
+@media (max-width: 991px) {
+  .full-width-testimonial-audio .testimonial-audio-image {
+    max-width: 400px;
+    margin: 0 auto 3rem;
+  }
+}
+@media (max-width: 575px) {
+  .full-width-testimonial-audio .testimonial-audio-image {
+    max-width: 80%;
+  }
+}
+.full-width-testimonial-audio .testimonial-audio-image .frame {
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  right: 0;
+}
+.full-width-testimonial-audio .testimonial-audio-image > img {
+  width: 98%;
+  height: 99%;
+  object-fit: cover;
+  border-radius: 50%;
+  margin: 2px;
+}
+.full-width-testimonial-audio .testimonial-audio-content {
+  padding-left: 72px;
+}
+@media (max-width: 991px) {
+  .full-width-testimonial-audio .testimonial-audio-content {
+    padding-left: 0;
+    text-align: center;
+  }
+}
+.full-width-testimonial-audio .testimonial-audio-kicker {
+  font-family: 'Averta', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-weight: 700;
+  font-size: 15px;
+  line-height: 1;
+  letter-spacing: 0.75px;
+  text-transform: uppercase;
+  color: #ffffff;
+  margin: 0 0 35px 0;
+}
+.full-width-testimonial-audio .testimonial-audio-quote {
+  font-family: 'Averta', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-weight: 400;
+  font-style: italic;
+  font-size: 35px;
+  line-height: 1.2;
+  letter-spacing: -0.7px;
+  color: #ffffff;
+  margin: 0 0 26px 0;
+  white-space: pre-wrap;
+  width: 611px;
+  max-width: 100%;
+}
+@media (max-width: 991px) {
+  .full-width-testimonial-audio .testimonial-audio-quote {
+    font-size: clamp(24px, 5vw, 35px);
+    width: 100%;
+  }
+}
+.full-width-testimonial-audio .testimonial-audio-player {
+  display: flex;
+  align-items: center;
+  gap: 26px;
+  margin-bottom: 26px;
+}
+@media (max-width: 767px) {
+  .full-width-testimonial-audio .testimonial-audio-player {
+    flex-direction: column;
+    gap: 15px;
+    align-items: flex-start;
+  }
+}
+.full-width-testimonial-audio .testimonial-audio-waveform {
+  position: relative;
+  width: 475px;
+  height: 30px;
+  flex-shrink: 0;
+}
+@media (max-width: 991px) {
+  .full-width-testimonial-audio .testimonial-audio-waveform {
+    width: 100%;
+    max-width: 475px;
+  }
+}
+.full-width-testimonial-audio .testimonial-audio-waveform .testimonial-audio-waveform-bg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.full-width-testimonial-audio .testimonial-audio-waveform .testimonial-audio-waveform-progress {
+  position: absolute;
+  left: -5.86px;
+  top: -3px;
+  width: 249px;
+  height: 39px;
+  background: #ffffff;
+  mask-image: url('https://www.figma.com/api/mcp/asset/1a2c95c1-4489-4efd-a707-34757d71a156');
+  mask-position: 5.858px 3px;
+  mask-size: 475px 30px;
+  mask-repeat: no-repeat;
+  z-index: 1;
+}
+.full-width-testimonial-audio .testimonial-audio-duration {
+  font-family: 'Averta', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-weight: 400;
+  font-size: 15px;
+  line-height: 1.4;
+  color: #ffffff;
+  white-space: nowrap;
+}
+.full-width-testimonial-audio .testimonial-audio-author {
+  font-family: 'Averta', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-weight: 400;
+  font-size: 15px;
+  line-height: 1.4;
+  color: #ffffff;
+  margin: 0;
+}
+.full-width-testimonial-audio .testimonial-audio-controls {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 80px;
+  z-index: 3;
+  width: 100%;
+}
+@media (max-width: 991px) {
+  .full-width-testimonial-audio .testimonial-audio-controls {
+    bottom: 40px;
+  }
+}
+@media (max-width: 767px) {
+  .full-width-testimonial-audio .testimonial-audio-controls {
+    bottom: 70px;
+  }
+}
+.full-width-testimonial-audio .testimonial-audio-controls .container-fluid {
+  padding-left: 629.08px;
+  padding-right: 80px;
+}
+@media (max-width: 1199px) {
+  .full-width-testimonial-audio .testimonial-audio-controls .container-fluid {
+    padding-left: 40px;
+    padding-right: 40px;
+  }
+}
+@media (max-width: 767px) {
+  .full-width-testimonial-audio .testimonial-audio-controls .container-fluid {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+}
+.full-width-testimonial-audio .testimonial-audio-controls .row {
+  align-items: center;
+  margin: 0;
+}
+.full-width-testimonial-audio .testimonial-audio-pagination {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+.full-width-testimonial-audio .testimonial-audio-pagination-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: #ffffff;
+  border: 2px solid #ffffff;
+  cursor: pointer;
+  transition: all 250ms ease;
+  flex-shrink: 0;
+  position: relative;
+}
+.full-width-testimonial-audio .testimonial-audio-pagination-dot::before {
+  content: '';
+  position: absolute;
+  inset: -0.05% -0.2% 0.24% 0.15%;
+  background: url('https://www.figma.com/api/mcp/asset/172c5e71-4a39-4891-ba6a-cfce38d9d31c') no-repeat center;
+  background-size: contain;
+  opacity: 0;
+  transition: opacity 250ms ease;
+}
+.full-width-testimonial-audio .testimonial-audio-pagination-dot--active {
+  width: 40px;
+  height: 10px;
+  border-radius: 1000px;
+}
+.full-width-testimonial-audio .testimonial-audio-pagination-dot--active::before {
+  opacity: 0;
+}
+.full-width-testimonial-audio .testimonial-audio-pagination-dot:hover {
+  opacity: 0.8;
+}
+.full-width-testimonial-audio .testimonial-audio-navigation {
+  display: flex;
+  gap: 6.5px;
+  align-items: center;
+  position: relative;
+}
+@media (max-width: 991px) {
+  .full-width-testimonial-audio .testimonial-audio-navigation {
+    gap: 5px;
+  }
+}
+@media (max-width: 767px) {
+  .full-width-testimonial-audio .testimonial-audio-navigation {
+    gap: 4px;
+  }
+}
+.full-width-testimonial-audio .testimonial-audio-navigation.arrow-navigation {
+  position: relative;
+  right: auto;
+  bottom: auto;
+  pointer-events: auto;
+}
+.full-width-testimonial-audio .testimonial-audio-navigation .arrow-navigation__arrow {
+  position: relative;
+}
+@media (max-width: 767px) {
+  .full-width-testimonial-audio .testimonial-audio-navigation .arrow-navigation__arrow {
+    width: 48px;
+    height: 48px;
+    min-width: 48px;
+    min-height: 48px;
+  }
+}
+@media (max-width: 767px) {
+  .full-width-testimonial-audio .testimonial-audio-controls .testimonial-audio-navigation.arrow-navigation {
+    display: flex !important;
+  }
+  .full-width-testimonial-audio .testimonial-audio-controls .testimonial-audio-navigation.arrow-navigation .arrow-navigation__arrow {
+    display: block;
+  }
+}
+.three-stages-section {
+  padding: 10.75rem 0 6.25rem;
+}
+.three-stages-section .title {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  margin-bottom: 1.875rem;
+  text-align: center;
+}
+.three-stages-section .title-script {
+  font-family: 'Born Ready', cursive;
+  font-weight: 400;
+  font-size: 3.75rem;
+  line-height: 1;
+  letter-spacing: 0;
+  color: #1c3666;
+  text-align: center;
+}
+@media (max-width: 767px) {
+  .three-stages-section .title-script {
+    font-size: clamp(36px, 8vw, 60px);
+  }
+}
+.three-stages-section .title-bold {
+  font-family: 'Averta', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-weight: 800;
+  font-size: 3.75rem;
+  line-height: 1;
+  letter-spacing: -1.2px;
+  text-transform: uppercase;
+  color: #1c3666;
+  text-align: center;
+}
+@media (max-width: 767px) {
+  .three-stages-section .title-bold {
+    font-size: clamp(36px, 8vw, 60px);
+    letter-spacing: -1.2px;
+  }
+}
+.three-stages-section .three-stages-content {
+  display: flex;
+  gap: 60px;
+  align-items: flex-start;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+@media (max-width: 991px) {
+  .three-stages-section .three-stages-content {
+    flex-direction: column;
+    gap: 3rem;
+  }
+}
+.three-stages-section .three-stages-description {
+  display: flex;
+  flex-direction: column;
+  gap: 17px;
+  align-items: flex-start;
+  width: 380.916px;
+  max-width: 100%;
+}
+@media (max-width: 991px) {
+  .three-stages-section .three-stages-description {
+    width: 100%;
+  }
+}
+.three-stages-section .three-stages-description .three-stages-description-large {
+  font-family: 'Averta', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 1.3;
+  letter-spacing: -0.4px;
+  color: #1c3666;
+  margin: 0;
+  white-space: pre-wrap;
+  width: 364.383px;
+  max-width: 100%;
+}
+@media (max-width: 991px) {
+  .three-stages-section .three-stages-description .three-stages-description-large {
+    width: 100%;
+  }
+}
+.three-stages-section .three-stages-description .three-stages-description-base {
+  font-family: 'Averta', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-weight: 400;
+  font-size: 15px;
+  line-height: 1.4;
+  color: #1c3666;
+  margin: 0;
+  white-space: pre-wrap;
+  width: min-content;
+  min-width: 100%;
+}
+@media (max-width: 991px) {
+  .three-stages-section .three-stages-description .three-stages-description-base {
+    width: 100%;
+  }
+}
+.three-stages-section .three-stages-list {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 48px;
+  position: relative;
+}
+.three-stages-section .three-stages-item {
+  display: flex;
+  flex-direction: column;
+  gap: 0.625rem;
+  align-items: flex-end;
+  width: 255px;
+  position: relative;
+}
+@media (max-width: 991px) {
+  .three-stages-section .three-stages-item {
+    width: 100%;
+    max-width: 255px;
+  }
+}
+.three-stages-section .three-stages-item-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  line-height: 1.3;
+}
+.three-stages-section .three-stages-age {
+  font-family: 'Averta', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 1.3;
+  letter-spacing: -0.4px;
+  color: #1c3666;
+  margin: 0;
+  flex-shrink: 0;
+}
+.three-stages-section .three-stages-ideal {
+  font-family: 'Averta', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 1.3;
+  letter-spacing: -0.4px;
+  color: #1c3666;
+  margin: 0;
+  width: 100px;
+  white-space: pre-wrap;
+  text-align: right;
+}
+.three-stages-section .three-stages-line {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  width: 251.581px;
+  height: 2px;
+  flex-shrink: 0;
+}
+@media (max-width: 991px) {
+  .three-stages-section .three-stages-line {
+    width: 100%;
+    max-width: 251.581px;
+  }
+}
+.three-stages-section .three-stages-line .three-stages-line-rotated {
+  transform: rotate(180deg);
+  flex: none;
+  width: 100%;
+  height: 100%;
+}
+.three-stages-section .three-stages-line .three-stages-line-rotated img {
+  position: absolute;
+  inset: -25% 0 -25% -0.01%;
+  width: 100%;
+  height: 150%;
+  display: block;
+  max-width: none;
+}
+.three-stages-section .three-stages-diagram-cards-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 67px;
+  align-items: center;
+  width: 100%;
+  margin-top: 0;
+}
+@media (max-width: 991px) {
+  .three-stages-section .three-stages-diagram-cards-wrapper {
+    gap: 3rem;
+  }
+}
+.three-stages-section .three-stages-diagram {
+  position: relative;
+  width: 669.009px;
+  height: 645.71px;
+  margin: 0 auto;
+  flex-shrink: 0;
+}
+@media (max-width: 991px) {
+  .three-stages-section .three-stages-diagram {
+    width: 100%;
+    max-width: 669.009px;
+    height: auto;
+    min-height: 645.71px;
+    transform: scale(0.8);
+    transform-origin: center;
+  }
+}
+@media (max-width: 767px) {
+  .three-stages-section .three-stages-diagram {
+    transform: scale(0.6);
+  }
+}
+.three-stages-section .three-stages-diagram .three-stages-segments {
+  position: absolute;
+  left: 128.072px;
+  top: 109.972px;
+  width: 389.172px;
+  height: 388.966px;
+}
+.three-stages-section .three-stages-diagram .three-stages-segment {
+  position: absolute;
+  display: block;
+  max-width: none;
+}
+.three-stages-section .three-stages-diagram .three-stages-segment-1 {
+  left: 0;
+  top: 114.77px;
+  width: 188.572px;
+  height: 274.134px;
+}
+.three-stages-section .three-stages-diagram .three-stages-segment-2 {
+  left: 202.4px;
+  top: 115.71px;
+  width: 186.767px;
+  height: 273.254px;
+}
+.three-stages-section .three-stages-diagram .three-stages-segment-3 {
+  left: 41.09px;
+  top: 0;
+  width: 310.699px;
+  height: 173.977px;
+}
+.three-stages-section .three-stages-diagram .three-stages-dot {
+  position: absolute;
+  display: block;
+  width: 79.233px;
+  height: 79.65px;
+  max-width: none;
+}
+.three-stages-section .three-stages-diagram .three-stages-dot-1 {
+  left: 144.01px;
+  top: 5.55px;
+}
+.three-stages-section .three-stages-diagram .three-stages-dot-2 {
+  left: 432.9px;
+  top: 5.55px;
+}
+.three-stages-section .three-stages-diagram .three-stages-dot-3 {
+  left: 575.37px;
+  top: 188.57px;
+}
+.three-stages-section .three-stages-diagram .three-stages-dot-4 {
+  left: 545.61px;
+  top: 423.48px;
+}
+.three-stages-section .three-stages-diagram .three-stages-dot-5 {
+  left: 280.46px;
+  top: 566.06px;
+}
+.three-stages-section .three-stages-diagram .three-stages-dot-6 {
+  left: 28.38px;
+  top: 424.92px;
+}
+.three-stages-section .three-stages-diagram .three-stages-dot-7 {
+  left: 0;
+  top: 185.55px;
+}
+.three-stages-section .three-stages-diagram .three-stages-label {
+  position: absolute;
+  font-family: 'Averta', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-weight: 700;
+  font-size: 15px;
+  line-height: 1.3;
+  color: #005798;
+  text-align: center;
+  margin: 0;
+  white-space: pre-wrap;
+  transform: translateX(-50%);
+}
+.three-stages-section .three-stages-diagram .three-stages-label-1 {
+  left: 38.87px;
+  top: 197.62px;
+  width: 72.412px;
+}
+.three-stages-section .three-stages-diagram .three-stages-label-2 {
+  left: 181.66px;
+  top: 24.79px;
+  width: 72.412px;
+}
+.three-stages-section .three-stages-diagram .three-stages-label-3 {
+  left: 474.07px;
+  top: 16.23px;
+  width: 85.488px;
+}
+.three-stages-section .three-stages-diagram .three-stages-label-4 {
+  left: 617.35px;
+  top: 196.96px;
+  width: 103.325px;
+}
+.three-stages-section .three-stages-diagram .three-stages-label-5 {
+  left: 586.39px;
+  top: 454.16px;
+  width: 103.325px;
+}
+.three-stages-section .three-stages-diagram .three-stages-label-6 {
+  left: 321.66px;
+  top: 579.49px;
+  width: 103.325px;
+}
+.three-stages-section .three-stages-diagram .three-stages-label-7 {
+  left: 65.92px;
+  top: 448.91px;
+  width: 72.412px;
+}
+.three-stages-section .three-stages-diagram .three-stages-age-label {
+  position: absolute;
+  font-family: 'Averta', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-weight: 700;
+  font-size: 26.25px;
+  line-height: 1;
+  letter-spacing: 2.625px;
+  color: #ffffff;
+  text-align: center;
+  text-transform: uppercase;
+  margin: 0;
+  white-space: pre-wrap;
+  transform: translateX(-50%);
+}
+.three-stages-section .three-stages-diagram .three-stages-age-label-1 {
+  left: 321.04px;
+  top: 169.96px;
+  width: 104px;
+}
+.three-stages-section .three-stages-diagram .three-stages-age-label-2 {
+  left: 226.95px;
+  top: 342.78px;
+  width: 119px;
+}
+.three-stages-section .three-stages-diagram .three-stages-age-label-3 {
+  left: 414.29px;
+  top: 342.78px;
+  width: 104px;
+}
+.three-stages-section .three-stages-diagram .three-stages-central-icon {
+  position: absolute;
+  left: 276.81px;
+  top: 260.79px;
+  width: 89.666px;
+  height: 90.488px;
+}
+.three-stages-section .three-stages-diagram .three-stages-central-icon img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  max-width: none;
+}
+.three-stages-section .three-stages-diagram .three-stages-vector {
+  position: absolute;
+  display: block;
+  max-width: none;
+}
+.three-stages-section .three-stages-diagram .three-stages-vector-1 {
+  left: 414.41px;
+  top: 23.92px;
+  width: 8.45px;
+  height: 8.518px;
+}
+.three-stages-section .three-stages-diagram .three-stages-vector-2 {
+  left: 242.4px;
+  top: 8.9px;
+  width: 166.516px;
+  height: 19.313px;
+}
+.three-stages-section .three-stages-diagram .three-stages-vector-3 {
+  left: 228.52px;
+  top: 22.72px;
+  width: 8.45px;
+  height: 8.518px;
+}
+.three-stages-section .three-stages-diagram .three-stages-vector-4 {
+  left: 585.01px;
+  top: 172.8px;
+  width: 8.449px;
+  height: 8.518px;
+}
+.three-stages-section .three-stages-diagram .three-stages-vector-5 {
+  left: 509.37px;
+  top: 77.24px;
+  width: 8.45px;
+  height: 8.518px;
+}
+.three-stages-section .three-stages-cards {
+  display: flex;
+  gap: 37px;
+  align-items: flex-start;
+  justify-content: center;
+  width: 100%;
+  flex-wrap: wrap;
+}
+@media (max-width: 991px) {
+  .three-stages-section .three-stages-cards {
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+    padding: 0 1.875rem;
+  }
+}
+.three-stages-section .three-stages-card {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+  align-items: center;
+  width: 325.095px;
+  max-width: 100%;
+}
+@media (max-width: 991px) {
+  .three-stages-section .three-stages-card {
+    width: 100%;
+    max-width: 325.095px;
+  }
+}
+.three-stages-section .three-stages-card-header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 60px;
+  padding: 16px 20px;
+  border-radius: 10px;
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+}
+.three-stages-section .three-stages-card-header::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 10px;
+  z-index: 1;
+}
+.three-stages-section .three-stages-card-header::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  opacity: 0.67;
+  overflow: hidden;
+  border-radius: 10px;
+  background-size: 209.17% 627.5%;
+  background-position: -54.58% -263.75%;
+  background-repeat: no-repeat;
+  z-index: 2;
+  pointer-events: none;
+}
+.three-stages-section .three-stages-card-header-lime::before {
+  background-color: #8fca72;
+}
+.three-stages-section .three-stages-card-header-lime::after {
+  background-image: url('https://www.figma.com/api/mcp/asset/53beb3c9-4e73-4857-bd61-033a1a0efc9b');
+}
+.three-stages-section .three-stages-card-header-teal {
+  padding: 17px 23px;
+}
+.three-stages-section .three-stages-card-header-teal::before {
+  background-color: #00a9ac;
+}
+.three-stages-section .three-stages-card-header-teal::after {
+  background-image: url('https://www.figma.com/api/mcp/asset/53beb3c9-4e73-4857-bd61-033a1a0efc9b');
+}
+.three-stages-section .three-stages-card-header-blue {
+  padding: 8px;
+}
+.three-stages-section .three-stages-card-header-blue::before {
+  background-color: #005e9c;
+}
+.three-stages-section .three-stages-card-header-blue::after {
+  background-image: url('https://www.figma.com/api/mcp/asset/3dfe02a5-cede-4e8c-990c-82a71c5d7152');
+  background-size: 155% 620%;
+  background-position: -27.5% -260%;
+}
+.three-stages-section .three-stages-card-title {
+  font-family: 'Averta', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-weight: 800;
+  font-size: 20px;
+  line-height: 1.1;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: #ffffff;
+  margin: 0;
+  position: relative;
+  z-index: 3;
+  text-align: center;
+}
+.three-stages-section .three-stages-card-content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+.three-stages-section .three-stages-card-text {
+  font-family: 'Averta', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-weight: 400;
+  font-size: 15px;
+  line-height: 1.4;
+  color: #1c3666;
+  margin: 0;
+  white-space: pre-wrap;
+  width: 325.095px;
+  max-width: 100%;
+}
+@media (max-width: 991px) {
+  .three-stages-section .three-stages-card-text {
+    width: 100%;
+  }
+}
 /*
 .video-testimonials__play-icon,
 .video-testimonials__play-button-bg,

@@ -20,6 +20,7 @@
     initVideoTestimonials();
     initCoCurricularCarousel();
     initFeaturesCardsSlider();
+    initTestimonialAudioSlider();
   });
 
   // ==========================================================================
@@ -769,6 +770,100 @@
         nextSlideMessage: 'Next feature card',
       },
     });
+  }
+
+  // ==========================================================================
+  // FULL WIDTH TESTIMONIAL AUDIO SLIDER
+  // ==========================================================================
+
+  function initTestimonialAudioSlider() {
+    // Check if Swiper is loaded
+    if (typeof Swiper === 'undefined') {
+      console.warn('Swiper not loaded');
+      return;
+    }
+
+    const testimonialSlider = document.querySelector('.testimonial-audio-slider');
+    if (!testimonialSlider) return;
+
+    const paginationDots = document.querySelectorAll('.testimonial-audio-pagination-dot');
+    const prevArrow = document.querySelector('.testimonial-audio-navigation .arrow-navigation__arrow--left');
+    const nextArrow = document.querySelector('.testimonial-audio-navigation .arrow-navigation__arrow--right');
+
+    // Initialize Swiper with butter smooth transitions
+    const swiper = new Swiper('.testimonial-audio-slider', {
+      loop: true,
+      speed: 800,
+      effect: 'slide',
+      slidesPerView: 1,
+      spaceBetween: 0,
+      centeredSlides: true,
+      
+      // Butter smooth easing
+      resistanceRatio: 0,
+      touchRatio: 1,
+      threshold: 5,
+      followFinger: true,
+      
+      // Autoplay
+      autoplay: {
+        delay: 5000,
+        disableOnInteraction: false,
+        pauseOnMouseEnter: true
+      },
+
+      // Keyboard control
+      keyboard: {
+        enabled: true,
+        onlyInViewport: true
+      },
+
+      // Accessibility
+      a11y: {
+        prevSlideMessage: 'Previous testimonial',
+        nextSlideMessage: 'Next testimonial'
+      }
+    });
+
+    // Update pagination dots
+    function updatePagination(activeIndex) {
+      paginationDots.forEach((dot, index) => {
+        if (index === activeIndex) {
+          dot.classList.add('testimonial-audio-pagination-dot--active');
+        } else {
+          dot.classList.remove('testimonial-audio-pagination-dot--active');
+        }
+      });
+    }
+
+    // Connect navigation arrows
+    if (prevArrow) {
+      prevArrow.addEventListener('click', function() {
+        swiper.slidePrev();
+      });
+    }
+
+    if (nextArrow) {
+      nextArrow.addEventListener('click', function() {
+        swiper.slideNext();
+      });
+    }
+
+    // Connect pagination dots
+    paginationDots.forEach((dot, index) => {
+      dot.addEventListener('click', function() {
+        swiper.slideToLoop(index);
+      });
+    });
+
+    // Update on slide change
+    swiper.on('slideChange', function () {
+      const realIndex = swiper.realIndex;
+      updatePagination(realIndex);
+    });
+
+    // Initial update
+    updatePagination(0);
   }
 
 })();

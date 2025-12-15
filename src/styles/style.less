@@ -555,10 +555,9 @@ button {
     padding-bottom: 2rem;
     padding-top: 3.75rem;
     overflow: visible;
-    // Initial positioning: First card starts at left-[-207px] from Figma
-    // So we need padding to show half card (207px + half card = 207px + 220px = 427px)
-    // But simpler: just use 220px to show half card, Swiper will handle the rest
-    padding-left: 220px; // Half card visible on left (half of 440px)
+    // Initial positioning: First card should be half inside left side of screen
+    // Card width is 440px, so half = 220px
+    padding-left: 220px; // Half card visible on left (220px = half of 440px)
     padding-right: 220px; // Half card visible on right
 
     @media (max-width: (@breakpoint-xl - 1)) {
@@ -744,10 +743,1456 @@ button {
     margin: 0;
     white-space: normal;
   }
+
+  // Philosophy Button
+  .btn-philosophy {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px; // var(--spacing/base, 20px)
+    font-family: @font-primary;
+    font-weight: @font-weight-regular;
+    font-size: 15px;
+    line-height: 1.4;
+    color: @color-white;
+    background-color: @color-coral;
+    border-radius: 10px;
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+    transition: background-color @transition-fast, transform @transition-fast;
+
+    &:hover {
+      background-color: darken(@color-coral, 5%);
+      color: @color-white;
+      transform: translateY(-1px);
+    }
+
+    &:active {
+      transform: translateY(0);
+    }
+
+    &:focus-visible {
+      outline: 2px solid @color-navy;
+      outline-offset: 2px;
+    }
+  }
 }
 
 // ==========================================================================
 // END FEATURES CARDS SECTION
+// ==========================================================================
+
+// ==========================================================================
+// FULL WIDTH VIDEO PROMO SECTION
+// ==========================================================================
+
+.full-width-video-promo {
+  position: relative;
+  width: 100%;
+  height: 810px;
+  overflow: hidden;
+
+  // Background video - Full width
+  .video-promo-bg {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: 0;
+    width: 100%;
+    height: 100%;
+
+    .video-promo-video {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center center;
+      max-width: none;
+
+      .video-promo-poster-fallback {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center center;
+        display: none; // Only show if video fails to load
+      }
+    }
+
+    .video-promo-dark-overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.2);
+      z-index: 1;
+    }
+  }
+
+  // Main content area
+  .video-promo-content {
+    position: relative;
+    z-index: 1;
+    width: 1440px;
+    max-width: 100%;
+    height: 810px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 100px 292px;
+    margin: 0 auto;
+
+    @media (max-width: 1440px) {
+      width: 100%;
+      padding-left: 292px;
+      padding-right: 292px;
+    }
+
+    @media (max-width: (@breakpoint-xxl - 1)) {
+      padding: 100px 1.875rem;
+    }
+
+    @media (max-width: (@breakpoint-lg - 1)) {
+      height: auto;
+      min-height: 600px;
+      padding: 4rem 1.875rem;
+    }
+  }
+
+  // Text content
+  .video-promo-text-content {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 25px; // var(--spacing/md, 25px)
+    align-items: center;
+    width: 100%;
+  }
+
+  // Headings group
+  .video-promo-headings {
+    display: flex;
+    flex-direction: column;
+    gap: 33px;
+    align-items: center;
+    width: 100%;
+
+    .video-promo-kicker {
+      font-family: @font-primary;
+      font-weight: @font-weight-semibold;
+      font-size: 15px;
+      line-height: 1;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: @color-white;
+      text-align: center;
+      margin: 0;
+      white-space: pre-wrap;
+    }
+
+    .video-promo-title-group {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      align-items: center;
+      text-align: center;
+      width: 100%;
+
+      .video-promo-title-script {
+        font-family: @font-script;
+        font-weight: @font-weight-regular;
+        font-size: 80px;
+        line-height: 0.9;
+        color: @color-white;
+        margin: 0;
+        white-space: pre-wrap;
+      }
+
+      .video-promo-title-bold {
+        font-family: @font-primary;
+        font-weight: @font-weight-extrabold;
+        font-size: 60px; // var(--font-size/h1, 60px)
+        line-height: 1;
+        letter-spacing: -1.2px;
+        text-transform: uppercase;
+        color: @color-white;
+        margin: 0;
+        white-space: pre-wrap;
+      }
+
+      @media (max-width: (@breakpoint-lg - 1)) {
+        .video-promo-title-script {
+          font-size: clamp(3rem, 10vw, 80px);
+        }
+
+        .video-promo-title-bold {
+          font-size: clamp(2rem, 8vw, 60px);
+        }
+      }
+    }
+  }
+
+  // Description group
+  .video-promo-description-group {
+    display: flex;
+    flex-direction: column;
+    gap: 43px;
+    align-items: center;
+    width: 633.461px;
+    max-width: 100%;
+
+    .video-promo-description {
+      font-family: @font-primary;
+      font-weight: @font-weight-regular;
+      font-size: 20px;
+      line-height: 1.3;
+      letter-spacing: -0.4px;
+      color: @color-white;
+      text-align: center;
+      margin: 0;
+      white-space: pre-wrap;
+      width: min-content;
+      min-width: 100%;
+
+      @media (max-width: (@breakpoint-lg - 1)) {
+        font-size: clamp(16px, 4vw, 20px);
+      }
+    }
+
+    // Button styles
+    .btn-philosophy {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px 25px;
+      font-family: @font-primary;
+      font-weight: @font-weight-regular;
+      font-size: 15px;
+      line-height: 1.4;
+      color: @color-white;
+      background-color: @color-coral;
+      border-radius: 10px;
+      text-decoration: none;
+      border: none;
+      cursor: pointer;
+      transition: background-color @transition-fast, transform @transition-fast;
+
+      &:hover {
+        background-color: darken(@color-coral, 5%);
+        color: @color-white;
+        transform: translateY(-1px);
+      }
+
+      &:active {
+        transform: translateY(0);
+      }
+
+      &:focus-visible {
+        outline: 2px solid @color-navy;
+        outline-offset: 2px;
+      }
+    }
+  }
+}
+
+// ==========================================================================
+// END FULL WIDTH VIDEO PROMO SECTION
+// ==========================================================================
+
+// ==========================================================================
+// WELLBEING SECTION
+// ==========================================================================
+
+.wellbeing-section {
+  position: relative;
+  width: 100%;
+  min-height: 960px;
+  overflow: hidden;
+  padding-top: calc(3 * 1.875rem); // 3 row gap from top
+  padding-bottom: 100px;
+
+  @media (max-width: (@breakpoint-lg - 1)) {
+    min-height: auto;
+    padding-top: 4rem;
+    padding-bottom: 4rem;
+  }
+
+  // Background gradient and texture
+  .wellbeing-bg {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: 0;
+
+    .wellbeing-gradient {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to bottom, #fff1b0 0%, #ffc1aa 100%);
+    }
+
+    .wellbeing-texture {
+      position: absolute;
+      inset: 0;
+      mix-blend-mode: multiply;
+      opacity: 0.3;
+      overflow: hidden;
+
+      img {
+        position: absolute;
+        width: 103.6%;
+        height: 110.51%;
+        left: -1.8%;
+        top: 41.41%;
+        max-width: none;
+        object-fit: cover;
+      }
+    }
+  }
+
+  // Main content container
+  .container-fluid {
+    position: relative;
+    z-index: 1;
+  }
+
+  // Content row
+  .wellbeing-content-row {
+    @media (max-width: (@breakpoint-lg - 1)) {
+      .col-lg-1 {
+        display: none; // Hide gap columns on mobile
+      }
+    }
+  }
+
+  // Image - using exact structure from staff section
+  .wellbeing-image {
+    width: 100%;
+    max-width: 100%;
+    aspect-ratio: 1/1;
+    position: relative;
+
+    .frame {
+      position: absolute;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      right: 0;
+    }
+
+    > img {
+      width: 98%;
+      height: 99%;
+      object-fit: cover;
+      border-radius: 50%;
+      margin: 2px;
+    }
+
+    @media (max-width: (@breakpoint-lg - 1)) {
+      max-width: 450px;
+      margin: 0 auto 3rem;
+    }
+
+    @media (max-width: (@breakpoint-sm - 1)) {
+      max-width: 80%;
+    }
+  }
+
+  // Content wrapper - Right column
+  .wellbeing-content {
+    padding-top: 1rem;
+
+    @media (max-width: (@breakpoint-lg - 1)) {
+      padding-top: 0;
+    }
+  }
+
+  // Main title group
+  .wellbeing-title-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    align-items: flex-start;
+    margin-bottom: 124px;
+
+    @media (max-width: (@breakpoint-lg - 1)) {
+      margin-bottom: 3rem;
+    }
+
+    .wellbeing-title-script {
+      font-family: @font-script;
+      font-weight: @font-weight-regular;
+      font-size: @font-size-h1; // 60px
+      line-height: @line-height-none; // 1
+      color: @tertiary-blue-dark; // #1c3666
+      margin: 0;
+      white-space: pre-wrap;
+
+      @media (max-width: (@breakpoint-lg - 1)) {
+        font-size: clamp(2.5rem, 8vw, 60px);
+      }
+    }
+
+    .wellbeing-title-bold {
+      font-family: @font-primary;
+      font-weight: @font-weight-extrabold;
+      font-size: @font-size-h1; // 60px
+      line-height: @line-height-none; // 1
+      letter-spacing: -1.2px;
+      text-transform: uppercase;
+      color: @tertiary-blue-dark; // #1c3666
+      margin: 0;
+      white-space: pre-wrap;
+
+      @media (max-width: (@breakpoint-lg - 1)) {
+        font-size: clamp(2.5rem, 8vw, 60px);
+      }
+    }
+  }
+
+  // Text blocks row
+  .wellbeing-text-blocks-row {
+    display: flex;
+    gap: 51px;
+    align-items: flex-start;
+
+    @media (max-width: (@breakpoint-md - 1)) {
+      flex-direction: column;
+      gap: 2rem;
+    }
+  }
+
+  // Text blocks (two columns) - exact match from Figma
+  .wellbeing-text-block {
+    display: flex;
+    flex-direction: column;
+    gap: @spacing-md; // 20px
+    align-items: flex-start;
+    flex-shrink: 0;
+
+    &.wellbeing-text-block-left {
+      width: 301px;
+
+      @media (max-width: (@breakpoint-md - 1)) {
+        width: 100%;
+      }
+    }
+
+    &.wellbeing-text-block-right {
+      width: 300px;
+
+      @media (max-width: (@breakpoint-md - 1)) {
+        width: 100%;
+      }
+    }
+
+    .wellbeing-text-heading {
+      font-family: @font-primary;
+      font-weight: @font-weight-extrabold;
+      font-size: 20px;
+      line-height: 1.1;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: @tertiary-blue-dark; // #1c3666
+      margin: 0;
+      white-space: pre-wrap;
+
+      @media (max-width: (@breakpoint-lg - 1)) {
+        font-size: clamp(16px, 3vw, 20px);
+      }
+    }
+
+    &.wellbeing-text-block-left .wellbeing-text-heading {
+      width: 260px;
+      max-width: 100%;
+    }
+
+    &.wellbeing-text-block-right .wellbeing-text-heading {
+      width: 142.887px;
+      max-width: 100%;
+    }
+
+    .wellbeing-text-body {
+      font-family: @font-primary;
+      font-weight: @font-weight-regular;
+      font-size: 15px;
+      line-height: @line-height-normal; // 1.4
+      color: @tertiary-blue-dark; // #1c3666
+      margin: 0;
+      white-space: pre-wrap;
+      width: min-content;
+      min-width: 100%;
+
+      p {
+        margin: 0;
+      }
+
+      @media (max-width: (@breakpoint-lg - 1)) {
+        font-size: clamp(14px, 2vw, 15px);
+      }
+    }
+  }
+}
+
+// ==========================================================================
+// END WELLBEING SECTION
+// ==========================================================================
+
+// ==========================================================================
+// FULL WIDTH TESTIMONIAL AUDIO SECTION
+// ==========================================================================
+
+.full-width-testimonial-audio {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+
+  // Background
+  .testimonial-audio-bg {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: 0;
+
+    .testimonial-audio-overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.5);
+      z-index: 1;
+    }
+  }
+
+  // Background image per slide
+  .testimonial-audio-slide {
+    position: relative;
+    height: 100vh;
+
+    &::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image: url('https://www.figma.com/api/mcp/asset/4ba339e7-9150-417e-9a42-e4a33dbb974b');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      z-index: 0;
+    }
+
+    &::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.5);
+      z-index: 1;
+    }
+  }
+
+  // Swiper container
+  .testimonial-audio-slider {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    z-index: 1;
+  }
+
+  // Slide content
+  .testimonial-audio-slide {
+    .container-fluid {
+      position: relative;
+      z-index: 2;
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      padding: 0 80px;
+
+      @media (max-width: (@breakpoint-lg - 1)) {
+        padding: 0 40px;
+      }
+
+      @media (max-width: (@breakpoint-md - 1)) {
+        padding: 0 20px;
+      }
+    }
+  }
+
+  // Circular image - using exact same structure as staff section
+  .testimonial-audio-image {
+    width: 100%;
+    max-width: 100%;
+    aspect-ratio: 1/1;
+    position: relative;
+
+    @media (max-width: (@breakpoint-lg - 1)) {
+      max-width: 400px;
+      margin: 0 auto 3rem;
+    }
+
+    @media (max-width: (@breakpoint-sm - 1)) {
+      max-width: 80%;
+    }
+
+    .frame {
+      position: absolute;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      right: 0;
+    }
+
+    > img {
+      width: 98%;
+      height: 99%;
+      object-fit: cover;
+      border-radius: 50%;
+      margin: 2px;
+    }
+  }
+
+  // Content
+  .testimonial-audio-content {
+    padding-left: 72px;
+
+    @media (max-width: (@breakpoint-lg - 1)) {
+      padding-left: 0;
+      text-align: center;
+    }
+  }
+
+  .testimonial-audio-kicker {
+    font-family: @font-primary;
+    font-weight: @font-weight-bold;
+    font-size: 15px;
+    line-height: 1;
+    letter-spacing: 0.75px;
+    text-transform: uppercase;
+    color: @color-white;
+    margin: 0 0 35px 0;
+  }
+
+  .testimonial-audio-quote {
+    font-family: @font-primary;
+    font-weight: @font-weight-regular;
+    font-style: italic;
+    font-size: 35px;
+    line-height: 1.2;
+    letter-spacing: -0.7px;
+    color: @color-white;
+    margin: 0 0 26px 0;
+    white-space: pre-wrap;
+    width: 611px;
+    max-width: 100%;
+
+    @media (max-width: (@breakpoint-lg - 1)) {
+      font-size: clamp(24px, 5vw, 35px);
+      width: 100%;
+    }
+  }
+
+  // Audio player
+  .testimonial-audio-player {
+    display: flex;
+    align-items: center;
+    gap: 26px;
+    margin-bottom: 26px;
+
+    @media (max-width: (@breakpoint-md - 1)) {
+      flex-direction: column;
+      gap: 15px;
+      align-items: flex-start;
+    }
+  }
+
+  .testimonial-audio-waveform {
+    position: relative;
+    width: 475px;
+    height: 30px;
+    flex-shrink: 0;
+
+    @media (max-width: (@breakpoint-lg - 1)) {
+      width: 100%;
+      max-width: 475px;
+    }
+
+    .testimonial-audio-waveform-bg {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .testimonial-audio-waveform-progress {
+      position: absolute;
+      left: -5.86px;
+      top: -3px;
+      width: 249px;
+      height: 39px;
+      background: @color-white;
+      mask-image: url('https://www.figma.com/api/mcp/asset/1a2c95c1-4489-4efd-a707-34757d71a156');
+      mask-position: 5.858px 3px;
+      mask-size: 475px 30px;
+      mask-repeat: no-repeat;
+      z-index: 1;
+    }
+  }
+
+  .testimonial-audio-duration {
+    font-family: @font-primary;
+    font-weight: @font-weight-regular;
+    font-size: 15px;
+    line-height: 1.4;
+    color: @color-white;
+    white-space: nowrap;
+  }
+
+  .testimonial-audio-author {
+    font-family: @font-primary;
+    font-weight: @font-weight-regular;
+    font-size: 15px;
+    line-height: 1.4;
+    color: @color-white;
+    margin: 0;
+  }
+
+  // Controls
+  .testimonial-audio-controls {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 80px;
+    z-index: 3;
+    width: 100%;
+
+    @media (max-width: (@breakpoint-lg - 1)) {
+      bottom: 40px;
+    }
+
+    @media (max-width: (@breakpoint-md - 1)) {
+      bottom: 70px;
+    }
+
+    .container-fluid {
+      padding-left: 629.08px;
+      padding-right: 80px;
+
+      @media (max-width: (@breakpoint-xl - 1)) {
+        padding-left: 40px;
+        padding-right: 40px;
+      }
+
+      @media (max-width: (@breakpoint-md - 1)) {
+        padding-left: 20px;
+        padding-right: 20px;
+      }
+    }
+
+    .row {
+      align-items: center;
+      margin: 0;
+    }
+  }
+
+  // Pagination
+  .testimonial-audio-pagination {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+  }
+
+  .testimonial-audio-pagination-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: @color-white;
+    border: 2px solid @color-white;
+    cursor: pointer;
+    transition: all @transition-base;
+    flex-shrink: 0;
+    position: relative;
+
+    &::before {
+      content: '';
+      position: absolute;
+      inset: -0.05% -0.2% 0.24% 0.15%;
+      background: url('https://www.figma.com/api/mcp/asset/172c5e71-4a39-4891-ba6a-cfce38d9d31c') no-repeat center;
+      background-size: contain;
+      opacity: 0;
+      transition: opacity @transition-base;
+    }
+
+    &--active {
+      width: 40px;
+      height: 10px;
+      border-radius: 1000px;
+
+      &::before {
+        opacity: 0;
+      }
+    }
+
+    &:hover {
+      opacity: 0.8;
+    }
+  }
+
+  // Navigation arrows - using exact same structure as co-curricular carousel
+  .testimonial-audio-navigation {
+    display: flex;
+    gap: 6.5px;
+    align-items: center;
+    position: relative;
+
+    @media (max-width: (@breakpoint-lg - 1)) {
+      gap: 5px;
+    }
+
+    @media (max-width: (@breakpoint-md - 1)) {
+      gap: 4px;
+    }
+
+    &.arrow-navigation {
+      position: relative;
+      right: auto;
+      bottom: auto;
+      pointer-events: auto;
+    }
+
+    .arrow-navigation__arrow {
+      position: relative;
+
+      @media (max-width: (@breakpoint-md - 1)) {
+        width: 48px;
+        height: 48px;
+        min-width: 48px;
+        min-height: 48px;
+      }
+    }
+  }
+
+  // Override hero section's mobile hiding rule for this carousel
+  @media (max-width: (@breakpoint-md - 1)) {
+    .testimonial-audio-controls .testimonial-audio-navigation.arrow-navigation {
+      display: flex !important;
+    }
+
+    .testimonial-audio-controls .testimonial-audio-navigation.arrow-navigation .arrow-navigation__arrow {
+      display: block;
+    }
+  }
+}
+
+// ==========================================================================
+// END FULL WIDTH TESTIMONIAL AUDIO SECTION
+// ==========================================================================
+
+// ==========================================================================
+// THREE STAGES OF CHILD DEVELOPMENT SECTION
+// ==========================================================================
+
+.three-stages-section {
+  padding: 10.75rem 0 6.25rem;
+
+  .title {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    margin-bottom: @spacing-lg;
+    text-align: center;
+
+    &-script {
+      font-family: @font-script;
+      font-weight: @font-weight-regular;
+      font-size: @font-size-h1;
+      line-height: 1;
+      letter-spacing: 0;
+      color: @color-blue-dark;
+      text-align: center;
+
+      @media (max-width: (@breakpoint-md - 1)) {
+        font-size: clamp(36px, 8vw, 60px);
+      }
+    }
+
+    &-bold {
+      font-family: @font-primary;
+      font-weight: @font-weight-extrabold;
+      font-size: @font-size-h1;
+      line-height: 1;
+      letter-spacing: -1.2px;
+      text-transform: uppercase;
+      color: @color-blue-dark;
+      text-align: center;
+
+      @media (max-width: (@breakpoint-md - 1)) {
+        font-size: clamp(36px, 8vw, 60px);
+        letter-spacing: -1.2px;
+      }
+    }
+  }
+
+  // Content wrapper
+  .three-stages-content {
+    display: flex;
+    gap: 60px;
+    align-items: flex-start;
+    justify-content: center;
+    flex-wrap: wrap;
+
+    @media (max-width: (@breakpoint-lg - 1)) {
+      flex-direction: column;
+      gap: 3rem;
+    }
+  }
+
+  // Left column - Description
+  .three-stages-description {
+    display: flex;
+    flex-direction: column;
+    gap: 17px;
+    align-items: flex-start;
+    width: 380.916px;
+    max-width: 100%;
+
+    @media (max-width: (@breakpoint-lg - 1)) {
+      width: 100%;
+    }
+
+    .three-stages-description-large {
+      font-family: @font-primary;
+      font-weight: @font-weight-regular;
+      font-size: 20px;
+      line-height: 1.3;
+      letter-spacing: -0.4px;
+      color: @tertiary-blue-dark;
+      margin: 0;
+      white-space: pre-wrap;
+      width: 364.383px;
+      max-width: 100%;
+
+      @media (max-width: (@breakpoint-lg - 1)) {
+        width: 100%;
+      }
+    }
+
+    .three-stages-description-base {
+      font-family: @font-primary;
+      font-weight: @font-weight-regular;
+      font-size: 15px;
+      line-height: @line-height-normal; // 1.4
+      color: @tertiary-blue-dark;
+      margin: 0;
+      white-space: pre-wrap;
+      width: min-content;
+      min-width: 100%;
+
+      @media (max-width: (@breakpoint-lg - 1)) {
+        width: 100%;
+      }
+    }
+  }
+
+  // Right column - Stages list
+  .three-stages-list {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 48px;
+    position: relative;
+  }
+
+  // Stage item
+  .three-stages-item {
+    display: flex;
+    flex-direction: column;
+    gap: @spacing-sm; // 10px
+    align-items: flex-end;
+    width: 255px;
+    position: relative;
+
+    @media (max-width: (@breakpoint-lg - 1)) {
+      width: 100%;
+      max-width: 255px;
+    }
+  }
+
+  // Stage header (age + ideal)
+  .three-stages-item-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    line-height: 1.3;
+  }
+
+  .three-stages-age {
+    font-family: @font-primary;
+    font-weight: @font-weight-bold;
+    font-size: 20px;
+    line-height: 1.3;
+    letter-spacing: -0.4px;
+    color: @tertiary-blue-dark;
+    margin: 0;
+    flex-shrink: 0;
+  }
+
+  .three-stages-ideal {
+    font-family: @font-primary;
+    font-weight: @font-weight-regular;
+    font-size: 20px;
+    line-height: 1.3;
+    letter-spacing: -0.4px;
+    color: @tertiary-blue-dark;
+    margin: 0;
+    width: 100px;
+    white-space: pre-wrap;
+    text-align: right;
+  }
+
+  // Decorative line
+  .three-stages-line {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    width: 251.581px;
+    height: 2px;
+    flex-shrink: 0;
+
+    @media (max-width: (@breakpoint-lg - 1)) {
+      width: 100%;
+      max-width: 251.581px;
+    }
+
+    .three-stages-line-rotated {
+      transform: rotate(180deg);
+      flex: none;
+      width: 100%;
+      height: 100%;
+
+      img {
+        position: absolute;
+        inset: -25% 0 -25% -0.01%;
+        width: 100%;
+        height: 150%;
+        display: block;
+        max-width: none;
+      }
+    }
+  }
+
+  // Diagram and Cards Wrapper
+  .three-stages-diagram-cards-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 67px;
+    align-items: center;
+    width: 100%;
+    margin-top: 0;
+
+    @media (max-width: (@breakpoint-lg - 1)) {
+      gap: 3rem;
+    }
+  }
+
+  // Circular Diagram Container
+  .three-stages-diagram {
+    position: relative;
+    width: 669.009px;
+    height: 645.71px;
+    margin: 0 auto;
+    flex-shrink: 0;
+
+    @media (max-width: (@breakpoint-lg - 1)) {
+      width: 100%;
+      max-width: 669.009px;
+      height: auto;
+      min-height: 645.71px;
+      transform: scale(0.8);
+      transform-origin: center;
+    }
+
+    @media (max-width: (@breakpoint-md - 1)) {
+      transform: scale(0.6);
+    }
+
+    // Segments Container
+    .three-stages-segments {
+      position: absolute;
+      left: 128.072px; // 318.72 - 190.65
+      top: 109.972px;
+      width: 389.172px;
+      height: 388.966px;
+    }
+
+    .three-stages-segment {
+      position: absolute;
+      display: block;
+      max-width: none;
+
+      &-1 {
+        left: 0;
+        top: 114.77px;
+        width: 188.572px;
+        height: 274.134px;
+      }
+
+      &-2 {
+        left: 202.4px;
+        top: 115.71px;
+        width: 186.767px;
+        height: 273.254px;
+      }
+
+      &-3 {
+        left: 41.09px;
+        top: 0;
+        width: 310.699px;
+        height: 173.977px;
+      }
+    }
+
+    // Dots - positioned absolutely
+    .three-stages-dot {
+      position: absolute;
+      display: block;
+      width: 79.233px;
+      height: 79.65px;
+      max-width: none;
+
+      &-1 {
+        left: 144.01px; // 334.66 - 190.65
+        top: 5.55px;
+      }
+
+      &-2 {
+        left: 432.9px; // 623.55 - 190.65
+        top: 5.55px;
+      }
+
+      &-3 {
+        left: 575.37px; // 766.02 - 190.65
+        top: 188.57px;
+      }
+
+      &-4 {
+        left: 545.61px; // 736.26 - 190.65
+        top: 423.48px;
+      }
+
+      &-5 {
+        left: 280.46px; // 471.11 - 190.65
+        top: 566.06px;
+      }
+
+      &-6 {
+        left: 28.38px; // 219.03 - 190.65
+        top: 424.92px;
+      }
+
+      &-7 {
+        left: 0; // 190.65 - 190.65
+        top: 185.55px;
+      }
+    }
+
+    // Text Labels
+    .three-stages-label {
+      position: absolute;
+      font-family: @font-primary;
+      font-weight: @font-weight-bold;
+      font-size: 15px;
+      line-height: 1.3;
+      color: #005798;
+      text-align: center;
+      margin: 0;
+      white-space: pre-wrap;
+      transform: translateX(-50%);
+
+      &-1 {
+        left: 38.87px; // 193.32 - 190.65 + 36.21 (half width)
+        top: 197.62px;
+        width: 72.412px;
+      }
+
+      &-2 {
+        left: 181.66px; // 336.10 - 190.65 + 36.21
+        top: 24.79px;
+        width: 72.412px;
+      }
+
+      &-3 {
+        left: 474.07px; // 621.97 - 190.65 + 42.74
+        top: 16.23px;
+        width: 85.488px;
+      }
+
+      &-4 {
+        left: 617.35px; // 756.33 - 190.65 + 51.66
+        top: 196.96px;
+        width: 103.325px;
+      }
+
+      &-5 {
+        left: 586.39px; // 725.38 - 190.65 + 51.66
+        top: 454.16px;
+        width: 103.325px;
+      }
+
+      &-6 {
+        left: 321.66px; // 460.65 - 190.65 + 51.66
+        top: 579.49px;
+        width: 103.325px;
+      }
+
+      &-7 {
+        left: 65.92px; // 220.36 - 190.65 + 36.21
+        top: 448.91px;
+        width: 72.412px;
+      }
+    }
+
+    // Age Labels (white text, larger)
+    .three-stages-age-label {
+      position: absolute;
+      font-family: @font-primary;
+      font-weight: @font-weight-bold;
+      font-size: 26.25px;
+      line-height: 1;
+      letter-spacing: 2.625px;
+      color: @color-white;
+      text-align: center;
+      text-transform: uppercase;
+      margin: 0;
+      white-space: pre-wrap;
+      transform: translateX(-50%);
+
+      &-1 {
+        left: 321.04px; // 459.69 - 190.65 + 52
+        top: 169.96px;
+        width: 104px;
+      }
+
+      &-2 {
+        left: 226.95px; // 358.10 - 190.65 + 59.5
+        top: 342.78px;
+        width: 119px;
+      }
+
+      &-3 {
+        left: 414.29px; // 552.93 - 190.65 + 52
+        top: 342.78px;
+        width: 104px;
+      }
+    }
+
+    // Central Icon
+    .three-stages-central-icon {
+      position: absolute;
+      left: 276.81px; // 467.45 - 190.65
+      top: 260.79px;
+      width: 89.666px;
+      height: 90.488px;
+
+      img {
+        display: block;
+        width: 100%;
+        height: 100%;
+        max-width: none;
+      }
+    }
+
+    // Vector lines
+    .three-stages-vector {
+      position: absolute;
+      display: block;
+      max-width: none;
+
+      &-1 {
+        left: 414.41px;
+        top: 23.92px;
+        width: 8.45px;
+        height: 8.518px;
+      }
+
+      &-2 {
+        left: 242.4px;
+        top: 8.9px;
+        width: 166.516px;
+        height: 19.313px;
+      }
+
+      &-3 {
+        left: 228.52px;
+        top: 22.72px;
+        width: 8.45px;
+        height: 8.518px;
+      }
+
+      &-4 {
+        left: 585.01px;
+        top: 172.8px;
+        width: 8.449px;
+        height: 8.518px;
+      }
+
+      &-5 {
+        left: 509.37px;
+        top: 77.24px;
+        width: 8.45px;
+        height: 8.518px;
+      }
+    }
+  }
+
+  // Cards Container
+  .three-stages-cards {
+    display: flex;
+    gap: 37px;
+    align-items: flex-start;
+    justify-content: center;
+    width: 100%;
+    flex-wrap: wrap;
+
+    @media (max-width: (@breakpoint-lg - 1)) {
+      flex-direction: column;
+      align-items: center;
+      gap: 2rem;
+      padding: 0 1.875rem;
+    }
+  }
+
+  // Individual Card
+  .three-stages-card {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+    align-items: center;
+    width: 325.095px;
+    max-width: 100%;
+
+    @media (max-width: (@breakpoint-lg - 1)) {
+      width: 100%;
+      max-width: 325.095px;
+    }
+  }
+
+  // Card Header
+  .three-stages-card-header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 60px;
+    padding: 16px 20px;
+    border-radius: 10px;
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+
+    &::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border-radius: 10px;
+      z-index: 1;
+    }
+
+    &::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      opacity: 0.67;
+      overflow: hidden;
+      border-radius: 10px;
+      background-size: 209.17% 627.5%;
+      background-position: -54.58% -263.75%;
+      background-repeat: no-repeat;
+      z-index: 2;
+      pointer-events: none;
+    }
+
+    // Lime Green Header
+    &-lime {
+      &::before {
+        background-color: #8fca72;
+      }
+      &::after {
+        background-image: url('https://www.figma.com/api/mcp/asset/53beb3c9-4e73-4857-bd61-033a1a0efc9b');
+      }
+    }
+
+    // Teal Header
+    &-teal {
+      padding: 17px 23px;
+
+      &::before {
+        background-color: #00a9ac;
+      }
+      &::after {
+        background-image: url('https://www.figma.com/api/mcp/asset/53beb3c9-4e73-4857-bd61-033a1a0efc9b');
+      }
+    }
+
+    // Blue Header
+    &-blue {
+      padding: 8px;
+
+      &::before {
+        background-color: #005e9c;
+      }
+      &::after {
+        background-image: url('https://www.figma.com/api/mcp/asset/3dfe02a5-cede-4e8c-990c-82a71c5d7152');
+        background-size: 155% 620%;
+        background-position: -27.5% -260%;
+      }
+    }
+  }
+
+  // Card Title
+  .three-stages-card-title {
+    font-family: @font-primary;
+    font-weight: @font-weight-extrabold;
+    font-size: 20px;
+    line-height: 1.1;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: @color-white;
+    margin: 0;
+    position: relative;
+    z-index: 3;
+    text-align: center;
+  }
+
+  // Card Content
+  .three-stages-card-content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+  }
+
+  // Card Text
+  .three-stages-card-text {
+    font-family: @font-primary;
+    font-weight: @font-weight-regular;
+    font-size: 15px;
+    line-height: @line-height-normal; // 1.4
+    color: @tertiary-blue-dark; // #1c3666
+    margin: 0;
+    white-space: pre-wrap;
+    width: 325.095px;
+    max-width: 100%;
+
+    @media (max-width: (@breakpoint-lg - 1)) {
+      width: 100%;
+    }
+  }
+}
+
+// ==========================================================================
+// END THREE STAGES OF CHILD DEVELOPMENT SECTION
 // ==========================================================================
 
 /*
