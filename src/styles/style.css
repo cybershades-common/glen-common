@@ -1,6 +1,6 @@
 body {
   font-family: 'DM Sans', 'Averta', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-  font-size: 15px;
+  font-size: 0.9375rem;
   font-weight: 400;
   line-height: 1.4;
   color: #183153;
@@ -27,87 +27,87 @@ h6,
 }
 h1,
 .h1 {
-  font-size: 60px;
+  font-size: 3.75rem;
 }
 @media (max-width: 767px) {
   h1,
   .h1 {
-    font-size: 40px;
+    font-size: 2.5rem;
   }
 }
 h2,
 .h2 {
-  font-size: 40px;
+  font-size: 2.5rem;
 }
 @media (max-width: 767px) {
   h2,
   .h2 {
-    font-size: 32px;
+    font-size: 2rem;
   }
 }
 h3,
 .h3 {
-  font-size: 32px;
+  font-size: 2rem;
 }
 @media (max-width: 767px) {
   h3,
   .h3 {
-    font-size: 24px;
+    font-size: 1.5rem;
   }
 }
 h4,
 .h4 {
-  font-size: 24px;
+  font-size: 1.5rem;
 }
 h5,
 .h5 {
-  font-size: 20px;
+  font-size: 1.25rem;
 }
 h6,
 .h6 {
-  font-size: 15px;
+  font-size: 0.9375rem;
 }
 .display-1 {
   font-family: 'Caveat', 'Born Ready', cursive;
-  font-size: 150px;
+  font-size: 9.375rem;
   font-weight: 400;
   line-height: 1.2;
   color: #ffffff;
 }
 @media (max-width: 991px) {
   .display-1 {
-    font-size: 100px;
+    font-size: 6.25rem;
   }
 }
 @media (max-width: 767px) {
   .display-1 {
-    font-size: 60px;
+    font-size: 3.75rem;
   }
 }
 .display-2 {
   font-family: 'Caveat', 'Born Ready', cursive;
-  font-size: 100px;
+  font-size: 6.25rem;
   font-weight: 400;
   line-height: 1.2;
   color: #ffffff;
 }
 @media (max-width: 767px) {
   .display-2 {
-    font-size: 40px;
+    font-size: 2.5rem;
   }
 }
 .body-base {
-  font-size: 15px;
+  font-size: 0.9375rem;
   line-height: 1.4;
   letter-spacing: 0;
 }
 .body-large {
-  font-size: 20px;
+  font-size: 1.25rem;
   line-height: 1.3;
   letter-spacing: -0.4px;
 }
 .body-small {
-  font-size: 14px;
+  font-size: 0.875rem;
   line-height: 1.4;
 }
 .text-white {
@@ -148,17 +148,17 @@ h6,
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 10px;
-  padding: 10px 20px;
+  gap: 0.625rem;
+  padding: 0.625rem 1.25rem;
   font-family: 'DM Sans', 'Averta', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-  font-size: 15px;
+  font-size: 0.9375rem;
   font-weight: 400;
   line-height: 1.4;
   text-align: center;
   text-decoration: none;
   white-space: nowrap;
   border: none;
-  border-radius: 10px;
+  border-radius: 0.625rem;
   cursor: pointer;
   transition: background-color 150ms ease, transform 150ms ease, box-shadow 150ms ease;
 }
@@ -213,19 +213,19 @@ h6,
   color: #ffffff;
 }
 .btn-sm {
-  padding: 8px 16px;
-  font-size: 14px;
+  padding: 0.5rem 1rem;
+  font-size: 0.875rem;
 }
 .btn-lg {
-  padding: 14px 28px;
-  font-size: 20px;
+  padding: 0.875rem 1.75rem;
+  font-size: 1.25rem;
 }
 .site-header {
   position: relative;
   z-index: 1020;
   width: 100%;
   padding: 0.675rem 1.125rem;
-  min-height: 80px;
+  min-height: 5rem;
   transition: background 250ms ease, box-shadow 250ms ease, border-bottom 250ms ease;
 }
 .site-header .header-logo a svg {
@@ -328,7 +328,7 @@ body.mega-menu-open .site-header .hamburger .hamburger__line:nth-child(3) {
 .header-quick-links button {
   width: 100%;
   height: 41px;
-  padding: 10px 20px;
+  padding: 0.625rem 1.25rem;
   background-color: #faf7f4;
   border: none;
   border-radius: 10px;
@@ -375,7 +375,7 @@ body.mega-menu-open .site-header .hamburger .hamburger__line:nth-child(3) {
 }
 .header-quick-links-dropdown a {
   display: block;
-  padding: 12px 20px;
+  padding: 0.75rem 1.25rem;
   font-family: 'DM Sans', 'Averta', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   font-size: 0.9375rem;
   line-height: 1.4;
@@ -390,12 +390,12 @@ body.mega-menu-open .site-header .hamburger .hamburger__line:nth-child(3) {
   display: flex;
   align-items: center;
   justify-content: flex-end;
-  gap: 33px;
+  gap: 2.0625rem;
 }
 .header-cta {
   display: flex;
   align-items: center;
-  gap: 20px;
+  gap: 1.25rem;
 }
 @media (max-width: 991px) {
   .header-cta {
@@ -458,7 +458,7 @@ body.mega-menu-open .site-header .hamburger .hamburger__line:nth-child(3) {
 .menu-button {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 0.625rem;
   padding: 0;
   border: none;
   background: transparent;
@@ -470,7 +470,7 @@ body.mega-menu-open .site-header .hamburger .hamburger__line:nth-child(3) {
 }
 .menu-button__text {
   font-family: 'DM Sans', 'Averta', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-  font-size: 20px;
+  font-size: 1.25rem;
   font-weight: 400;
   line-height: 1.3;
   letter-spacing: -0.4px;
@@ -500,7 +500,7 @@ body.mega-menu-open .site-header .hamburger .hamburger__line:nth-child(3) {
   width: 100%;
   height: 1.5px;
   background-color: #ffffff;
-  border-radius: 50px;
+  border-radius: 3.125rem;
   transition: transform 250ms ease, opacity 150ms ease;
 }
 .menu-button--dark .hamburger__line {
@@ -558,7 +558,6 @@ body.mega-menu-open .site-header .hamburger .hamburger__line:nth-child(3) {
     display: flex;
     align-items: center;
     height: 100%;
-    padding-top: 0.75rem;
   }
   .header-logo {
     display: flex;
@@ -591,13 +590,13 @@ body.mega-menu-open .site-header .hamburger .hamburger__line:nth-child(3) {
   .header-right-block {
     display: flex;
     align-items: center;
-    gap: 20px;
+    gap: 1.25rem;
     height: 100%;
   }
   .header-actions {
     display: flex;
     align-items: center;
-    gap: 20px;
+    gap: 1.25rem;
     height: 100%;
   }
   .header-profile,
@@ -644,7 +643,6 @@ body.mega-menu-open .site-header .hamburger .hamburger__line:nth-child(3) {
   left: 0;
   right: 0;
   height: auto;
-  background-color: #ffffff;
   transform: translateY(-100%);
   transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
   z-index: 999;
@@ -652,6 +650,13 @@ body.mega-menu-open .site-header .hamburger .hamburger__line:nth-child(3) {
 }
 .mega-menu.is-active {
   transform: translateY(0);
+}
+.mega-menu .edge-image.bottom-edge {
+  margin-top: -2rem;
+}
+.mega-menu .edge-image.bottom-edge object,
+.mega-menu .edge-image.bottom-edge img {
+  filter: brightness(0) invert(1);
 }
 .mega-menu * {
   outline: none !important;
@@ -669,10 +674,10 @@ body.mega-menu-open .site-header .hamburger .hamburger__line:nth-child(3) {
   flex-direction: column;
   justify-content: space-between;
   gap: 30px;
-  padding-top: 130px;
-  padding-bottom: 30px;
-  padding-left: 30px;
-  padding-right: 30px;
+  padding-top: 8.125rem;
+  padding-bottom: 1.875rem;
+  padding-left: 1.875rem;
+  padding-right: 1.875rem;
   background-color: #ffffff;
   background-image: url("data:image/svg+xml;base64,...");
   background-repeat: repeat;
@@ -692,7 +697,7 @@ body.mega-menu-open .site-header .hamburger .hamburger__line:nth-child(3) {
 .mega-menu__quick-links button {
   width: 100%;
   height: 41px;
-  padding: 10px 20px;
+  padding: 0.625rem 1.25rem;
   background-color: #faf7f4;
   border: none;
   border-radius: 10px;
@@ -734,7 +739,7 @@ body.mega-menu-open .site-header .hamburger .hamburger__line:nth-child(3) {
 }
 .mega-menu__quick-links .mega-menu__quick-links-dropdown a {
   display: block;
-  padding: 12px 20px;
+  padding: 0.75rem 1.25rem;
   font-family: 'DM Sans', 'Averta', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   font-size: 0.9375rem;
   line-height: 1.4;
@@ -752,12 +757,12 @@ body.mega-menu-open .site-header .hamburger .hamburger__line:nth-child(3) {
   display: flex;
   align-items: center;
   gap: 10px;
-  padding: 10px 20px;
+  padding: 0.625rem 1.25rem;
   background-color: transparent;
   border: 1px solid #183153;
   border-radius: 10px;
   font-family: 'DM Sans', 'Averta', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-  font-size: 15px;
+  font-size: 0.9375rem;
   color: #183153;
   cursor: pointer;
   transition: all 0.2s ease;
@@ -802,7 +807,7 @@ body.mega-menu-open .site-header .hamburger .hamburger__line:nth-child(3) {
 .mega-menu__nav-item a {
   font-family: 'DM Sans', 'Averta', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   font-weight: 800;
-  font-size: 60px;
+  font-size: 3.75rem;
   line-height: 1;
   letter-spacing: -1.2px;
   text-transform: uppercase;
@@ -908,7 +913,7 @@ body.mega-menu-open .site-header .hamburger .hamburger__line:nth-child(3) {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 5px 0;
+  padding: 0.3125rem 0;
   list-style: none;
   position: relative;
 }
@@ -1132,7 +1137,7 @@ body.mega-menu-open {
   .mega-menu__inner {
     height: auto;
     min-height: 100vh;
-    padding-bottom: 40px;
+    padding-bottom: 2.5rem;
   }
   .mega-menu__content {
     flex-direction: column;
@@ -1180,12 +1185,9 @@ body.mega-menu-open {
 }
 .hero .bottom-edge {
   position: absolute;
-  bottom: 0;
+  bottom: -1.625rem;
   width: 100%;
   z-index: 1;
-  background: url(../../figma-design-images/section-bg.jpg) repeat-x;
-  background-size: 20%;
-  background-position: 0px 25px;
 }
 .hero .hero__slider {
   position: absolute;
@@ -1218,11 +1220,12 @@ body.mega-menu-open {
   padding: 6.5rem 2.5rem 7.5rem;
   align-items: flex-end;
   display: flex;
+  height: 100%;
 }
 @media (max-width: 767px) {
   .hero .hero__slider .hero__slide-overlay {
     background: rgba(0, 0, 0, 0.3);
-    padding: 0;
+    padding: 6rem 0;
     align-items: flex-start;
     position: relative;
     height: 100%;
@@ -1294,15 +1297,11 @@ h1 .hero__title-script {
 }
 @media (max-width: 767px) {
   .hero__title-line {
-    position: absolute;
-    left: 18px;
-    top: 97px;
     display: flex;
     flex-direction: column;
     gap: 1.86px;
     align-items: flex-start;
     width: auto;
-    max-width: calc(100% - 36px);
     z-index: 2;
     margin: 0;
     padding: 0;
@@ -1311,7 +1310,7 @@ h1 .hero__title-script {
 .hero__description {
   padding: 2.5rem 0 1rem 0.75rem;
   font-family: 'DM Sans', 'Averta', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-  font-size: 15px;
+  font-size: 0.9375rem;
   font-weight: 400;
   line-height: 1.4;
   color: #ffffff;
@@ -1336,7 +1335,7 @@ h1 .hero__title-script {
     margin: 0;
     padding: 0;
     font-family: 'DM Sans', 'Averta', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-    font-size: 18px;
+    font-size: 1.125rem;
     font-weight: 400;
     line-height: 1.3;
     color: #ffffff;
@@ -1546,10 +1545,11 @@ h1 .hero__title-script {
   .hero__mobile-actions {
     display: flex;
     flex-direction: column;
-    gap: 10px;
-    position: relative;
+    gap: 0.625rem;
+    position: absolute;
     width: 100%;
     z-index: 3;
+    bottom: 0;
   }
 }
 .hero__video-btn {
@@ -1560,12 +1560,12 @@ h1 .hero__title-script {
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 10px;
-    padding: 10px 20px;
+    gap: 0.625rem;
+    padding: 0.625rem 1.25rem;
     background: #ffffff;
-    border-radius: 10px;
+    border-radius: 0.625rem;
     font-family: 'DM Sans', 'Averta', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-    font-size: 15px;
+    font-size: 0.9375rem;
     font-weight: 400;
     line-height: 1.4;
     color: #1c3666;
@@ -1592,7 +1592,7 @@ h1 .hero__title-script {
   .hero__mobile-cta {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 10px;
+    gap: 0.625rem;
     width: 100%;
   }
   .hero__mobile-cta a {
@@ -1600,70 +1600,24 @@ h1 .hero__title-script {
     text-align: center;
   }
 }
-@media (max-width: 767px) {
-  .hero {
-    max-height: none;
-    min-height: 100vh;
-    min-height: 100svh;
-    overflow: hidden;
-  }
-  .hero__slider .hero__slide {
-    min-height: 100vh;
-    min-height: 100svh;
-  }
-  .hero__slide-overlay .container-fluid {
-    padding: 0 !important;
-    margin: 0 !important;
-    width: 100% !important;
-    height: 100% !important;
-    max-width: 100% !important;
-  }
-  .hero__content {
-    position: absolute !important;
-    inset: 0 !important;
-    width: 100% !important;
-    height: 100% !important;
-    z-index: 2 !important;
-  }
-  .hero__content .container-fluid {
-    padding: 0 !important;
-    margin: 0 !important;
-    width: 100% !important;
-    height: 100% !important;
-    max-width: 100% !important;
-  }
-  .hero__content .row {
-    margin: 0 !important;
-    width: 100% !important;
-    height: 100% !important;
-    position: relative !important;
-    display: block !important;
-  }
-  .hero__content .row .col-lg-6 {
-    display: none !important;
-  }
-  .hero__content .row .col-lg-3 {
-    display: none !important;
-  }
-  .hero__content .row .col-12 {
-    display: block !important;
-    position: absolute !important;
-    bottom: 20px !important;
-    left: 20px !important;
-    right: 20px !important;
-    width: calc(100% - 40px) !important;
-    padding: 0 !important;
-    margin: 0 !important;
-    max-width: none !important;
-  }
-  .arrow-navigation {
-    display: none !important;
-  }
+.internal-page .hero .hero__slider .hero__slide-overlay {
+  padding-bottom: 5rem;
 }
-.arrow-navigation__main-img,
-.arrow-navigation__line-img,
-.arrow-navigation__feather-img {
-  object-fit: initial;
+.internal-page .hero .hero__slider .hero__slide-overlay .audio-btn {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+}
+@media (max-width: 767px) {
+  .internal-page .hero .hero__slider .hero__slide-overlay {
+    padding-bottom: 2rem;
+  }
+  .internal-page .hero .hero__slider .hero__slide-overlay .container-fluid {
+    height: 100%;
+  }
+  .internal-page .hero .hero__slider .hero__slide-overlay .container-fluid .audio-btn {
+    display: none;
+  }
 }
 .full-width-image-words-animation {
   position: relative;
@@ -1701,7 +1655,7 @@ h1 .hero__title-script {
   }
 }
 .full-width-image-words-animation__word {
-  font-size: 150px;
+  font-size: 9.375rem;
   line-height: 1;
   color: #ffffff;
   white-space: nowrap;
@@ -1747,20 +1701,19 @@ h1 .hero__title-script {
   }
 }
 .video-testimonials {
-  padding: 40px 0;
-  background-color: #ffffff;
+  padding: 10.75rem 0 6.25rem;
 }
 .video-testimonials__title {
   display: flex;
   flex-direction: column;
   gap: 0;
-  margin-bottom: 30px;
+  margin-bottom: 1.875rem;
   text-align: center;
 }
 .video-testimonials__title-script {
   font-family: 'Caveat', 'Born Ready', cursive;
   font-weight: 400;
-  font-size: 60px;
+  font-size: 3.75rem;
   line-height: 1;
   letter-spacing: 0;
   color: #1c3666;
@@ -1774,7 +1727,7 @@ h1 .hero__title-script {
 .video-testimonials__title-bold {
   font-family: 'DM Sans', 'Averta', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   font-weight: 800;
-  font-size: 60px;
+  font-size: 3.75rem;
   line-height: 1;
   letter-spacing: -2px;
   text-transform: uppercase;
@@ -1795,7 +1748,7 @@ h1 .hero__title-script {
 }
 @media (max-width: 991px) {
   .video-testimonials__cards {
-    gap: 20px;
+    gap: 1.25rem;
   }
 }
 .video-testimonials__card {
@@ -1856,7 +1809,7 @@ h1 .hero__title-script {
 .video-testimonials__card-name {
   font-family: 'DM Sans', 'Averta', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   font-weight: 700;
-  font-size: 25px;
+  font-size: 1.5625rem;
   line-height: 1.1;
   letter-spacing: -0.5px;
   margin: 0 0 0 0;
@@ -1865,7 +1818,7 @@ h1 .hero__title-script {
 .video-testimonials__card-title {
   font-family: 'DM Sans', 'Averta', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   font-weight: 400;
-  font-size: 15px;
+  font-size: 0.9375rem;
   line-height: 1.4;
   margin: 0;
   white-space: pre-wrap;
@@ -1928,7 +1881,7 @@ h1 .hero__title-script {
 .site-footer .container-fluid .footer__newsletter-col .footer__newsletter .footer__newsletter-form .footer__newsletter-input {
   flex: 1;
   min-width: 0;
-  padding: 10px 0 0 0;
+  padding: 0.625rem 0 0 0;
   border: none;
   border-bottom: none;
   background: transparent;
@@ -1948,7 +1901,7 @@ h1 .hero__title-script {
   background-color: #1c3666;
   border-color: #1c3666;
   color: #ffffff;
-  padding: 15px 18px;
+  padding: 0.9375rem 1.125rem;
   border-radius: 10px;
   font-size: 1.125rem;
   line-height: 1.15;
@@ -2044,7 +1997,7 @@ h1 .hero__title-script {
   color: #1c3666;
   border-color: #1c3666;
   background-color: transparent;
-  padding: 10px 13px;
+  padding: 0.625rem 0.8125rem;
   border-radius: 5px;
   font-size: 0.9375rem;
   line-height: 1.15;
@@ -2071,8 +2024,8 @@ h1 .hero__title-script {
   height: auto;
   object-fit: cover;
   object-position: center;
-  padding-top: 40px;
-  padding-bottom: 20px;
+  padding-top: 2.5rem;
+  padding-bottom: 1.25rem;
 }
 .site-footer .small {
   color: #1c3666;
@@ -2080,7 +2033,7 @@ h1 .hero__title-script {
 @media (max-width: 992px) {
   .site-footer {
     min-height: auto;
-    padding: 40px 0;
+    padding: 2.5rem 0;
   }
   .footer__newsletter,
   .footer__title,
@@ -2099,7 +2052,7 @@ h1 .hero__title-script {
     text-align: center;
   }
   .footer__links .col-auto {
-    padding-right: 20px;
+    padding-right: 1.25rem;
   }
   .footer__bottom {
     flex-direction: column;
@@ -2109,8 +2062,8 @@ h1 .hero__title-script {
 }
 @media (max-width: 575px) {
   .container {
-    padding-left: 20px;
-    padding-right: 20px;
+    padding-left: 1.25rem;
+    padding-right: 1.25rem;
   }
 }
 @media (max-width: 767px) {
@@ -2133,6 +2086,16 @@ h1 .hero__title-script {
     display: block !important;
   }
 }
+@media (max-width: 767px) {
+  body .header-quick-links {
+    display: none;
+    opacity: 0;
+    pointer-events: none;
+  }
+  body .mega-menu__nav-item a {
+    font-size: 2.5rem;
+  }
+}
 :root {
   --color-white: #ffffff;
   --color-black: #000000;
@@ -2144,14 +2107,14 @@ h1 .hero__title-script {
   --color-sand-30: #f5f0eb;
   --font-primary: 'DM Sans', 'Averta', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   --font-script: 'Caveat', 'Born Ready', cursive;
-  --spacing-xs: 4px;
-  --spacing-sm: 10px;
-  --spacing-md: 20px;
-  --spacing-lg: 30px;
-  --spacing-xl: 40px;
-  --radius-sm: 4px;
-  --radius-md: 8px;
-  --radius-lg: 10px;
+  --spacing-xs: 0.25rem;
+  --spacing-sm: 0.625rem;
+  --spacing-md: 1.25rem;
+  --spacing-lg: 1.875rem;
+  --spacing-xl: 2.5rem;
+  --radius-sm: 0.25rem;
+  --radius-md: 0.5rem;
+  --radius-lg: 0.625rem;
   --transition-fast: 150ms ease;
   --transition-base: 250ms ease;
 }
@@ -2170,7 +2133,8 @@ body {
   margin: 0;
   padding: 0;
   min-height: 100vh;
-  background-color: #ffffff;
+  background: url(../../assets/images/section-bg.jpg);
+  background-size: 100%;
 }
 a {
   color: inherit;
@@ -2215,19 +2179,7 @@ button {
 .masked-image-content-block {
   position: relative;
   padding: 0;
-  background: url(../../figma-design-images/section-bg.jpg) #f5f3ed;
   overflow: hidden;
-}
-.masked-image-content-block::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-color: rgba(255, 255, 255, 0.5);
-  pointer-events: none;
-  z-index: 0;
 }
 .masked-image-content-block .container-fluid {
   position: relative;
@@ -2235,7 +2187,7 @@ button {
 }
 @media (max-width: 991px) {
   .masked-image-content-block {
-    padding: 60px 0;
+    padding: 3.75rem 0;
   }
 }
 .masked-image-content-block__image-wrapper {
@@ -2243,7 +2195,7 @@ button {
   width: 100%;
   max-width: 723px;
   margin: 0 auto;
-  padding: 0 30px;
+  padding: 0 1.875rem;
 }
 @media (max-width: 991px) {
   .masked-image-content-block__image-wrapper {
@@ -2261,8 +2213,7 @@ button {
   display: flex;
   flex-direction: column;
   gap: 20px;
-  max-width: 546px;
-  padding: 0 30px;
+  padding: 0 1.875rem;
 }
 @media (max-width: 991px) {
   .masked-image-content-block__content {
@@ -2280,46 +2231,46 @@ button {
   margin: 0;
   line-height: 1;
   color: #1c3666;
-  font-size: 60px;
+  font-size: 3.75rem;
 }
 @media (max-width: 767px) {
   .masked-image-content-block__title {
-    font-size: clamp(36px, 8vw, 60px);
+    font-size: clamp(2.25rem, 8vw, 3.75rem);
   }
 }
 .masked-image-content-block__title-script {
   font-family: 'Caveat', 'Born Ready', cursive;
   font-weight: 400;
-  font-size: 60px;
+  font-size: 3.75rem;
   line-height: 1;
   letter-spacing: 0;
   display: block;
 }
 @media (max-width: 767px) {
   .masked-image-content-block__title-script {
-    font-size: clamp(36px, 8vw, 60px);
+    font-size: clamp(2.25rem, 8vw, 3.75rem);
   }
 }
 .masked-image-content-block__title-bold {
   font-family: 'DM Sans', 'Averta', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   font-weight: 800;
-  font-size: 60px;
+  font-size: 3.75rem;
   line-height: 1;
-  letter-spacing: -1.2px;
+  letter-spacing: -0.075rem;
   text-transform: uppercase;
   display: block;
   margin-top: 0;
 }
 @media (max-width: 767px) {
   .masked-image-content-block__title-bold {
-    font-size: clamp(36px, 8vw, 60px);
-    letter-spacing: clamp(-2px, -0.02em, -1.2px);
+    font-size: clamp(2.25rem, 8vw, 3.75rem);
+    letter-spacing: clamp(-0.125rem, -0.02em, -0.075rem);
   }
 }
 .masked-image-content-block__description {
   font-family: 'DM Sans', 'Averta', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   font-weight: 400;
-  font-size: 15px;
+  font-size: 0.9375rem;
   line-height: 1.4;
   color: #1c3666;
   max-width: 406px;
@@ -2334,34 +2285,47 @@ button {
   margin-top: 0;
   align-self: flex-start;
 }
-.masked-image-content-block__masked-image {
+.masked-image-content-block {
   position: relative;
-  text-align: center;
 }
-.masked-image-content-block__masked-image .frame {
+.masked-image-content-block .frame {
   position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
 }
-.masked-image-content-block__masked-image .frame img {
+.masked-image-content-block .frame img {
   z-index: 11;
   position: relative;
 }
-.masked-image-content-block__masked-image .image-wrap {
+.masked-image-content-block .image-wrap {
   position: absolute;
   border-radius: 50%;
   overflow: hidden;
-  max-width: 70%;
+  max-width: 69.75%;
   aspect-ratio: 1/1;
-  top: 2%;
+  top: -7.9%;
   bottom: 0;
   left: 0;
   right: 0;
   margin: auto;
   z-index: 0;
 }
-.masked-image-content-block__masked-image img,
-.masked-image-content-block__masked-image video {
+.masked-image-content-block img,
+.masked-image-content-block video {
   min-height: 100%;
+}
+.section {
+  position: relative;
+}
+.section .edge-image {
+  position: absolute;
+  left: 0;
+  right: 0;
+}
+.section .edge-image.bottom-edge {
+  bottom: -1.5rem;
+}
+.section .edge-image.top-edge {
+  top: 0;
 }

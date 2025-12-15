@@ -25,7 +25,6 @@
   left: 0;
   right: 0;
   height: auto;
-  background-color: @color-white;
   transform: translateY(-100%);
   transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
   z-index: 999;
@@ -33,6 +32,15 @@
 
   &.is-active {
     transform: translateY(0);
+  }
+
+  .edge-image.bottom-edge {
+    margin-top: -2rem;
+
+    object,
+    img {
+      filter: brightness(0) invert(1);
+    }
   }
 
   // Remove all focus outlines and tab effects
@@ -56,10 +64,10 @@
   flex-direction: column;
   justify-content: space-between;
   gap: 30px;
-  padding-top: 130px; // Space for fixed header
-  padding-bottom: 30px;
-  padding-left: 30px;
-  padding-right: 30px;
+  padding-top: 8.125rem; // Space for fixed header
+  padding-bottom: 1.875rem;
+  padding-left: 1.875rem;
+  padding-right: 1.875rem;
   background-color: @color-white;
   background-image: url("data:image/svg+xml;base64,..."); // Texture pattern
   background-repeat: repeat;
@@ -80,7 +88,7 @@
   button {
     width: 100%;
     height: 41px;
-    padding: 10px 20px;
+    padding: 0.625rem 1.25rem;
     background-color: @color-sand-20; // Using the exact color from Figma
     border: none;
     border-radius: 10px;
@@ -128,7 +136,7 @@
 
     a {
       display: block;
-      padding: 12px 20px;
+      padding: 0.75rem 1.25rem;
       font-family: @font-primary;
       font-size: 0.9375rem;
       line-height: 1.4;
@@ -151,12 +159,12 @@
   display: flex;
   align-items: center;
   gap: 10px;
-  padding: 10px 20px;
+  padding: 0.625rem 1.25rem;
   background-color: transparent;
   border: 1px solid @color-navy;
   border-radius: 10px;
   font-family: @font-primary;
-  font-size: 15px;
+  font-size: 0.9375rem;
   color: @color-navy;
   cursor: pointer;
   transition: all 0.2s ease;
@@ -347,7 +355,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 5px 0;
+  padding: 0.3125rem 0;
   list-style: none;
   position: relative;
 
@@ -520,6 +528,7 @@
   align-items: center;
   justify-content: flex-start;
   gap: 20px;
+
   a {
     font-family: @font-primary;
     font-size: 0.9375rem;
@@ -623,7 +632,7 @@ body.mega-menu-open {
   .mega-menu__inner {
     height: auto;
     min-height: 100vh;
-    padding-bottom: 40px;
+    padding-bottom: 2.5rem;
   }
 
   .mega-menu__content {
@@ -665,3 +674,5 @@ body.mega-menu-open {
     }
   }
 }
+
+
