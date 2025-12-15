@@ -19,6 +19,7 @@
     initHeroSlider();
     initVideoTestimonials();
     initCoCurricularCarousel();
+    initFeaturesCardsSlider();
   });
 
   // ==========================================================================
@@ -689,6 +690,85 @@
     updatePagination(0);
     updateCounter(0, swiper.slides.length);
     handleVideoPlayback();
+  }
+
+  // ==========================================================================
+  // FEATURES CARDS SLIDER (Swiper)
+  // ==========================================================================
+
+  function initFeaturesCardsSlider() {
+    // Check if Swiper is loaded
+    if (typeof Swiper === 'undefined') {
+      console.warn('Swiper not loaded');
+      return;
+    }
+
+    const featuresSlider = document.querySelector('.features-cards-slider');
+    if (!featuresSlider) return;
+
+    // Initialize Swiper with smooth transitions
+    const swiper = new Swiper('.features-cards-slider', {
+      // Slider settings
+      loop: false,
+      speed: 600,
+      effect: 'slide',
+      slidesPerView: 1,
+      spaceBetween: 20,
+      centeredSlides: false, // Start from left, not centered
+      initialSlide: 0, // Start from first slide
+      
+      // Responsive breakpoints
+      breakpoints: {
+        // When window width is >= 576px (sm)
+        576: {
+          slidesPerView: 1.5,
+          spaceBetween: 20,
+          centeredSlides: false,
+        },
+        // When window width is >= 768px (md)
+        768: {
+          slidesPerView: 2,
+          spaceBetween: 20,
+          centeredSlides: false,
+        },
+        // When window width is >= 992px (lg)
+        992: {
+          slidesPerView: 2,
+          spaceBetween: 20,
+          centeredSlides: false,
+        },
+        // When window width is >= 1200px (xl)
+        1200: {
+          slidesPerView: 2,
+          spaceBetween: 20,
+          centeredSlides: false,
+        },
+      },
+      
+      // Smooth dragging with easing
+      resistanceRatio: 0.85,
+      touchRatio: 1,
+      threshold: 5,
+      followFinger: true,
+      grabCursor: true,
+      
+      // Mouse wheel control (optional)
+      mousewheel: {
+        enabled: false,
+      },
+      
+      // Keyboard control
+      keyboard: {
+        enabled: true,
+        onlyInViewport: true,
+      },
+      
+      // Accessibility
+      a11y: {
+        prevSlideMessage: 'Previous feature card',
+        nextSlideMessage: 'Next feature card',
+      },
+    });
   }
 
 })();

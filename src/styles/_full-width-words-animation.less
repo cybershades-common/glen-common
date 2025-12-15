@@ -22,7 +22,7 @@
   }
 
   // Text Content - positioned exactly as per Figma
-  &__text {
+  .text {
     position: absolute;
     left: -270px;
     top: 361.5px;
@@ -43,7 +43,7 @@
   }
 
   // Words styling
-  &__word {
+  .word {
     font-size: 9.375rem;
     line-height: 1;
     color: @color-white;
@@ -51,14 +51,14 @@
     margin: 0;
 
     // Bold text (Discover, Grow.)
-    &--bold {
+    &.bold {
       font-family: @font-primary;
       font-weight: @font-weight-extrabold;
       letter-spacing: -6px;
     }
 
     // Script text (Express.)
-    &--script {
+    &.script {
       font-family: @font-script;
       font-weight: @font-weight-regular;
       letter-spacing: 0;
@@ -67,18 +67,18 @@
 
   // Responsive adjustments
   @media (max-width: (@breakpoint-xl - 1)) {
-    &__word {
+    .word {
       font-size: clamp(60px, 12vw, 150px);
     }
   }
 
   @media (max-width: (@breakpoint-lg - 1)) {
-    &__text {
+    .text {
       flex-wrap: wrap;
       gap: clamp(20px, 4vw, 80px);
     }
 
-    &__word {
+    .word {
       font-size: clamp(48px, 10vw, 120px);
     }
   }
@@ -86,15 +86,15 @@
   @media (max-width: (@breakpoint-md - 1)) {
     min-height: 80vh;
 
-    &__text {
+    .text {
       gap: clamp(15px, 3vw, 50px);
     }
 
-    &__word {
+    .word {
       font-size: clamp(36px, 8vw, 80px);
       letter-spacing: -2px;
 
-      &--script {
+      &.script {
         letter-spacing: 0;
       }
     }
