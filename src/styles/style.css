@@ -402,6 +402,7 @@ body.mega-menu-open .site-header .menu-button__text {
 }
 body.mega-menu-open .site-header .hamburger .line {
   background-color: #1c3666;
+  border-color: #1c3666;
 }
 body.mega-menu-open .site-header .hamburger .hamburger .line:nth-child(1) {
   transform: translateY(0.40625rem) rotate(45deg);
@@ -643,13 +644,17 @@ body.mega-menu-open .site-header .hamburger .hamburger .line:nth-child(3) {
 .hamburger .line {
   display: block;
   width: 100%;
-  height: 0.0625rem;
-  background-color: #ffffff;
+  height: 0.08525rem;
+  flex-shrink: 0;
+  align-self: stretch;
   border-radius: 3.125rem;
+  border: 0.25px solid #ffffff;
+  background-color: #ffffff;
   transition: transform 250ms ease, opacity 150ms ease;
 }
 .menu-button--dark .hamburger .line {
   background-color: #183153;
+  border-color: #183153;
 }
 .hamburger.is-active .line:nth-child(1) {
   transform: translateY(6.5px) rotate(45deg);

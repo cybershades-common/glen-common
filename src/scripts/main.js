@@ -330,62 +330,51 @@
       // ====================================================================
       // BACK BUTTON NAVIGATION - Handle clicks to go back to previous level
       // ====================================================================
-      const backButtons = megaMenu.querySelectorAll('.mega-menu__subnav-item--back');
+      const backButtons = megaMenu.querySelectorAll('.mega-menu__subnav-item--back a');
       
-      backButtons.forEach(backButton => {
-        // Handle both button and link clicks with same logic
-        [backButton, backButton.querySelector('a')].filter(Boolean).forEach(element => {
-          element.addEventListener('click', function(e) {
-            e.preventDefault();
-            e.stopPropagation();
-            
-            const backTo = backButton.getAttribute('data-back-to');
-            const currentSubmenu = backButton.closest('.mega-menu__subnav');
-            const isFirstLayer = !currentSubmenu.hasAttribute('data-layer') || currentSubmenu.getAttribute('data-layer') === '1';
-            const isMobile = window.innerWidth < 768;
-            
-            // Going back to main menu (first layer back to same content)
-            if (isFirstLayer && currentSubmenu.getAttribute('data-submenu-content') === backTo) {
-              if (isMobile) {
-                // Mobile: slide out to right (back to main menu)
-                slideOutSubmenu(currentSubmenu, 'right');
-              } else {
-                // Desktop: traditional hide
-                allSubmenus.forEach(submenu => {
-                  submenu.classList.remove('is-active');
-                  if (menuAnimations && menuAnimations.resetSubmenuItems) {
-                    menuAnimations.resetSubmenuItems(submenu);
-                  }
-                });
+      backButtons.forEach(backLink => {
+        backLink.addEventListener('click', function(e) {
+          e.preventDefault();
+          e.stopPropagation();
+          
+          const backButton = backLink.closest('.mega-menu__subnav-item--back');
+          const backTo = backButton.getAttribute('data-back-to');
+          const currentSubmenu = backButton.closest('.mega-menu__subnav');
+          const isMobile = window.innerWidth < 768;
+          
+          if (!currentSubmenu) return;
+          
+          // Going back to main menu (close current submenu)
+          if (!backTo || currentSubmenu.getAttribute('data-submenu-content') === backTo) {
+            if (isMobile) {
+              slideOutSubmenu(currentSubmenu, 'right');
+            } else {
+              currentSubmenu.classList.remove('is-active');
+              if (menuAnimations && menuAnimations.resetSubmenuItems) {
+                menuAnimations.resetSubmenuItems(currentSubmenu);
               }
             }
-            // Going back to previous layer
-            else if (backTo) {
-              let targetLayer = megaMenu.querySelector(`.mega-menu__subnav[data-submenu-content="${backTo}"][data-layer="1"]`) ||
-                               megaMenu.querySelector(`.mega-menu__subnav[data-submenu-content="${backTo}"][data-layer]`) ||
-                               megaMenu.querySelector(`.mega-menu__subnav[data-submenu-content="${backTo}"]`);
-              
-              if (targetLayer) {
-                if (isMobile) {
-                  // Mobile: Show previous layer immediately, hide current after
-                  slideInSubmenu(targetLayer, 'left');
-                  slideOutSubmenu(currentSubmenu, 'right');
-                } else {
-                  // Desktop: Traditional behavior
-                  allSubmenus.forEach(submenu => {
-                    submenu.classList.remove('is-active');
-                    if (menuAnimations && menuAnimations.resetSubmenuItems) {
-                      menuAnimations.resetSubmenuItems(submenu);
-                    }
-                  });
-                  targetLayer.classList.add('is-active');
-                  if (menuAnimations && menuAnimations.animateSubmenuItems) {
-                    menuAnimations.animateSubmenuItems(targetLayer);
-                  }
+          }
+          // Going back to previous layer
+          else {
+            const targetLayer = megaMenu.querySelector(`.mega-menu__subnav[data-submenu-content="${backTo}"]`);
+            
+            if (targetLayer) {
+              if (isMobile) {
+                slideInSubmenu(targetLayer, 'left');
+                slideOutSubmenu(currentSubmenu, 'right');
+              } else {
+                currentSubmenu.classList.remove('is-active');
+                if (menuAnimations && menuAnimations.resetSubmenuItems) {
+                  menuAnimations.resetSubmenuItems(currentSubmenu);
+                }
+                targetLayer.classList.add('is-active');
+                if (menuAnimations && menuAnimations.animateSubmenuItems) {
+                  menuAnimations.animateSubmenuItems(targetLayer);
                 }
               }
             }
-          });
+          }
         });
       });
     }

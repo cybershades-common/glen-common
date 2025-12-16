@@ -113,6 +113,7 @@ body.mega-menu-open {
 
     .hamburger .line {
       background-color: @tertiary-blue-dark;
+      border-color: @tertiary-blue-dark;
     }
 
     .hamburger {
@@ -435,14 +436,18 @@ body.mega-menu-open {
   .line {
     display: block;
     width: 100%;
-    height: 0.0625rem;
+    height: 0.08525rem;
+    flex-shrink: 0;
+    align-self: stretch;
+    border-radius: 3.125rem;
+    border: 0.25px solid @color-white;
     background-color: @color-white;
-    border-radius: @radius-full;
     transition: transform @transition-base, opacity @transition-fast;
 
     // Dark variant
     .menu-button--dark & {
       background-color: @color-navy;
+      border-color: @color-navy;
     }
   }
 
