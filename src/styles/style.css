@@ -1396,7 +1396,7 @@ body.mega-menu-open {
 }
 .hero .bottom-edge {
   position: absolute;
-  bottom: -1.625rem;
+  bottom: -2.75%;
   width: 100%;
   z-index: 1;
 }
@@ -2168,6 +2168,12 @@ h1 .hero__title-script {
 .video-testimonials .all-videos-btn:focus-visible {
   outline: 2px solid #db574e;
   outline-offset: 2px;
+}
+@media (max-width: 767px) {
+  .video-testimonials .cards .card {
+    max-width: 100%;
+    width: 100%;
+  }
 }
 .co-curricular-carousel {
   position: relative;
