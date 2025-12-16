@@ -27,10 +27,14 @@
     // Create timeline (paused initially)
     let menuTimeline = gsap.timeline({ paused: true });
 
-    // Get menu items, circle image, and footer links
+    // Get menu items, circle image, footer links, and mobile elements
     const navItems = megaMenu.querySelectorAll('.mega-menu__nav-item');
     const circleImage = megaMenu.querySelector('.mega-menu__circle-image');
     const footerLinks = megaMenu.querySelectorAll('.mega-menu__footer-links a, .mega-menu__social a');
+    
+    // Mobile-only elements
+    const mobileQuickLinksBtn = megaMenu.querySelector('#mobileQuickLinksToggle');
+    const mobileSearchInput = megaMenu.querySelector('.mega-menu__footer .input-group');
 
     // Build animation timeline
     // Show menu and animate menu items from below
@@ -56,6 +60,22 @@
         { y: 0, opacity: 1 },
         0.1,
         0.3 // Start after menu items begin animating
+      );
+    }
+
+    // Add mobile quick links button and search input animation (mobile only)
+    const mobileElements = [];
+    if (mobileQuickLinksBtn) mobileElements.push(mobileQuickLinksBtn);
+    if (mobileSearchInput) mobileElements.push(mobileSearchInput);
+    
+    if (mobileElements.length > 0) {
+      menuTimeline.staggerFromTo(
+        mobileElements,
+        0.5,
+        { y: 100, opacity: 0 },
+        { y: 0, opacity: 1 },
+        0.1,
+        0.4 // Start slightly after buttons
       );
     }
 
@@ -110,6 +130,21 @@
       
       // Set initial state for all submenu items
       setInitialSubmenuState();
+      
+      // Set initial state for mobile elements (mobile only)
+      if (mobileQuickLinksBtn) {
+        gsap.set(mobileQuickLinksBtn, {
+          y: 100,
+          opacity: 0
+        });
+      }
+      
+      if (mobileSearchInput) {
+        gsap.set(mobileSearchInput, {
+          y: 100,
+          opacity: 0
+        });
+      }
       
       // Set menu active states
       megaMenu.classList.add('is-active');
@@ -172,6 +207,21 @@
         
         // Reset all submenu items
         resetAllSubmenuItems();
+        
+        // Reset mobile elements to initial state
+        if (mobileQuickLinksBtn) {
+          gsap.set(mobileQuickLinksBtn, {
+            y: 100,
+            opacity: 0
+          });
+        }
+        
+        if (mobileSearchInput) {
+          gsap.set(mobileSearchInput, {
+            y: 100,
+            opacity: 0
+          });
+        }
         
         // Return focus to menu toggle
         menuToggle.focus();

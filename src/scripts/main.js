@@ -125,12 +125,44 @@
       }
     });
 
-    // Close menu when clicking main navigation links only (exclude all submenu links)
-    const menuLinks = megaMenu.querySelectorAll('.mega-menu__nav a');
+    // Handle menu item clicks - open submenu on mobile/desktop, don't close menu
+    const menuLinks = megaMenu.querySelectorAll('.mega-menu__nav a[data-submenu]');
     menuLinks.forEach(link => {
-      link.addEventListener('click', function () {
-        // Small delay for smooth transition before closing
-        setTimeout(closeMenu, 200);
+      link.addEventListener('click', function (e) {
+        // Prevent default navigation and stop propagation
+        e.preventDefault();
+        e.stopPropagation();
+        
+        const submenuId = this.getAttribute('data-submenu');
+        const isMobile = window.innerWidth < 992; // Match your breakpoint
+        
+        // On mobile, open submenu when clicking menu items
+        // On desktop, also allow click to open submenu (in addition to hover)
+        // Hide all submenus
+        allSubmenus.forEach(submenu => {
+          submenu.classList.remove('is-active');
+          // Reset submenu items animation
+          if (menuAnimations && menuAnimations.resetSubmenuItems) {
+            menuAnimations.resetSubmenuItems(submenu);
+          }
+        });
+        
+        // Show the corresponding submenu - try layer 1 first, then any layer, then without layer
+        let targetSubmenu = megaMenu.querySelector(`.mega-menu__subnav[data-submenu-content="${submenuId}"][data-layer="1"]`);
+        if (!targetSubmenu) {
+          targetSubmenu = megaMenu.querySelector(`.mega-menu__subnav[data-submenu-content="${submenuId}"][data-layer]`);
+        }
+        if (!targetSubmenu) {
+          targetSubmenu = megaMenu.querySelector(`.mega-menu__subnav[data-submenu-content="${submenuId}"]`);
+        }
+        
+        if (targetSubmenu) {
+          targetSubmenu.classList.add('is-active');
+          // Animate submenu items
+          if (menuAnimations && menuAnimations.animateSubmenuItems) {
+            menuAnimations.animateSubmenuItems(targetSubmenu);
+          }
+        }
       });
     });
 
@@ -183,23 +215,29 @@
       // Handle clicking on items that navigate to next layer
       const clickableItems = megaMenu.querySelectorAll('.mega-menu__subnav-item--clickable');
       clickableItems.forEach(item => {
+        // Handle click on the item itself
         item.addEventListener('click', function(e) {
           e.preventDefault();
+          e.stopPropagation();
+          
           const nextLayer = this.getAttribute('data-next-layer');
           
           if (nextLayer) {
-            // Hide current layer
-            const currentLayer = this.closest('.mega-menu__subnav');
-            if (currentLayer) {
-              currentLayer.classList.remove('is-active');
+            // Hide all submenus first
+            allSubmenus.forEach(submenu => {
+              submenu.classList.remove('is-active');
               // Reset submenu items animation
               if (menuAnimations && menuAnimations.resetSubmenuItems) {
-                menuAnimations.resetSubmenuItems(currentLayer);
+                menuAnimations.resetSubmenuItems(submenu);
               }
+            });
+            
+            // Show next layer - try with data-layer first, then without
+            let targetLayer = megaMenu.querySelector(`.mega-menu__subnav[data-submenu-content="${nextLayer}"][data-layer]`);
+            if (!targetLayer) {
+              targetLayer = megaMenu.querySelector(`.mega-menu__subnav[data-submenu-content="${nextLayer}"]`);
             }
             
-            // Show next layer
-            const targetLayer = megaMenu.querySelector(`.mega-menu__subnav[data-submenu-content="${nextLayer}"]`);
             if (targetLayer) {
               targetLayer.classList.add('is-active');
               // Animate submenu items
@@ -209,37 +247,115 @@
             }
           }
         });
+        
+        // Also handle clicks on links inside clickable items
+        const link = item.querySelector('a');
+        if (link) {
+          link.addEventListener('click', function(e) {
+            e.preventDefault();
+            e.stopPropagation();
+            
+            const nextLayer = item.getAttribute('data-next-layer');
+            
+            if (nextLayer) {
+              // Hide all submenus first
+              allSubmenus.forEach(submenu => {
+                submenu.classList.remove('is-active');
+                if (menuAnimations && menuAnimations.resetSubmenuItems) {
+                  menuAnimations.resetSubmenuItems(submenu);
+                }
+              });
+              
+              // Show next layer
+              let targetLayer = megaMenu.querySelector(`.mega-menu__subnav[data-submenu-content="${nextLayer}"][data-layer]`);
+              if (!targetLayer) {
+                targetLayer = megaMenu.querySelector(`.mega-menu__subnav[data-submenu-content="${nextLayer}"]`);
+              }
+              
+              if (targetLayer) {
+                targetLayer.classList.add('is-active');
+                if (menuAnimations && menuAnimations.animateSubmenuItems) {
+                  menuAnimations.animateSubmenuItems(targetLayer);
+                }
+              }
+            }
+          });
+        }
       });
 
       // Handle back button clicks
       const backButtons = megaMenu.querySelectorAll('.mega-menu__subnav-item--back');
       backButtons.forEach(backButton => {
+        // Handle click on the back button itself
         backButton.addEventListener('click', function(e) {
           e.preventDefault();
+          e.stopPropagation();
+          
           const backTo = this.getAttribute('data-back-to');
           
           if (backTo) {
-            // Hide current layer
-            const currentLayer = this.closest('.mega-menu__subnav');
-            if (currentLayer) {
-              currentLayer.classList.remove('is-active');
-              // Reset submenu items animation
+            // Hide all submenus first
+            allSubmenus.forEach(submenu => {
+              submenu.classList.remove('is-active');
               if (menuAnimations && menuAnimations.resetSubmenuItems) {
-                menuAnimations.resetSubmenuItems(currentLayer);
+                menuAnimations.resetSubmenuItems(submenu);
               }
+            });
+            
+            // Show target layer - try with data-layer="1" first, then any layer, then without
+            let targetLayer = megaMenu.querySelector(`.mega-menu__subnav[data-submenu-content="${backTo}"][data-layer="1"]`);
+            if (!targetLayer) {
+              targetLayer = megaMenu.querySelector(`.mega-menu__subnav[data-submenu-content="${backTo}"][data-layer]`);
+            }
+            if (!targetLayer) {
+              targetLayer = megaMenu.querySelector(`.mega-menu__subnav[data-submenu-content="${backTo}"]`);
             }
             
-            // Show target layer
-            const targetLayer = megaMenu.querySelector(`.mega-menu__subnav[data-submenu-content="${backTo}"]`);
             if (targetLayer) {
               targetLayer.classList.add('is-active');
-              // Animate submenu items
               if (menuAnimations && menuAnimations.animateSubmenuItems) {
                 menuAnimations.animateSubmenuItems(targetLayer);
               }
             }
           }
         });
+        
+        // Also handle clicks on links inside back buttons
+        const link = backButton.querySelector('a');
+        if (link) {
+          link.addEventListener('click', function(e) {
+            e.preventDefault();
+            e.stopPropagation();
+            
+            const backTo = backButton.getAttribute('data-back-to');
+            
+            if (backTo) {
+              // Hide all submenus first
+              allSubmenus.forEach(submenu => {
+                submenu.classList.remove('is-active');
+                if (menuAnimations && menuAnimations.resetSubmenuItems) {
+                  menuAnimations.resetSubmenuItems(submenu);
+                }
+              });
+              
+              // Show target layer
+              let targetLayer = megaMenu.querySelector(`.mega-menu__subnav[data-submenu-content="${backTo}"][data-layer="1"]`);
+              if (!targetLayer) {
+                targetLayer = megaMenu.querySelector(`.mega-menu__subnav[data-submenu-content="${backTo}"][data-layer]`);
+              }
+              if (!targetLayer) {
+                targetLayer = megaMenu.querySelector(`.mega-menu__subnav[data-submenu-content="${backTo}"]`);
+              }
+              
+              if (targetLayer) {
+                targetLayer.classList.add('is-active');
+                if (menuAnimations && menuAnimations.animateSubmenuItems) {
+                  menuAnimations.animateSubmenuItems(targetLayer);
+                }
+              }
+            }
+          });
+        }
       });
     }
 

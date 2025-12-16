@@ -490,6 +490,17 @@
   }
 }
 
+// Hide back button on first level submenu (layer 1) on desktop/tablet
+// Only show on mobile screens
+.mega-menu__subnav[data-submenu-content]:not([data-layer]),
+.mega-menu__subnav[data-submenu-content][data-layer="1"] {
+  @media (min-width: 992px) {
+    .mega-menu__subnav-item--back {
+      display: none;
+    }
+  }
+}
+
 // Title items for layer headers
 .mega-menu__subnav-item--title {
   margin-bottom: 15px;
