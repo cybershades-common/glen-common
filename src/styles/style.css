@@ -376,7 +376,7 @@ body.mega-menu-open .site-header {
   position: fixed;
   background-color: #ffffff;
   border-bottom: none;
-  z-index: 1000;
+  z-index: 10000;
 }
 body.mega-menu-open .site-header .header-logo a svg path {
   fill: var(--tertiary-blue-dark, #1C3666);
@@ -481,7 +481,7 @@ body.mega-menu-open .site-header .hamburger .hamburger .line:nth-child(3) {
   border-radius: 10px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   overflow: hidden;
-  z-index: 9999;
+  z-index: 1;
   opacity: 0;
   visibility: hidden;
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
@@ -842,7 +842,7 @@ body.mega-menu-open .site-header .hamburger .hamburger .line:nth-child(3) {
   margin-top: 10px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   overflow: hidden;
-  z-index: 9999;
+  z-index: 1;
   opacity: 0;
   visibility: hidden;
   transform: translateY(-10px);

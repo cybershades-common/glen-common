@@ -55,7 +55,7 @@ body.mega-menu-open {
     position: fixed;
     background-color: @color-white;
     border-bottom: none;
-    z-index: 1000;
+    z-index: 10000; // Higher than submenu overlays (1000-1004)
 
  
 
@@ -224,7 +224,7 @@ body.mega-menu-open {
   border-radius: 10px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   overflow: hidden;
-  z-index: 9999; // Above submenu overlays (which use z-index 1000-1004)
+  z-index: 1; // Relative to header which has z-index 10000
   
   // Initial state - hidden and slid up
   opacity: 0;
