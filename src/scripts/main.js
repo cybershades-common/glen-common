@@ -44,35 +44,54 @@
 
     if (!menuToggle || !megaMenu || !megaMenuOverlay) return;
 
-    // Open Menu
+    // Initialize animations
+    const menuAnimations = window.initMegaMenuAnimations 
+      ? window.initMegaMenuAnimations(megaMenu, megaMenuOverlay, menuToggle, body) 
+      : null;
+
+    // Open Menu - use animation if available, otherwise fallback
     function openMenu() {
-      megaMenu.classList.add('is-active');
-      megaMenuOverlay.classList.add('is-active');
-      body.classList.add('mega-menu-open');
-      menuToggle.setAttribute('aria-expanded', 'true');
-      
-      // Focus trap: focus first focusable element in menu
-      const firstFocusable = megaMenu.querySelector('a, button, select');
-      if (firstFocusable) {
-        setTimeout(() => firstFocusable.focus(), 100);
+      if (menuAnimations && menuAnimations.openMenu) {
+        menuAnimations.openMenu();
+      } else {
+        // Fallback to simple class toggle if animations not available
+        megaMenu.classList.add('is-active');
+        megaMenuOverlay.classList.add('is-active');
+        body.classList.add('mega-menu-open');
+        menuToggle.setAttribute('aria-expanded', 'true');
+        
+        const hamburgerIcon = document.getElementById('hamburgerIcon');
+        if (hamburgerIcon) {
+          hamburgerIcon.classList.add('is-active');
+        }
+        
+        // Focus trap: focus first focusable element in menu
+        const firstFocusable = megaMenu.querySelector('a, button, select');
+        if (firstFocusable) {
+          setTimeout(() => firstFocusable.focus(), 100);
+        }
       }
     }
 
-    // Close Menu
+    // Close Menu - use animation if available, otherwise fallback
     function closeMenu() {
-      megaMenu.classList.remove('is-active');
-      megaMenuOverlay.classList.remove('is-active');
-      body.classList.remove('mega-menu-open');
-      menuToggle.setAttribute('aria-expanded', 'false');
-      
-      // Reset hamburger icon
-      const hamburgerIcon = document.getElementById('hamburgerIcon');
-      if (hamburgerIcon) {
-        hamburgerIcon.classList.remove('is-active');
+      if (menuAnimations && menuAnimations.closeMenu) {
+        menuAnimations.closeMenu();
+      } else {
+        // Fallback to simple class toggle if animations not available
+        megaMenu.classList.remove('is-active');
+        megaMenuOverlay.classList.remove('is-active');
+        body.classList.remove('mega-menu-open');
+        menuToggle.setAttribute('aria-expanded', 'false');
+        
+        const hamburgerIcon = document.getElementById('hamburgerIcon');
+        if (hamburgerIcon) {
+          hamburgerIcon.classList.remove('is-active');
+        }
+        
+        // Return focus to menu toggle
+        menuToggle.focus();
       }
-      
-      // Return focus to menu toggle
-      menuToggle.focus();
     }
 
     // Toggle on hamburger click
@@ -131,17 +150,29 @@
         // Hide all submenus
         allSubmenus.forEach(submenu => {
           submenu.classList.remove('is-active');
+          // Reset submenu items animation
+          if (menuAnimations && menuAnimations.resetSubmenuItems) {
+            menuAnimations.resetSubmenuItems(submenu);
+          }
         });
         
         // Show the corresponding submenu (always layer 1)
         const targetSubmenu = megaMenu.querySelector(`.mega-menu__subnav[data-submenu-content="${submenuId}"][data-layer="1"]`);
         if (targetSubmenu) {
           targetSubmenu.classList.add('is-active');
+          // Animate submenu items
+          if (menuAnimations && menuAnimations.animateSubmenuItems) {
+            menuAnimations.animateSubmenuItems(targetSubmenu);
+          }
         } else {
           // Fallback for submenus without layers
           const fallbackSubmenu = megaMenu.querySelector(`.mega-menu__subnav[data-submenu-content="${submenuId}"]:not([data-layer])`);
           if (fallbackSubmenu) {
             fallbackSubmenu.classList.add('is-active');
+            // Animate submenu items
+            if (menuAnimations && menuAnimations.animateSubmenuItems) {
+              menuAnimations.animateSubmenuItems(fallbackSubmenu);
+            }
           }
         }
       });
@@ -161,12 +192,20 @@
             const currentLayer = this.closest('.mega-menu__subnav');
             if (currentLayer) {
               currentLayer.classList.remove('is-active');
+              // Reset submenu items animation
+              if (menuAnimations && menuAnimations.resetSubmenuItems) {
+                menuAnimations.resetSubmenuItems(currentLayer);
+              }
             }
             
             // Show next layer
             const targetLayer = megaMenu.querySelector(`.mega-menu__subnav[data-submenu-content="${nextLayer}"]`);
             if (targetLayer) {
               targetLayer.classList.add('is-active');
+              // Animate submenu items
+              if (menuAnimations && menuAnimations.animateSubmenuItems) {
+                menuAnimations.animateSubmenuItems(targetLayer);
+              }
             }
           }
         });
@@ -184,12 +223,20 @@
             const currentLayer = this.closest('.mega-menu__subnav');
             if (currentLayer) {
               currentLayer.classList.remove('is-active');
+              // Reset submenu items animation
+              if (menuAnimations && menuAnimations.resetSubmenuItems) {
+                menuAnimations.resetSubmenuItems(currentLayer);
+              }
             }
             
             // Show target layer
             const targetLayer = megaMenu.querySelector(`.mega-menu__subnav[data-submenu-content="${backTo}"]`);
             if (targetLayer) {
               targetLayer.classList.add('is-active');
+              // Animate submenu items
+              if (menuAnimations && menuAnimations.animateSubmenuItems) {
+                menuAnimations.animateSubmenuItems(targetLayer);
+              }
             }
           }
         });
