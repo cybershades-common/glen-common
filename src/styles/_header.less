@@ -57,23 +57,7 @@ body.mega-menu-open {
     border-bottom: none;
     z-index: 1000;
 
-    // Add dotted line below header with padding
-    &::after {
-      content: '';
-      position: absolute;
-      bottom: 0;
-      left: 1.90625rem;
-      right: 1.84375rem;
-      height: 2px;
-      background-image: repeating-linear-gradient(to right,
-          @color-blue-dark 0,
-          @color-blue-dark 0.25rem,
-          transparent 0.25rem,
-          transparent 0.5rem);
-      background-repeat: repeat-x;
-      background-size: 0.5rem 0.125rem;
-      background-position: 0 50%;
-    }
+ 
 
     // Change logo to dark
     .header-logo {

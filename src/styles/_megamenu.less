@@ -662,6 +662,9 @@ body.mega-menu-open {
 }
 
 @media (max-width: @breakpoint-md) {
+
+
+
   .mega-menu__nav-item a {
     font-size: 3.75rem;
   }
@@ -675,4 +678,100 @@ body.mega-menu-open {
   }
 }
 
+@media (max-width:767px) {
+  .hide-mobile {
+    display: none;
+  }
 
+  .mega-menu {
+    .mega-menu__inner {
+      padding: 6rem 1.25rem 4rem;
+
+      .mobile-only {
+        .header-quick-links {
+          display: flex;
+          opacity: 1;
+          pointer-events: all;
+          width: 100%;
+          max-width: 100%;
+        }
+      }
+
+      .mega-menu__content {
+        .container-fluid {
+          padding: 0;
+        }
+      }
+
+      .mega-menu__subnav-container {
+
+        h4,
+        .mega-menu__subnav-item--title span {
+          color: var(--tertiary-blue-dark, #1C3666);
+
+          /* Desktop/H2 Caps Bold */
+          font-family: var(--font-family-averta, Averta);
+          font-size: 2.25rem;
+          font-style: normal;
+          font-weight: 800;
+          line-height: 100%;
+
+          text-transform: uppercase;
+        }
+
+        .mega-menu__subnav {
+          display: flex;
+          flex-direction: column;
+          gap: 0;
+          width: 100%;
+          position: fixed;
+          top: 13.5rem;
+          left: 0;
+          list-style: none;
+          right: 1rem;
+          padding: 1rem 1.25rem;
+          margin: 0;
+          opacity: 0;
+          transition: all 0.3s ease;
+          right: 0;
+          background: #fff;
+          bottom: 0;
+          overflow-y: auto;
+          margin-left: 50%;
+
+          &.is-active {
+            opacity: 1;
+            margin-left: 0;
+          }
+
+
+
+        }
+
+
+
+
+      }
+
+      .mega-menu__footer {
+        margin-top: auto;
+
+        .container-fluid {
+          >.row {
+            flex-direction: row-reverse;
+            align-items: center;
+            margin-bottom: 4rem;
+            .mega-menu__social{
+              justify-content: flex-start;
+            }
+            .mega-menu__footer-links{
+              justify-content: flex-end;
+            }
+          }
+        }
+      }
+    }
+  }
+
+
+}
