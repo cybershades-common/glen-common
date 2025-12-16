@@ -564,17 +564,17 @@
       return;
     }
 
-    const carouselSlider = document.querySelector('.co-curricular-carousel__slider');
+    const carouselSlider = document.querySelector('.co-curricular-carousel .slider');
     if (!carouselSlider) return;
 
-    const paginationDots = document.querySelectorAll('.co-curricular-carousel__pagination-dot');
-    const prevArrow = document.querySelector('.co-curricular-carousel__navigation .arrow-navigation__arrow--left');
-    const nextArrow = document.querySelector('.co-curricular-carousel__navigation .arrow-navigation__arrow--right');
-    const counterCurrent = document.querySelector('.co-curricular-carousel__counter-current');
-    const counterTotal = document.querySelector('.co-curricular-carousel__counter-total');
+    const paginationDots = document.querySelectorAll('.co-curricular-carousel .pagination-dot');
+    const prevArrow = document.querySelector('.co-curricular-carousel .navigation .arrow-navigation__arrow--left');
+    const nextArrow = document.querySelector('.co-curricular-carousel .navigation .arrow-navigation__arrow--right');
+    const counterCurrent = document.querySelector('.co-curricular-carousel .counter-current');
+    const counterTotal = document.querySelector('.co-curricular-carousel .counter-total');
 
     // Initialize Swiper with smooth transitions
-    const swiper = new Swiper('.co-curricular-carousel__slider', {
+    const swiper = new Swiper('.co-curricular-carousel .slider', {
       loop: true,
       speed: 800,
       effect: 'slide',
@@ -613,9 +613,9 @@
     function updatePagination(activeIndex) {
       paginationDots.forEach((dot, index) => {
         if (index === activeIndex) {
-          dot.classList.add('co-curricular-carousel__pagination-dot--active');
+          dot.classList.add('co-curricular-carousel .pagination-dot--active');
         } else {
-          dot.classList.remove('co-curricular-carousel__pagination-dot--active');
+          dot.classList.remove('co-curricular-carousel .pagination-dot--active');
         }
       });
     }
@@ -654,8 +654,8 @@
     function handleVideoPlayback() {
       const slides = swiper.slides;
       slides.forEach((slide, index) => {
-        const video = slide.querySelector('.co-curricular-carousel__video');
-        const slideElement = slide.querySelector('.co-curricular-carousel__slide');
+        const video = slide.querySelector('.co-curricular-carousel video');
+        const slideElement = slide.querySelector('.co-curricular-carousel .slide');
         if (video && slideElement) {
           if (index === swiper.realIndex) {
             // Play video in active slide

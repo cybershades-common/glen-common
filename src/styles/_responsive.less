@@ -44,13 +44,27 @@
   }
 }
 
+.mobile-only {
+  display: none;
+
+  .hero__mobile-actions {
+    position: relative;
+  }
+}
 
 @media (max-width:767px) {
- body {
-  .site-header{
-    height: 5rem;
-    min-height: 5rem;
-  }
+  body {
+    .site-header {
+      height: 5rem;
+      min-height: 5rem;
+
+      .mega-menu{
+        .mega-menu__inner {
+          padding-top: 6rem;
+        }
+      }
+    }
+
     .header-quick-links {
       display: none;
       opacity: 0;
@@ -62,5 +76,10 @@
         font-size: 2.5rem;
       }
     }
+
+    .mobile-only {
+      display: flex;
+    }
   }
+
 }

@@ -11,7 +11,7 @@
   overflow: hidden;
 
   // Dark Overlay for better content visibility
-  &__overlay {
+ .overlay {
     position: absolute;
     top: 0;
     left: 0;
@@ -23,7 +23,7 @@
   }
 
   // Title
-  &__title {
+ .title {
     position: absolute;
     left: 80px;
     top: 80px;
@@ -43,7 +43,7 @@
     }
   }
 
-  &__title-text {
+ .title-text {
     font-family: @font-primary;
     font-weight: @font-weight-bold;
     font-size: @font-size-base;
@@ -55,7 +55,7 @@
   }
 
   // Slide Counter
-  &__counter {
+ .counter {
     position: absolute;
     right: 80px;
     top: 80px;
@@ -80,20 +80,20 @@
     }
   }
 
-  &__counter-current {
+ .counter-current {
     font-weight: @font-weight-regular;
   }
 
-  &__counter-separator {
+ .counter-separator {
     margin: 0 2px;
   }
 
-  &__counter-total {
+ .counter-total {
     font-weight: @font-weight-regular;
   }
 
   // Swiper Container
-  &__slider {
+ .slider {
     position: absolute;
     top: 0;
     left: 0;
@@ -103,7 +103,7 @@
     z-index: 2;
   }
 
-  &__slide {
+ .slide {
     position: relative;
     width: 100%;
     height: 100%;
@@ -111,7 +111,7 @@
   }
 
   // Full bleed video/image
-  &__video {
+ .video {
     position: absolute;
     top: 0;
     left: 0;
@@ -122,11 +122,11 @@
     display: none;
   }
 
-  &__video.is-playing {
+ .video.is-playing {
     display: block;
   }
 
-  &__fallback-image {
+ .fallback-image {
     position: absolute;
     top: 0;
     left: 0;
@@ -137,12 +137,12 @@
     display: block;
   }
 
-  &__slide.video-playing &__fallback-image {
+ .slide.video-playing.fallback-image {
     display: none;
   }
 
   // Slide Content
-  &__slide-content {
+ .slide-content {
     position: absolute;
     top: 0;
     left: 0;
@@ -157,9 +157,9 @@
     pointer-events: none;
   }
 
-  &__slide-title {
+ .slide-title {
     font-family: @font-family-averta;
-    text-shadow:0.0625rem 0.0625rem .0375rem rgba(0, 0, 0, 0.375);
+    text-shadow:   0.0625rem 0.0625rem  0.125rem rgba(0, 0, 0, .75);
     font-weight: @font-weight-extrabold;
     font-style: normal;
     font-size: @font-size-display-2;
@@ -181,7 +181,7 @@
     }
   }
 
-  &__slide-button {
+ .slide-button {
     background-color: @color-coral;
     padding: 15px @spacing-md;
     border-radius: 10px;
@@ -218,7 +218,7 @@
   }
 
   // Controls Container (Pagination + Navigation)
-  &__controls {
+ .controls {
     position: absolute;
     left: 0;
     right: 0;
@@ -261,7 +261,7 @@
   }
 
   // Pagination
-  &__pagination {
+ .pagination {
     display: flex;
     gap: 10px;
     align-items: center;
@@ -271,7 +271,7 @@
     }
   }
 
-  &__pagination-dot {
+ .pagination-dot {
     width: 10px;
     height: 10px;
     border-radius: 50%;
@@ -282,18 +282,18 @@
     flex-shrink: 0;
   }
 
-  &__pagination-dot--active {
+ .pagination-dot--active {
     width: 40px;
     height: 10px;
     border-radius: 1000px;
   }
 
-  &__pagination-dot:hover {
+ .pagination-dot:hover {
     opacity: 0.8;
   }
 
   // Navigation Arrows
-  &__navigation {
+ .navigation {
     display: flex;
     gap: 6.5px;
     align-items: center;
@@ -334,12 +334,12 @@
   // (e.g., .hero .hero__navigation.arrow-navigation) to avoid this.
   @media (max-width: (@breakpoint-md - 1)) {
     // Target the navigation container - must use !important to override hero's !important
-    &__controls &__navigation.arrow-navigation {
+   .controls.navigation.arrow-navigation {
       display: flex !important;
     }
 
     // Also ensure buttons are visible
-    &__controls &__navigation.arrow-navigation .arrow-navigation__arrow {
+   .controls.navigation.arrow-navigation .arrow-navigation__arrow {
       display: block;
     }
   }

@@ -22,7 +22,7 @@
   }
 
   // Text Content - positioned exactly as per Figma
-  .text {
+ .text {
     position: absolute;
     left: -270px;
     top: 361.5px;
@@ -43,7 +43,7 @@
   }
 
   // Words styling
-  .word {
+ .word {
     font-size: 9.375rem;
     line-height: 1;
     color: @color-white;
@@ -67,18 +67,18 @@
 
   // Responsive adjustments
   @media (max-width: (@breakpoint-xl - 1)) {
-    .word {
+   .word {
       font-size: clamp(60px, 12vw, 150px);
     }
   }
 
   @media (max-width: (@breakpoint-lg - 1)) {
-    .text {
+   .text {
       flex-wrap: wrap;
       gap: clamp(20px, 4vw, 80px);
     }
 
-    .word {
+   .word {
       font-size: clamp(48px, 10vw, 120px);
     }
   }
@@ -86,11 +86,11 @@
   @media (max-width: (@breakpoint-md - 1)) {
     min-height: 80vh;
 
-    .text {
+   .text {
       gap: clamp(15px, 3vw, 50px);
     }
 
-    .word {
+   .word {
       font-size: clamp(36px, 8vw, 80px);
       letter-spacing: -2px;
 

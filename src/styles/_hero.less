@@ -83,6 +83,113 @@
     }
   }
 
+.play-button {
+  position: absolute;
+  right: 17.7%;
+  bottom: -14%;
+  transform: translateY(-50%);
+  width: 185.85px;
+  height: 187.169px;
+  padding: 0;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  z-index: 3;
+
+  // Hover effect handled by icon itself
+
+  &:focus-visible {
+    outline: 2px solid @color-white;
+    outline-offset: 4px;
+    border-radius: 50%;
+  }
+
+  // Responsive sizing
+  @media (max-width: (@breakpoint-xl - 1)) {
+    width: 150px;
+    height: 151px;
+  }
+
+  @media (max-width: (@breakpoint-lg - 1)) {
+    right: 5%;
+    top: auto;
+    bottom: 8%;
+    transform: none;
+    width: 120px;
+    height: 121px;
+  }
+
+  @media (max-width: (@breakpoint-md - 1)) {
+    display: none;
+  }
+}
+
+// Rotating Text Ring - Must be on top, continuously rotating
+.play-button__text-ring {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 2; // Above circles, below icon
+  animation: rotateText 25s linear infinite; // Slow continuous rotation
+  pointer-events: none;
+
+  text {
+    text-transform: uppercase;
+    font-weight: @font-weight-medium;
+  }
+}
+
+@keyframes rotateText {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+// Circle Shapes (Outer & Inner) - Background layer
+.play-button__circle {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1; // Below text ring
+  pointer-events: none;
+
+  &--outer {
+    width: 100%;
+    height: 100%;
+  }
+
+  &--inner {
+    top: 1.5%;
+    left: 1.5%;
+    width: 97%;
+    height: 97%;
+  }
+}
+
+// Play Triangle Icon - centered in button, on top
+// SVG path points UP, rotate 90deg to point RIGHT
+.play-button__icon {
+  position: absolute;
+  top: 50%;
+  left: 54%; // Optically center the triangle (accounts for pointy end)
+  transform: translate(-50%, -50%) rotate(90deg);
+  width: 26%; // ~49px relative to 186px container
+  height: auto;
+  aspect-ratio: 49 / 42;
+  z-index: 3; // Above everything
+  transition: transform @transition-base;
+  pointer-events: none;
+
+  .play-button:hover & {
+    transform: translate(-50%, -50%) rotate(90deg) scale(1.15);
+  }
+}
 }
 
 
@@ -239,113 +346,6 @@ text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
 // From top: 773.33px (85.9% of 900)
 // --------------------------------------------------------------------------
 
-.play-button {
-  position: absolute;
-  right: 17.7%;
-  bottom: -14%;
-  transform: translateY(-50%);
-  width: 185.85px;
-  height: 187.169px;
-  padding: 0;
-  border: none;
-  background: transparent;
-  cursor: pointer;
-  z-index: 3;
-
-  // Hover effect handled by icon itself
-
-  &:focus-visible {
-    outline: 2px solid @color-white;
-    outline-offset: 4px;
-    border-radius: 50%;
-  }
-
-  // Responsive sizing
-  @media (max-width: (@breakpoint-xl - 1)) {
-    width: 150px;
-    height: 151px;
-  }
-
-  @media (max-width: (@breakpoint-lg - 1)) {
-    right: 5%;
-    top: auto;
-    bottom: 8%;
-    transform: none;
-    width: 120px;
-    height: 121px;
-  }
-
-  @media (max-width: (@breakpoint-md - 1)) {
-    display: none;
-  }
-}
-
-// Rotating Text Ring - Must be on top, continuously rotating
-.play-button__text-ring {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: 2; // Above circles, below icon
-  animation: rotateText 25s linear infinite; // Slow continuous rotation
-  pointer-events: none;
-
-  text {
-    text-transform: uppercase;
-    font-weight: @font-weight-medium;
-  }
-}
-
-@keyframes rotateText {
-  from {
-    transform: rotate(0deg);
-  }
-
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-// Circle Shapes (Outer & Inner) - Background layer
-.play-button__circle {
-  position: absolute;
-  top: 0;
-  left: 0;
-  z-index: 1; // Below text ring
-  pointer-events: none;
-
-  &--outer {
-    width: 100%;
-    height: 100%;
-  }
-
-  &--inner {
-    top: 1.5%;
-    left: 1.5%;
-    width: 97%;
-    height: 97%;
-  }
-}
-
-// Play Triangle Icon - centered in button, on top
-// SVG path points UP, rotate 90deg to point RIGHT
-.play-button__icon {
-  position: absolute;
-  top: 50%;
-  left: 54%; // Optically center the triangle (accounts for pointy end)
-  transform: translate(-50%, -50%) rotate(90deg);
-  width: 26%; // ~49px relative to 186px container
-  height: auto;
-  aspect-ratio: 49 / 42;
-  z-index: 3; // Above everything
-  transition: transform @transition-base;
-  pointer-events: none;
-
-  .play-button:hover & {
-    transform: translate(-50%, -50%) rotate(90deg) scale(1.15);
-  }
-}
 
 // --------------------------------------------------------------------------
 // ARROW NAVIGATION
