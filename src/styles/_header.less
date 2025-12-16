@@ -145,15 +145,17 @@ body.mega-menu-open {
   a {
     display: block;
     text-decoration: none;
-
+    -webkit-tap-highlight-color: transparent;
+    
+    &:focus {
+      outline: none;
+    }
 
     svg {
       height: 4.89014rem;
       width: auto;
       pointer-events: none;
     }
-
-
   }
 }
 
@@ -192,14 +194,14 @@ body.mega-menu-open {
     align-items: center;
     justify-content: space-between;
     transition: background-color 0.2s ease;
+    -webkit-tap-highlight-color: transparent;
 
     &:hover {
       background-color: darken(@color-sand-20, 3%);
     }
 
     &:focus {
-      outline: 2px solid @color-coral;
-      outline-offset: 2px;
+      outline: none;
     }
 
     svg {
@@ -305,9 +307,14 @@ body.mega-menu-open {
   background: transparent;
   cursor: pointer;
   transition: opacity @transition-fast;
+  -webkit-tap-highlight-color: transparent;
 
   &:hover {
     opacity: 0.8;
+  }
+  
+  &:focus {
+    outline: none;
   }
 
 
@@ -367,9 +374,17 @@ body.mega-menu-open {
   background: transparent;
   cursor: pointer;
   transition: opacity @transition-fast;
+  -webkit-tap-highlight-color: transparent !important;
 
   &:hover {
     opacity: 0.8;
+  }
+  
+  &:focus,
+  &:active,
+  &:focus-visible {
+    outline: none !important;
+    -webkit-tap-highlight-color: transparent !important;
   }
 
   &__text {
@@ -408,6 +423,14 @@ body.mega-menu-open {
   width: 33px;
   height: 25px;
   gap: 5px;
+  -webkit-tap-highlight-color: transparent !important;
+  
+  &:focus,
+  &:active,
+  &:focus-visible {
+    outline: none !important;
+    -webkit-tap-highlight-color: transparent !important;
+  }
 
   .line {
     display: block;

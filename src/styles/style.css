@@ -420,6 +420,10 @@ body.mega-menu-open .site-header .hamburger .hamburger .line:nth-child(3) {
 .header-logo a {
   display: block;
   text-decoration: none;
+  -webkit-tap-highlight-color: transparent;
+}
+.header-logo a:focus {
+  outline: none;
 }
 .header-logo a svg {
   height: 4.89014rem;
@@ -455,13 +459,13 @@ body.mega-menu-open .site-header .hamburger .hamburger .line:nth-child(3) {
   align-items: center;
   justify-content: space-between;
   transition: background-color 0.2s ease;
+  -webkit-tap-highlight-color: transparent;
 }
 .header-quick-links button:hover {
   background-color: #f5efe9;
 }
 .header-quick-links button:focus {
-  outline: 2px solid #db574e;
-  outline-offset: 2px;
+  outline: none;
 }
 .header-quick-links button svg {
   width: 20px;
@@ -544,9 +548,13 @@ body.mega-menu-open .site-header .hamburger .hamburger .line:nth-child(3) {
   background: transparent;
   cursor: pointer;
   transition: opacity 150ms ease;
+  -webkit-tap-highlight-color: transparent;
 }
 .header-icon:hover {
   opacity: 0.8;
+}
+.header-icon:focus {
+  outline: none;
 }
 .header-icon svg {
   width: 100%;
@@ -587,9 +595,16 @@ body.mega-menu-open .site-header .hamburger .hamburger .line:nth-child(3) {
   background: transparent;
   cursor: pointer;
   transition: opacity 150ms ease;
+  -webkit-tap-highlight-color: transparent !important;
 }
 .menu-button:hover {
   opacity: 0.8;
+}
+.menu-button:focus,
+.menu-button:active,
+.menu-button:focus-visible {
+  outline: none !important;
+  -webkit-tap-highlight-color: transparent !important;
 }
 .menu-button__text {
   font-family: 'Averta', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
@@ -617,6 +632,13 @@ body.mega-menu-open .site-header .hamburger .hamburger .line:nth-child(3) {
   width: 33px;
   height: 25px;
   gap: 5px;
+  -webkit-tap-highlight-color: transparent !important;
+}
+.hamburger:focus,
+.hamburger:active,
+.hamburger:focus-visible {
+  outline: none !important;
+  -webkit-tap-highlight-color: transparent !important;
 }
 .hamburger .line {
   display: block;
@@ -781,16 +803,13 @@ body.mega-menu-open .site-header .hamburger .hamburger .line:nth-child(3) {
 .mega-menu .edge-image.bottom-edge img {
   filter: brightness(0) invert(1);
 }
-.mega-menu * {
+.mega-menu button:focus,
+.mega-menu a:focus,
+.mega-menu button:active,
+.mega-menu a:active,
+.mega-menu button:focus-visible,
+.mega-menu a:focus-visible {
   outline: none !important;
-  border: none !important;
-}
-.mega-menu *:focus,
-.mega-menu *:active,
-.mega-menu *:focus-visible {
-  outline: none !important;
-  border: none !important;
-  box-shadow: none !important;
 }
 .mega-menu__inner {
   display: flex;

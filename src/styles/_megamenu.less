@@ -43,17 +43,13 @@
     }
   }
 
-  // Remove all focus outlines and tab effects
-  * {
-    outline: none !important;
-    border: none !important;
-
+  // Remove focus outlines and tab highlights for menu elements
+  button,
+  a {
     &:focus,
     &:active,
     &:focus-visible {
       outline: none !important;
-      border: none !important;
-      box-shadow: none !important;
     }
   }
 }
