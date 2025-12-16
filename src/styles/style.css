@@ -497,8 +497,11 @@ body.mega-menu-open .site-header .hamburger .hamburger .line:nth-child(3) {
   transform: translateX(-50%) translateY(0);
 }
 .header-quick-links-dropdown a {
-  display: block;
-  padding: 0.75rem 1.25rem;
+  display: flex;
+  padding: 0.3125rem 1.25rem;
+  align-items: center;
+  gap: var(--spacing-sm, 0.625rem);
+  align-self: stretch;
   font-family: 'Averta', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   font-size: 0.9375rem;
   line-height: 1.4;
@@ -511,15 +514,15 @@ body.mega-menu-open .site-header .hamburger .hamburger .line:nth-child(3) {
 }
 @media (max-width: 767px) {
   .header-quick-links-dropdown {
-    left: 1rem;
-    right: 1rem;
-    width: auto;
-    transform: translateY(-10px);
+    left: 50%;
+    transform: translateX(-50%) translateY(-10px);
+    width: 357px;
     box-shadow: none;
-    border: 1px solid rgba(28, 54, 102, 0.1);
+    border: none;
+    padding-bottom: 2rem;
   }
   .header-quick-links-dropdown.is-open {
-    transform: translateY(0);
+    transform: translateX(-50%) translateY(0);
   }
 }
 .header-actions {
@@ -1423,6 +1426,7 @@ body.mega-menu-open {
   }
   .mega-menu .mega-menu__inner .mega-menu__footer {
     margin-top: auto;
+    transform: translateY(-120px);
   }
   .mega-menu .mega-menu__inner .mega-menu__footer .input-group {
     border-radius: 10px;
@@ -1458,6 +1462,7 @@ body.mega-menu-open {
   .mega-menu .mega-menu__inner .mega-menu__footer .container-fluid > .row {
     flex-direction: row-reverse;
     align-items: center;
+    transform: translateY(-15px);
   }
   .mega-menu .mega-menu__inner .mega-menu__footer .container-fluid > .row .mega-menu__social {
     justify-content: flex-start;

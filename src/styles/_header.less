@@ -241,8 +241,11 @@ body.mega-menu-open {
   }
 
   a {
-    display: block;
-    padding: 0.75rem 1.25rem;
+    display: flex;
+    padding: 0.3125rem 1.25rem;
+    align-items: center;
+    gap: var(--spacing-sm, 0.625rem);
+    align-self: stretch;
     font-family: @font-primary;
     font-size: 0.9375rem;
     line-height: 1.4;
@@ -255,17 +258,17 @@ body.mega-menu-open {
     }
   }
   
-  // Mobile styling - full width, no shadow
+  // Mobile styling - match button width
   @media (max-width: 767px) {
-    left: 1rem;
-    right: 1rem;
-    width: auto;
-    transform: translateY(-10px);
+    left: 50%;
+    transform: translateX(-50%) translateY(-10px);
+    width: 357px;
     box-shadow: none;
-    border: 1px solid fade(@color-blue-dark, 10%);
+    border: none;
+    padding-bottom: 2rem;
     
     &.is-open {
-      transform: translateY(0);
+      transform: translateX(-50%) translateY(0);
     }
   }
 }
