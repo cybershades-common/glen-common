@@ -3678,6 +3678,10 @@ img {
   height: auto;
   display: block;
   object-fit: cover;
+  vertical-align: bottom;
+}
+object {
+  vertical-align: bottom;
 }
 .full {
   width: 100%;
@@ -3701,7 +3705,7 @@ button {
 }
 .section .bottom-edge {
   position: absolute;
-  bottom: -1.5rem;
+  bottom: 0;
   left: 0;
   right: 0;
 }
@@ -3854,10 +3858,13 @@ button {
   z-index: 11;
 }
 .section .edge-image.bottom-edge {
-  bottom: -1.5rem;
+  bottom: 0;
 }
 .section .edge-image.top-edge {
   top: 0;
+}
+.section .edge-image.top-edge object {
+  vertical-align: top;
 }
 .what-we-do-section {
   padding: 3.75rem 0;

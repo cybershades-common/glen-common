@@ -114,6 +114,11 @@ img {
   height: auto;
   display: block;
   object-fit: cover;
+  vertical-align: bottom;
+}
+
+object {
+  vertical-align: bottom;
 }
 
 .full {
@@ -145,7 +150,7 @@ button {
 
   .bottom-edge {
     position: absolute;
-    bottom: -1.5rem;
+    bottom: 0;
     left: 0;
     right: 0;
   }
@@ -297,7 +302,7 @@ button {
 
 .masked-image-content-block {
   position: relative;
-  
+
 
   .frame {
     position: relative;
@@ -343,12 +348,17 @@ button {
     left: 0;
     right: 0;
     z-index: 11;
+
     &.bottom-edge {
-      bottom: -1.5rem;
+      bottom: 0;
     }
 
     &.top-edge {
       top: 0;
+
+      object {
+        vertical-align: top;
+      }
     }
   }
 }
@@ -640,7 +650,7 @@ button {
       border-radius: 0.875rem; // 14px
     }
 
-    > img {
+    >img {
       position: absolute;
       inset: 0;
       width: 100%;
@@ -1083,7 +1093,7 @@ button {
       right: 0;
     }
 
-    > img {
+    >img {
       width: 98%;
       height: 99%;
       object-fit: cover;
@@ -1343,7 +1353,7 @@ button {
       right: 0;
     }
 
-    > img {
+    >img {
       width: 98%;
       height: 99%;
       object-fit: cover;
@@ -2596,7 +2606,7 @@ button {
   width: 100%;
 
   // Background container
-  > div:first-child {
+  >div:first-child {
     position: absolute;
     top: 0;
     left: 0;
@@ -2659,5 +2669,3 @@ button {
  .arrow-navigation__feather-img {
     object-fit: initial;
  }*/
-
-
