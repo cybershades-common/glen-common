@@ -361,8 +361,18 @@
             
             if (targetLayer) {
               if (isMobile) {
+                // Set higher z-index for target layer to appear over current
+                targetLayer.style.zIndex = '1005';
                 slideInSubmenu(targetLayer, 'left');
-                slideOutSubmenu(currentSubmenu, 'right');
+                
+                // Delay slide out to let the previous menu appear first
+                setTimeout(() => {
+                  slideOutSubmenu(currentSubmenu, 'right');
+                  // Reset z-index after animation completes
+                  setTimeout(() => {
+                    targetLayer.style.zIndex = '';
+                  }, 400);
+                }, 200);
               } else {
                 currentSubmenu.classList.remove('is-active');
                 if (menuAnimations && menuAnimations.resetSubmenuItems) {
