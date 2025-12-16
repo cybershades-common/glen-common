@@ -1396,7 +1396,7 @@ body.mega-menu-open {
 }
 .hero .bottom-edge {
   position: absolute;
-  bottom: -2.75%;
+  bottom: 0;
   width: 100%;
   z-index: 1;
 }
