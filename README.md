@@ -32,16 +32,26 @@ npm run dev
 
 ## Deployment
 
-### GitHub Pages Deployment
+### GitHub Pages Deployment (Automatic)
 
-1. Build the project:
-```bash
-npm run build
-```
+The project is set up for automatic deployment via GitHub Actions:
 
-2. The project is ready for GitHub Pages deployment. The build process compiles LESS to CSS.
+1. **Enable GitHub Pages in Repository Settings:**
+   - Go to your repository → Settings → Pages
+   - Under "Source", select **"GitHub Actions"** (not "Deploy from a branch")
+   - Save the settings
 
-3. GitHub Actions workflow is set up to automatically build on push to main/master branch.
+2. **Push to main/master branch:**
+   ```bash
+   git add .
+   git commit -m "Your commit message"
+   git push origin main
+   ```
+
+3. **The workflow will automatically:**
+   - Build the CSS from LESS files
+   - Deploy to GitHub Pages
+   - Your site will be available at `https://[username].github.io/[repository-name]`
 
 ### Manual Deployment
 
@@ -57,7 +67,7 @@ git commit -m "Build for deployment"
 git push
 ```
 
-3. Enable GitHub Pages in repository settings and select the main branch.
+3. If using branch-based deployment, enable GitHub Pages in repository settings and select the main branch.
 
 ## Project Structure
 
