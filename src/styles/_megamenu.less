@@ -123,15 +123,23 @@
   }
 
   .mega-menu__quick-links-dropdown {
-    display: none;
     background-color: @color-white;
     border-radius: 10px;
     margin-top: 10px;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
     overflow: hidden;
+    z-index: 9999; // Above submenu overlays
+    
+    // Initial state - hidden and slid up
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-10px);
+    transition: all 0.3s cubic-bezier(0.4, 0.0, 0.2, 1);
 
     &.is-open {
-      display: block;
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
     }
 
     a {
