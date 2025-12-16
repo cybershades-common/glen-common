@@ -30,23 +30,54 @@ npm run watch
 npm run dev
 ```
 
+## Deployment
+
+### GitHub Pages Deployment
+
+1. Build the project:
+```bash
+npm run build
+```
+
+2. The project is ready for GitHub Pages deployment. The build process compiles LESS to CSS.
+
+3. GitHub Actions workflow is set up to automatically build on push to main/master branch.
+
+### Manual Deployment
+
+1. Build CSS:
+```bash
+npm run build
+```
+
+2. Commit and push to your repository:
+```bash
+git add .
+git commit -m "Build for deployment"
+git push
+```
+
+3. Enable GitHub Pages in repository settings and select the main branch.
+
 ## Project Structure
 
 ```
 ├── src/
 │   ├── styles/
-│   │   ├── main.less
-│   │   ├── variables.less
-│   │   ├── mega-menu.less
-│   │   └── components.less
+│   │   ├── style.less
+│   │   ├── _variables.less
+│   │   ├── _megamenu.less
+│   │   └── _*.less
 │   ├── scripts/
-│   │   └── main.js
+│   │   ├── main.js
+│   │   └── megamenu-animations.js
 │   └── index.html
 ├── assets/
 │   ├── images/
 │   └── fonts/
-├── dist/
-│   └── css/
+├── .github/
+│   └── workflows/
+│       └── deploy.yml
 └── package.json
 ```
 
