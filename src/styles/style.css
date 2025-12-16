@@ -481,7 +481,7 @@ body.mega-menu-open .site-header .hamburger .hamburger .line:nth-child(3) {
   border-radius: 10px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   overflow: hidden;
-  z-index: 1;
+  z-index: 99999;
   opacity: 0;
   visibility: hidden;
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
@@ -503,6 +503,19 @@ body.mega-menu-open .site-header .hamburger .hamburger .line:nth-child(3) {
 }
 .header-quick-links-dropdown a:hover {
   background-color: #faf7f4;
+}
+@media (max-width: 767px) {
+  .header-quick-links-dropdown {
+    left: 1rem;
+    right: 1rem;
+    width: auto;
+    transform: translateY(-10px);
+    box-shadow: none;
+    border: 1px solid rgba(28, 54, 102, 0.1);
+  }
+  .header-quick-links-dropdown.is-open {
+    transform: translateY(0);
+  }
 }
 .header-actions {
   display: flex;
@@ -842,7 +855,7 @@ body.mega-menu-open .site-header .hamburger .hamburger .line:nth-child(3) {
   margin-top: 10px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   overflow: hidden;
-  z-index: 1;
+  z-index: 99999;
   opacity: 0;
   visibility: hidden;
   transform: translateY(-10px);
@@ -1280,6 +1293,11 @@ body.mega-menu-open {
     left: 0;
     transform: none;
     margin-bottom: 20px;
+  }
+  .mega-menu__quick-links .mega-menu__quick-links-dropdown {
+    width: 100%;
+    box-shadow: none;
+    border: 1px solid rgba(28, 54, 102, 0.1);
   }
 }
 @media (max-width: 768px) {

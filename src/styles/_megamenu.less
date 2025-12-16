@@ -128,7 +128,7 @@
     margin-top: 10px;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
     overflow: hidden;
-    z-index: 1; // Relative to mega menu container
+    z-index: 99999; // Must be higher than submenu overlays (1000-1004)
     
     // Initial state - hidden and slid up
     opacity: 0;
@@ -677,6 +677,12 @@ body.mega-menu-open {
     left: 0;
     transform: none;
     margin-bottom: 20px;
+    
+    .mega-menu__quick-links-dropdown {
+      width: 100%;
+      box-shadow: none;
+      border: 1px solid fade(@color-blue-dark, 10%);
+    }
   }
 }
 

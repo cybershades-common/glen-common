@@ -347,8 +347,10 @@
             // Going back to main menu (first layer back to same content)
             if (isFirstLayer && currentSubmenu.getAttribute('data-submenu-content') === backTo) {
               if (isMobile) {
+                // Mobile: slide out to right (back to main menu)
                 slideOutSubmenu(currentSubmenu, 'right');
               } else {
+                // Desktop: traditional hide
                 allSubmenus.forEach(submenu => {
                   submenu.classList.remove('is-active');
                   if (menuAnimations && menuAnimations.resetSubmenuItems) {

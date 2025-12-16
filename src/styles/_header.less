@@ -224,7 +224,7 @@ body.mega-menu-open {
   border-radius: 10px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   overflow: hidden;
-  z-index: 1; // Relative to header which has z-index 10000
+  z-index: 99999; // Must be higher than mega menu (999) and submenu overlays (1000-1004)
   
   // Initial state - hidden and slid up
   opacity: 0;
@@ -249,6 +249,20 @@ body.mega-menu-open {
 
     &:hover {
       background-color: @color-sand-20;
+    }
+  }
+  
+  // Mobile styling - full width, no shadow
+  @media (max-width: 767px) {
+    left: 1rem;
+    right: 1rem;
+    width: auto;
+    transform: translateY(-10px);
+    box-shadow: none;
+    border: 1px solid fade(@color-blue-dark, 10%);
+    
+    &.is-open {
+      transform: translateY(0);
     }
   }
 }
