@@ -613,9 +613,9 @@
     function updatePagination(activeIndex) {
       paginationDots.forEach((dot, index) => {
         if (index === activeIndex) {
-          dot.classList.add('co-curricular-carousel .pagination-dot--active');
+          dot.classList.add('pagination-dot--active');
         } else {
-          dot.classList.remove('co-curricular-carousel .pagination-dot--active');
+          dot.classList.remove('pagination-dot--active');
         }
       });
     }
