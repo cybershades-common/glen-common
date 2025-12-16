@@ -1,0 +1,45 @@
+<div class="js-ticker">
+  <ul class="wrapper">
+    <li style="width: 100vw"></li>
+    <li>Lorem ipsum dolor sit amet.</li>
+    <li>Consectetur adipiscing elit.</li>
+    <li>(Pages of illustrations.)</li>
+  </ul>
+</div>
+
+<div class="js-ticker">
+  <ul class="wrapper">
+    <li>Ut enim ad minim veniam.</li>
+    <li>Duis aute irure dolor in reprehenderit in voluptate.</li>
+    <li>(Est laborum.)</li>
+  </ul>
+</div>
+
+<script
+  type="text/javascript"
+  src="https://code.jquery.com/jquery-2.2.4.js"
+></script>
+body { background: black; overflow-x: hidden; } .js-ticker { width: 100vw;
+height: 100vh; position: relative; display:flex; align-items:center; }
+.js-ticker .wrapper { position: absolute; white-space: nowrap; padding: 0;
+will-change: transform; } .js-ticker li { list-style: none; padding: 0;
+font-family: sans-serif; color: white; font-weight: 300; font-size: 20vw;
+display: inline-block; margin-right: 30px; } const dur = 60; const wrap =
+gsap.utils.wrap(0, 1); function sequence(){
+document.querySelectorAll('.js-ticker .wrapper').forEach(ticker => { let
+totalDistance; $(ticker).append($(ticker.querySelectorAll("li")).clone()); const
+items = ticker.querySelectorAll("li"); let anim; let startPos; const draggable =
+new Draggable(ticker, { type: "x", trigger: ticker, throwProps: true,
+ease:"power1.in", onPressInit: function() { anim.pause(); startPos = this.x; },
+onDrag: function() { let prog = wrap(-this.x / totalDistance);
+anim.progress(prog); }, onThrowUpdate: function() { let prog = wrap(-this.x /
+totalDistance); anim.progress(prog); }, onThrowComplete: function() {
+anim.play(); gsap.fromTo(anim, {timeScale:0}, {duration: 1, timeScale:1,
+ease:"power1.in"}); }, }); if(anim) anim.play(0); totalDistance =
+$(ticker).width() / 2; anim = gsap.to(ticker, { duration: dur, x:
+-totalDistance, ease: "none", repeat: -1, overwrite: true }); let cachedWidth =
+$(window).width(); $(window).resize(function(){ var newWidth =
+$(window).width(); if(newWidth !== cachedWidth){ if(anim) anim.play(0);
+totalDistance = $(ticker).width() / 2; anim = gsap.to(ticker, { duration: dur,
+x: -totalDistance, ease: "none", repeat: -1, overwrite: true }); cachedWidth =
+newWidth; } }); }); } sequence();
