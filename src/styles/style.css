@@ -1294,6 +1294,10 @@ body.mega-menu-open {
   .mega-menu .mega-menu__inner .mega-menu__content .container-fluid {
     padding: 0;
   }
+  .mega-menu .mega-menu__inner .mega-menu__subnav-container {
+    min-height: auto;
+    width: 100%;
+  }
   .mega-menu .mega-menu__inner .mega-menu__subnav-container h4,
   .mega-menu .mega-menu__inner .mega-menu__subnav-container .mega-menu__subnav-item--title span {
     color: var(--tertiary-blue-dark, #1C3666);
@@ -1335,7 +1339,6 @@ body.mega-menu-open {
   .mega-menu .mega-menu__inner .mega-menu__footer .container-fluid > .row {
     flex-direction: row-reverse;
     align-items: center;
-    margin-bottom: 4rem;
   }
   .mega-menu .mega-menu__inner .mega-menu__footer .container-fluid > .row .mega-menu__social {
     justify-content: flex-start;
