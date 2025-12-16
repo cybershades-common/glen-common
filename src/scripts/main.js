@@ -172,60 +172,65 @@
         return;
       }
       
-      // Remove is-active class and add slide-out animation
-      submenu.classList.remove('is-active');
-      
+      // Add slide-out animation class but KEEP is-active until animation completes
       if (direction === 'right') {
         submenu.classList.add('slide-out-right');
       } else {
         submenu.classList.add('slide-out-left');
       }
       
-      // Reset submenu items animation
+      // Remove is-active class after animation completes (400ms as per CSS transition)
+      setTimeout(() => {
+        submenu.classList.remove('is-active');
+        submenu.classList.remove('slide-out-right', 'slide-out-left', 'slide-in-right', 'slide-in-left');
+      }, 400);
+      
+      // Reset submenu items animation immediately
       if (menuAnimations && menuAnimations.resetSubmenuItems) {
         menuAnimations.resetSubmenuItems(submenu);
       }
     }
 
-    // Handle menu item clicks - open submenu on mobile/desktop, don't close menu
+    // ========================================================================
+    // MAIN MENU NAVIGATION - Handle clicks on main menu items to open submenus
+    // ========================================================================
     const menuLinks = megaMenu.querySelectorAll('.mega-menu__nav a[data-submenu]');
     menuLinks.forEach(link => {
       link.addEventListener('click', function (e) {
-        // Prevent default navigation and stop propagation
         e.preventDefault();
         e.stopPropagation();
         
         const submenuId = this.getAttribute('data-submenu');
         const isMobile = window.innerWidth < 768;
         
-        // Hide all submenus with sliding animation on mobile
-        allSubmenus.forEach(submenu => {
-          if (submenu.classList.contains('is-active')) {
-            slideOutSubmenu(submenu, 'left');
-          }
-        });
-        
-        // Show the corresponding submenu - try layer 1 first, then any layer, then without layer
-        let targetSubmenu = megaMenu.querySelector(`.mega-menu__subnav[data-submenu-content="${submenuId}"][data-layer="1"]`);
-        if (!targetSubmenu) {
-          targetSubmenu = megaMenu.querySelector(`.mega-menu__subnav[data-submenu-content="${submenuId}"][data-layer]`);
-        }
-        if (!targetSubmenu) {
-          targetSubmenu = megaMenu.querySelector(`.mega-menu__subnav[data-submenu-content="${submenuId}"]`);
-        }
+        // Find target submenu (prefer layer 1)
+        let targetSubmenu = megaMenu.querySelector(`.mega-menu__subnav[data-submenu-content="${submenuId}"][data-layer="1"]`) ||
+                           megaMenu.querySelector(`.mega-menu__subnav[data-submenu-content="${submenuId}"][data-layer]`) ||
+                           megaMenu.querySelector(`.mega-menu__subnav[data-submenu-content="${submenuId}"]`);
         
         if (targetSubmenu) {
-          // Delay showing new submenu to allow previous one to slide out
           if (isMobile) {
-            setTimeout(() => {
-              slideInSubmenu(targetSubmenu, 'right');
-            }, 200);
+            // Mobile: Show new submenu immediately, others will slide out after delay
+            slideInSubmenu(targetSubmenu, 'right');
+            allSubmenus.forEach(submenu => {
+              if (submenu !== targetSubmenu && submenu.classList.contains('is-active')) {
+                slideOutSubmenu(submenu, 'left');
+              }
+            });
           } else {
+            // Desktop: Traditional behavior
+            allSubmenus.forEach(submenu => {
+              submenu.classList.remove('is-active');
+              if (menuAnimations && menuAnimations.resetSubmenuItems) {
+                menuAnimations.resetSubmenuItems(submenu);
+              }
+            });
             slideInSubmenu(targetSubmenu, 'right');
           }
         }
       });
     });
+    // ========================================================================
 
     // Hide all submenus initially and show only layer 1 for learning
     const allSubmenus = megaMenu.querySelectorAll('.mega-menu__subnav[data-submenu-content]');
@@ -275,61 +280,16 @@
       });
     });
 
-    // Layer navigation - click handlers for navigating between layers
+    // ========================================================================
+    // SUBMENU LAYER NAVIGATION - Handle clicks to go to deeper submenu levels
+    // ========================================================================
     function handleLayerNavigation() {
-      // Handle clicking on items that navigate to next layer
       const clickableItems = megaMenu.querySelectorAll('.mega-menu__subnav-item--clickable');
+      
       clickableItems.forEach(item => {
-        // Handle click on the item itself
-        item.addEventListener('click', function(e) {
-          e.preventDefault();
-          e.stopPropagation();
-          
-          const nextLayer = this.getAttribute('data-next-layer');
-          const isMobile = window.innerWidth < 768;
-          
-          if (nextLayer) {
-            // Hide current submenu with sliding animation on mobile
-            const currentSubmenu = this.closest('.mega-menu__subnav');
-            if (currentSubmenu && isMobile) {
-              slideOutSubmenu(currentSubmenu, 'left');
-            } else {
-              // Desktop - hide all submenus normally
-              allSubmenus.forEach(submenu => {
-                submenu.classList.remove('is-active');
-                if (menuAnimations && menuAnimations.resetSubmenuItems) {
-                  menuAnimations.resetSubmenuItems(submenu);
-                }
-              });
-            }
-            
-            // Show next layer - try with data-layer first, then without
-            let targetLayer = megaMenu.querySelector(`.mega-menu__subnav[data-submenu-content="${nextLayer}"][data-layer]`);
-            if (!targetLayer) {
-              targetLayer = megaMenu.querySelector(`.mega-menu__subnav[data-submenu-content="${nextLayer}"]`);
-            }
-            
-            if (targetLayer) {
-              if (isMobile) {
-                // Mobile - slide in the next layer
-                setTimeout(() => {
-                  slideInSubmenu(targetLayer, 'right');
-                }, 200);
-              } else {
-                // Desktop - show normally
-                targetLayer.classList.add('is-active');
-                if (menuAnimations && menuAnimations.animateSubmenuItems) {
-                  menuAnimations.animateSubmenuItems(targetLayer);
-                }
-              }
-            }
-          }
-        });
-        
-        // Also handle clicks on links inside clickable items
-        const link = item.querySelector('a');
-        if (link) {
-          link.addEventListener('click', function(e) {
+        // Handle both item and link clicks with same logic
+        [item, item.querySelector('a')].filter(Boolean).forEach(element => {
+          element.addEventListener('click', function(e) {
             e.preventDefault();
             e.stopPropagation();
             
@@ -337,34 +297,25 @@
             const isMobile = window.innerWidth < 768;
             
             if (nextLayer) {
-              // Hide current submenu with sliding animation on mobile
-              const currentSubmenu = item.closest('.mega-menu__subnav');
-              if (currentSubmenu && isMobile) {
-                slideOutSubmenu(currentSubmenu, 'left');
-              } else {
-                // Desktop - hide all submenus normally
-                allSubmenus.forEach(submenu => {
-                  submenu.classList.remove('is-active');
-                  if (menuAnimations && menuAnimations.resetSubmenuItems) {
-                    menuAnimations.resetSubmenuItems(submenu);
-                  }
-                });
-              }
-              
-              // Show next layer
-              let targetLayer = megaMenu.querySelector(`.mega-menu__subnav[data-submenu-content="${nextLayer}"][data-layer]`);
-              if (!targetLayer) {
-                targetLayer = megaMenu.querySelector(`.mega-menu__subnav[data-submenu-content="${nextLayer}"]`);
-              }
+              // Find target layer
+              let targetLayer = megaMenu.querySelector(`.mega-menu__subnav[data-submenu-content="${nextLayer}"][data-layer]`) ||
+                               megaMenu.querySelector(`.mega-menu__subnav[data-submenu-content="${nextLayer}"]`);
               
               if (targetLayer) {
+                const currentSubmenu = item.closest('.mega-menu__subnav');
+                
                 if (isMobile) {
-                  // Mobile - slide in the next layer
-                  setTimeout(() => {
-                    slideInSubmenu(targetLayer, 'right');
-                  }, 200);
+                  // Mobile: Show new layer immediately, hide current after
+                  slideInSubmenu(targetLayer, 'right');
+                  if (currentSubmenu) slideOutSubmenu(currentSubmenu, 'left');
                 } else {
-                  // Desktop - show normally
+                  // Desktop: Traditional behavior
+                  allSubmenus.forEach(submenu => {
+                    submenu.classList.remove('is-active');
+                    if (menuAnimations && menuAnimations.resetSubmenuItems) {
+                      menuAnimations.resetSubmenuItems(submenu);
+                    }
+                  });
                   targetLayer.classList.add('is-active');
                   if (menuAnimations && menuAnimations.animateSubmenuItems) {
                     menuAnimations.animateSubmenuItems(targetLayer);
@@ -373,95 +324,28 @@
               }
             }
           });
-        }
+        });
       });
 
-      // Handle back button clicks
+      // ====================================================================
+      // BACK BUTTON NAVIGATION - Handle clicks to go back to previous level
+      // ====================================================================
       const backButtons = megaMenu.querySelectorAll('.mega-menu__subnav-item--back');
+      
       backButtons.forEach(backButton => {
-        // Handle click on the back button itself
-        backButton.addEventListener('click', function(e) {
-          e.preventDefault();
-          e.stopPropagation();
-          
-          const backTo = this.getAttribute('data-back-to');
-          const currentSubmenu = this.closest('.mega-menu__subnav');
-          
-          // Check if this is the first layer (data-layer="1" or no data-layer) of a submenu
-          const isFirstLayer = !currentSubmenu.hasAttribute('data-layer') || currentSubmenu.getAttribute('data-layer') === '1';
-          
-          const isMobile = window.innerWidth < 768;
-          
-          if (isFirstLayer && currentSubmenu.getAttribute('data-submenu-content') === backTo) {
-            // If we're on the first layer and trying to go back to the same submenu content,
-            // it means we should go back to the main menu (close all submenus)
-            if (isMobile) {
-              slideOutSubmenu(currentSubmenu, 'right');
-            } else {
-              allSubmenus.forEach(submenu => {
-                submenu.classList.remove('is-active');
-                if (menuAnimations && menuAnimations.resetSubmenuItems) {
-                  menuAnimations.resetSubmenuItems(submenu);
-                }
-              });
-            }
-          } else if (backTo) {
-            // Normal back navigation - hide current submenu first
-            if (isMobile) {
-              slideOutSubmenu(currentSubmenu, 'right');
-            } else {
-              allSubmenus.forEach(submenu => {
-                submenu.classList.remove('is-active');
-                if (menuAnimations && menuAnimations.resetSubmenuItems) {
-                  menuAnimations.resetSubmenuItems(submenu);
-                }
-              });
-            }
-            
-            // Show target layer - try with data-layer="1" first, then any layer, then without
-            let targetLayer = megaMenu.querySelector(`.mega-menu__subnav[data-submenu-content="${backTo}"][data-layer="1"]`);
-            if (!targetLayer) {
-              targetLayer = megaMenu.querySelector(`.mega-menu__subnav[data-submenu-content="${backTo}"][data-layer]`);
-            }
-            if (!targetLayer) {
-              targetLayer = megaMenu.querySelector(`.mega-menu__subnav[data-submenu-content="${backTo}"]`);
-            }
-            
-            if (targetLayer) {
-              if (isMobile) {
-                // Mobile - slide in the previous layer from the left
-                setTimeout(() => {
-                  slideInSubmenu(targetLayer, 'left');
-                }, 200);
-              } else {
-                // Desktop - show normally
-                targetLayer.classList.add('is-active');
-                if (menuAnimations && menuAnimations.animateSubmenuItems) {
-                  menuAnimations.animateSubmenuItems(targetLayer);
-                }
-              }
-            }
-          }
-        });
-        
-        // Also handle clicks on links inside back buttons
-        const link = backButton.querySelector('a');
-        if (link) {
-          link.addEventListener('click', function(e) {
+        // Handle both button and link clicks with same logic
+        [backButton, backButton.querySelector('a')].filter(Boolean).forEach(element => {
+          element.addEventListener('click', function(e) {
             e.preventDefault();
             e.stopPropagation();
             
             const backTo = backButton.getAttribute('data-back-to');
             const currentSubmenu = backButton.closest('.mega-menu__subnav');
-            
-            // Check if this is the first layer (data-layer="1" or no data-layer) of a submenu
             const isFirstLayer = !currentSubmenu.hasAttribute('data-layer') || currentSubmenu.getAttribute('data-layer') === '1';
-            
             const isMobile = window.innerWidth < 768;
             
+            // Going back to main menu (first layer back to same content)
             if (isFirstLayer && currentSubmenu.getAttribute('data-submenu-content') === backTo) {
-              // If we're on the first layer and trying to go back to the same submenu content,
-              // it means we should go back to the main menu (close all submenus)
               if (isMobile) {
                 slideOutSubmenu(currentSubmenu, 'right');
               } else {
@@ -472,36 +356,26 @@
                   }
                 });
               }
-            } else if (backTo) {
-              // Normal back navigation - hide current submenu first
-              if (isMobile) {
-                slideOutSubmenu(currentSubmenu, 'right');
-              } else {
-                allSubmenus.forEach(submenu => {
-                  submenu.classList.remove('is-active');
-                  if (menuAnimations && menuAnimations.resetSubmenuItems) {
-                    menuAnimations.resetSubmenuItems(submenu);
-                  }
-                });
-              }
-              
-              // Show target layer
-              let targetLayer = megaMenu.querySelector(`.mega-menu__subnav[data-submenu-content="${backTo}"][data-layer="1"]`);
-              if (!targetLayer) {
-                targetLayer = megaMenu.querySelector(`.mega-menu__subnav[data-submenu-content="${backTo}"][data-layer]`);
-              }
-              if (!targetLayer) {
-                targetLayer = megaMenu.querySelector(`.mega-menu__subnav[data-submenu-content="${backTo}"]`);
-              }
+            }
+            // Going back to previous layer
+            else if (backTo) {
+              let targetLayer = megaMenu.querySelector(`.mega-menu__subnav[data-submenu-content="${backTo}"][data-layer="1"]`) ||
+                               megaMenu.querySelector(`.mega-menu__subnav[data-submenu-content="${backTo}"][data-layer]`) ||
+                               megaMenu.querySelector(`.mega-menu__subnav[data-submenu-content="${backTo}"]`);
               
               if (targetLayer) {
                 if (isMobile) {
-                  // Mobile - slide in the previous layer from the left
-                  setTimeout(() => {
-                    slideInSubmenu(targetLayer, 'left');
-                  }, 200);
+                  // Mobile: Show previous layer immediately, hide current after
+                  slideInSubmenu(targetLayer, 'left');
+                  slideOutSubmenu(currentSubmenu, 'right');
                 } else {
-                  // Desktop - show normally
+                  // Desktop: Traditional behavior
+                  allSubmenus.forEach(submenu => {
+                    submenu.classList.remove('is-active');
+                    if (menuAnimations && menuAnimations.resetSubmenuItems) {
+                      menuAnimations.resetSubmenuItems(submenu);
+                    }
+                  });
                   targetLayer.classList.add('is-active');
                   if (menuAnimations && menuAnimations.animateSubmenuItems) {
                     menuAnimations.animateSubmenuItems(targetLayer);
@@ -510,9 +384,10 @@
               }
             }
           });
-        }
+        });
       });
     }
+    // ========================================================================
 
     // Initialize layer navigation
     handleLayerNavigation();
@@ -520,7 +395,7 @@
     // Initialize circle image layer switching
     initCircleImageLayerSwitching();
 
-    // Quick Links Accordion
+    // Quick Links Accordion - Desktop version
     const quickLinksToggle = document.getElementById('quickLinksToggle');
     const quickLinksDropdown = document.getElementById('quickLinksDropdown');
 
@@ -536,6 +411,26 @@
           quickLinksDropdown.classList.add('is-open');
           quickLinksToggle.classList.add('is-open');
           quickLinksToggle.setAttribute('aria-expanded', 'true');
+        }
+      });
+    }
+
+    // Quick Links Accordion - Mobile version
+    const mobileQuickLinksToggle = document.getElementById('mobileQuickLinksToggle');
+    const mobileQuickLinksDropdown = document.getElementById('mobileQuickLinksDropdown');
+
+    if (mobileQuickLinksToggle && mobileQuickLinksDropdown) {
+      mobileQuickLinksToggle.addEventListener('click', function () {
+        const isOpen = mobileQuickLinksDropdown.classList.contains('is-open');
+        
+        if (isOpen) {
+          mobileQuickLinksDropdown.classList.remove('is-open');
+          mobileQuickLinksToggle.classList.remove('is-open');
+          mobileQuickLinksToggle.setAttribute('aria-expanded', 'false');
+        } else {
+          mobileQuickLinksDropdown.classList.add('is-open');
+          mobileQuickLinksToggle.classList.add('is-open');
+          mobileQuickLinksToggle.setAttribute('aria-expanded', 'true');
         }
       });
     }
