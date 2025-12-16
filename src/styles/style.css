@@ -1303,6 +1303,8 @@ body.mega-menu-open {
   .mega-menu .mega-menu__inner .mega-menu__subnav-container {
     min-height: auto;
     width: 100%;
+    position: relative;
+    overflow: hidden;
   }
   .mega-menu .mega-menu__inner .mega-menu__subnav-container h4,
   .mega-menu .mega-menu__inner .mega-menu__subnav-container .mega-menu__subnav-item--title span {
@@ -1324,20 +1326,48 @@ body.mega-menu-open {
     top: 13.5rem;
     left: 0;
     list-style: none;
-    right: 1rem;
+    right: 0;
     padding: 1rem 1.25rem;
     margin: 0;
-    opacity: 0;
-    transition: all 0.3s ease;
-    right: 0;
     background: #fff;
     bottom: 0;
     overflow-y: auto;
-    margin-left: 50%;
+    z-index: 1000;
+    transform: translateX(100%);
+    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   }
   .mega-menu .mega-menu__inner .mega-menu__subnav-container .mega-menu__subnav.is-active {
-    opacity: 1;
-    margin-left: 0;
+    transform: translateX(0);
+  }
+  .mega-menu .mega-menu__inner .mega-menu__subnav-container .mega-menu__subnav.slide-in-right {
+    transform: translateX(100%);
+  }
+  .mega-menu .mega-menu__inner .mega-menu__subnav-container .mega-menu__subnav.slide-in-right.is-active {
+    transform: translateX(0);
+  }
+  .mega-menu .mega-menu__inner .mega-menu__subnav-container .mega-menu__subnav.slide-out-right {
+    transform: translateX(100%);
+  }
+  .mega-menu .mega-menu__inner .mega-menu__subnav-container .mega-menu__subnav.slide-in-left {
+    transform: translateX(-100%);
+  }
+  .mega-menu .mega-menu__inner .mega-menu__subnav-container .mega-menu__subnav.slide-in-left.is-active {
+    transform: translateX(0);
+  }
+  .mega-menu .mega-menu__inner .mega-menu__subnav-container .mega-menu__subnav.slide-out-left {
+    transform: translateX(-100%);
+  }
+  .mega-menu .mega-menu__inner .mega-menu__subnav-container .mega-menu__subnav[data-layer="1"] {
+    z-index: 1001;
+  }
+  .mega-menu .mega-menu__inner .mega-menu__subnav-container .mega-menu__subnav[data-layer="2"] {
+    z-index: 1002;
+  }
+  .mega-menu .mega-menu__inner .mega-menu__subnav-container .mega-menu__subnav[data-layer="3"] {
+    z-index: 1003;
+  }
+  .mega-menu .mega-menu__inner .mega-menu__subnav-container .mega-menu__subnav[data-layer="4"] {
+    z-index: 1004;
   }
   .mega-menu .mega-menu__inner .mega-menu__footer {
     margin-top: auto;
