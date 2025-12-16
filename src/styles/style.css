@@ -1336,12 +1336,47 @@ body.mega-menu-open {
   .mega-menu .mega-menu__inner .mega-menu__footer {
     margin-top: auto;
   }
+  .mega-menu .mega-menu__inner .mega-menu__footer .input-group {
+    border-radius: 10px;
+    background: var(--tints-sand-20, #FAF7F4);
+    margin-bottom: 2rem;
+    padding: 0.625rem 1.25rem;
+  }
+  .mega-menu .mega-menu__inner .mega-menu__footer .input-group input {
+    font-size: 0.9375rem;
+    color: #1c3666;
+    background: transparent;
+  }
+  .mega-menu .mega-menu__inner .mega-menu__footer .input-group .input-group-text {
+    background: none;
+    color: #1c3666;
+  }
+  .mega-menu .mega-menu__inner .mega-menu__footer .input-group ::-webkit-input-placeholder {
+    /* Chrome/Opera/Safari */
+    color: #1c3666;
+  }
+  .mega-menu .mega-menu__inner .mega-menu__footer .input-group ::-moz-placeholder {
+    /* Firefox 19+ */
+    color: #1c3666;
+  }
+  .mega-menu .mega-menu__inner .mega-menu__footer .input-group :-ms-input-placeholder {
+    /* IE 10+ */
+    color: #1c3666;
+  }
+  .mega-menu .mega-menu__inner .mega-menu__footer .input-group :-moz-placeholder {
+    /* Firefox 18- */
+    color: #1c3666;
+  }
   .mega-menu .mega-menu__inner .mega-menu__footer .container-fluid > .row {
     flex-direction: row-reverse;
     align-items: center;
   }
   .mega-menu .mega-menu__inner .mega-menu__footer .container-fluid > .row .mega-menu__social {
     justify-content: flex-start;
+  }
+  .mega-menu .mega-menu__inner .mega-menu__footer .container-fluid > .row .mega-menu__social a svg {
+    max-width: inherit;
+    height: 2.25rem;
   }
   .mega-menu .mega-menu__inner .mega-menu__footer .container-fluid > .row .mega-menu__footer-links {
     justify-content: flex-end;
@@ -3182,7 +3217,7 @@ h1 .hero__title-script {
     font-size: 2.5rem;
   }
   body .mobile-only {
-    display: flex;
+    display: block;
   }
 }
 :root {

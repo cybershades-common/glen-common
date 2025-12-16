@@ -706,6 +706,7 @@ body.mega-menu-open {
       .mega-menu__subnav-container {
         min-height: auto;
         width: 100%;
+
         h4,
         .mega-menu__subnav-item--title span {
           color: var(--tertiary-blue-dark, #1C3666);
@@ -757,15 +758,62 @@ body.mega-menu-open {
       .mega-menu__footer {
         margin-top: auto;
 
+        .input-group {
+          border-radius: 10px;
+          background: var(--tints-sand-20, #FAF7F4);
+          margin-bottom: 2rem;
+          padding: 0.625rem 1.25rem;
+
+          input {
+            font-size: 0.9375rem;
+            color: @tertiary-blue-dark;
+            background: transparent;
+          }
+
+          .input-group-text {
+            background: none;
+            color: @tertiary-blue-dark;
+          }
+
+          ::-webkit-input-placeholder {
+            /* Chrome/Opera/Safari */
+            color: @tertiary-blue-dark;
+          }
+
+          ::-moz-placeholder {
+            /* Firefox 19+ */
+            color: @tertiary-blue-dark;
+          }
+
+          :-ms-input-placeholder {
+            /* IE 10+ */
+            color: @tertiary-blue-dark;
+          }
+
+          :-moz-placeholder {
+            /* Firefox 18- */
+            color: @tertiary-blue-dark;
+          }
+
+
+        }
+
         .container-fluid {
           >.row {
             flex-direction: row-reverse;
             align-items: center;
-      
-            .mega-menu__social{
+
+            .mega-menu__social {
               justify-content: flex-start;
+              a{
+                svg{
+                  max-width: inherit;
+                  height: 2.25rem;
+                }
+              }
             }
-            .mega-menu__footer-links{
+
+            .mega-menu__footer-links {
               justify-content: flex-end;
             }
           }
