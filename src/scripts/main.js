@@ -292,9 +292,22 @@
           e.stopPropagation();
           
           const backTo = this.getAttribute('data-back-to');
+          const currentSubmenu = this.closest('.mega-menu__subnav');
           
-          if (backTo) {
-            // Hide all submenus first
+          // Check if this is the first layer (data-layer="1" or no data-layer) of a submenu
+          const isFirstLayer = !currentSubmenu.hasAttribute('data-layer') || currentSubmenu.getAttribute('data-layer') === '1';
+          
+          if (isFirstLayer && currentSubmenu.getAttribute('data-submenu-content') === backTo) {
+            // If we're on the first layer and trying to go back to the same submenu content,
+            // it means we should go back to the main menu (close all submenus)
+            allSubmenus.forEach(submenu => {
+              submenu.classList.remove('is-active');
+              if (menuAnimations && menuAnimations.resetSubmenuItems) {
+                menuAnimations.resetSubmenuItems(submenu);
+              }
+            });
+          } else if (backTo) {
+            // Normal back navigation - hide all submenus first
             allSubmenus.forEach(submenu => {
               submenu.classList.remove('is-active');
               if (menuAnimations && menuAnimations.resetSubmenuItems) {
@@ -328,9 +341,22 @@
             e.stopPropagation();
             
             const backTo = backButton.getAttribute('data-back-to');
+            const currentSubmenu = backButton.closest('.mega-menu__subnav');
             
-            if (backTo) {
-              // Hide all submenus first
+            // Check if this is the first layer (data-layer="1" or no data-layer) of a submenu
+            const isFirstLayer = !currentSubmenu.hasAttribute('data-layer') || currentSubmenu.getAttribute('data-layer') === '1';
+            
+            if (isFirstLayer && currentSubmenu.getAttribute('data-submenu-content') === backTo) {
+              // If we're on the first layer and trying to go back to the same submenu content,
+              // it means we should go back to the main menu (close all submenus)
+              allSubmenus.forEach(submenu => {
+                submenu.classList.remove('is-active');
+                if (menuAnimations && menuAnimations.resetSubmenuItems) {
+                  menuAnimations.resetSubmenuItems(submenu);
+                }
+              });
+            } else if (backTo) {
+              // Normal back navigation - hide all submenus first
               allSubmenus.forEach(submenu => {
                 submenu.classList.remove('is-active');
                 if (menuAnimations && menuAnimations.resetSubmenuItems) {
