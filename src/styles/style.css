@@ -1402,7 +1402,7 @@ body.mega-menu-open {
 }
 .hero .bottom-edge {
   position: absolute;
-  bottom: 0;
+  bottom: -1.575rem;
   width: 100%;
   z-index: 1;
 }
@@ -5773,3 +5773,8 @@ button {
  .arrow-navigation__feather-img {
     object-fit: initial;
  }*/
+@media (max-width: 1350px) and (min-width: 1200px) {
+  .hero .bottom-edge {
+    bottom: -22px;
+  }
+}
