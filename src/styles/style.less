@@ -632,17 +632,11 @@ button {
 
     // Bottom position cards (2, 4, 6) - shifted down by 51.5px
     &.feature-card-bottom {
+      margin-top: 25.75px; // Half of 51.5px for mobile
+      
       @media (min-width: @breakpoint-lg) {
         margin-top: 51.5px;
       }
-
-      @media (max-width: (@breakpoint-lg - 1)) {
-        margin-top: 0;
-      }
-    }
-
-    @media (max-width: (@breakpoint-lg - 1)) {
-      margin-top: 0 !important;
     }
   }
 

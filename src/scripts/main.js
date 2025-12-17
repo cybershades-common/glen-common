@@ -1005,7 +1005,7 @@
       loop: false,
       speed: 600,
       effect: 'slide',
-      slidesPerView: 1,
+      slidesPerView: 1.25,
       spaceBetween: 20,
       centeredSlides: false, // Start from left, not centered
       initialSlide: 0, // Start from first slide
@@ -1024,17 +1024,19 @@
           spaceBetween: 20,
           centeredSlides: false,
         },
-        // When window width is >= 992px (lg)
+        // When window width is >= 992px (lg) - Desktop: 3 cards visible (first and last half, middle 2 full)
         992: {
-          slidesPerView: 2,
+          slidesPerView: 3,
           spaceBetween: 20,
-          centeredSlides: false,
+          centeredSlides: true,
+          initialSlide: 1,
         },
-        // When window width is >= 1200px (xl)
+        // When window width is >= 1200px (xl) - Desktop: 3 cards visible (first and last half, middle 2 full)
         1200: {
-          slidesPerView: 2,
+          slidesPerView: 3,
           spaceBetween: 20,
-          centeredSlides: false,
+          centeredSlides: true,
+          initialSlide: 1,
         },
       },
       

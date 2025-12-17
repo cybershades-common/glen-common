@@ -4434,19 +4434,12 @@ button {
     margin-top: 0;
   }
 }
+.what-we-do-section .feature-card.feature-card-bottom {
+  margin-top: 25.75px;
+}
 @media (min-width: 992px) {
   .what-we-do-section .feature-card.feature-card-bottom {
     margin-top: 51.5px;
-  }
-}
-@media (max-width: 991px) {
-  .what-we-do-section .feature-card.feature-card-bottom {
-    margin-top: 0;
-  }
-}
-@media (max-width: 991px) {
-  .what-we-do-section .feature-card {
-    margin-top: 0 !important;
   }
 }
 .what-we-do-section .feature-card-image {
