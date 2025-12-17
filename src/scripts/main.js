@@ -71,6 +71,33 @@
           setTimeout(() => firstFocusable.focus(), 100);
         }
       }
+      
+      // Auto-activate learning submenu after menu opens (desktop/tablet only)
+      setTimeout(() => {
+        const isMobile = window.innerWidth < 768;
+        if (!isMobile) {
+          const learningSubmenu = megaMenu.querySelector('.mega-menu__subnav[data-submenu-content="learning"]');
+          const learningNavLink = megaMenu.querySelector('a[data-submenu="learning"]');
+          
+          if (learningSubmenu && learningNavLink) {
+            // Hide all other submenus first
+            const allSubmenus = megaMenu.querySelectorAll('.mega-menu__subnav[data-submenu-content]');
+            allSubmenus.forEach(submenu => {
+              submenu.classList.remove('is-active');
+            });
+            
+            // Remove active state from all nav links
+            const allNavLinks = megaMenu.querySelectorAll('.mega-menu__nav a[data-submenu]');
+            allNavLinks.forEach(link => {
+              link.classList.remove('is-active');
+            });
+            
+            // Activate learning submenu and nav link
+            slideInSubmenu(learningSubmenu, 'right');
+            learningNavLink.classList.add('is-active');
+          }
+        }
+      }, 300); // Small delay to let menu animation complete
     }
 
     // Close Menu - use animation if available, otherwise fallback

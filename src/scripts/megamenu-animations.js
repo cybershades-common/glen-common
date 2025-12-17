@@ -166,22 +166,48 @@
      * Close menu - reverse timeline
      */
     function closeMenu() {
-      // First, close any open submenus with animation (mobile)
+      // First, animate out any active submenu items with stagger (desktop/tablet only)
+      const activeSubmenus = megaMenu.querySelectorAll('.mega-menu__subnav.is-active');
       const isMobile = window.innerWidth < 768;
-      if (isMobile) {
-        const activeSubmenus = megaMenu.querySelectorAll('.mega-menu__subnav.is-active');
+      
+      if (activeSubmenus.length > 0 && !isMobile) {
+        // Desktop/tablet: Animate submenu items out with stagger (similar to main menu)
         activeSubmenus.forEach(submenu => {
-          submenu.classList.add('slide-out-right');
+          const submenuItems = submenu.querySelectorAll('.mega-menu__subnav-item, .mobile-only');
+          
+          if (submenuItems.length > 0) {
+            gsap.to(submenuItems, {
+              y: 100,
+              opacity: 0,
+              duration: 0.4,
+              stagger: {
+                amount: 0.2,
+                from: 'end'
+              },
+              ease: 'power2.in'
+            });
+          }
+          
+          // Remove submenu active state after items animate out
           setTimeout(() => {
             submenu.classList.remove('is-active', 'slide-out-right', 'slide-in-right', 'slide-in-left');
           }, 400);
-          // Reset submenu items animation immediately
-          resetSubmenuItems(submenu);
         });
+        
+        // Delay main menu reverse animation to let submenu items animate out first
+        setTimeout(() => {
+          menuTimeline.reverse(0);
+        }, 200);
+      } else {
+        // Mobile or no active submenus: reverse immediately, reset submenus on mobile
+        if (isMobile && activeSubmenus.length > 0) {
+          activeSubmenus.forEach(submenu => {
+            submenu.classList.remove('is-active', 'slide-out-right', 'slide-in-right', 'slide-in-left');
+            resetSubmenuItems(submenu);
+          });
+        }
+        menuTimeline.reverse(0);
       }
-      
-      // Reverse animation
-      menuTimeline.reverse(0);
       
       // Set reverse complete callback
       menuTimeline.eventCallback('onReverseComplete', () => {
