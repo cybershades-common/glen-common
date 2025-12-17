@@ -309,8 +309,41 @@ height: 100%;
       outline-offset: 2px;
     }
   }
+
+  // Video Testimonials Swiper for Mobile
+  .video-testimonials-swiper {
+    .swiper {
+      padding: 0;
+    }
+
+    .swiper-slide {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      .card {
+        max-width: 300px;
+        height: auto;
+        aspect-ratio: 300 / 503.731;
+      }
+    }
+  }
 }
 
+// Media Query for Mobile
+@media (max-width: 991px) {
+  .video-testimonials {
+    // Show grid on desktop, hide on mobile
+    .cards {
+      display: none;
+    }
+
+    // Hide desktop grid, show swiper on mobile
+    .video-testimonials-swiper {
+      display: block;
+    }
+  }
+}
 
 @media (max-width:767px) {
   .video-testimonials {

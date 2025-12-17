@@ -756,47 +756,54 @@
   // ==========================================================================
 
   function initVideoTestimonials() {
-    const cards = document.querySelectorAll('.video-testimonials__card');
+    const cards = document.querySelectorAll('.video-testimonials .card');
     const modal = document.getElementById('videoTestimonialModal');
     const modalVideo = document.getElementById('videoTestimonialPlayer');
-    const modalClose = document.querySelector('.video-testimonials__modal-close');
-    const modalBackdrop = document.querySelector('.video-testimonials__modal-backdrop');
+    const modalClose = document.querySelector('.modal-close');
+    const modalBackdrop = document.querySelector('.modal-backdrop');
 
     if (!cards.length || !modal || !modalVideo) return;
 
-    // Handle hover to play video muted
+    // Initialize Swiper for Mobile
+    const videoTestimonialsSwiperContainer = document.querySelector('.video-testimonials-swiper .swiper');
+    if (videoTestimonialsSwiperContainer) {
+      new Swiper(videoTestimonialsSwiperContainer, {
+        slidesPerView: 1.25,
+        spaceBetween: 20,
+        loop: true,
+        autoplay: false,
+        breakpoints: {
+          320: {
+            slidesPerView: 1.25,
+            spaceBetween: 16
+          },
+          768: {
+            slidesPerView: 1.25,
+            spaceBetween: 20
+          }
+        }
+      });
+    }
+
+    // Handle play button clicks for all cards
     cards.forEach(card => {
-      const video = card.querySelector('.video-testimonials__video');
-      const playButton = card.querySelector('.video-testimonials__play-button');
+      const playButton = card.querySelector('.play-button');
 
-      if (!video) return;
-
-      // Play on hover
-      card.addEventListener('mouseenter', function() {
-        if (video.paused) {
-          video.play().catch(err => {
-            console.log('Video autoplay prevented:', err);
-          });
-        }
-      });
-
-      // Pause on mouse leave
-      card.addEventListener('mouseleave', function() {
-        if (!video.paused) {
-          video.pause();
-          video.currentTime = 0; // Reset to start
-        }
-      });
-
-      // Open modal on play button click
       if (playButton) {
         playButton.addEventListener('click', function(e) {
           e.stopPropagation();
-          const videoSrc = playButton.getAttribute('data-video-src') || card.getAttribute('data-video-src');
+          const videoSrc = playButton.getAttribute('data-video-src');
           
           if (videoSrc) {
             // Set video source
-            modalVideo.src = videoSrc;
+            const source = modalVideo.querySelector('source') || document.createElement('source');
+            source.src = videoSrc;
+            source.type = 'video/mp4';
+            
+            if (!modalVideo.querySelector('source')) {
+              modalVideo.appendChild(source);
+            }
+            
             modalVideo.load();
             
             // Show modal

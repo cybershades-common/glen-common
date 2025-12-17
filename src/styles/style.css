@@ -2366,6 +2366,27 @@ h1 .hero__title-script {
   outline: 2px solid #db574e;
   outline-offset: 2px;
 }
+.video-testimonials .video-testimonials-swiper .swiper {
+  padding: 0;
+}
+.video-testimonials .video-testimonials-swiper .swiper-slide {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.video-testimonials .video-testimonials-swiper .swiper-slide .card {
+  max-width: 300px;
+  height: auto;
+  aspect-ratio: 300 / 503.731;
+}
+@media (max-width: 991px) {
+  .video-testimonials .cards {
+    display: none;
+  }
+  .video-testimonials .video-testimonials-swiper {
+    display: block;
+  }
+}
 @media (max-width: 767px) {
   .video-testimonials .cards {
     padding: 0;
@@ -3901,6 +3922,14 @@ h1 .hero__title-script {
 @media (min-width: 768px) {
   .d-desktop-block {
     display: block !important;
+  }
+}
+.desktop-only {
+  display: block;
+}
+@media (max-width: 991px) {
+  .desktop-only {
+    display: none;
   }
 }
 .mobile-only {
