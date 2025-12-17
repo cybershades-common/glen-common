@@ -3994,6 +3994,9 @@ body {
   background: url(../../assets/images/section-bg.jpg);
   background-size: 100%;
 }
+.wrapper {
+  overflow: hidden;
+}
 a {
   color: inherit;
   text-decoration: none;
