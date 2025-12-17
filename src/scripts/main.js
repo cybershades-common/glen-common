@@ -312,6 +312,12 @@
         // On mobile, don't handle hover events - only click events
         if (isMobile) return;
         
+        // Remove active state from all nav links first
+        const allNavLinks = megaMenu.querySelectorAll('.mega-menu__nav a[data-submenu]');
+        allNavLinks.forEach(link => {
+          link.classList.remove('is-active');
+        });
+        
         // Hide all submenus (desktop only - no sliding animations on hover)
         allSubmenus.forEach(submenu => {
           submenu.classList.remove('is-active');
@@ -320,6 +326,9 @@
             menuAnimations.resetSubmenuItems(submenu);
           }
         });
+        
+        // Add active state to current nav link
+        this.classList.add('is-active');
         
         // Show the corresponding submenu (always layer 1)
         const targetSubmenu = megaMenu.querySelector(`.mega-menu__subnav[data-submenu-content="${submenuId}"][data-layer="1"]`);
