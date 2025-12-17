@@ -21,8 +21,64 @@
     height: 100vh;
   }
 
-  // Text Content - positioned exactly as per Figma
- .text {
+  // Marquee Animation Styles
+  .marquee {
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 100%;
+    overflow: hidden;
+    z-index: 10;
+
+    &__inner {
+      -webkit-font-smoothing: antialiased;
+      width: fit-content;
+      display: flex;
+      flex: auto;
+      flex-direction: row;
+      align-items: center;
+    }
+
+    &__part {
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      gap: 10.31rem; // Required gap between words
+      padding: 0 5.155rem; // Half of gap for proper spacing
+      font-smooth: always;
+      white-space: nowrap;
+
+      @media (max-width: (@breakpoint-md - 1)) {
+        gap: 5rem; // Reduced gap for mobile
+        padding: 0 2.5rem;
+      }
+
+      @media (max-width: 480px) {
+        gap: 3rem; // Further reduced gap for very small screens
+        padding: 0 1.5rem;
+      }
+
+      span {
+        display: inline-block;
+        font-feature-settings: 'kern' 1;
+        text-rendering: optimizeLegibility;
+        transition: all 0.3s ease-out;
+      }
+    }
+  }
+
+  // Performance optimizations for smooth animation
+  .marquee,
+  .marquee__inner,
+  .marquee__part {
+    will-change: transform;
+    backface-visibility: hidden;
+    transform-style: preserve-3d;
+  }
+
+  // Legacy text class (keep for backward compatibility)
+  .text {
     position: absolute;
     left: -270px;
     top: 361.5px;

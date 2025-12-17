@@ -1,329 +1,50 @@
-<div class="container">
-    <nav>
-        <div class="logo">Logo</div>
-        <div class="menu-btn-open">Menu</div>
-    </nav>
+<section class="spacer"></section>
 
-    <h1 class="header">Open the menu!</h1>
+<section class="marquee">
+  <div class="marquee__inner" aria-hidden="true" ref="inner">
+    <div class="marquee__part">food wine fish beef vegetables</div>
+    <div class="marquee__part">food wine fish beef vegetables</div>
+    <div class="marquee__part">food wine fish beef vegetables</div>
+    <div class="marquee__part">food wine fish beef vegetables</div>
+    <div class="marquee__part">food wine fish beef vegetables</div>
+    <div class="marquee__part">food wine fish beef vegetables</div>
+  </div>
+</section>
 
-    <div class="menu-overlay">
-        <div class="menu-nav">
-            <div class="menu-logo">Logo</div>
-            <div class="menu-btn-close">Close</div>
-        </div>
-        <div class="menu-cols">
-            <div class="col">
-                <div class="video">
-                    <div class="video-preview"></div>
-                    <div class="video-details">
-                        <p><svg viewBox="0 0 512 512" width="100" title="play-circle">
-  <path d="M256 8C119 8 8 119 8 256s111 248 248 248 248-111 248-248S393 8 256 8zm115.7 272l-176 101c-15.8 8.8-35.7-2.5-35.7-21V152c0-18.4 19.8-29.8 35.7-21l176 107c16.4 9.2 16.4 32.9 0 42z" />
-</svg> Play reel</p>
-                        <p>-01:18</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col">
-                <div class="menu-link">
-                    <a href="#">Home</a>
-                </div>
-                <div class="menu-link">
-                    <a href="#">Work</a>
-                </div>
-                <div class="menu-link">
-                    <a href="#">Services & Models</a>
-                </div>
-                <div class="menu-link">
-                    <a href="#">Our Story</a>
-                </div>
-                <div class="menu-link">
-                    <a href="#">Contact</a>
-                </div>
-                <div class="btn">
-                    <a href="#">Follow me</a>
-                </div>
-            </div>
-        </div>
-        <div class="menu-footer">
-            <div class="menu-divider"></div>
-            <div class="menu-footer-copy">
-                <div class="slogan">Find the right pics, Today!</div>
-                <div class="socials">
-                    <a href="#">Facebook</a>
-                    <a href="#">Instagram</a>
-                    <a href="#">TikTok</a>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
+<section class="spacer"></section>
 
+<!--
 
+-- ORIGINAL EFFECT LINKS --
+https://locomotive.ca/fr
+https://suturacreative.com
+https://cuberto.com
 
+-->
+<section class="spacer"></section>
 
-:root {
-  --color-menu-overlay: #449edd;
-  --color-menu-text: #000;
-  --color-divider: #333;
-}
+<section class="marquee">
+  <div class="marquee__inner" aria-hidden="true" ref="inner">
+    <div class="marquee__part">hello</div>
+    <div class="marquee__part">hdfh</div>
+    <div class="marquee__part">hh</div>
+    <div class="marquee__part">food wine fish beef vegetables</div>
+    <div class="marquee__part">food wine fish beef vegetables</div>
+    <div class="marquee__part">food wine fish beef vegetables</div>
+  </div>
+</section>
 
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: Raleway, sans-serif;
-}
+<section class="spacer"></section>
 
-html, body {
-  width: 100%;
-  height: 100vh;
-  background: url('https://images.unsplash.com/photo-1517026575980-3e1e2dedeab4?q=80&w=2898&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D') no-repeat 50% 50%;
-  background-size: cover;
-}
-
-a {
-  text-decoration: none;
-  color: var(--color-menu-text);
-}
-
-svg {
-  position: relative;
-  top: 1px;
-}
-
-.container {
-  width: 100%;
-  height: 100%;
-}
-
-nav {
-  position: fixed;
-  width: 100%;
-  display: flex;
-  justify-content: space-between;
-  padding: 2em;
-  color: #fff;
-}
-
-.menu-btn-open {
-  cursor: pointer;
-}
-
-h1.header {
-  position: absolute;
-  bottom: 0;
-  margin: 0.25em;
-  font-weight: 400;
-  color: #fff;
-  font-size: 70px;
-  line-height: 1;
-}
-
-.menu-overlay {
-  width: 100%;
-  padding: 2em;
-  background: var(--color-menu-overlay);
-  pointer-events: none;
-  clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
-}
-
-.menu-btn-close {
-  cursor: pointer;
-}
-
-.menu-nav {
-  display: flex;
-  justify-content: space-between;
-  margin-bottom: 1em;
-  color: var(--color-menu-text);
-}
-
-.menu-cols {
-  display: flex;
-}
-
-.menu-cols > div {
-  flex: 1;
-  padding: 1em 0;
-}
-
-.video {
-  width: 50%;
-}
-
-.video-preview {
-  width: 100%;
-  height: 0;
-  background: url('https://images.unsplash.com/photo-1485846234645-a62644f84728?q=80&w=2918&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D') no-repeat 50% 50%;
-  background-size: cover;
-  border-radius: 4px;
-}
-
-.video-details {
-  width: 100%;
-  display: flex;
-  justify-content: space-between;
-  padding: 0.5em 0;
-  color: var(--color-menu-text);
-}
-.video-details svg {
-  width: 15px;
-}
-
-.menu-link {
-  position: relative;
-  width: max-content;
-}
-
-.menu-link a {
-  font-size: 40px;
-}
-
-.menu-link::after {
-  content: '';
-  position: absolute;
-  top: 100%;
-  left: 0;
-  width: 0;
-  height: 2px;
-  background: var(--color-menu-text);
-  transition: all 0.3s;
-}
-
-.menu-link:hover .menu-link::after {
-  width: 100%;
-}
-
-.btn {
-  position: relative;
-  margin: 2em 0;
-  border: 1px solid var(--color-menu-text);
-  width: max-content;
-  padding: 1.25em 2.5em;
-  border-radius: 4px;
-  overflow: hidden;
-  cursor: pointer;
-}
-.btn a {
-  position: relative;
-  z-index: 1;
-}
-
-.btn::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 0;
-  height: 100%;
-  background: var(--color-menu-text);
-  transition: all 0.3s;
-}
-
-.btn:hover::before {
-  width: 100%;
-}
-
-.btn:hover a {
-  color: #fff;
-}
-
-.menu-footer {
-  display: flex;
-  flex-direction: column;
-  color: var(--color-menu-text);
-
-}
-
-.menu-divider {
-  width: 0%;
-  height: 1px;
-  background: var(--color-divider);
-  margin: 1em 0;
-}
-
-.menu-footer-copy {
-  display: flex;
-  justify-content: space-between;
-}
-
-.socials {
-  display: flex;
-  gap: 1em;
-}
-
-@media (max-width: 900px) {
-
-  h1.header {
-    font-size: 50px;
-  }
-
-  .menu-overlay {
-    height: auto;
-  }
-
-  .menu-cols {
-    display: block;
-  }
-
-  .video-preview {
-    height: 125px;
-  }
-
-  .video {
-    width: 100%;
-  }
-
-
-  .menu-link a {
-    font-size: 30px;
-  }
-}
-
-
-
-document.addEventListener('DOMContentLoaded', function() {
-    let tl = gsap.timeline({paused: true})
-
-    tl.to(".menu-overlay", {
-        duration: 1,
-        clipPath: "polygon(0 0, 100% 0, 100% 100%, 0 100%)",
-        ease: "power2.out"
-    })
-
-    tl.from(".menu-link, .btn", {
-        opacity: 0,
-        y: 60,
-        stagger: 0.05,
-        duration: 0.75,
-        ease: "power1.inOut"
-    }, "<")
-
-    tl.to(".video-preview", {
-        duration: 1,
-        height: '200px',
-        ease: 'power2.out'
-    }, '<')
-
-    tl.to(".menu-divider", {
-        duration: 2,
-        width: '100%',
-        ease: 'power4.out'
-    }, '<')
-
-    function openMenu() {
-        document.querySelector('.menu-overlay').style.pointerEvents = 'all'
-        tl.play()
-    }
-
-    function closeMenu() {
-        document.querySelector('.menu-overlay').style.pointerEvents = 'none'
-        tl.reverse()
-    }
-
-    document.querySelector('.menu-btn-open').addEventListener('click', openMenu)
-    document.querySelector('.menu-btn-close').addEventListener('click', closeMenu)
-    tl.reverse();
-
-})
-
+.marquee__part { flex-shrink: 0; padding: 0 4px; font-smooth: always; } .marquee
+{ background: #3B7FFF; color: #EEE; text-transform: uppercase; font-weight: 600;
+font-size: 1.667vw; padding: 32px 0; position: relative; overflow: hidden; }
+.marquee__inner { -webkit-font-smoothing: antialiased; width: fit-content;
+display: flex; flex: auto; flex-direction: row; } .spacer { height: 150px; } let
+currentScroll = 0; let isScrollingDown = true; let tween =
+gsap.to(".marquee__part", {xPercent: -100, repeat: -1, duration: 10, ease:
+"linear"}).totalProgress(0.5); gsap.set(".marquee__inner", {xPercent: -50});
+window.addEventListener("scroll", function(){ if ( window.pageYOffset >
+currentScroll ) { isScrollingDown = true; } else { isScrollingDown = false; }
+gsap.to(tween, { timeScale: isScrollingDown ? 1 : -1 }); currentScroll =
+window.pageYOffset });

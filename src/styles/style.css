@@ -1990,6 +1990,57 @@ h1 .hero__title-script {
   z-index: 2;
   height: 100vh;
 }
+.full-width-image-words-animation .marquee {
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 100%;
+  overflow: hidden;
+  z-index: 10;
+}
+.full-width-image-words-animation .marquee__inner {
+  -webkit-font-smoothing: antialiased;
+  width: fit-content;
+  display: flex;
+  flex: auto;
+  flex-direction: row;
+  align-items: center;
+}
+.full-width-image-words-animation .marquee__part {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  gap: 10.31rem;
+  padding: 0 5.155rem;
+  font-smooth: always;
+  white-space: nowrap;
+}
+@media (max-width: 767px) {
+  .full-width-image-words-animation .marquee__part {
+    gap: 5rem;
+    padding: 0 2.5rem;
+  }
+}
+@media (max-width: 480px) {
+  .full-width-image-words-animation .marquee__part {
+    gap: 3rem;
+    padding: 0 1.5rem;
+  }
+}
+.full-width-image-words-animation .marquee__part span {
+  display: inline-block;
+  font-feature-settings: 'kern' 1;
+  text-rendering: optimizeLegibility;
+  transition: all 0.3s ease-out;
+}
+.full-width-image-words-animation .marquee,
+.full-width-image-words-animation .marquee__inner,
+.full-width-image-words-animation .marquee__part {
+  will-change: transform;
+  backface-visibility: hidden;
+  transform-style: preserve-3d;
+}
 .full-width-image-words-animation .text {
   position: absolute;
   left: -270px;
