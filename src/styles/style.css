@@ -2097,10 +2097,13 @@ h1 .hero__title-script {
   }
 }
 .video-testimonials .cards {
-  display: flex;
-  gap: 15px;
-  justify-content: center;
-  flex-wrap: wrap;
+  padding: 0 4.5rem;
+}
+.video-testimonials .cards > .row {
+  margin: 0 0.4375rem;
+}
+.video-testimonials .cards > .row > div {
+  padding: 0 0.4375rem;
 }
 @media (max-width: 991px) {
   .video-testimonials .cards {
@@ -2108,9 +2111,8 @@ h1 .hero__title-script {
   }
 }
 .video-testimonials .card {
+  width: 100%;
   position: relative;
-  width: 300px;
-  height: 503.731px;
   border: 7.063px solid #ffffff;
   border-radius: 20px;
   overflow: hidden;
@@ -2131,6 +2133,14 @@ h1 .hero__title-script {
   border-radius: 20px;
   overflow: hidden;
 }
+.video-testimonials .card-inner .media {
+  display: flex;
+  height: 100%;
+}
+.video-testimonials .card-inner .media video,
+.video-testimonials .card-inner .media img {
+  aspect-ratio: 300/504;
+}
 .video-testimonials .video {
   position: absolute;
   inset: 0;
@@ -2138,7 +2148,6 @@ h1 .hero__title-script {
   height: 100%;
   object-fit: cover;
   object-position: center center;
-  border-radius: 20px;
   z-index: 0;
 }
 .video-testimonials .card-overlay {

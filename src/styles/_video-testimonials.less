@@ -44,10 +44,13 @@
   }
 
   .cards {
-    display: flex;
-    gap: 15px;
-    justify-content: center;
-    flex-wrap: wrap;
+   padding: 0 4.5rem;
+    >.row{
+      margin:-0 0.4375rem;
+      >div{
+        padding: 0 0.4375rem;
+      }
+    }
 
     @media (max-width: (@breakpoint-lg - 1)) {
       gap: @spacing-md;
@@ -55,9 +58,8 @@
   }
 
   .card {
+    width: 100%;
     position: relative;
-    width: 300px;
-    height: 503.731px;
     border: 7.063px solid @color-white;
     border-radius: 20px;
     overflow: hidden;
@@ -77,6 +79,16 @@
     height: 100%;
     border-radius: 20px;
     overflow: hidden;
+
+    .media {
+display: flex;
+height: 100%;
+
+      video,
+      img {
+        aspect-ratio: 300/504;
+      }
+    }
   }
 
   .video {
@@ -86,7 +98,7 @@
     height: 100%;
     object-fit: cover;
     object-position: center center;
-    border-radius: 20px;
+
     z-index: 0;
   }
 
@@ -162,7 +174,7 @@
           background: url(../../assets/images/circle-btn-bg.svg) no-repeat center;
         }
 
-        
+
 
       }
 
@@ -300,10 +312,10 @@
 }
 
 
-@media (max-width:767px){
+@media (max-width:767px) {
   .video-testimonials {
-    .cards{
-      .card{
+    .cards {
+      .card {
         max-width: 100%;
         width: 100%;
       }
