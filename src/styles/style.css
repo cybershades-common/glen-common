@@ -3996,6 +3996,7 @@ body {
 }
 .wrapper {
   overflow: hidden;
+  max-width: 100vw;
 }
 a {
   color: inherit;
