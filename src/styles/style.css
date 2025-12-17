@@ -862,7 +862,7 @@ body.mega-menu-open .site-header .hamburger .hamburger .line:nth-child(3) {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  gap: 30px;
+  gap: 1.875rem;
   padding-top: 8.125rem;
   padding-bottom: 1.875rem;
   padding-left: 1.875rem;
@@ -877,7 +877,7 @@ body.mega-menu-open .site-header .hamburger .hamburger .line:nth-child(3) {
 }
 .mega-menu__quick-links {
   position: absolute;
-  top: 30px;
+  top: 1.875rem;
   left: 50%;
   transform: translateX(-50%);
   width: 327px;
@@ -904,8 +904,8 @@ body.mega-menu-open .site-header .hamburger .hamburger .line:nth-child(3) {
   background-color: #f5efe9;
 }
 .mega-menu__quick-links button svg {
-  width: 20px;
-  height: 20px;
+  width: 1.25rem;
+  height: 1.25rem;
   transition: transform 0.3s ease;
 }
 .mega-menu__quick-links button.is-open svg {
@@ -943,8 +943,8 @@ body.mega-menu-open .site-header .hamburger .hamburger .line:nth-child(3) {
 }
 .mega-menu__back {
   position: absolute;
-  top: 30px;
-  left: 30px;
+  top: 1.875rem;
+  left: 1.875rem;
   display: flex;
   align-items: center;
   gap: 10px;
@@ -967,16 +967,15 @@ body.mega-menu-open .site-header .hamburger .hamburger .line:nth-child(3) {
   stroke: #ffffff;
 }
 .mega-menu__back svg {
-  width: 20px;
-  height: 20px;
+  width: 1.25rem;
+  height: 1.25rem;
 }
 .mega-menu__content {
   display: flex;
   align-items: flex-start;
   justify-content: flex-start;
   width: 100%;
-  max-width: 1380px;
-  gap: 60px;
+  gap: 3.75rem;
   position: relative;
 }
 .mega-menu__nav {
@@ -1058,8 +1057,6 @@ body.mega-menu-open .site-header .hamburger .hamburger .line:nth-child(3) {
   transform: translateX(0);
 }
 .mega-menu__nav-arrow {
-  width: 47.946px;
-  height: 36.5px;
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -1077,7 +1074,6 @@ body.mega-menu-open .site-header .hamburger .hamburger .line:nth-child(3) {
 }
 .mega-menu__subnav-container {
   position: relative;
-  width: 354px;
   flex-shrink: 0;
   min-height: 300px;
 }
@@ -1085,9 +1081,8 @@ body.mega-menu-open .site-header .hamburger .hamburger .line:nth-child(3) {
   display: flex;
   flex-direction: column;
   gap: 0;
-  width: 354px;
   position: absolute;
-  top: 65px;
+  top: 4.00625rem;
   left: 0;
   list-style: none;
   padding: 0;
@@ -1129,8 +1124,8 @@ body.mega-menu-open .site-header .hamburger .hamburger .line:nth-child(3) {
   font-weight: 700;
 }
 .mega-menu__subnav-item .mega-menu__subnav-icon {
-  width: 20px;
-  height: 20px;
+  width: 1.25rem;
+  height: 1.25rem;
   flex-shrink: 0;
   opacity: 1;
   transition: all 0.2s ease;
@@ -1231,14 +1226,13 @@ body.mega-menu-open .site-header .hamburger .hamburger .line:nth-child(3) {
 }
 .mega-menu__footer {
   width: 100%;
-  max-width: 1360px;
-  margin-top: 20px;
+  margin-top: 1.25rem;
 }
 .mega-menu__footer-links {
   display: flex;
   align-items: center;
   justify-content: flex-start;
-  gap: 20px;
+  gap: 1.25rem;
 }
 .mega-menu__footer-links a {
   font-family: 'Averta', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
@@ -1258,8 +1252,8 @@ body.mega-menu-open .site-header .hamburger .hamburger .line:nth-child(3) {
   justify-content: flex-end;
 }
 .mega-menu__social a {
-  width: 30px;
-  height: 30px;
+  width: 1.875rem;
+  height: 1.875rem;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -1275,7 +1269,7 @@ body.mega-menu-open .site-header .hamburger .hamburger .line:nth-child(3) {
   width: 100%;
   height: 100%;
   max-width: 23px;
-  max-height: 30px;
+  max-height: 1.875rem;
   display: block;
   object-fit: contain;
 }
@@ -1330,7 +1324,7 @@ body.mega-menu-open {
   }
   .mega-menu__content {
     flex-direction: column;
-    gap: 40px;
+    gap: 2.5rem;
   }
   .mega-menu__nav-item a {
     font-size: 2.5rem;
@@ -1346,7 +1340,7 @@ body.mega-menu-open {
     top: 0;
     left: 0;
     transform: none;
-    margin-bottom: 20px;
+    margin-bottom: 1.25rem;
   }
   .mega-menu__quick-links .mega-menu__quick-links-dropdown {
     width: 100%;
@@ -1453,7 +1447,7 @@ body.mega-menu-open {
   }
   .mega-menu .mega-menu__inner .mega-menu__footer {
     margin-top: auto;
-    transform: translateY(-120px);
+    transform: translateY(-11.25rem);
   }
   .mega-menu .mega-menu__inner .mega-menu__footer .input-group {
     border-radius: 10px;
@@ -3758,13 +3752,11 @@ button {
 .masked-image-content-block__image-wrapper {
   position: relative;
   width: 100%;
-  max-width: 723px;
   margin: 0 auto;
   padding: 0 1.875rem;
 }
 @media (max-width: 991px) {
   .masked-image-content-block__image-wrapper {
-    max-width: 500px;
     margin-bottom: 40px;
   }
 }
