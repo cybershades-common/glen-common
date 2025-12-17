@@ -73,7 +73,7 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  gap: 30px;
+  gap: 1.875rem;
   padding-top: 8.125rem; // Space for fixed header
   padding-bottom: 1.875rem;
   padding-left: 1.875rem;
@@ -89,7 +89,7 @@
 
 .mega-menu__quick-links {
   position: absolute;
-  top: 30px;
+  top: 1.875rem;
   left: 50%;
   transform: translateX(-50%);
   width: 327px;
@@ -118,8 +118,8 @@
 
 
     svg {
-      width: 20px;
-      height: 20px;
+      width: 1.25rem;
+      height: 1.25rem;
       transition: transform 0.3s ease;
     }
 
@@ -168,8 +168,8 @@
 // Back Button
 .mega-menu__back {
   position: absolute;
-  top: 30px;
-  left: 30px;
+  top: 1.875rem;
+  left: 1.875rem;
   display: flex;
   align-items: center;
   gap: 10px;
@@ -194,8 +194,8 @@
   }
 
   svg {
-    width: 20px;
-    height: 20px;
+    width: 1.25rem;
+    height: 1.25rem;
   }
 }
 
@@ -205,9 +205,8 @@
   align-items: flex-start;
   justify-content: flex-start;
   width: 100%;
-  max-width: 1380px;
-  // padding: 0 30px;
-  gap: 60px; // Reduced gap between main nav and subnav
+  // padding: 0 1.875rem;
+  gap: 3.75rem; // Reduced gap between main nav and subnav
   position: relative;
 }
 
@@ -316,8 +315,7 @@
 
 // Handdrawn Arrow (for hover/active menu item)
 .mega-menu__nav-arrow {
-  width: 47.946px;
-  height: 36.5px;
+
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -338,7 +336,6 @@
 // Sub Navigation Container
 .mega-menu__subnav-container {
   position: relative;
-  width: 354px;
   flex-shrink: 0;
   min-height: 300px; // Prevent shifting
 }
@@ -348,9 +345,8 @@
   display: flex; // Changed from none - always rendered but hidden
   flex-direction: column;
   gap: 0;
-  width: 354px; // Fixed width
-  position: absolute;
-  top: 65px; // Align with second menu item (font-size 60px + 5px gap)
+    position: absolute;
+  top: 4.00625rem; // Align with second menu item (font-size 60px + 5px gap)
   left: 0;
   list-style: none;
   padding: 0;
@@ -398,8 +394,8 @@
   }
 
   .mega-menu__subnav-icon {
-    width: 20px;
-    height: 20px;
+    width: 1.25rem;
+    height: 1.25rem;
     flex-shrink: 0;
     opacity: 1;
     transition: all 0.2s ease;
@@ -535,15 +531,14 @@
 // Menu Footer
 .mega-menu__footer {
   width: 100%;
-  max-width: 1360px;
-  margin-top: 20px;
+   margin-top: 1.25rem;
 }
 
 .mega-menu__footer-links {
   display: flex;
   align-items: center;
   justify-content: flex-start;
-  gap: 20px;
+  gap: 1.25rem;
 
   a {
     font-family: @font-primary;
@@ -566,8 +561,8 @@
   justify-content: flex-end;
 
   a {
-    width: 30px;
-    height: 30px;
+    width: 1.875rem;
+    height: 1.875rem;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -584,7 +579,7 @@
       width: 100%;
       height: 100%;
       max-width: 23px;
-      max-height: 30px;
+      max-height: 1.875rem;
       display: block;
       object-fit: contain;
     }
@@ -653,7 +648,7 @@ body.mega-menu-open {
 
   .mega-menu__content {
     flex-direction: column;
-    gap: 40px;
+    gap: 2.5rem;
   }
 
   .mega-menu__nav-item a {
@@ -673,7 +668,7 @@ body.mega-menu-open {
     top: 0;
     left: 0;
     transform: none;
-    margin-bottom: 20px;
+    margin-bottom: 1.25rem;
     
     .mega-menu__quick-links-dropdown {
       width: 100%;
@@ -816,7 +811,7 @@ body.mega-menu-open {
 
       .mega-menu__footer {
         margin-top: auto;
-        transform: translateY(-120px);
+        transform: translateY(-11.25rem);
 
         .input-group {
           border-radius: 10px;
