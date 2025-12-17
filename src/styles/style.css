@@ -268,7 +268,7 @@ h6,
   align-items: center;
   justify-content: center;
   gap: 0.625rem;
-  padding: 0.625rem 1.25rem;
+  padding: 1.25rem;
   font-family: 'Averta', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   font-size: 0.9375rem;
   font-weight: 400;
@@ -811,13 +811,53 @@ body.mega-menu-open .site-header .hamburger .hamburger .line:nth-child(3) {
 .mega-menu .edge-image.bottom-edge img {
   filter: brightness(0) invert(1);
 }
+.mega-menu *,
+.mega-menu *:before,
+.mega-menu *:after,
+.mega-menu button,
+.mega-menu a,
+.mega-menu input,
+.mega-menu select,
+.mega-menu textarea {
+  -webkit-tap-highlight-color: transparent;
+  -webkit-focus-ring-color: transparent;
+  outline: none !important;
+}
+.mega-menu *:focus,
+.mega-menu *:before:focus,
+.mega-menu *:after:focus,
 .mega-menu button:focus,
 .mega-menu a:focus,
+.mega-menu input:focus,
+.mega-menu select:focus,
+.mega-menu textarea:focus,
+.mega-menu *:active,
+.mega-menu *:before:active,
+.mega-menu *:after:active,
 .mega-menu button:active,
 .mega-menu a:active,
+.mega-menu input:active,
+.mega-menu select:active,
+.mega-menu textarea:active,
+.mega-menu *:focus-visible,
+.mega-menu *:before:focus-visible,
+.mega-menu *:after:focus-visible,
 .mega-menu button:focus-visible,
-.mega-menu a:focus-visible {
+.mega-menu a:focus-visible,
+.mega-menu input:focus-visible,
+.mega-menu select:focus-visible,
+.mega-menu textarea:focus-visible,
+.mega-menu *:focus-within,
+.mega-menu *:before:focus-within,
+.mega-menu *:after:focus-within,
+.mega-menu button:focus-within,
+.mega-menu a:focus-within,
+.mega-menu input:focus-within,
+.mega-menu select:focus-within,
+.mega-menu textarea:focus-within {
   outline: none !important;
+  box-shadow: none !important;
+  border: none !important;
 }
 .mega-menu__inner {
   display: flex;
@@ -863,10 +903,6 @@ body.mega-menu-open .site-header .hamburger .hamburger .line:nth-child(3) {
 }
 .mega-menu__quick-links button:hover {
   background-color: #f5efe9;
-}
-.mega-menu__quick-links button:focus {
-  outline: 2px solid #db574e;
-  outline-offset: 2px;
 }
 .mega-menu__quick-links button svg {
   width: 20px;
@@ -1089,14 +1125,6 @@ body.mega-menu-open .site-header .hamburger .hamburger .line:nth-child(3) {
 .mega-menu__subnav-item a:hover {
   font-weight: 700;
   color: #183153;
-}
-.mega-menu__subnav-item a:focus {
-  outline: none;
-  border: none;
-}
-.mega-menu__subnav-item a:active {
-  outline: none;
-  border: none;
 }
 .mega-menu__subnav-item a.is-active {
   font-weight: 700;
@@ -1932,12 +1960,12 @@ h1 .hero__title-script {
 }
 @media (max-width: 1350px) and (min-width: 1200px) {
   .hero .bottom-edge {
-    bottom: -22px;
+    bottom: -18px;
   }
 }
 @media (min-width: 1600px) {
   .hero .bottom-edge {
-    bottom: -1.85rem;
+    bottom: -27px;
   }
 }
 .full-width-image-words-animation {
@@ -3711,7 +3739,7 @@ button {
 }
 .masked-image-content-block {
   position: relative;
-  padding: 0;
+  padding: 3rem 0;
   overflow: hidden;
 }
 .masked-image-content-block .container-fluid {
@@ -3746,7 +3774,19 @@ button {
   display: flex;
   flex-direction: column;
   gap: 20px;
-  padding: 0 1.875rem;
+  padding: 0 2.25rem;
+}
+.masked-image-content-block__content p.lead {
+  color: var(--tertiary-blue-dark, #1C3666);
+  /* Desktop/Body Large */
+  font-family: var(--font-family-averta, Averta);
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 130%;
+  /* 26px */
+  margin: 0;
+  letter-spacing: -0.4px;
 }
 @media (max-width: 991px) {
   .masked-image-content-block__content {
@@ -3806,7 +3846,6 @@ button {
   font-size: 0.9375rem;
   line-height: 1.4;
   color: #1c3666;
-  max-width: 406px;
   margin: 0;
 }
 @media (max-width: 767px) {
@@ -3820,6 +3859,10 @@ button {
 }
 .masked-image-content-block {
   position: relative;
+}
+.masked-image-content-block .masked-image-content-block-wrap {
+  max-width: 87%;
+  margin: auto;
 }
 .masked-image-content-block .frame {
   position: relative;
@@ -5877,3 +5920,20 @@ button {
  .arrow-navigation__feather-img {
     object-fit: initial;
  }*/
+.breadcrumb-wrap {
+  padding: 1rem 0;
+}
+.breadcrumb-wrap .breadcrumb li {
+  color: var(--tertiary-blue-dark, #1C3666);
+  /* Desktop/Body Base */
+  font-family: var(--font-family-averta, Averta);
+  font-size: 0.9375rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 140%;
+  /* 21px */
+}
+.breadcrumb-wrap .breadcrumb li a {
+  color: var(--tertiary-blue-dark, #1C3666);
+  font-weight: bold;
+}
