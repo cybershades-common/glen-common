@@ -172,22 +172,58 @@
         return;
       }
       
-      // Add slide-out animation class but KEEP is-active until animation completes
-      if (direction === 'right') {
-        submenu.classList.add('slide-out-right');
+      // Check if this is a first-level submenu (no data-layer or data-layer="1")
+      const isFirstLevel = !submenu.hasAttribute('data-layer') || submenu.getAttribute('data-layer') === '1';
+      
+      if (isFirstLevel && typeof gsap !== 'undefined') {
+        // First level: Animate submenu items out with stagger, then fade overlay
+        const submenuItems = submenu.querySelectorAll('.mega-menu__subnav-item, .mobile-only');
+        
+        // Animate items out with stagger
+        gsap.to(submenuItems, {
+          x: direction === 'right' ? 100 : -100,
+          opacity: 0,
+          duration: 0.3,
+          stagger: {
+            amount: 0.2,
+            from: 'start'
+          },
+          ease: 'power2.in',
+          onComplete: () => {
+            // After items animate out, fade the overlay
+            gsap.to(submenu, {
+              opacity: 0,
+              duration: 0.2,
+              onComplete: () => {
+                // Remove active state and clean up
+                submenu.classList.remove('is-active');
+                submenu.classList.remove('slide-out-right', 'slide-out-left', 'slide-in-right', 'slide-in-left');
+                
+                // Reset all transforms
+                gsap.set(submenu, { opacity: 1 });
+                gsap.set(submenuItems, { x: 0, y: 100, opacity: 0 });
+              }
+            });
+          }
+        });
       } else {
-        submenu.classList.add('slide-out-left');
-      }
-      
-      // Remove is-active class after animation completes (400ms as per CSS transition)
-      setTimeout(() => {
-        submenu.classList.remove('is-active');
-        submenu.classList.remove('slide-out-right', 'slide-out-left', 'slide-in-right', 'slide-in-left');
-      }, 400);
-      
-      // Reset submenu items animation immediately
-      if (menuAnimations && menuAnimations.resetSubmenuItems) {
-        menuAnimations.resetSubmenuItems(submenu);
+        // Deeper levels: Regular slide-out behavior
+        if (direction === 'right') {
+          submenu.classList.add('slide-out-right');
+        } else {
+          submenu.classList.add('slide-out-left');
+        }
+        
+        // Remove is-active class after animation completes (400ms as per CSS transition)
+        setTimeout(() => {
+          submenu.classList.remove('is-active');
+          submenu.classList.remove('slide-out-right', 'slide-out-left', 'slide-in-right', 'slide-in-left');
+          
+          // Reset submenu items animation after slide-out completes
+          if (menuAnimations && menuAnimations.resetSubmenuItems) {
+            menuAnimations.resetSubmenuItems(submenu);
+          }
+        }, 400);
       }
     }
 
