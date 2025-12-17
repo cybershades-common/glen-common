@@ -43,14 +43,28 @@
     }
   }
 
-  // Remove focus outlines and tab highlights for menu elements
+  // Remove ALL focus outlines, tab highlights, and cursor lines from mega menu
+  *,
+  *:before,
+  *:after,
   button,
-  a {
+  a,
+  input,
+  select,
+  textarea {
     &:focus,
     &:active,
-    &:focus-visible {
+    &:focus-visible,
+    &:focus-within {
       outline: none !important;
+      box-shadow: none !important;
+      border: none !important;
     }
+    
+    // Remove default browser focus styles
+    -webkit-tap-highlight-color: transparent;
+    -webkit-focus-ring-color: transparent;
+    outline: none !important;
   }
 }
 
@@ -102,10 +116,6 @@
       background-color: darken(@color-sand-20, 3%);
     }
 
-    &:focus {
-      outline: 2px solid @color-coral;
-      outline-offset: 2px;
-    }
 
     svg {
       width: 20px;
@@ -381,15 +391,6 @@
       color: @color-navy; // Keep same color on hover
     }
 
-    &:focus {
-      outline: none;
-      border: none;
-    }
-
-    &:active {
-      outline: none;
-      border: none;
-    }
 
     &.is-active {
       font-weight: 700;

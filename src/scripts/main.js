@@ -132,7 +132,7 @@
         // Desktop behavior - no sliding
         submenu.classList.add('is-active');
         if (menuAnimations && menuAnimations.animateSubmenuItems) {
-          menuAnimations.animateSubmenuItems(submenu);
+          menuAnimations.animateSubmenuItems(submenu, 'bottom');
         }
         return;
       }
@@ -156,7 +156,7 @@
       // Animate submenu items after slide animation
       if (menuAnimations && menuAnimations.animateSubmenuItems) {
         setTimeout(() => {
-          menuAnimations.animateSubmenuItems(submenu);
+          menuAnimations.animateSubmenuItems(submenu, direction);
         }, 150);
       }
     }
@@ -264,7 +264,7 @@
           targetSubmenu.classList.add('is-active');
           // Animate submenu items
           if (menuAnimations && menuAnimations.animateSubmenuItems) {
-            menuAnimations.animateSubmenuItems(targetSubmenu);
+            menuAnimations.animateSubmenuItems(targetSubmenu, 'bottom');
           }
         } else {
           // Fallback for submenus without layers
@@ -273,7 +273,7 @@
             fallbackSubmenu.classList.add('is-active');
             // Animate submenu items
             if (menuAnimations && menuAnimations.animateSubmenuItems) {
-              menuAnimations.animateSubmenuItems(fallbackSubmenu);
+              menuAnimations.animateSubmenuItems(fallbackSubmenu, 'bottom');
             }
           }
         }
@@ -318,7 +318,7 @@
                   });
                   targetLayer.classList.add('is-active');
                   if (menuAnimations && menuAnimations.animateSubmenuItems) {
-                    menuAnimations.animateSubmenuItems(targetLayer);
+                    menuAnimations.animateSubmenuItems(targetLayer, 'right');
                   }
                 }
               }
@@ -380,7 +380,7 @@
                 }
                 targetLayer.classList.add('is-active');
                 if (menuAnimations && menuAnimations.animateSubmenuItems) {
-                  menuAnimations.animateSubmenuItems(targetLayer);
+                  menuAnimations.animateSubmenuItems(targetLayer, 'left');
                 }
               }
             }

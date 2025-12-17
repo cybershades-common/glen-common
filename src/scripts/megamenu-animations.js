@@ -231,26 +231,49 @@
     /**
      * Animate submenu items when submenu becomes active
      * @param {HTMLElement} submenu - The submenu element that became active
+     * @param {string} direction - The direction: 'right' (forward), 'left' (backward), or 'bottom' (default)
      */
-    function animateSubmenuItems(submenu) {
+    function animateSubmenuItems(submenu, direction = 'bottom') {
       if (!submenu || typeof gsap === 'undefined') return;
       
-      const submenuItems = submenu.querySelectorAll('.mega-menu__subnav-item');
+      const submenuItems = submenu.querySelectorAll('.mega-menu__subnav-item, .mobile-only');
       
       if (submenuItems && submenuItems.length > 0) {
+        let initialX = 0;
+        let staggerDirection = 1;
+        
+        // Set initial position and stagger direction based on navigation direction
+        if (direction === 'right') {
+          initialX = 100; // Come from right
+          staggerDirection = 1; // Stagger from left to right (first item animates first)
+        } else if (direction === 'left') {
+          initialX = -100; // Come from left  
+          staggerDirection = 1; // Stagger from left to right (first item animates first) - same as forward
+        } else {
+          // Default bottom direction (existing behavior)
+          initialX = 0;
+          staggerDirection = 1;
+        }
+        
         // Set initial state
         gsap.set(submenuItems, {
-          y: 100,
+          x: initialX,
+          y: direction === 'bottom' ? 100 : 0,
           opacity: 0
         });
         
-        // Animate with stagger
+        // Animate with directional stagger and wave effect
         gsap.to(submenuItems, {
+          x: 0,
           y: 0,
           opacity: 1,
-          duration: 0.5,
-          stagger: 0.1,
-          ease: 'power2.out'
+          duration: 0.6,
+          stagger: {
+            amount: 0.4, // Total time to stagger all items
+            from: staggerDirection === 1 ? 'start' : 'end',
+            ease: 'power2.inOut' // Wave-like easing for stagger
+          },
+          ease: 'back.out(1.4)' // Bouncy wave-like ease for individual items
         });
       }
     }
@@ -262,10 +285,11 @@
     function resetSubmenuItems(submenu) {
       if (!submenu || typeof gsap === 'undefined') return;
       
-      const submenuItems = submenu.querySelectorAll('.mega-menu__subnav-item');
+      const submenuItems = submenu.querySelectorAll('.mega-menu__subnav-item, .mobile-only');
       
       if (submenuItems && submenuItems.length > 0) {
         gsap.set(submenuItems, {
+          x: 0,
           y: 100,
           opacity: 0
         });
@@ -276,9 +300,10 @@
     function setInitialSubmenuState() {
       const allSubmenus = megaMenu.querySelectorAll('.mega-menu__subnav');
       allSubmenus.forEach(submenu => {
-        const submenuItems = submenu.querySelectorAll('.mega-menu__subnav-item');
+        const submenuItems = submenu.querySelectorAll('.mega-menu__subnav-item, .mobile-only');
         if (submenuItems && submenuItems.length > 0) {
           gsap.set(submenuItems, {
+            x: 0,
             y: 100,
             opacity: 0
           });
