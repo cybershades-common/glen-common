@@ -3,7 +3,7 @@
 // ==========================================================================
 
 .video-testimonials {
-  padding: 10.75rem 0 6.25rem;
+  padding: 10.75rem 0 6.625rem;
 
   .title {
     display: flex;
@@ -276,8 +276,8 @@ height: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-top: @spacing-xl;
-    padding-top: @spacing-lg;
+    margin-top: 2rem;
+    
   }
 
   .all-videos-btn {
@@ -315,6 +315,12 @@ height: 100%;
 @media (max-width:767px) {
   .video-testimonials {
     .cards {
+      padding: 0;
+
+      >.row{
+        gap: 1.5rem 0;
+      }
+      
       .card {
         max-width: 100%;
         width: 100%;

@@ -2108,7 +2108,7 @@ h1 .hero__title-script {
   }
 }
 .video-testimonials {
-  padding: 10.75rem 0 6.25rem;
+  padding: 10.75rem 0 6.625rem;
 }
 .video-testimonials .title {
   display: flex;
@@ -2338,8 +2338,7 @@ h1 .hero__title-script {
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-top: 2.5rem;
-  padding-top: 1.875rem;
+  margin-top: 2rem;
 }
 .video-testimonials .all-videos-btn {
   padding: 1.25rem;
@@ -2368,6 +2367,12 @@ h1 .hero__title-script {
   outline-offset: 2px;
 }
 @media (max-width: 767px) {
+  .video-testimonials .cards {
+    padding: 0;
+  }
+  .video-testimonials .cards > .row {
+    gap: 1.5rem 0;
+  }
   .video-testimonials .cards .card {
     max-width: 100%;
     width: 100%;
@@ -2688,7 +2693,7 @@ h1 .hero__title-script {
   display: flex;
   flex-direction: column;
   gap: 0;
-  margin-bottom: 1.875rem;
+  margin-bottom: 2.5rem;
   text-align: center;
 }
 .staff-section .title .title-script {
@@ -2729,12 +2734,12 @@ h1 .hero__title-script {
   align-items: center;
   gap: 1.25rem;
   flex-wrap: wrap;
-  margin-bottom: 2.5rem;
+  margin-bottom: 8.69rem;
 }
 @media (max-width: 767px) {
   .staff-section .filters {
     gap: 0.625rem;
-    margin-bottom: 1.875rem;
+    margin-bottom: 3.875rem;
   }
 }
 .staff-section .filter-tab {
@@ -2743,13 +2748,13 @@ h1 .hero__title-script {
   font-size: 0.9375rem;
   line-height: 1.4;
   color: #1c3666;
-  background-color: transparent;
-  border: 1px solid #1c3666;
+  background-color: #ffffff;
   border-radius: 0.625rem;
   padding: 0.625rem 1.25rem;
   cursor: pointer;
   transition: background-color 250ms ease, color 250ms ease, border-color 250ms ease;
   white-space: nowrap;
+  border: none;
 }
 .staff-section .filter-tab:hover {
   background-color: #1c3666;
@@ -2766,52 +2771,35 @@ h1 .hero__title-script {
     padding: 8px 0.625rem;
   }
 }
-.staff-section .grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 1.875rem 1.25rem;
-  max-width: 1000px;
-  margin: 0 auto;
+.staff-section .grid.row {
+  margin: 0 -1.5625rem;
+  gap: 3.125rem 0;
 }
-@media (max-width: 991px) {
-  .staff-section .grid {
-    grid-template-columns: repeat(3, 1fr);
-    gap: 1.25rem;
-  }
+.staff-section .grid.row > div {
+  padding: 0 1.5625rem;
 }
-@media (max-width: 767px) {
-  .staff-section .grid {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 1.25rem 0.625rem;
-  }
-}
-@media (max-width: 575px) {
-  .staff-section .grid {
-    grid-template-columns: 1fr;
-    gap: 1.875rem;
-  }
-}
-.staff-section .grid_card {
+.staff-section .grid.row > div .grid_card {
   display: flex;
   flex-direction: column;
   align-items: center;
   text-align: center;
   gap: 0.625rem;
+  width: 100%;
 }
-.staff-section .image {
+.staff-section .grid.row > div .grid_card .image {
   width: 100%;
   max-width: 100%;
   aspect-ratio: 1/1;
   position: relative;
 }
-.staff-section .image .frame {
+.staff-section .grid.row > div .grid_card .image .frame {
   position: absolute;
   left: 0;
   top: 0;
   bottom: 0;
   right: 0;
 }
-.staff-section .image > img {
+.staff-section .grid.row > div .grid_card .image > img {
   width: 98%;
   height: 99%;
   object-fit: cover;
@@ -2819,11 +2807,11 @@ h1 .hero__title-script {
   margin: 2px;
 }
 @media (max-width: 575px) {
-  .staff-section .image {
+  .staff-section .grid.row > div .grid_card .image {
     max-width: 80%;
   }
 }
-.staff-section .name {
+.staff-section .grid.row > div .grid_card .name {
   font-family: 'Averta', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   font-weight: 600;
   font-size: 18px;
@@ -2832,11 +2820,11 @@ h1 .hero__title-script {
   margin: 0;
 }
 @media (max-width: 767px) {
-  .staff-section .name {
+  .staff-section .grid.row > div .grid_card .name {
     font-size: 16px;
   }
 }
-.staff-section .position {
+.staff-section .grid.row > div .grid_card .position {
   font-family: 'Averta', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   font-weight: 400;
   font-size: 14px;
@@ -2846,7 +2834,7 @@ h1 .hero__title-script {
   opacity: 0.8;
 }
 @media (max-width: 767px) {
-  .staff-section .position {
+  .staff-section .grid.row > div .grid_card .position {
     font-size: 13px;
   }
 }
