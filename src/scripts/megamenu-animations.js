@@ -166,6 +166,20 @@
      * Close menu - reverse timeline
      */
     function closeMenu() {
+      // First, close any open submenus with animation (mobile)
+      const isMobile = window.innerWidth < 768;
+      if (isMobile) {
+        const activeSubmenus = megaMenu.querySelectorAll('.mega-menu__subnav.is-active');
+        activeSubmenus.forEach(submenu => {
+          submenu.classList.add('slide-out-right');
+          setTimeout(() => {
+            submenu.classList.remove('is-active', 'slide-out-right', 'slide-in-right', 'slide-in-left');
+          }, 400);
+          // Reset submenu items animation immediately
+          resetSubmenuItems(submenu);
+        });
+      }
+      
       // Reverse animation
       menuTimeline.reverse(0);
       
