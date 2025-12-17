@@ -57,7 +57,7 @@ body.mega-menu-open {
     border-bottom: none;
     z-index: 10000; // Higher than submenu overlays (1000-1004)
 
- 
+
 
     // Change logo to dark
     .header-logo {
@@ -83,7 +83,7 @@ body.mega-menu-open {
           svg {
             path {
               fill: none;
-              stroke:@tertiary-blue-dark;
+              stroke: @tertiary-blue-dark;
             }
 
           }
@@ -147,7 +147,7 @@ body.mega-menu-open {
     display: block;
     text-decoration: none;
     -webkit-tap-highlight-color: transparent;
-    
+
     &:focus {
       outline: none;
     }
@@ -222,17 +222,20 @@ body.mega-menu-open {
   top: calc(100% + 10px);
   left: 50%;
   transform: translateX(-50%) translateY(-10px);
-  width: 327px;
+  width: 100%;
   background-color: @color-white;
   border-radius: 10px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   overflow: hidden;
   z-index: 99999; // Must be higher than mega menu (999) and submenu overlays (1000-1004)
-  
+
   // Initial state - hidden and slid up
   opacity: 0;
   visibility: hidden;
   transition: all 0.3s cubic-bezier(0.4, 0.0, 0.2, 1);
+  height: calc(100vh - 6rem);
+
+
 
   &.is-open {
     opacity: 1;
@@ -257,16 +260,16 @@ body.mega-menu-open {
       background-color: @color-sand-20;
     }
   }
-  
+
   // Mobile styling - match button width
   @media (max-width: 767px) {
     left: 50%;
     transform: translateX(-50%) translateY(-10px);
-    width: 357px;
+    width: 100%;
     box-shadow: none;
     border: none;
     padding-bottom: 2rem;
-    
+
     &.is-open {
       transform: translateX(-50%) translateY(0);
     }
@@ -316,7 +319,7 @@ body.mega-menu-open {
   &:hover {
     opacity: 0.8;
   }
-  
+
   &:focus {
     outline: none;
   }
@@ -383,7 +386,7 @@ body.mega-menu-open {
   &:hover {
     opacity: 0.8;
   }
-  
+
   &:focus,
   &:active,
   &:focus-visible {
@@ -428,7 +431,7 @@ body.mega-menu-open {
   height: 25px;
   gap: 5px;
   -webkit-tap-highlight-color: transparent !important;
-  
+
   &:focus,
   &:active,
   &:focus-visible {
