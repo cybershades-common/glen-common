@@ -52,6 +52,7 @@
   input,
   select,
   textarea {
+
     &:focus,
     &:active,
     &:focus-visible,
@@ -60,7 +61,7 @@
       box-shadow: none !important;
       border: none !important;
     }
-    
+
     // Remove default browser focus styles
     -webkit-tap-highlight-color: transparent;
     -webkit-focus-ring-color: transparent;
@@ -135,7 +136,7 @@
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
     overflow: hidden;
     z-index: 99999; // Must be higher than submenu overlays (1000-1004)
-    
+
     // Initial state - hidden and slid up
     opacity: 0;
     visibility: hidden;
@@ -345,7 +346,7 @@
   display: flex; // Changed from none - always rendered but hidden
   flex-direction: column;
   gap: 0;
-    position: absolute;
+  position: absolute;
   top: 4.00625rem; // Align with second menu item (font-size 60px + 5px gap)
   left: 0;
   list-style: none;
@@ -531,7 +532,7 @@
 // Menu Footer
 .mega-menu__footer {
   width: 100%;
-   margin-top: 1.25rem;
+  margin-top: 1.25rem;
 }
 
 .mega-menu__footer-links {
@@ -669,7 +670,7 @@ body.mega-menu-open {
     left: 0;
     transform: none;
     margin-bottom: 1.25rem;
-    
+
     .mega-menu__quick-links-dropdown {
       width: 100%;
       box-shadow: none;
@@ -756,53 +757,53 @@ body.mega-menu-open {
           bottom: 0;
           overflow-y: auto;
           z-index: 1000;
-          
+
           // Initial state - hidden to the right
           transform: translateX(100%);
           transition: transform 0.4s cubic-bezier(0.4, 0.0, 0.2, 1);
-          
+
           &.is-active {
             transform: translateX(0);
           }
-          
+
           // Animation states for smoother transitions
           &.slide-in-right {
             transform: translateX(100%);
-            
+
             &.is-active {
               transform: translateX(0);
             }
           }
-          
+
           &.slide-out-right {
             transform: translateX(100%);
           }
-          
+
           &.slide-in-left {
             transform: translateX(-100%);
-            
+
             &.is-active {
               transform: translateX(0);
             }
           }
-          
+
           &.slide-out-left {
             transform: translateX(-100%);
           }
-          
+
           // Layer stacking for multiple levels
           &[data-layer="1"] {
             z-index: 1001;
           }
-          
+
           &[data-layer="2"] {
             z-index: 1002;
           }
-          
+
           &[data-layer="3"] {
             z-index: 1003;
           }
-          
+
           &[data-layer="4"] {
             z-index: 1004;
           }
@@ -811,7 +812,11 @@ body.mega-menu-open {
 
       .mega-menu__footer {
         margin-top: auto;
-       
+
+        .container-fluid {
+          padding: 0;
+        }
+
 
         .input-group {
           border-radius: 10px;
@@ -829,7 +834,17 @@ body.mega-menu-open {
 
           .input-group-text {
             background: none;
+            border: none;
             color: @tertiary-blue-dark;
+
+            i {
+              color: var(--tertiary-blue-dark, #1C3666);
+              text-align: center;
+              font-size: 1rem;
+              font-style: normal;
+              font-weight: 400;
+              line-height: normal;
+            }
           }
 
           ::-webkit-input-placeholder {
@@ -861,8 +876,9 @@ body.mega-menu-open {
 
             .mega-menu__social {
               justify-content: flex-start;
-              a{
-                svg{
+
+              a {
+                svg {
                   max-width: inherit;
                   height: 2.25rem;
                 }
