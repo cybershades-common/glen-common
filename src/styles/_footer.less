@@ -10,13 +10,13 @@
 
   color: @tertiary-blue-dark;
   position: relative;
-  padding: 8.25rem 2rem 1.5rem;
+  padding: 8.25rem  2rem 1.5rem;
 
   .container-fluid {
-    position: relative;
+    position: relative;   
 
     .footer__newsletter-col {
-
+   
       color: @tertiary-blue-dark; // #1C3666
       font-family: @font-family-averta;
       font-size: 1.5625rem;
@@ -117,7 +117,7 @@
 
 
     .footer__acknowledgement {
-
+  
       color: @tertiary-blue-dark; // #1C3666
       font-family: @font-family-averta; // Averta
       font-size: 0.8125rem; // font-size-body-small
@@ -163,7 +163,7 @@
 .footer__row-2 {
   margin-top: 5rem !important; // Increased gap from Row 1
 }
-
+ 
 // Footer Links - Now using Bootstrap Grid (removed absolute positioning)
 
 .footer__link {
@@ -186,7 +186,7 @@
 
 // Utilities - Bootstrap Grid (2 columns)
 .footer__utilities {
-
+ 
   position: relative; // For absolute positioning of button
 
   p {
@@ -225,7 +225,7 @@
   align-items: flex-start;
   gap: 20px;
   mix-blend-mode: luminosity;
-
+ 
 
   img {
     width: 9.84375rem;
@@ -285,17 +285,5 @@
     flex-direction: column;
     gap: 20px;
     text-align: center;
-
-  }
-}
-
-@media (max-width:767px) {
-  .footer__bottom {
-    >div {
-      >.d-flex {
-        flex-direction: column;
-        gap: 1.5rem;
-      }
-    }
   }
 }
