@@ -3945,6 +3945,9 @@ h1 .hero__title-script {
     max-width: 100%;
     width: 100%;
   }
+  body .three-stages-section .three-stages-diagram {
+    margin-left: -15vw;
+  }
 }
 @media (min-width: 1800px) {
   html {
