@@ -275,7 +275,6 @@ h6,
   line-height: 1.4;
   text-align: center;
   text-decoration: none;
-  white-space: nowrap;
   border: none;
   border-radius: 0.625rem;
   cursor: pointer;
@@ -1032,7 +1031,6 @@ body.mega-menu-open .site-header .hamburger .hamburger .line:nth-child(3) {
   color: #db574e;
   transition: opacity 0.2s ease;
   pointer-events: none;
-  white-space: nowrap;
   max-width: 100%;
 }
 .mega-menu__nav-item a:hover .menu-text-normal {
@@ -1708,7 +1706,6 @@ h1 .hero__title-script {
   line-height: 1;
   letter-spacing: 0;
   color: #ffffff;
-  white-space: nowrap;
   text-transform: none;
 }
 @media (max-width: 1199px) {
@@ -2014,7 +2011,6 @@ h1 .hero__title-script {
   gap: 10.31rem;
   padding: 0 5.155rem;
   font-smooth: always;
-  white-space: nowrap;
 }
 @media (max-width: 767px) {
   .full-width-image-words-animation .marquee__part {
@@ -2049,7 +2045,6 @@ h1 .hero__title-script {
   align-items: center;
   gap: 165px;
   line-height: 1;
-  white-space: nowrap;
 }
 @media (max-width: 1199px) {
   .full-width-image-words-animation .text {
@@ -2065,7 +2060,6 @@ h1 .hero__title-script {
   font-size: 9.375rem;
   line-height: 1;
   color: #ffffff;
-  white-space: nowrap;
   margin: 0;
 }
 .full-width-image-words-animation .word.bold {
@@ -2191,6 +2185,7 @@ h1 .hero__title-script {
 .video-testimonials .card-inner .media video,
 .video-testimonials .card-inner .media img {
   aspect-ratio: 300/504;
+  object-fit: cover;
 }
 .video-testimonials .video {
   position: absolute;
@@ -2774,7 +2769,6 @@ h1 .hero__title-script {
   padding: 0.625rem 1.25rem;
   cursor: pointer;
   transition: background-color 250ms ease, color 250ms ease, border-color 250ms ease;
-  white-space: nowrap;
   border: none;
 }
 .staff-section .filter-tab:hover {
@@ -2891,7 +2885,7 @@ h1 .hero__title-script {
 .five-as-section .container-fluid {
   position: relative;
   z-index: 2;
-  padding: 6.5rem;
+  padding: 6.5rem 0;
 }
 @media (max-width: 767px) {
   .five-as-section .container-fluid {
@@ -3129,6 +3123,12 @@ h1 .hero__title-script {
 }
 .five-as-section__content {
   padding: 0 2rem;
+}
+@media (max-width: 767px) {
+  .five-as-section__image-wrapper {
+    margin: 0 auto 2rem;
+    max-width: 85%;
+  }
 }
 .nurturing-start-section {
   position: relative;
@@ -3862,6 +3862,23 @@ h1 .hero__title-script {
     text-align: center;
   }
 }
+@media (max-width: 767px) {
+  .site-footer .footer__bottom div > div {
+    flex-direction: column;
+    gap: 1rem;
+  }
+  .site-footer .footer__bottom div > div nav {
+    white-space: break-spaces;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .site-footer .footer__bottom div > div nav .footer__link {
+    white-space: normal;
+  }
+  .site-footer .footer__logos {
+    margin: 0;
+  }
+}
 @media (max-width: 575px) {
   .container {
     padding-left: 1.25rem;
@@ -3922,6 +3939,12 @@ h1 .hero__title-script {
   body .mobile-only {
     display: block;
   }
+  body .three-stages-section .three-stages-list,
+  body .three-stages-section .three-stages-item,
+  body .three-stages-section .three-stages-line {
+    max-width: 100%;
+    width: 100%;
+  }
 }
 @media (min-width: 1800px) {
   html {
@@ -3980,7 +4003,6 @@ img {
   max-width: 100%;
   height: auto;
   display: block;
-  object-fit: cover;
   vertical-align: bottom;
 }
 object {
@@ -4000,7 +4022,6 @@ button {
   margin: -1px;
   overflow: hidden;
   clip: rect(0, 0, 0, 0);
-  white-space: nowrap;
   border: 0;
 }
 .section {
@@ -4146,6 +4167,7 @@ button {
 .masked-image-content-block .frame img {
   z-index: 11;
   position: relative;
+  object-fit: cover;
 }
 .masked-image-content-block .image-wrap {
   position: absolute;
@@ -4211,7 +4233,6 @@ button {
   line-height: 1;
   color: #1C3666;
   margin: 0;
-  white-space: nowrap;
   flex-shrink: 0;
 }
 .what-we-do-section .section-title.section-title-right {
@@ -4648,7 +4669,6 @@ button {
   color: #ffffff;
   text-align: center;
   margin: 0;
-  white-space: pre-wrap;
 }
 .full-width-video-promo .video-promo-headings .video-promo-title-group {
   display: flex;
@@ -4665,7 +4685,6 @@ button {
   line-height: 0.9;
   color: #ffffff;
   margin: 0;
-  white-space: pre-wrap;
 }
 .full-width-video-promo .video-promo-headings .video-promo-title-group .video-promo-title-bold {
   font-family: 'Averta', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
@@ -4676,7 +4695,6 @@ button {
   text-transform: uppercase;
   color: #ffffff;
   margin: 0;
-  white-space: pre-wrap;
 }
 @media (max-width: 991px) {
   .full-width-video-promo .video-promo-headings .video-promo-title-group .video-promo-title-script {
@@ -4703,7 +4721,6 @@ button {
   color: #ffffff;
   text-align: center;
   margin: 0;
-  white-space: pre-wrap;
   width: min-content;
   min-width: 100%;
 }
@@ -4850,7 +4867,6 @@ button {
   line-height: 1;
   color: #1c3666;
   margin: 0;
-  white-space: pre-wrap;
 }
 @media (max-width: 991px) {
   .wellbeing-section .wellbeing-title-group .wellbeing-title-script {
@@ -4866,7 +4882,6 @@ button {
   text-transform: uppercase;
   color: #1c3666;
   margin: 0;
-  white-space: pre-wrap;
 }
 @media (max-width: 991px) {
   .wellbeing-section .wellbeing-title-group .wellbeing-title-bold {
@@ -4916,7 +4931,6 @@ button {
   text-transform: uppercase;
   color: #1c3666;
   margin: 0;
-  white-space: pre-wrap;
 }
 @media (max-width: 991px) {
   .wellbeing-section .wellbeing-text-block .wellbeing-text-heading {
@@ -4938,7 +4952,6 @@ button {
   line-height: 1.4;
   color: #1c3666;
   margin: 0;
-  white-space: pre-wrap;
   width: min-content;
   min-width: 100%;
 }
@@ -5072,7 +5085,6 @@ button {
   letter-spacing: -0.7px;
   color: #ffffff;
   margin: 0 0 26px 0;
-  white-space: pre-wrap;
   width: 611px;
   max-width: 100%;
 }
@@ -5133,7 +5145,6 @@ button {
   font-size: 15px;
   line-height: 1.4;
   color: #ffffff;
-  white-space: nowrap;
 }
 .full-width-testimonial-audio .testimonial-audio-author {
   font-family: 'Averta', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
@@ -5334,7 +5345,6 @@ button {
   letter-spacing: -0.4px;
   color: #1c3666;
   margin: 0;
-  white-space: pre-wrap;
   width: 364.383px;
   max-width: 100%;
 }
@@ -5350,7 +5360,6 @@ button {
   line-height: 1.4;
   color: #1c3666;
   margin: 0;
-  white-space: pre-wrap;
   width: min-content;
   min-width: 100%;
 }
@@ -5401,7 +5410,6 @@ button {
   letter-spacing: -0.4px;
   color: #1c3666;
   margin: 0;
-  white-space: pre-wrap;
 }
 .three-stages-section .three-stages-ideal {
   font-family: 'Averta', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
@@ -5411,7 +5419,6 @@ button {
   letter-spacing: -0.4px;
   color: #1c3666;
   margin: 0;
-  white-space: pre-wrap;
   width: 100px;
   text-align: right;
 }
@@ -5920,7 +5927,6 @@ button {
   color: #005798;
   text-align: center;
   margin: 0;
-  white-space: pre-wrap;
   transform: translateX(-50%);
 }
 .three-stages-section .three-stages-diagram .three-stages-label-1 {
@@ -5969,7 +5975,6 @@ button {
   text-align: center;
   text-transform: uppercase;
   margin: 0;
-  white-space: pre-wrap;
   transform: translateX(-50%);
 }
 .three-stages-section .three-stages-diagram .three-stages-age-label-1 {
@@ -6113,7 +6118,6 @@ button {
   line-height: 1.4;
   color: #1c3666;
   margin: 0;
-  white-space: pre-wrap;
   width: 325.095px;
   max-width: 100%;
 }
@@ -6150,7 +6154,6 @@ button {
   color: #ffffff;
   width: 611.758px;
   margin: 0;
-  white-space: pre-wrap;
   z-index: 2;
 }
 @media (max-width: 1199px) {

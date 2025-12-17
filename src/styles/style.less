@@ -114,7 +114,6 @@ img {
   max-width: 100%;
   height: auto;
   display: block;
-  object-fit: cover;
   vertical-align: bottom;
 }
 
@@ -142,7 +141,7 @@ button {
   margin: -1px;
   overflow: hidden;
   clip: rect(0, 0, 0, 0);
-  white-space: nowrap;
+
   border: 0;
 }
 
@@ -332,6 +331,7 @@ button {
     img {
       z-index: 11;
       position: relative;
+      object-fit: cover;
     }
   }
 
@@ -418,7 +418,7 @@ button {
     line-height: @line-height-none;
     color: #1C3666;
     margin: 0;
-    white-space: nowrap;
+  
     flex-shrink: 0;
     // All titles should align at same baseline (items-center handles this)
 
@@ -914,7 +914,7 @@ button {
       color: @color-white;
       text-align: center;
       margin: 0;
-      white-space: pre-wrap;
+      
     }
 
     .video-promo-title-group {
@@ -932,7 +932,7 @@ button {
         line-height: 0.9;
         color: @color-white;
         margin: 0;
-        white-space: pre-wrap;
+        
       }
 
       .video-promo-title-bold {
@@ -944,7 +944,7 @@ button {
         text-transform: uppercase;
         color: @color-white;
         margin: 0;
-        white-space: pre-wrap;
+        
       }
 
       @media (max-width: (@breakpoint-lg - 1)) {
@@ -977,7 +977,7 @@ button {
       color: @color-white;
       text-align: center;
       margin: 0;
-      white-space: pre-wrap;
+      
       width: min-content;
       min-width: 100%;
 
@@ -1152,7 +1152,7 @@ button {
       line-height: @line-height-none; // 1
       color: @tertiary-blue-dark; // #1c3666
       margin: 0;
-      white-space: pre-wrap;
+      
 
       @media (max-width: (@breakpoint-lg - 1)) {
         font-size: clamp(2.5rem, 8vw, 60px);
@@ -1168,7 +1168,7 @@ button {
       text-transform: uppercase;
       color: @tertiary-blue-dark; // #1c3666
       margin: 0;
-      white-space: pre-wrap;
+      
 
       @media (max-width: (@breakpoint-lg - 1)) {
         font-size: clamp(2.5rem, 8vw, 60px);
@@ -1221,7 +1221,7 @@ button {
       text-transform: uppercase;
       color: @tertiary-blue-dark; // #1c3666
       margin: 0;
-      white-space: pre-wrap;
+      
 
       @media (max-width: (@breakpoint-lg - 1)) {
         font-size: clamp(16px, 3vw, 20px);
@@ -1245,7 +1245,7 @@ button {
       line-height: @line-height-normal; // 1.4
       color: @tertiary-blue-dark; // #1c3666
       margin: 0;
-      white-space: pre-wrap;
+      
       width: min-content;
       min-width: 100%;
 
@@ -1405,7 +1405,7 @@ button {
     letter-spacing: -0.7px;
     color: @color-white;
     margin: 0 0 26px 0;
-    white-space: pre-wrap;
+    
     width: 611px;
     max-width: 100%;
 
@@ -1469,7 +1469,7 @@ button {
     font-size: 15px;
     line-height: 1.4;
     color: @color-white;
-    white-space: nowrap;
+  
   }
 
   .testimonial-audio-author {
@@ -1694,7 +1694,7 @@ button {
       letter-spacing: -0.4px;
       color: @tertiary-blue-dark;
       margin: 0;
-      white-space: pre-wrap;
+      
       width: 364.383px;
       max-width: 100%;
 
@@ -1710,7 +1710,7 @@ button {
       line-height: @line-height-normal;
       color: @tertiary-blue-dark;
       margin: 0;
-      white-space: pre-wrap;
+      
       width: min-content;
       min-width: 100%;
 
@@ -1766,7 +1766,7 @@ button {
     letter-spacing: -0.4px;
     color: @tertiary-blue-dark;
     margin: 0;
-    white-space: pre-wrap;
+    
   }
 
   .three-stages-ideal {
@@ -1777,7 +1777,7 @@ button {
     letter-spacing: -0.4px;
     color: @tertiary-blue-dark;
     margin: 0;
-    white-space: pre-wrap;
+    
     width: 100px;
     text-align: right;
   }
@@ -2369,7 +2369,7 @@ button {
       color: #005798;
       text-align: center;
       margin: 0;
-      white-space: pre-wrap;
+      
       transform: translateX(-50%);
 
       &-1 {
@@ -2427,7 +2427,7 @@ button {
       text-align: center;
       text-transform: uppercase;
       margin: 0;
-      white-space: pre-wrap;
+      
       transform: translateX(-50%);
 
       &-1 {
@@ -2593,7 +2593,7 @@ button {
     line-height: @line-height-normal;
     color: @tertiary-blue-dark;
     margin: 0;
-    white-space: pre-wrap;
+    
     width: 325.095px;
     max-width: 100%;
 
@@ -2642,7 +2642,7 @@ button {
     color: @color-white;
     width: 611.758px;
     margin: 0;
-    white-space: pre-wrap;
+    
     z-index: 2;
 
     @media (max-width: (@breakpoint-xl - 1)) {

@@ -38,7 +38,7 @@
   .container-fluid {
     position: relative;
     z-index: 2;
-    padding: 6.5rem;
+    padding: 6.5rem 0;
 
     @media (max-width: (@breakpoint-md - 1)) {
       padding-top: 60px;
@@ -310,4 +310,11 @@
 
 .five-as-section__content {
   padding: 0 2rem;
+}
+
+@media (max-width:767px){
+  .five-as-section__image-wrapper{
+    margin: 0 auto 2rem;
+    max-width: 85%;
+  }
 }
