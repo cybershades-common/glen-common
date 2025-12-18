@@ -1,0 +1,579 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sunrise Preloader</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            overflow: hidden;
+        }
+
+        .preloader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 9999;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-end;
+            overflow: hidden;
+            transition: opacity 0.8s ease;
+        }
+
+        .sky {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to bottom, #0a0a20 0%, #1a1a3e 30%, #2d1b4e 60%, #4a2c5a 100%);
+            transition: background 3s ease;
+        }
+
+        .sky.dawn {
+            background: linear-gradient(to bottom, #1a1a3e 0%, #4a2c5a 20%, #8b4570 50%, #d4756a 80%, #f4a460 100%);
+        }
+
+        .sky.sunrise {
+            background: linear-gradient(to bottom, #87ceeb 0%, #b0e0e6 30%, #ffd700 60%, #ff8c00 85%, #ff6347 100%);
+        }
+
+        .sky.day {
+            background: linear-gradient(to bottom, #87ceeb 0%, #b0e0e6 40%, #f0f8ff 70%, #fffacd 100%);
+        }
+
+        .stars {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 60%;
+            opacity: 1;
+            transition: opacity 2s ease;
+        }
+
+        .star {
+            position: absolute;
+            background: white;
+            border-radius: 50%;
+            animation: twinkle 2s ease-in-out infinite;
+        }
+
+        @keyframes twinkle {
+            0%, 100% { opacity: 0.3; transform: scale(1); }
+            50% { opacity: 1; transform: scale(1.2); }
+        }
+
+        .sun-container {
+            position: absolute;
+            bottom: -200px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 10;
+        }
+
+        .sun {
+            width: 200px;
+            height: 200px;
+            background: radial-gradient(circle at center,
+                #fff9c4 0%,
+                #ffeb3b 15%,
+                #ffc107 30%,
+                #ff9800 45%,
+                #ff7043 60%,
+                #ef5350 75%,
+                rgba(239, 83, 80, 0.5) 85%,
+                rgba(239, 83, 80, 0) 100%
+            );
+            border-radius: 50%;
+            filter: blur(2px);
+            animation: pulse 3s ease-in-out infinite;
+        }
+
+        .sun-glow {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 350px;
+            height: 350px;
+            background: radial-gradient(circle at center,
+                rgba(255, 235, 59, 0.4) 0%,
+                rgba(255, 152, 0, 0.3) 30%,
+                rgba(255, 87, 34, 0.2) 50%,
+                rgba(255, 87, 34, 0) 70%
+            );
+            border-radius: 50%;
+            animation: glowPulse 4s ease-in-out infinite;
+        }
+
+        .sun-rays {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 400px;
+            height: 400px;
+            opacity: 0;
+            transition: opacity 2s ease;
+        }
+
+        .sun-rays.visible {
+            opacity: 1;
+        }
+
+        .ray {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 3px;
+            height: 180px;
+            background: linear-gradient(to top, rgba(255, 215, 0, 0.6), transparent);
+            transform-origin: bottom center;
+            border-radius: 3px;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        @keyframes glowPulse {
+            0%, 100% { transform: translate(-50%, -50%) scale(1); opacity: 0.8; }
+            50% { transform: translate(-50%, -50%) scale(1.1); opacity: 1; }
+        }
+
+        .horizon {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 120px;
+            z-index: 20;
+        }
+
+        .hills {
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        .hill {
+            position: absolute;
+            bottom: 0;
+            border-radius: 50% 50% 0 0;
+            transition: background 2s ease;
+        }
+
+        .hill-1 {
+            left: -10%;
+            width: 50%;
+            height: 100px;
+            background: #1a0a20;
+        }
+
+        .hill-2 {
+            left: 30%;
+            width: 60%;
+            height: 120px;
+            background: #150818;
+        }
+
+        .hill-3 {
+            right: -10%;
+            width: 45%;
+            height: 90px;
+            background: #1a0a20;
+        }
+
+        .hill.lit {
+            background: #2d1b2d;
+        }
+
+        .loading-container {
+            position: relative;
+            z-index: 30;
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .loading-text {
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 1.2rem;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        .progress-bar {
+            width: 250px;
+            height: 4px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 2px;
+            overflow: hidden;
+            margin: 0 auto;
+        }
+
+        .progress-fill {
+            width: 0%;
+            height: 100%;
+            background: linear-gradient(90deg, #ff6b6b, #ffd93d, #fff);
+            border-radius: 2px;
+            transition: width 0.3s ease;
+            box-shadow: 0 0 10px rgba(255, 217, 61, 0.5);
+        }
+
+        .percentage {
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 0.9rem;
+            margin-top: 15px;
+            font-weight: 300;
+        }
+
+        .clouds {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            opacity: 0;
+            transition: opacity 3s ease;
+        }
+
+        .clouds.visible {
+            opacity: 1;
+        }
+
+        .cloud {
+            position: absolute;
+            background: rgba(255, 255, 255, 0.8);
+            border-radius: 50px;
+            filter: blur(3px);
+        }
+
+        .cloud::before,
+        .cloud::after {
+            content: '';
+            position: absolute;
+            background: inherit;
+            border-radius: 50%;
+        }
+
+        .cloud-1 {
+            top: 15%;
+            left: 10%;
+            width: 100px;
+            height: 40px;
+            animation: floatCloud 20s ease-in-out infinite;
+        }
+
+        .cloud-1::before {
+            width: 50px;
+            height: 50px;
+            top: -25px;
+            left: 15px;
+        }
+
+        .cloud-1::after {
+            width: 35px;
+            height: 35px;
+            top: -15px;
+            right: 15px;
+        }
+
+        .cloud-2 {
+            top: 25%;
+            right: 15%;
+            width: 80px;
+            height: 30px;
+            animation: floatCloud 25s ease-in-out infinite reverse;
+        }
+
+        .cloud-2::before {
+            width: 40px;
+            height: 40px;
+            top: -20px;
+            left: 10px;
+        }
+
+        .cloud-2::after {
+            width: 30px;
+            height: 30px;
+            top: -10px;
+            right: 10px;
+        }
+
+        .cloud-3 {
+            top: 10%;
+            left: 50%;
+            width: 120px;
+            height: 45px;
+            animation: floatCloud 30s ease-in-out infinite;
+        }
+
+        .cloud-3::before {
+            width: 55px;
+            height: 55px;
+            top: -30px;
+            left: 20px;
+        }
+
+        .cloud-3::after {
+            width: 45px;
+            height: 45px;
+            top: -20px;
+            right: 20px;
+        }
+
+        @keyframes floatCloud {
+            0%, 100% { transform: translateX(0); }
+            50% { transform: translateX(30px); }
+        }
+
+        .birds {
+            position: absolute;
+            top: 20%;
+            left: -50px;
+            opacity: 0;
+            transition: opacity 2s ease;
+        }
+
+        .birds.visible {
+            opacity: 1;
+            animation: flyBirds 15s linear infinite;
+        }
+
+        @keyframes flyBirds {
+            0% { left: -50px; top: 20%; }
+            100% { left: 110%; top: 15%; }
+        }
+
+        .bird {
+            position: absolute;
+            font-size: 1.5rem;
+            color: #333;
+        }
+
+        .bird:nth-child(1) { left: 0; top: 0; }
+        .bird:nth-child(2) { left: 25px; top: 10px; }
+        .bird:nth-child(3) { left: 15px; top: -15px; }
+
+        /* Main content (shown after loading) */
+        .main-content {
+            display: none;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .main-content h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .main-content p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+
+        .restart-btn {
+            margin-top: 30px;
+            padding: 15px 40px;
+            font-size: 1rem;
+            background: rgba(255, 255, 255, 0.2);
+            border: 2px solid white;
+            color: white;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .restart-btn:hover {
+            background: white;
+            color: #764ba2;
+        }
+    </style>
+</head>
+<body>
+    <div class="preloader">
+        <div class="sky">
+            <div class="stars"></div>
+            <div class="clouds">
+                <div class="cloud cloud-1"></div>
+                <div class="cloud cloud-2"></div>
+                <div class="cloud cloud-3"></div>
+            </div>
+            <div class="birds">
+                <span class="bird">🐦</span>
+                <span class="bird">🐦</span>
+                <span class="bird">🐦</span>
+            </div>
+        </div>
+
+        <div class="sun-container">
+            <div class="sun-glow"></div>
+            <div class="sun-rays"></div>
+            <div class="sun"></div>
+        </div>
+
+        <div class="horizon">
+            <div class="hills">
+                <div class="hill hill-1"></div>
+                <div class="hill hill-2"></div>
+                <div class="hill hill-3"></div>
+            </div>
+        </div>
+
+        <div class="loading-container">
+            <div class="loading-text">Loading</div>
+            <div class="progress-bar">
+                <div class="progress-fill"></div>
+            </div>
+            <div class="percentage">0%</div>
+        </div>
+    </div>
+
+    <div class="main-content">
+        <div>
+            <h1>☀️ Welcome!</h1>
+            <p>A beautiful new day awaits you.</p>
+            <button class="restart-btn" onclick="restartPreloader()">Watch Sunrise Again</button>
+        </div>
+    </div>
+
+    <script>
+        $(document).ready(function() {
+            createStars();
+            createSunRays();
+            startSunriseAnimation();
+        });
+
+        function createStars() {
+            const $stars = $('.stars');
+            for (let i = 0; i < 50; i++) {
+                const size = Math.random() * 3 + 1;
+                const $star = $('<div class="star"></div>').css({
+                    left: Math.random() * 100 + '%',
+                    top: Math.random() * 100 + '%',
+                    width: size + 'px',
+                    height: size + 'px',
+                    animationDelay: Math.random() * 2 + 's',
+                    animationDuration: (Math.random() * 2 + 1) + 's'
+                });
+                $stars.append($star);
+            }
+        }
+
+        function createSunRays() {
+            const $rays = $('.sun-rays');
+            for (let i = 0; i < 12; i++) {
+                const angle = i * 30;
+                const $ray = $('<div class="ray"></div>').css({
+                    transform: `translateX(-50%) rotate(${angle}deg)`
+                });
+                $rays.append($ray);
+            }
+        }
+
+        function startSunriseAnimation() {
+            let progress = 0;
+            const duration = 6000;
+            const interval = 50;
+            const steps = duration / interval;
+            const increment = 100 / steps;
+
+            const progressInterval = setInterval(function() {
+                progress += increment;
+                if (progress > 100) progress = 100;
+
+                $('.progress-fill').css('width', progress + '%');
+                $('.percentage').text(Math.floor(progress) + '%');
+
+                // Sun rising animation
+                const sunBottom = -200 + (progress * 2.5);
+                $('.sun-container').css('bottom', sunBottom + 'px');
+
+                // Sky color transitions
+                if (progress > 15 && progress <= 40) {
+                    $('.sky').addClass('dawn');
+                } else if (progress > 40 && progress <= 70) {
+                    $('.sky').removeClass('dawn').addClass('sunrise');
+                    $('.stars').css('opacity', Math.max(0, 1 - (progress - 40) / 30));
+                } else if (progress > 70) {
+                    $('.sky').removeClass('sunrise').addClass('day');
+                    $('.stars').css('opacity', 0);
+                }
+
+                // Show sun rays
+                if (progress > 50) {
+                    $('.sun-rays').addClass('visible');
+                }
+
+                // Show clouds
+                if (progress > 60) {
+                    $('.clouds').addClass('visible');
+                }
+
+                // Light up hills
+                if (progress > 45) {
+                    $('.hill').addClass('lit');
+                }
+
+                // Show birds
+                if (progress > 75) {
+                    $('.birds').addClass('visible');
+                }
+
+                if (progress >= 100) {
+                    clearInterval(progressInterval);
+                    setTimeout(function() {
+                        $('.preloader').css('opacity', '0');
+                        setTimeout(function() {
+                            $('.preloader').hide();
+                            $('.main-content').css('display', 'flex').hide().fadeIn(800);
+                        }, 800);
+                    }, 800);
+                }
+            }, interval);
+        }
+
+        function restartPreloader() {
+            // Reset everything
+            $('.main-content').hide();
+            $('.preloader').css('opacity', '1').show();
+            $('.progress-fill').css('width', '0');
+            $('.percentage').text('0%');
+            $('.sun-container').css('bottom', '-200px');
+            $('.sky').removeClass('dawn sunrise day');
+            $('.stars').css('opacity', 1);
+            $('.sun-rays').removeClass('visible');
+            $('.clouds').removeClass('visible');
+            $('.hill').removeClass('lit');
+            $('.birds').removeClass('visible');
+
+            // Restart animation
+            setTimeout(startSunriseAnimation, 500);
+        }
+    </script>
+</body>
+</html>

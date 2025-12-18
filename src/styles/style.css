@@ -3882,6 +3882,12 @@ h1 .hero__title-script {
   position: relative;
   padding: 8.25rem 2rem 1.5rem;
 }
+.site-footer .transparent-img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+}
 .site-footer .container-fluid {
   position: relative;
 }
