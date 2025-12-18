@@ -32,6 +32,7 @@
       left: 0;
       width: 100vw;
       height: 100vh;
+      height: 100dvh;
       background: rgb(238, 229, 229);
       z-index: 9999;
       display: flex;
@@ -39,6 +40,9 @@
       justify-content: center;
       overflow: hidden;
       clip-path: circle(100% at 50% 50%);
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
     }
 
     .glen-sunrise-container {
@@ -3007,11 +3011,20 @@
   
   <!-- Glen Preloader Script -->
   <script>
+    // Prevent scroll during preloader
+    document.body.style.overflow = 'hidden';
+
     // GSAP Timeline for glen preloader animation
     const glenTl = gsap.timeline();
 
     // Check if mobile
     const isMobile = window.innerWidth <= 768;
+    
+    // Calculate exact preloader duration and restore scroll
+    const preloaderDuration = 3000; // 3 seconds for both mobile and desktop
+    setTimeout(() => {
+      document.body.style.overflow = '';
+    }, preloaderDuration);
     
     // Set initial states
     gsap.set(".glen-sunrise-container", { y: 0, scale: 0.5 });
@@ -3067,6 +3080,7 @@
     document.addEventListener('click', () => {
       if (glenTl.progress() < 0.8) {
         glenTl.progress(1);
+        document.body.style.overflow = '';
       }
     });
     
