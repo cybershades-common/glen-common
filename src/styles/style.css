@@ -3921,6 +3921,20 @@ h1 .hero__title-script {
   z-index: 11111;
 }
 @media (max-width: 767px) {
+  body .masked-image-block {
+    flex-direction: column-reverse;
+    gap: 2rem;
+  }
+  body .masked-image-block .masked-image-content-block-wrap {
+    transform: scale(1.125);
+    margin: -15% auto 0;
+  }
+  body .masked-image-content-block {
+    padding: 1.5rem 0 5rem;
+  }
+  body .breadcrumb-wrap {
+    padding: 1rem;
+  }
   body .site-header {
     height: 5rem;
     min-height: 5rem;
@@ -3947,6 +3961,9 @@ h1 .hero__title-script {
   }
   body .three-stages-section .three-stages-diagram {
     margin-left: -15vw;
+  }
+  body .masked-image-content-block__cta {
+    align-self: center;
   }
 }
 @media (min-width: 1800px) {
