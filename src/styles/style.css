@@ -3601,7 +3601,6 @@ h1 .hero__title-script {
   outline-offset: 2px;
 }
 .glenaeon-education-section {
-  background-color: #fff;
   padding: 5rem 0;
 }
 .glenaeon-education-title .script-title {
@@ -3720,7 +3719,6 @@ h1 .hero__title-script {
   width: calc(100% - 16px);
   height: auto;
   z-index: 2;
-  margin-top: 8px;
 }
 .tier__content {
   grid-column: 1;
@@ -3756,20 +3754,11 @@ h1 .hero__title-script {
 .tier-3 {
   width: 224.56px;
 }
-.tier-3 .tier__bg {
-  height: 126.667px;
-}
 .tier-2 {
   width: 294.505px;
 }
-.tier-2 .tier__bg {
-  height: 127.483px;
-}
 .tier-1 {
   width: 365.272px;
-}
-.tier-1 .tier__bg {
-  height: 125.523px;
 }
 .tier-1 .tier__desc {
   width: 217.429px;
