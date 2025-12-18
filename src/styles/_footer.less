@@ -3,7 +3,7 @@
 // ==========================================================================
 
 .site-footer {
-  background-image: url('../../figma-design-images/section-bg.jpg');
+  background-image: url('../../assets/images/section-bg.jpg');
   background-size: cover;
   background-position: center center;
   background-repeat: no-repeat;
@@ -40,6 +40,10 @@
           display: flex;
           flex-direction: column;
 
+          >div {
+            gap: 1.25rem;
+          }
+
           .footer__newsletter-input {
             flex: 1;
             min-width: 0;
@@ -52,6 +56,8 @@
             line-height: 1.4;
             color: @tertiary-blue-dark;
             outline: none;
+            border-bottom: 1px solid rgba(28, 54, 102, 0.21);
+
 
             &::placeholder {
               color: fade(@tertiary-blue-dark, 60%);
@@ -97,12 +103,20 @@
 
     }
 
+    .footer-column {
+      display: flex;
+      flex-direction: column;
+      gap: 0.625rem;
+    }
+
+
     .footer__title {
       font-family: @font-family-born-ready;
       font-size: 6.25rem;
       line-height: 1;
       color: @tertiary-blue-dark;
       margin: 0;
+      font-weight: 400;
 
 
       @media (max-width: @breakpoint-lg) {
@@ -188,6 +202,8 @@
 .footer__utilities {
 
   position: relative; // For absolute positioning of button
+  display: flex;
+  gap: 2rem;
 
   p {
     margin: 0;
@@ -197,10 +213,6 @@
   }
 
   .footer__language-btn {
-    position: absolute;
-    left: 120px; // Position between the two time lines
-    top: 50%;
-    transform: translateY(-50%);
     color: @tertiary-blue-dark;
     border-color: @tertiary-blue-dark;
     background-color: transparent;
@@ -221,9 +233,8 @@
 // Member Logos - Bootstrap Grid (3 columns), aligned with upper links
 .footer__logos {
   display: flex;
-  justify-content: space-between;
   align-items: flex-start;
-  gap: 20px;
+  gap: 3rem;
   mix-blend-mode: luminosity;
 
 
@@ -286,6 +297,22 @@
     gap: 20px;
     text-align: center;
   }
+}
+
+
+@media (max-width:1400px) {
+  .site-footer .container-fluid .footer__title {
+    font-size: 5rem;
+  }
+
+}
+
+@media (max-width:1200px) {
+  .site-footer .container-fluid .footer__title {
+    font-size: 4.25rem;
+  }
+
+
 }
 
 @media (max-width:767px) {
