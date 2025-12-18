@@ -923,138 +923,228 @@
   // ==========================================================================
 
   function initCoCurricularCarousel() {
-    // Check if Swiper is loaded
-    if (typeof Swiper === 'undefined') {
-      console.warn('Swiper not loaded');
+    if (typeof gsap === 'undefined') {
+      console.warn('GSAP not loaded');
       return;
     }
 
-    const carouselSlider = document.querySelector('.co-curricular-carousel .slider');
-    if (!carouselSlider) return;
+    const section = document.querySelector('.co-curricular-carousel');
+    if (!section) return;
 
-    const paginationDots = document.querySelectorAll('.co-curricular-carousel .pagination-dot');
-    const prevArrow = document.querySelector('.co-curricular-carousel .navigation .arrow-navigation__arrow--left');
-    const nextArrow = document.querySelector('.co-curricular-carousel .navigation .arrow-navigation__arrow--right');
-    const counterCurrent = document.querySelector('.co-curricular-carousel .counter-current');
-    const counterTotal = document.querySelector('.co-curricular-carousel .counter-total');
+    const sliderEl = section.querySelector('.slider');
+    const slideElements = Array.from(section.querySelectorAll('.swiper-slide'));
+    if (!sliderEl || !slideElements.length) return;
 
-    // Initialize Swiper with smooth transitions
-    const swiper = new Swiper('.co-curricular-carousel .slider', {
-      loop: true,
-      speed: 800,
-      effect: 'slide',
-      slidesPerView: 1,
-      spaceBetween: 0,
-      centeredSlides: true,
-      
-      // Smooth easing
-      resistanceRatio: 0,
-      touchRatio: 1,
-      threshold: 5,
-      followFinger: true,
-      
-      // Autoplay
-      autoplay: {
-        delay: 5000,
-        disableOnInteraction: false,
-        pauseOnMouseEnter: true
-      },
+    const paginationDots = Array.from(section.querySelectorAll('.pagination-dot'));
+    const prevArrow = section.querySelector('.navigation .arrow-navigation__arrow--left');
+    const nextArrow = section.querySelector('.navigation .arrow-navigation__arrow--right');
+    const counterCurrent = section.querySelector('.counter-current');
+    const counterTotal = section.querySelector('.counter-total');
+    const totalSlides = slideElements.length;
 
-      // Keyboard control
-      keyboard: {
-        enabled: true,
-        onlyInViewport: true
-      },
+    if (counterTotal) {
+      counterTotal.textContent = totalSlides;
+    }
 
-      // Accessibility
-      a11y: {
-        prevSlideMessage: 'Previous slide',
-        nextSlideMessage: 'Next slide',
-        paginationBulletMessage: 'Go to slide {{index}}'
+    class CarouselSlide {
+      constructor(el) {
+        this.DOM = {
+          el,
+          media: el.querySelector('.video'),
+          content: el.querySelector('.slide-content')
+        };
+        this.config = { duration: 1, ease: 'expo.inOut' };
+        gsap.set(this.DOM.el, { opacity: 0, zIndex: 1, xPercent: 0 });
+        this.setCurrent(false);
       }
-    });
 
-    // Update pagination dots
-    function updatePagination(activeIndex) {
-      paginationDots.forEach((dot, index) => {
-        if (index === activeIndex) {
-          dot.classList.add('pagination-dot--active');
-        } else {
-          dot.classList.remove('pagination-dot--active');
+      setCurrent(state = true) {
+        this.DOM.el.classList.toggle('current', state);
+      }
+
+      play() {
+        if (this.DOM.media) {
+          this.DOM.media.play().catch(() => {});
         }
-      });
-    }
-
-    // Update counter
-    function updateCounter(activeIndex, total) {
-      if (counterCurrent) {
-        counterCurrent.textContent = activeIndex + 1;
       }
-      if (counterTotal) {
-        counterTotal.textContent = total;
+
+      pause() {
+        if (this.DOM.media) {
+          this.DOM.media.pause();
+          this.DOM.media.currentTime = 0;
+        }
       }
-    }
 
-    // Connect navigation arrows
-    if (prevArrow) {
-      prevArrow.addEventListener('click', function() {
-        swiper.slidePrev();
-      });
-    }
+      show(direction) {
+        return this.toggle('show', direction);
+      }
 
-    if (nextArrow) {
-      nextArrow.addEventListener('click', function() {
-        swiper.slideNext();
-      });
-    }
+      hide(direction) {
+        return this.toggle('hide', direction);
+      }
 
-    // Connect pagination dots
-    paginationDots.forEach((dot, index) => {
-      dot.addEventListener('click', function() {
-        swiper.slideToLoop(index);
-      });
-    });
+      toggle(action, direction) {
+        const offset = direction === 'right' ? 100 : -100;
+        const contentOffset = direction === 'right' ? -80 : 80;
+        const mediaOffset = direction === 'right' ? -60 : 60;
 
-    // Handle video playback on slide change
-    function handleVideoPlayback() {
-      const slides = swiper.slides;
-      slides.forEach((slide, index) => {
-        const video = slide.querySelector('.co-curricular-carousel video');
-        const slideElement = slide.querySelector('.co-curricular-carousel .slide');
-        if (video && slideElement) {
-          if (index === swiper.realIndex) {
-            // Play video in active slide
-            video.play().then(() => {
-              video.classList.add('is-playing');
-              slideElement.classList.add('video-playing');
-            }).catch(err => {
-              console.log('Video autoplay prevented:', err);
-              // Keep fallback image visible if video fails
-              slideElement.classList.remove('video-playing');
-            });
-          } else {
-            // Pause videos in other slides
-            video.pause();
-            video.currentTime = 0;
-            video.classList.remove('is-playing');
-            slideElement.classList.remove('video-playing');
+        return new Promise(resolve => {
+          if (action === 'hide') {
+            gsap.set(this.DOM.el, { opacity: 0, zIndex: 1, xPercent: 0 });
+            this.setCurrent(false);
+            resolve();
+            return;
           }
-        }
-      });
+
+          this.setCurrent(true);
+          gsap.set(this.DOM.el, { opacity: 1, zIndex: 11, xPercent: offset });
+
+          const timeline = gsap.timeline({
+            defaults: { duration: this.config.duration, ease: this.config.ease },
+            onComplete: () => {
+              gsap.set(this.DOM.el, { zIndex: 9, xPercent: 0 });
+              resolve();
+            }
+          });
+
+          timeline.to(this.DOM.el, { xPercent: 0 }, 0);
+
+          if (this.DOM.media) {
+            timeline.fromTo(
+              this.DOM.media,
+              { xPercent: mediaOffset, scale: 1.05 },
+              { xPercent: 0, scale: 1 },
+              0
+            );
+          }
+          if (this.DOM.content) {
+            timeline.fromTo(
+              this.DOM.content,
+              { xPercent: contentOffset, filter: 'blur(30px)', opacity: 0.2 },
+              { xPercent: 0, filter: 'blur(0px)', opacity: 1 },
+              0
+            );
+          }
+        });
+      }
     }
 
-    // Update on slide change
-    swiper.on('slideChange', function () {
-      const realIndex = swiper.realIndex;
-      updatePagination(realIndex);
-      updateCounter(realIndex, swiper.slides.length);
-      handleVideoPlayback();
+    const slides = slideElements.map(el => new CarouselSlide(el));
+    let currentIndex = 0;
+    let isAnimating = false;
+
+    const updatePagination = index => {
+      paginationDots.forEach((dot, dotIndex) => {
+        dot.classList.toggle('pagination-dot--active', dotIndex === index);
+      });
+    };
+
+    const updateCounter = index => {
+      if (counterCurrent) {
+        counterCurrent.textContent = index + 1;
+      }
+    };
+
+    const preloadVideos = () => {
+      section.querySelectorAll('video').forEach(video => {
+        video.setAttribute('preload', 'auto');
+        try {
+          if (video.readyState < 2) {
+            video.load();
+          }
+        } catch (error) {
+          console.warn('Unable to preload video', error);
+        }
+      });
+    };
+    preloadVideos();
+    window.addEventListener('load', preloadVideos, { once: true });
+
+    async function goTo(targetIndex, direction) {
+      const normalizedIndex = (targetIndex + totalSlides) % totalSlides;
+      if (isAnimating || normalizedIndex === currentIndex) return;
+
+      const travelDirection = direction || (normalizedIndex > currentIndex ? 'right' : 'left');
+      isAnimating = true;
+
+      const outgoing = slides[currentIndex];
+      const incoming = slides[normalizedIndex];
+
+      incoming.play();
+      await incoming.show(travelDirection);
+      outgoing.pause();
+      await outgoing.hide(travelDirection);
+      outgoing.setCurrent(false);
+      currentIndex = normalizedIndex;
+      updatePagination(currentIndex);
+      updateCounter(currentIndex);
+      isAnimating = false;
+    }
+
+    // Events
+    if (prevArrow) {
+      prevArrow.addEventListener('click', () => goTo(currentIndex - 1, 'left'));
+    }
+    if (nextArrow) {
+      nextArrow.addEventListener('click', () => goTo(currentIndex + 1, 'right'));
+    }
+    paginationDots.forEach((dot, index) => {
+      dot.addEventListener('click', () => {
+        const direction = index > currentIndex ? 'right' : 'left';
+        goTo(index, direction);
+      });
     });
 
-    // Initial update
-    updatePagination(0);
-    updateCounter(0, swiper.slides.length);
-    handleVideoPlayback();
+    const handlePointer = () => {
+      const initialSlide = slides[currentIndex];
+      initialSlide.setCurrent(true);
+      gsap.set(initialSlide.DOM.el, { opacity: 1, zIndex: 9, xPercent: 0 });
+      initialSlide.play();
+      updatePagination(currentIndex);
+      updateCounter(currentIndex);
+    };
+
+    const getPoint = event => {
+      if (event.touches && event.touches.length) {
+        return { x: event.touches[0].clientX, y: event.touches[0].clientY };
+      }
+      if (event.changedTouches && event.changedTouches.length) {
+        return { x: event.changedTouches[0].clientX, y: event.changedTouches[0].clientY };
+      }
+      return { x: event.clientX, y: event.clientY };
+    };
+
+    let swipeStart = null;
+    let isPointerDown = false;
+
+    const onPointerDown = event => {
+      swipeStart = getPoint(event);
+      isPointerDown = true;
+    };
+
+    const onPointerUp = event => {
+      if (!isPointerDown || !swipeStart) return;
+      const { x, y } = getPoint(event);
+      const deltaX = x - swipeStart.x;
+      const deltaY = y - swipeStart.y;
+      isPointerDown = false;
+      swipeStart = null;
+
+      if (Math.abs(deltaX) > 40 && Math.abs(deltaX) > Math.abs(deltaY)) {
+        const direction = deltaX < 0 ? 'right' : 'left';
+        goTo(currentIndex + (deltaX < 0 ? 1 : -1), direction);
+      }
+    };
+
+    sliderEl.addEventListener('touchstart', onPointerDown, { passive: true });
+    sliderEl.addEventListener('touchend', onPointerUp);
+    sliderEl.addEventListener('mousedown', event => {
+      event.preventDefault();
+      onPointerDown(event);
+    });
+    window.addEventListener('mouseup', onPointerUp);
+
+    handlePointer();
   }
 
   // ==========================================================================

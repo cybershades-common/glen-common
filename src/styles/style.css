@@ -2264,7 +2264,7 @@ h1 .hero__title-script {
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: opacity 150ms ease;
+  transition: opacity 150ms ease ease;
 }
 .video-testimonials .card-overlay .card-content .play-button-wrapper .play-button-icon .icon-close {
   opacity: 0;
@@ -2436,6 +2436,24 @@ h1 .hero__title-script {
   margin: 0;
   z-index: 2;
 }
+.co-curricular-carousel .slider .swiper-wrapper {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+.co-curricular-carousel .slider .swiper-slide {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  pointer-events: none;
+  z-index: 1;
+  transition: opacity 250ms ease;
+  height: 100%;
+}
+.co-curricular-carousel .slider .swiper-slide.current {
+  opacity: 1;
+  pointer-events: auto;
+}
 .co-curricular-carousel .slide {
   position: relative;
   width: 100%;
@@ -2450,23 +2468,7 @@ h1 .hero__title-script {
   height: 100%;
   object-fit: cover;
   z-index: 1;
-  display: none;
-}
-.co-curricular-carousel .video.is-playing {
   display: block;
-}
-.co-curricular-carousel .fallback-image {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  z-index: 0;
-  display: block;
-}
-.co-curricular-carousel .slide.video-playing.fallback-image {
-  display: none;
 }
 .co-curricular-carousel .slide-content {
   position: absolute;
@@ -2635,21 +2637,22 @@ h1 .hero__title-script {
 }
 .co-curricular-carousel .navigation .arrow-navigation__arrow {
   position: relative;
+  width: 47px;
+  height: 47px;
+  min-width: 47px;
+  min-height: 47px;
 }
 @media (max-width: 767px) {
-  .co-curricular-carousel .navigation .arrow-navigation__arrow {
-    width: 48px;
-    height: 48px;
-    min-width: 48px;
-    min-height: 48px;
-  }
-}
-@media (max-width: 767px) {
-  .co-curricular-carousel .controls.navigation.arrow-navigation {
+  .co-curricular-carousel .navigation.arrow-navigation {
     display: flex !important;
+    pointer-events: auto;
   }
-  .co-curricular-carousel .controls.navigation.arrow-navigation .arrow-navigation__arrow {
+  .co-curricular-carousel .navigation.arrow-navigation .arrow-navigation__arrow {
     display: block;
+    width: 56px;
+    height: 56px;
+    min-width: 56px;
+    min-height: 56px;
   }
 }
 .staff-section {

@@ -93,7 +93,7 @@
   }
 
   // Swiper Container
- .slider {
+  .slider {
     position: absolute;
     top: 0;
     left: 0;
@@ -101,6 +101,27 @@
     height: 100%;
     margin: 0;
     z-index: 2;
+
+    .swiper-wrapper {
+      position: relative;
+      width: 100%;
+      height: 100%;
+    }
+
+    .swiper-slide {
+      position: absolute;
+      inset: 0;
+      opacity: 0;
+      pointer-events: none;
+      z-index: 1;
+      transition: opacity @transition-base;
+      height: 100%;
+
+      &.current {
+        opacity: 1;
+        pointer-events: auto;
+      }
+    }
   }
 
  .slide {
@@ -111,7 +132,7 @@
   }
 
   // Full bleed video/image
- .video {
+  .video {
     position: absolute;
     top: 0;
     left: 0;
@@ -119,30 +140,11 @@
     height: 100%;
     object-fit: cover;
     z-index: 1;
-    display: none;
-  }
-
- .video.is-playing {
     display: block;
-  }
-
- .fallback-image {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    z-index: 0;
-    display: block;
-  }
-
- .slide.video-playing.fallback-image {
-    display: none;
   }
 
   // Slide Content
- .slide-content {
+  .slide-content {
     position: absolute;
     top: 0;
     left: 0;
@@ -317,13 +319,10 @@
 
     .arrow-navigation__arrow {
       position: relative;
-
-      @media (max-width: (@breakpoint-md - 1)) {
-        width: 48px; // 40px * 1.2 = 48px (20% increase)
-        height: 48px;
-        min-width: 48px;
-        min-height: 48px;
-      }
+      width: @arrow-width;
+      height: @arrow-width;
+      min-width: @arrow-width;
+      min-height: @arrow-width;
     }
   }
 
@@ -333,14 +332,17 @@
   // we must use it here. Consider refactoring hero section to be more specific
   // (e.g., .hero .hero__navigation.arrow-navigation) to avoid this.
   @media (max-width: (@breakpoint-md - 1)) {
-    // Target the navigation container - must use !important to override hero's !important
-   .controls.navigation.arrow-navigation {
+    .navigation.arrow-navigation {
       display: flex !important;
+      pointer-events: auto;
     }
 
-    // Also ensure buttons are visible
-   .controls.navigation.arrow-navigation .arrow-navigation__arrow {
+    .navigation.arrow-navigation .arrow-navigation__arrow {
       display: block;
+      width: 56px;
+      height: 56px;
+      min-width: 56px;
+      min-height: 56px;
     }
   }
 }
