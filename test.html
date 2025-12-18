@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Glenaeon Preloader</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            overflow-x: hidden;
+            background: #000;
+        }
+
+        /* Preloader Styles */
+        .preloader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+           background: rgb(238, 229, 229);
+            z-index: 9999;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            clip-path: circle(100% at 50% 50%);
+        }
+
+
+        .sunrise-container {
+            position: absolute;
+            bottom: -1400px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 1600px;
+            height: 1600px;
+        }
+
+        .sunrise {
+            width: 100%;
+            height: 100%;
+            opacity: 1;
+            filter: brightness(1.1);
+        }
+
+        .logo-container {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            opacity: 0;
+            z-index: 10;
+        }
+
+        .logo {
+            width: 400px;
+            height: auto;
+            filter: brightness(0) invert(1);
+            transform-origin: center;
+            backface-visibility: hidden;
+            will-change: transform;
+        }
+
+        /* Hero Section Styles */
+        .hero {
+            min-height: 100vh;
+            background: 
+                        url('Full-Width-Carousel-img.jpg') center/cover;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            opacity: 0;
+        }
+
+        .hero-content h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            font-weight: 300;
+        }
+
+        .hero-content p {
+            font-size: 1.2rem;
+            opacity: 0.8;
+            max-width: 600px;
+            line-height: 1.6;
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .sunrise-container {
+                width: 800px;
+                height: 800px;
+                bottom: -400px;
+            }
+
+            .logo-container {
+                top: 60%;
+            }
+
+            .logo {
+                width: 280px;
+            }
+
+            .hero-content h1 {
+                font-size: 2rem;
+            }
+
+            .hero-content p {
+                font-size: 1rem;
+                padding: 0 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Preloader -->
+    <div class="preloader" id="preloader">
+        <div class="sunrise-container">
+            <img src="assets/images/R1.png" alt="Sunrise" class="sunrise" id="sunrise">
+        </div>
+        <div class="logo-container">
+            <img src="assets/images/glenaeon_logo_landscape.svg" alt="Glenaeon Logo" class="logo" id="logo">
+        </div>
+    </div>
+
+    <!-- Hero Section -->
+    <div class="hero" id="hero">
+        <div class="hero-content">
+            <h1>Welcome to Glenaeon</h1>
+            <p>Rudolf Steiner School - Nurturing creative, confident, and capable individuals through innovative Steiner education.</p>
+        </div>
+    </div>
+
+    <script>
+        // GSAP Timeline for preloader animatio
+        
+        const tl = gsap.timeline();
+
+        // Check if mobile
+        const isMobile = window.innerWidth <= 768;
+        
+        // Set initial states
+        gsap.set(".sunrise-container", { y: 0, scale: 0.5 });
+        gsap.set(".logo-container", { opacity: 0, y: 100, scale: 0.3,  filter: "blur(10px)" });
+        gsap.set("#hero", { opacity: 1 });
+        gsap.set("#preloader", { clipPath: "circle(100% at 50% 50%)" });
+
+        // Animation sequence
+        if (isMobile) {
+            // Mobile animation - less rise
+            tl.to(".sunrise-container", {
+                y: "-30vh",
+                scale: 1,
+                duration: 4,
+                ease: "power1.out"
+            })
+            .to(".logo-container", {
+                opacity: 1,
+                y: "-15vh",
+                scale: 1,
+                rotationY: 0,
+                filter: "blur(0px)",
+                duration: 3.6,
+                ease: "elastic.out(1, 2.2)"
+            }, "-=1.2");
+        } else {
+            // Desktop animation
+            tl.to(".sunrise-container", {
+                y: "-50vh",
+                scale: 1.2,
+                duration: 4,
+                ease: "power1.out"
+            })
+            .to(".logo-container", {
+                opacity: 1,
+                y: 0,
+                scale: 1,
+                rotationY: 0,
+                filter: "blur(0px)",
+                duration: 4,
+                ease: "elastic.out(1, 2.15)"
+            }, "-=1.5");
+        }
+        
+        // Continue timeline for both mobile and desktop
+        tl.to("#preloader", {
+            clipPath: "circle(0% at 50% 50%)",
+            duration: 1.5,
+            ease: "power2.inOut"
+        }, "-=2.5")
+        .set("#preloader", { display: "none" });
+
+        // Optional: Click to skip preloader
+        document.addEventListener('click', () => {
+            if (tl.progress() < 0.8) {
+                tl.progress(1);
+            }
+        });
+    </script>
+</body>
+</html>

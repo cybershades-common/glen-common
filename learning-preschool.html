@@ -31,9 +31,29 @@
 
     <!-- Custom Styles (Compiled from LESS) -->
     <link rel="stylesheet" href="src/styles/style.css" />
+    <!-- Figma Preloader Sunrise LESS (should be compiled to CSS) -->
+    <link rel="stylesheet" href="src/styles/_preloader-sunrise.less" />
   </head>
 
   <body class="internal-page">
+  <!-- Figma Preloader Start -->
+  <div id="preloader">
+    <div class="preloader-sunrise-bg">
+      <img src="https://www.figma.com/api/mcp/asset/247a9027-99b2-40b1-93b6-89d0b0af2bde" alt="Sunrise" />
+    </div>
+    <div class="preloader-logo">
+      <div class="preloader-logo-symbol">
+        <img src="https://www.figma.com/api/mcp/asset/81e836a4-0d60-495f-ada3-c624a3906b16" alt="Logo Vector 1" />
+        <img src="https://www.figma.com/api/mcp/asset/438c3c29-d228-4db4-a651-f9f44025e3ab" alt="Logo Vector 2" />
+        <img src="https://www.figma.com/api/mcp/asset/6bfd6761-e605-45ad-85dc-bcb529104e93" alt="Logo Vector 3" />
+      </div>
+      <div class="preloader-logo-text">
+        <img src="https://www.figma.com/api/mcp/asset/68f390e7-27e8-4b6a-bf3d-199cd2a5f487" alt="Logo Text 1" />
+        <img src="https://www.figma.com/api/mcp/asset/6dd3a607-64bb-456f-bfd1-0d050206bfd3" alt="Logo Text 2" />
+      </div>
+    </div>
+  </div>
+  <!-- Figma Preloader End -->
   <header class="site-header transparent">
     <div class="container-fluid">
       <div class="row align-items-center">
@@ -2278,6 +2298,8 @@
 
   <!-- Swiper JS -->
   <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+  <!-- Figma Preloader Sunrise JS -->
+  <script src="src/scripts/preloader-sunrise.js"></script>
 
   <!-- GSAP -->
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
