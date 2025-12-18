@@ -756,18 +756,17 @@
   // ==========================================================================
 
   function initVideoTestimonials() {
-    const cards = document.querySelectorAll('.video-testimonials .card');
-    const modal = document.getElementById('videoTestimonialModal');
-    const modalVideo = document.getElementById('videoTestimonialPlayer');
-    const modalClose = document.querySelector('.modal-close');
-    const modalBackdrop = document.querySelector('.modal-backdrop');
+    const section = document.querySelector('.video-testimonials');
+    if (!section) return;
 
-    if (!cards.length || !modal || !modalVideo) return;
+    let cards = section.querySelectorAll('.card');
+    if (!cards.length) return;
 
     // Initialize Swiper for Mobile
-    const videoTestimonialsSwiperContainer = document.querySelector('.video-testimonials-swiper .swiper');
-    if (videoTestimonialsSwiperContainer) {
-      new Swiper(videoTestimonialsSwiperContainer, {
+    const videoTestimonialsSwiperContainer = section.querySelector('.video-testimonials-swiper .swiper');
+    let mobileSwiper = null;
+    if (videoTestimonialsSwiperContainer && typeof Swiper !== 'undefined') {
+      mobileSwiper = new Swiper(videoTestimonialsSwiperContainer, {
         slidesPerView: 1.25,
         spaceBetween: 20,
         loop: true,
@@ -783,67 +782,140 @@
           }
         }
       });
+      cards = section.querySelectorAll('.card');
     }
 
-    // Handle play button clicks for all cards
-    cards.forEach(card => {
-      const playButton = card.querySelector('.play-button');
+    const cardList = Array.from(cards);
 
-      if (playButton) {
-        playButton.addEventListener('click', function(e) {
-          e.stopPropagation();
-          const videoSrc = playButton.getAttribute('data-video-src');
-          
-          if (videoSrc) {
-            // Set video source
-            const source = modalVideo.querySelector('source') || document.createElement('source');
-            source.src = videoSrc;
-            source.type = 'video/mp4';
-            
-            if (!modalVideo.querySelector('source')) {
-              modalVideo.appendChild(source);
-            }
-            
-            modalVideo.load();
-            
-            // Show modal
-            modal.classList.add('is-active');
-            document.body.style.overflow = 'hidden';
-            
-            // Play video
-            modalVideo.play().catch(err => {
-              console.log('Video play error:', err);
-            });
+    // ==========================================================================
+    // VIDEO TESTIMONIAL INLINE CONTROLS - START
+    // ==========================================================================
+    const activeState = {
+      video: null,
+      button: null
+    };
+
+    cardList.forEach(card => {
+      const video = card.querySelector('.testimonial-video');
+      const controlButton = card.querySelector('.play-button');
+      if (!video || !controlButton) return;
+
+      const isDesktopCard = Boolean(card.closest('.desktop-only'));
+      setupDefaultState(video, isDesktopCard);
+
+      if (isDesktopCard) {
+        card.addEventListener('mouseenter', () => handleDesktopHover(video, controlButton, true));
+        card.addEventListener('mouseleave', () => handleDesktopHover(video, controlButton, false));
+      }
+
+      controlButton.addEventListener('click', event => {
+        event.preventDefault();
+        event.stopPropagation();
+
+        const isActive = controlButton.classList.contains('is-active');
+        if (isActive) {
+          resetVideo(card, video, controlButton, isDesktopCard);
+        } else {
+          playWithAudio(card, video, controlButton);
+        }
+      });
+
+      video.addEventListener('ended', () => {
+        if (controlButton.classList.contains('is-active')) {
+          resetVideo(card, video, controlButton, isDesktopCard);
+        }
+      });
+    });
+
+    if (mobileSwiper) {
+      mobileSwiper.on('slideChangeTransitionEnd', () => {
+        if (activeState.video && activeState.button) {
+          const slide = activeState.video.closest('.swiper-slide');
+          if (slide && !slide.classList.contains('swiper-slide-active')) {
+            const activeCard = activeState.button.closest('.card');
+            resetVideo(activeCard, activeState.video, activeState.button, false);
           }
+        }
+
+        const activeSlide = section.querySelector('.video-testimonials-swiper .swiper-slide-active');
+        if (activeSlide) {
+          const slideVideo = activeSlide.querySelector('.testimonial-video');
+          const slideButton = activeSlide.querySelector('.play-button');
+          if (slideVideo && slideButton && !slideButton.classList.contains('is-active')) {
+            slideVideo.play().catch(() => {});
+          }
+        }
+      });
+    }
+
+    function setupDefaultState(video, isDesktopCard) {
+      video.muted = true;
+      video.loop = true;
+
+      if (isDesktopCard) {
+        video.pause();
+        video.currentTime = 0;
+      } else {
+        requestAnimationFrame(() => {
+          video.play().catch(() => {});
         });
       }
-    });
-
-    // Close modal function
-    function closeModal() {
-      modal.classList.remove('is-active');
-      document.body.style.overflow = '';
-      modalVideo.pause();
-      modalVideo.currentTime = 0;
-      modalVideo.src = ''; // Clear source to stop loading
     }
 
-    // Close on close button click
-    if (modalClose) {
-      modalClose.addEventListener('click', closeModal);
-    }
+    function handleDesktopHover(video, button, isHovering) {
+      if (button.classList.contains('is-active')) return;
 
-    // Close on backdrop click
-    if (modalBackdrop) {
-      modalBackdrop.addEventListener('click', closeModal);
-    }
-
-    // Close on Escape key
-    document.addEventListener('keydown', function(e) {
-      if (e.key === 'Escape' && modal.classList.contains('is-active')) {
-        closeModal();
+      if (isHovering) {
+        video.muted = true;
+        video.play().catch(() => {});
+      } else {
+        video.pause();
+        video.currentTime = 0;
       }
-    });
+    }
+
+    function playWithAudio(card, video, button) {
+      if (activeState.video && activeState.video !== video && activeState.button) {
+        const activeCard = activeState.button.closest('.card');
+        const isDesktopActive = Boolean(activeCard && activeCard.closest('.desktop-only'));
+        resetVideo(activeCard, activeState.video, activeState.button, isDesktopActive);
+      }
+
+      activeState.video = video;
+      activeState.button = button;
+
+      button.classList.add('is-active');
+      button.setAttribute('aria-pressed', 'true');
+      button.setAttribute('aria-label', 'Close video with sound');
+      video.loop = false;
+      video.muted = false;
+      video.currentTime = 0;
+      video.play().catch(() => {});
+    }
+
+    function resetVideo(card, video, button, isDesktopCard) {
+      if (!video || !button) return;
+
+      button.classList.remove('is-active');
+      button.setAttribute('aria-pressed', 'false');
+      button.setAttribute('aria-label', 'Play video with sound');
+      video.muted = true;
+      video.loop = true;
+      video.pause();
+      video.currentTime = 0;
+
+      if (!isDesktopCard) {
+        video.play().catch(() => {});
+      }
+
+      if (activeState.video === video) {
+        activeState.video = null;
+        activeState.button = null;
+      }
+    }
+    // ==========================================================================
+    // VIDEO TESTIMONIAL INLINE CONTROLS - END
+    // ==========================================================================
   }
 
   // ==========================================================================

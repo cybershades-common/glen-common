@@ -2182,19 +2182,13 @@ h1 .hero__title-script {
   display: flex;
   height: 100%;
 }
-.video-testimonials .card-inner .media video,
+.video-testimonials .card-inner .media .testimonial-video,
 .video-testimonials .card-inner .media img {
-  aspect-ratio: 300/504;
-  object-fit: cover;
-}
-.video-testimonials .video {
-  position: absolute;
-  inset: 0;
   width: 100%;
   height: 100%;
+  aspect-ratio: 300/504;
   object-fit: cover;
-  object-position: center center;
-  z-index: 0;
+  object-position: center;
 }
 .video-testimonials .card-overlay {
   position: absolute;
@@ -2247,6 +2241,7 @@ h1 .hero__title-script {
   border: none;
   background: none;
   vertical-align: bottom;
+  cursor: pointer;
 }
 .video-testimonials .card-overlay .card-content .play-button-wrapper .play-button-circle {
   position: relative;
@@ -2257,77 +2252,32 @@ h1 .hero__title-script {
   align-items: center;
   background: url(../../assets/images/circle-btn-bg.svg) no-repeat center;
 }
+.video-testimonials .card-overlay .card-content .play-button-wrapper .play-button-icon {
+  position: relative;
+  width: 1rem;
+  height: 1rem;
+  color: #ffffff;
+}
+.video-testimonials .card-overlay .card-content .play-button-wrapper .play-button-icon .icon {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: opacity 150ms ease;
+}
+.video-testimonials .card-overlay .card-content .play-button-wrapper .play-button-icon .icon-close {
+  opacity: 0;
+}
+.video-testimonials .card-overlay .card-content .play-button-wrapper .play-button.is-active .icon-play {
+  opacity: 0;
+}
+.video-testimonials .card-overlay .card-content .play-button-wrapper .play-button.is-active .icon-close {
+  opacity: 1;
+}
 .video-testimonials .card-layer {
   object-fit: cover;
   max-width: none;
-}
-.video-testimonials .modal {
-  position: fixed;
-  inset: 0;
-  z-index: 9999;
-  display: none;
-  align-items: center;
-  justify-content: center;
-  padding: 20px;
-}
-.video-testimonials .modal.is-active {
-  display: flex;
-}
-.video-testimonials .modal-backdrop {
-  position: absolute;
-  inset: 0;
-  background-color: rgba(0, 0, 0, 0.9);
-  cursor: pointer;
-}
-.video-testimonials .modal-content {
-  position: relative;
-  width: 100%;
-  max-width: 1200px;
-  max-height: 90vh;
-  z-index: 1;
-  background-color: #000000;
-  border-radius: 12px;
-  overflow: hidden;
-  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
-}
-.video-testimonials .modal-close {
-  position: absolute;
-  top: 20px;
-  right: 20px;
-  width: 40px;
-  height: 40px;
-  padding: 0;
-  border: none;
-  background-color: rgba(255, 255, 255, 0.1);
-  border-radius: 50%;
-  color: #ffffff;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 2;
-  transition: background-color 250ms ease;
-}
-.video-testimonials .modal-close:hover {
-  background-color: rgba(255, 255, 255, 0.2);
-}
-.video-testimonials .modal-close svg {
-  width: 20px;
-  height: 20px;
-}
-.video-testimonials .modal-video-wrapper {
-  position: relative;
-  width: 100%;
-  padding-bottom: 56.25%;
-  background-color: #000000;
-}
-.video-testimonials .modal-video {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  outline: none;
 }
 .video-testimonials .button-wrapper {
   display: flex;
