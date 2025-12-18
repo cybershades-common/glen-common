@@ -102,6 +102,24 @@
 
     // Close Menu - use animation if available, otherwise fallback
     function closeMenu() {
+      // Close quick links when menu closes
+      const quickLinksDropdown = document.getElementById('quickLinksDropdown');
+      const quickLinksToggle = document.getElementById('quickLinksToggle');
+      const mobileQuickLinksDropdown = document.getElementById('mobileQuickLinksDropdown');
+      const mobileQuickLinksToggle = document.getElementById('mobileQuickLinksToggle');
+      
+      if (quickLinksDropdown && quickLinksToggle) {
+        quickLinksDropdown.classList.remove('is-open');
+        quickLinksToggle.classList.remove('is-open');
+        quickLinksToggle.setAttribute('aria-expanded', 'false');
+      }
+      
+      if (mobileQuickLinksDropdown && mobileQuickLinksToggle) {
+        mobileQuickLinksDropdown.classList.remove('is-open');
+        mobileQuickLinksToggle.classList.remove('is-open');
+        mobileQuickLinksToggle.setAttribute('aria-expanded', 'false');
+      }
+
       if (menuAnimations && menuAnimations.closeMenu) {
         menuAnimations.closeMenu();
       } else {
