@@ -1952,6 +1952,9 @@ h1 .hero__title-script {
   bottom: 0;
 }
 @media (max-width: 767px) {
+  .hero .bottom-edge {
+    bottom: -5px;
+  }
   .internal-page .hero .hero__slider .hero__slide-overlay {
     padding-bottom: 2rem;
   }
@@ -4133,7 +4136,6 @@ h1 .hero__title-script {
   .footer__title,
   .footer__acknowledgement,
   .footer__links,
-  .footer__logos,
   .footer__utilities,
   .footer__brand,
   .footer__bottom {
@@ -4222,7 +4224,7 @@ h1 .hero__title-script {
   position: relative;
   z-index: 11111;
 }
-@media (max-width: 1400px) {
+@media (min-width: 992px) and (max-width: 1400px) {
   body .masked-image-content-block__title,
   body .masked-image-content-block__title-bold,
   body .masked-image-content-block__title-script {
@@ -4235,6 +4237,12 @@ h1 .hero__title-script {
   }
 }
 @media (max-width: 767px) {
+  body .three-stages-section {
+    padding: 4.75rem 0 6.25rem;
+  }
+  body .testimonial-audio-slide .container-fluid > .row {
+    gap: 3rem 0;
+  }
   body .masked-image-block {
     flex-direction: column-reverse;
     gap: 2rem;
