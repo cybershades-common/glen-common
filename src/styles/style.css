@@ -3937,10 +3937,9 @@ h1 .hero__title-script {
 .education-stat__line {
   display: block;
   width: 100%;
-  max-width: 21.375rem;
-  height: auto;
+  max-width: 21.4175rem;
+  height: 0.34375rem;
   margin-bottom: 1.25rem;
-  transform: rotate(180deg);
 }
 .education-stat__text {
   font-family: 'Averta', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
