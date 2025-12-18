@@ -4382,23 +4382,39 @@ button {
   margin: 0 auto;
   padding: clamp(2.5rem, 4vw, 4rem) 0 clamp(2rem, 3vw, 3.5rem);
   overflow: hidden;
-  touch-action: pan-y;
 }
-.what-we-do-section .features-cards-slider .features-cards-track {
-  display: flex;
-  align-items: stretch;
-  gap: clamp(1rem, 2.5vw, 2rem);
-  padding: 0;
-  will-change: transform;
+.what-we-do-section .features-cards-slider .features-cards-carousel {
+  width: 100%;
+  overflow: visible;
   cursor: grab;
-  transition: transform 0.3s ease;
 }
-.what-we-do-section .features-cards-slider.is-dragging .features-cards-track {
+.what-we-do-section .features-cards-slider .features-cards-carousel:active {
   cursor: grabbing;
 }
-.what-we-do-section .features-cards-slider.is-dragging,
-.what-we-do-section .features-cards-slider.is-dragging * {
-  user-select: none;
+.what-we-do-section .features-cards-slider .features-cards-carousel .swiper-wrapper {
+  align-items: stretch;
+}
+.what-we-do-section .features-cards-slider .features-cards-carousel .swiper-slide {
+  display: flex;
+  justify-content: center;
+  padding: 0.5rem 0;
+}
+.what-we-do-section .features-cards-slider .features-cards-pagination {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  margin-top: 2rem;
+}
+.what-we-do-section .features-cards-slider .features-cards-pagination .swiper-pagination-bullet {
+  width: clamp(2.5rem, 6vw, 4rem);
+  height: 4px;
+  border-radius: 0;
+  background: #d6d6d6;
+  opacity: 1;
+  transition: background 0.3s ease;
+}
+.what-we-do-section .features-cards-slider .features-cards-pagination .swiper-pagination-bullet-active {
+  background: #db574e;
 }
 .what-we-do-section .feature-card {
   display: flex;
@@ -4406,9 +4422,14 @@ button {
   gap: 20px;
   height: auto;
   position: relative;
-  flex: 0 0 clamp(280px, 24vw, 420px);
-  max-width: none;
+  width: clamp(280px, 26vw, 440px);
+  max-width: 100%;
   transition: transform 0.4s ease, scale 0.4s ease;
+}
+@media (max-width: 767px) {
+  .what-we-do-section .feature-card {
+    width: 90%;
+  }
 }
 .what-we-do-section .feature-card.feature-card-top {
   margin-top: 0;
@@ -4571,10 +4592,6 @@ button {
 .what-we-do-section .btn-philosophy:focus-visible {
   outline: 2px solid #183153;
   outline-offset: 2px;
-}
-.elastic-slider-dragging,
-.elastic-slider-dragging * {
-  user-select: none !important;
 }
 .full-width-video-promo {
   position: relative;

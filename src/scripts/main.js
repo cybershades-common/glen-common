@@ -1148,216 +1148,59 @@
   }
 
   // ==========================================================================
-  // FEATURES CARDS ELASTIC SLIDER
+  // FEATURES CARDS SWIPER SLIDER
   // ==========================================================================
 
   function initFeaturesCardsSlider() {
-    if (typeof gsap === 'undefined') {
-      console.warn('GSAP is required for the features slider');
+    if (typeof Swiper === 'undefined') {
+      console.warn('Swiper is required for the features cards slider');
       return;
     }
 
-    const sliders = document.querySelectorAll('.what-we-do-section .features-cards-slider');
+    const sliders = document.querySelectorAll('.what-we-do-section .features-cards-carousel');
     if (!sliders.length) return;
 
-    sliders.forEach(setupElasticSlider);
-  }
+    sliders.forEach(slider => {
+      if (slider.swiper) return;
 
-  function setupElasticSlider(slider) {
-    const track = slider.querySelector('.features-cards-track');
-    const cards = track ? Array.from(track.querySelectorAll('.feature-card')) : [];
-    if (!track || !cards.length) return;
+      const paginationEl = slider.querySelector('.features-cards-pagination');
 
-    const body = document.body;
-    const bodyDraggingClass = 'elastic-slider-dragging';
-
-    const state = {
-      current: 0,
-      startX: 0,
-      startPos: 0,
-      isDown: false,
-      velocity: 0,
-      lastX: 0,
-      lastTime: 0,
-      min: 0,
-      max: 0,
-      momentum: null,
-      pointerId: null,
-      gap: parseFloat(getComputedStyle(track).columnGap || getComputedStyle(track).gap || '32') || 32
-    };
-
-    const clamp = gsap.utils.clamp;
-
-    function applyCardSizing() {
-      const sliderWidth = slider.clientWidth;
-      const isCompact = sliderWidth < 768;
-      const totalGap = state.gap * 3;
-      const baseWidth = isCompact
-        ? sliderWidth * 0.82
-        : (sliderWidth - totalGap) / 3;
-      const cardWidth = clamp(240, 540, baseWidth);
-      const imageMultiplier = isCompact ? 0.82 : 1.08;
-
-      cards.forEach(card => {
-        card.style.flex = `0 0 ${cardWidth}px`;
-        card.style.maxWidth = `${cardWidth}px`;
-        const image = card.querySelector('.feature-card-image');
-        if (image) {
-          image.style.height = `${cardWidth * imageMultiplier}px`;
+      const swiperConfig = {
+        speed: 600,
+        loop: true,
+        centeredSlides: false,
+        spaceBetween: 12,
+        slidesPerView: 1.25,
+        breakpoints: {
+          576: {
+            slidesPerView: 1.35
+          },
+          768: {
+            slidesPerView: 1.6,
+            centeredSlides: true,
+            spaceBetween: 20
+          },
+          1024: {
+            slidesPerView: 2.1,
+            centeredSlides: true,
+            spaceBetween: 24
+          },
+          1400: {
+            slidesPerView: 3,
+            centeredSlides: true,
+            spaceBetween: 12
+          }
         }
-      });
-    }
+      };
 
-    function recalcBounds() {
-      applyCardSizing();
-      const sliderWidth = slider.clientWidth;
-      const trackWidth = track.scrollWidth;
-      const overshoot = sliderWidth * 0.35;
-      const overflow = Math.max(0, trackWidth - sliderWidth);
-      state.min = -overflow - overshoot;
-      state.max = overshoot;
-      if (overflow <= 0) {
-        state.min = state.max = 0;
-      }
-    }
-
-    function updateDepth() {
-      const sliderCenter = slider.clientWidth / 2;
-      cards.forEach(card => {
-        const cardCenter = card.offsetLeft + card.offsetWidth / 2 + state.current;
-        const distance = Math.abs(sliderCenter - cardCenter);
-        const ratio = Math.min(1, distance / sliderCenter);
-        const scale = 1 - ratio * 0.2;
-        const depthShift = ratio * 110 + (card.classList.contains('feature-card-bottom') ? 30 : 0);
-        card.style.zIndex = String(120 - Math.round(ratio * 80));
-        gsap.to(card, {
-          y: depthShift,
-          scale,
-          duration: 0.55,
-          ease: 'power3.out',
-          overwrite: true,
-          force3D: true
-        });
-      });
-    }
-
-    function setPosition(x) {
-      state.current = x;
-      track.style.transform = `translate3d(${x}px, 0, 0)`;
-      updateDepth();
-    }
-
-    function stopMomentum() {
-      if (state.momentum) {
-        state.momentum.kill();
-        state.momentum = null;
-      }
-    }
-
-    function onPointerDown(event) {
-      event.preventDefault();
-      slider.classList.add('is-dragging');
-      body.classList.add(bodyDraggingClass);
-      if (slider.setPointerCapture) {
-        slider.setPointerCapture(event.pointerId);
-      }
-      state.pointerId = event.pointerId;
-      stopMomentum();
-      state.isDown = true;
-      state.startX = event.clientX;
-      state.startPos = state.current;
-      state.lastX = event.clientX;
-      state.lastTime = performance.now();
-    }
-
-    function onPointerMove(event) {
-      if (!state.isDown) return;
-      event.preventDefault();
-      const delta = event.clientX - state.startX;
-      let next = state.startPos + delta;
-
-      if (next > state.max) {
-        next = state.max + (next - state.max) * 0.35;
-      } else if (next < state.min) {
-        next = state.min + (next - state.min) * 0.35;
+      if (paginationEl) {
+        swiperConfig.pagination = {
+          el: paginationEl,
+          clickable: true
+        };
       }
 
-      const now = performance.now();
-      const dt = now - state.lastTime || 1;
-      state.velocity = (event.clientX - state.lastX) / dt;
-      state.lastX = event.clientX;
-      state.lastTime = now;
-
-      setPosition(next);
-    }
-
-    function onPointerUp(event) {
-      if (!state.isDown) return;
-      slider.classList.remove('is-dragging');
-      body.classList.remove(bodyDraggingClass);
-      if (event && state.pointerId !== null && slider.releasePointerCapture) {
-        try {
-          slider.releasePointerCapture(state.pointerId);
-        } catch (err) {
-          // Ignore release errors when pointer is already gone
-        }
-      }
-      state.pointerId = null;
-      state.isDown = false;
-
-      const projected = state.current + state.velocity * 1500;
-      const target = clamp(state.min, state.max, projected);
-
-      state.momentum = gsap.to({ value: state.current }, {
-        value: target,
-        duration: 1.6,
-        ease: 'power4.out',
-        onUpdate: function () {
-          setPosition(this.targets()[0].value);
-        },
-        onComplete: () => {
-          state.momentum = null;
-        }
-      });
-    }
-
-    function getPairCenter() {
-      if (cards.length <= 1) {
-        return cards[0].offsetLeft + cards[0].offsetWidth / 2;
-      }
-      const middleIndex = Math.max(1, Math.floor(cards.length / 2));
-      const prev = cards[Math.max(0, middleIndex - 1)];
-      const current = cards[Math.min(cards.length - 1, middleIndex)];
-      return (prev.offsetLeft + prev.offsetWidth / 2 + current.offsetLeft + current.offsetWidth / 2) / 2;
-    }
-
-    function setInitialPosition() {
-      const sliderCenter = slider.clientWidth / 2;
-      const pairCenter = getPairCenter();
-      const desired = sliderCenter - pairCenter;
-      const padding = Math.min(slider.clientWidth * 0.08, 140);
-      const initial = clamp(state.min + padding, state.max - padding, desired);
-      setPosition(initial);
-    }
-
-    function onResize() {
-      const prev = state.current;
-      recalcBounds();
-      const clamped = clamp(state.min, state.max, prev);
-      setPosition(clamped);
-    }
-
-    recalcBounds();
-    setInitialPosition();
-    updateDepth();
-
-    slider.addEventListener('pointerdown', onPointerDown);
-    window.addEventListener('pointermove', onPointerMove);
-    window.addEventListener('pointerup', onPointerUp);
-    window.addEventListener('pointercancel', onPointerUp);
-    window.addEventListener('resize', () => {
-      clearTimeout(slider._resizeTimer);
-      slider._resizeTimer = setTimeout(onResize, 120);
+      new Swiper(slider, swiperConfig);
     });
   }
 
