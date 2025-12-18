@@ -15,7 +15,7 @@
     line-height: 0.9;
     color: @color-navy-dark;
     display: block;
-  
+
   }
 
   .caps-title {
@@ -26,7 +26,7 @@
     letter-spacing: -0.075rem;
     text-transform: uppercase;
     color: @color-navy-dark;
-     margin-bottom: 5.25rem;
+    margin-bottom: 5.25rem;
   }
 }
 
@@ -43,7 +43,8 @@
     display: flex;
     flex-wrap: nowrap;
     gap: 1rem 2.125rem;
-     .body-base {
+
+    .body-base {
       font-size: 0.9375rem;
       line-height: 1.4;
       flex: 51% 0 0;
@@ -61,7 +62,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-}
+  }
 
 // Header Card
 .three-tier-header {
@@ -70,7 +71,10 @@
   height: 43.25625rem;
   border-radius: 1.125rem;
   overflow: hidden;
-  background: linear-gradient(180deg, #8fca72 0%, #005798 100%);
+  background: url(../../assets/images/three-tear-block-bg.png) no-repeat;
+  background-size: cover;
+
+   
 
   &__bg {
     position: absolute;
@@ -299,6 +303,10 @@
 }
 
 @media (max-width: 767px) {
+
+
+
+
   .glenaeon-education-title {
     .script-title {
       font-size: 1.25rem;
@@ -366,7 +374,7 @@
 
 .education-stat {
   flex: 1;
-  
+
   &__number {
     font-family: @font-family-averta;
     font-size: 7.5rem;
@@ -376,15 +384,15 @@
     color: #1c3666;
     margin: 0 0 1.25rem 0;
   }
-  
+
   &__line {
     display: block;
     width: 100%;
     max-width: 21.4175rem;
     height: 0.34375rem;
-    margin-bottom: 1.25rem;
+    margin: 0 auto 1.25rem;
   }
-  
+
   &__text {
     font-family: @font-family-averta;
     font-size: 1.25rem;
@@ -393,7 +401,7 @@
     letter-spacing: -0.025rem;
     color: #1c3666;
     margin: 0;
- 
+
   }
 }
 
@@ -402,10 +410,10 @@
     flex-wrap: wrap;
     gap: 3.125rem;
   }
-  
+
   .education-stat {
     flex: 0 0 calc(50% - 1.5625rem);
-    
+
     &__number {
       font-size: 5rem;
     }
@@ -417,19 +425,27 @@
     flex-direction: column;
     gap: 2.5rem;
   }
-  
+
   .education-stat {
     flex: 0 0 100%;
-    
+
     &__number {
       font-size: 3.75rem;
       letter-spacing: -0.15rem;
       text-align: center;
     }
-    
+
     &__text {
       font-size: 1rem;
       text-align: center;
     }
+  }
+}
+
+
+@media (max-width:767px) {
+  .three-tier-diagram {
+    transform: scale(1.325);
+    margin: 5rem 0;
   }
 }
