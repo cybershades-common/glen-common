@@ -39,6 +39,8 @@
         .footer__newsletter-form {
           display: flex;
           flex-direction: column;
+        
+        >div{  gap: 1.25rem;}
 
           .footer__newsletter-input {
             flex: 1;
@@ -52,6 +54,8 @@
             line-height: 1.4;
             color: @tertiary-blue-dark;
             outline: none;
+            border-bottom: 1px solid rgba(28, 54, 102, 0.21);
+            
 
             &::placeholder {
               color: fade(@tertiary-blue-dark, 60%);
@@ -103,6 +107,7 @@
       line-height: 1;
       color: @tertiary-blue-dark;
       margin: 0;
+      font-weight: 400;
 
 
       @media (max-width: @breakpoint-lg) {
@@ -286,6 +291,22 @@
     gap: 20px;
     text-align: center;
   }
+}
+
+
+@media (max-width:1400px) {
+  .site-footer .container-fluid .footer__title {
+    font-size: 5rem;
+  }
+
+}
+
+@media (max-width:1200px) {
+  .site-footer .container-fluid .footer__title {
+    font-size: 4.25rem;
+  }
+
+
 }
 
 @media (max-width:767px) {
