@@ -54,61 +54,116 @@
   align-items: center;
 }
 
+// Header Card
 .three-tier-header {
-  background: linear-gradient(180deg, #8fca72 0%, #005798 100%);
+  position: relative;
+  width: 325.8px;
+  height: 692.1px;
   border-radius: 18px;
-  padding: 1.5rem 2rem;
-  text-align: center;
-  color: #fff;
-  max-width: 326px;
-  margin-bottom: 0;
+  overflow: hidden;
+  background: linear-gradient(180deg, #8fca72 0%, #005798 100%);
+
+  &__bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0.5;
+    border-radius: 18px;
+  }
+
+  &__content {
+    position: absolute;
+    top: 22.5px;
+    left: 41.59px;
+    width: 242.629px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 18px;
+    text-align: center;
+    color: #fff;
+  }
 
   &__title {
     font-family: @font-family-averta;
-    font-size: 1.4rem;
+    font-size: 22.5px;
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 1.125px;
     line-height: 1.1;
-    margin-bottom: 1rem;
+    margin: 0;
+    width: 185.029px;
   }
 
   &__text {
     font-family: @font-family-averta;
-    font-size: 0.84rem;
+    font-size: 13.5px;
     font-weight: 700;
     line-height: 1.4;
     margin: 0;
   }
 }
 
+// Tier Pyramid
 .three-tier-pyramid {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 4px;
-  margin-top: -10px;
+  gap: 3.6px;
+  position: absolute;
+  bottom: 25px;
+  left: 50%;
+  transform: translateX(-50%);
 }
 
+// Individual Tier
 .tier {
   position: relative;
-  display: flex;
-  justify-content: center;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr;
+  justify-items: center;
   align-items: center;
   text-align: center;
   color: #fff;
 
+  &__outer {
+    grid-column: 1;
+    grid-row: 1;
+    display: block;
+    width: 100%;
+    height: auto;
+    z-index: 1;
+  }
+
+  &__bg {
+    grid-column: 1;
+    grid-row: 1;
+    display: block;
+    width: calc(100% - 16px);
+    height: auto;
+    z-index: 2;
+    margin-top: 8px;
+  }
+
   &__content {
+    grid-column: 1;
+    grid-row: 1;
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 4px;
-    padding: 1.2rem 1rem;
+    gap: 3.6px;
+    width: 152.1px;
+    z-index: 3;
+    padding-top: 8px;
   }
 
   &__number {
     font-family: @font-family-averta;
-    font-size: 1.125rem;
+    font-size: 18px;
     font-weight: 800;
     text-transform: uppercase;
     letter-spacing: 1.8px;
@@ -117,43 +172,109 @@
 
   &__subtitle {
     font-family: @font-family-averta;
-    font-size: 0.84rem;
+    font-size: 13.5px;
     font-weight: 700;
     line-height: 1.2;
   }
 
   &__desc {
     font-family: @font-family-averta;
-    font-size: 0.84rem;
+    font-size: 13.5px;
     font-weight: 400;
     line-height: 1.4;
   }
 }
 
-// Tier shapes using clip-path for trapezoid effect
+// Tier sizes from Figma
 .tier-3 {
-  width: 225px;
-  background: linear-gradient(180deg, #d4e157 0%, #8bc34a 100%);
-  clip-path: polygon(10% 0%, 90% 0%, 100% 100%, 0% 100%);
-  border-radius: 8px 8px 0 0;
+  width: 224.56px;
+  
+  .tier__bg {
+    height: 126.667px;
+  }
 }
 
 .tier-2 {
-  width: 295px;
-  background: linear-gradient(180deg, #8bc34a 0%, #4caf50 100%);
-  clip-path: polygon(8% 0%, 92% 0%, 100% 100%, 0% 100%);
+  width: 294.505px;
+  
+  .tier__bg {
+    height: 127.483px;
+  }
 }
 
 .tier-1 {
-  width: 365px;
-  background: linear-gradient(180deg, #4caf50 0%, #00838f 100%);
-  clip-path: polygon(6% 0%, 94% 0%, 100% 100%, 0% 100%);
-  border-radius: 0 0 8px 8px;
+  width: 365.272px;
+  
+  .tier__bg {
+    height: 125.523px;
+  }
+  
+  .tier__desc {
+    width: 217.429px;
+  }
+}
+
+// Wrapper to position pyramid over header
+.three-tier-diagram {
+  position: relative;
+  
+  .three-tier-header {
+    position: relative;
+  }
+  
+  .three-tier-pyramid {
+    position: absolute;
+    bottom: 25px;
+    left: 50%;
+    transform: translateX(-50%);
+  }
 }
 
 // --------------------------------------------------------------------------
 // RESPONSIVE
 // --------------------------------------------------------------------------
+
+@media (max-width: 1199px) {
+  .three-tier-header {
+    width: 280px;
+    height: 600px;
+    
+    &__content {
+      left: 30px;
+      width: 220px;
+    }
+    
+    &__title {
+      font-size: 20px;
+      width: 160px;
+    }
+    
+    &__text {
+      font-size: 12px;
+    }
+  }
+  
+  .tier-3 {
+    width: 190px;
+  }
+  
+  .tier-2 {
+    width: 250px;
+  }
+  
+  .tier-1 {
+    width: 310px;
+  }
+  
+  .tier__number {
+    font-size: 16px;
+  }
+  
+  .tier__subtitle,
+  .tier__desc {
+    font-size: 12px;
+  }
+}
 
 @media (max-width: 991px) {
   .glenaeon-education-title .caps-title {
@@ -183,21 +304,47 @@
     }
   }
   
+  .three-tier-header {
+    width: 260px;
+    height: 550px;
+    
+    &__content {
+      left: 25px;
+      width: 210px;
+    }
+    
+    &__title {
+      font-size: 18px;
+      width: 150px;
+    }
+    
+    &__text {
+      font-size: 11px;
+    }
+  }
+  
   .tier-3 {
-    width: 180px;
+    width: 170px;
   }
   
   .tier-2 {
-    width: 240px;
+    width: 220px;
   }
   
   .tier-1 {
-    width: 300px;
+    width: 270px;
+    
+    .tier__desc {
+      width: 180px;
+    }
   }
   
-  .three-tier-header {
-    max-width: 280px;
-    padding: 1.2rem 1.5rem;
+  .tier__number {
+    font-size: 14px;
+  }
+  
+  .tier__subtitle,
+  .tier__desc {
+    font-size: 11px;
   }
 }
-
