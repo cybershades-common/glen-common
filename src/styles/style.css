@@ -1695,7 +1695,7 @@ h1 {
 }
 h1 .hero__title-script {
   display: block;
-  margin: 0 0 -10px 0;
+  margin: 0 0 1.5rem 0;
   padding: 0;
   font-family: 'Born Ready', cursive;
   font-size: 6.25rem;
@@ -1721,7 +1721,7 @@ h1 .hero__title-script {
 @media (max-width: 767px) {
   h1 .hero__title-script {
     font-size: 55.806px;
-    margin-bottom: 1.86px;
+    margin-bottom: 1rem;
     white-space: normal;
   }
 }
@@ -3872,64 +3872,64 @@ h1 .hero__title-script {
 .education-stats {
   display: flex;
   justify-content: space-between;
-  gap: 40px;
+  gap: 2.5rem;
 }
 .education-stat {
   flex: 1;
 }
 .education-stat__number {
   font-family: 'Averta', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-  font-size: 120px;
+  font-size: 7.5rem;
   font-weight: 600;
   line-height: 1;
-  letter-spacing: -4.8px;
+  letter-spacing: -0.3rem;
   color: #1c3666;
-  margin: 0 0 20px 0;
+  margin: 0 0 1.25rem 0;
 }
 .education-stat__line {
   display: block;
   width: 100%;
-  max-width: 342px;
+  max-width: 21.375rem;
   height: auto;
-  margin-bottom: 20px;
+  margin-bottom: 1.25rem;
   transform: rotate(180deg);
 }
 .education-stat__text {
   font-family: 'Averta', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-  font-size: 20px;
+  font-size: 1.25rem;
   font-weight: 400;
   line-height: 1.3;
-  letter-spacing: -0.4px;
+  letter-spacing: -0.025rem;
   color: #1c3666;
   margin: 0;
-  max-width: 310px;
+  max-width: 19.375rem;
 }
 @media (max-width: 991px) {
   .education-stats {
     flex-wrap: wrap;
-    gap: 50px;
+    gap: 3.125rem;
   }
   .education-stat {
-    flex: 0 0 calc(50% - 25px);
+    flex: 0 0 calc(50% - 1.5625rem);
   }
   .education-stat__number {
-    font-size: 80px;
+    font-size: 5rem;
   }
 }
 @media (max-width: 767px) {
   .education-stats {
     flex-direction: column;
-    gap: 40px;
+    gap: 2.5rem;
   }
   .education-stat {
     flex: 0 0 100%;
   }
   .education-stat__number {
-    font-size: 60px;
-    letter-spacing: -2.4px;
+    font-size: 3.75rem;
+    letter-spacing: -0.15rem;
   }
   .education-stat__text {
-    font-size: 16px;
+    font-size: 1rem;
   }
 }
 .site-footer {
@@ -4274,7 +4274,7 @@ h1 .hero__title-script {
     width: 100%;
   }
   body .three-stages-section .three-stages-diagram {
-    margin-left: -15vw;
+    margin-left: -18vw;
   }
   body .masked-image-content-block__cta {
     align-self: center;
@@ -4299,6 +4299,12 @@ h1 .hero__title-script {
   body .wellbeing-section .five-as-section__image-wrapper {
     max-width: 85%;
     margin: 2.5rem auto;
+  }
+  body .glenaeon-education-section .body-base-blocks {
+    flex-direction: column;
+  }
+  body .glenaeon-education-section .body-base-blocks .body-base {
+    flex: 100% 0 0;
   }
 }
 @media (min-width: 1800px) {
