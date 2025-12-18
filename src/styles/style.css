@@ -2374,6 +2374,9 @@ h1 .hero__title-script {
   }
 }
 @media (max-width: 767px) {
+  .video-testimonials {
+    padding: 3.75rem 0;
+  }
   .video-testimonials .cards {
     padding: 0;
   }
