@@ -3965,6 +3965,23 @@ h1 .hero__title-script {
   body .masked-image-content-block__cta {
     align-self: center;
   }
+  body .full-width-image-words-animation {
+    min-height: auto;
+    height: 80vh;
+  }
+  body .full-width-image-words-animation .container-fluid {
+    height: 100%;
+  }
+  body .full-width-image-words-animation .container-fluid .word {
+    font-size: 4.5rem;
+    letter-spacing: normal;
+  }
+  body .five-as-section {
+    padding: 1rem 0 2rem;
+  }
+  body .full-width-video-promo {
+    height: inherit;
+  }
 }
 @media (min-width: 1800px) {
   html {
