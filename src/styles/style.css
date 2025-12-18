@@ -3870,6 +3870,11 @@ h1 .hero__title-script {
   position: relative;
   z-index: 11111;
 }
+@media (max-width: 992px) {
+  body .breadcrumb-wrap {
+    padding: 1rem 2rem;
+  }
+}
 @media (max-width: 767px) {
   body .masked-image-block {
     flex-direction: column-reverse;
@@ -4059,7 +4064,7 @@ button {
   display: flex;
   flex-direction: column;
   gap: 1.25rem;
-  padding: 0 2.25rem;
+  padding: 0 2.125rem;
 }
 .masked-image-content-block__content p.lead {
   color: var(--tertiary-blue-dark, #1C3666);
@@ -4752,10 +4757,13 @@ button {
 .wellbeing-section {
   position: relative;
   width: 100%;
-  min-height: 960px;
   overflow: hidden;
-  padding-top: calc(3 * 1.875rem);
-  padding-bottom: 100px;
+  padding-top: 13rem;
+  padding-bottom: 9.25rem;
+}
+.wellbeing-section .five-as-section__image-wrapper {
+  max-width: 99%;
+  margin: 2.5rem 0;
 }
 @media (max-width: 991px) {
   .wellbeing-section {
@@ -4794,6 +4802,9 @@ button {
 .wellbeing-section .container-fluid {
   position: relative;
   z-index: 1;
+}
+.wellbeing-section .wellbeing-content-row {
+  gap: 2rem 5.1875rem;
 }
 @media (max-width: 991px) {
   .wellbeing-section .wellbeing-content-row .col-lg-1 {
@@ -4844,7 +4855,7 @@ button {
   flex-direction: column;
   gap: 0;
   align-items: flex-start;
-  margin-bottom: 124px;
+  margin-bottom: 5.25rem;
 }
 @media (max-width: 991px) {
   .wellbeing-section .wellbeing-title-group {
@@ -4897,11 +4908,11 @@ button {
   align-items: flex-start;
   flex-shrink: 0;
 }
-.wellbeing-section .wellbeing-text-block.wellbeing-text-block-left {
-  width: 301px;
+.wellbeing-section .wellbeing-text-block.wellbeing-text-block {
+  flex: 43.25% 0 0;
 }
 @media (max-width: 767px) {
-  .wellbeing-section .wellbeing-text-block.wellbeing-text-block-left {
+  .wellbeing-section .wellbeing-text-block.wellbeing-text-block {
     width: 100%;
   }
 }

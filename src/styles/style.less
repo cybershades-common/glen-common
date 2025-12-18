@@ -100,7 +100,7 @@ body {
   background-size: 100%;
 }
 
-.wrapper{
+.wrapper {
   overflow: hidden;
   max-width: 100vw;
 }
@@ -194,7 +194,7 @@ button {
   padding: 0 1.875rem;
 
   @media (max-width: (@breakpoint-lg - 1)) {
-  
+
     margin-bottom: 40px;
   }
 
@@ -215,7 +215,7 @@ button {
   display: flex;
   flex-direction: column;
   gap: 1.25rem;
-  padding: 0 2.25rem;
+  padding: 0 2.125rem;
 
   p.lead {
     color: var(--tertiary-blue-dark, #1C3666);
@@ -423,7 +423,7 @@ button {
     line-height: @line-height-none;
     color: #1C3666;
     margin: 0;
-  
+
     flex-shrink: 0;
     // All titles should align at same baseline (items-center handles this)
 
@@ -638,7 +638,7 @@ button {
     // Bottom position cards (2, 4, 6) - shifted down by 51.5px
     &.feature-card-bottom {
       margin-top: 25.75px; // Half of 51.5px for mobile
-      
+
       @media (min-width: @breakpoint-lg) {
         margin-top: 51.5px;
       }
@@ -919,7 +919,7 @@ button {
       color: @color-white;
       text-align: center;
       margin: 0;
-      
+
     }
 
     .video-promo-title-group {
@@ -937,7 +937,7 @@ button {
         line-height: 0.9;
         color: @color-white;
         margin: 0;
-        
+
       }
 
       .video-promo-title-bold {
@@ -949,7 +949,7 @@ button {
         text-transform: uppercase;
         color: @color-white;
         margin: 0;
-        
+
       }
 
       @media (max-width: (@breakpoint-lg - 1)) {
@@ -982,7 +982,7 @@ button {
       color: @color-white;
       text-align: center;
       margin: 0;
-      
+
       width: min-content;
       min-width: 100%;
 
@@ -1038,10 +1038,15 @@ button {
 .wellbeing-section {
   position: relative;
   width: 100%;
-  min-height: 960px;
-  overflow: hidden;
-  padding-top: calc(3 * 1.875rem); // 3 row gap from top
-  padding-bottom: 100px;
+   overflow: hidden;
+ padding-top: 13rem;
+    padding-bottom: 9.25rem;
+ 
+
+  .five-as-section__image-wrapper {
+    max-width: 99%;
+    margin: 2.5rem 0;
+  }
 
   @media (max-width: (@breakpoint-lg - 1)) {
     min-height: auto;
@@ -1089,6 +1094,8 @@ button {
 
   // Content row
   .wellbeing-content-row {
+    gap: 2rem 5.1875rem;
+
     @media (max-width: (@breakpoint-lg - 1)) {
       .col-lg-1 {
         display: none; // Hide gap columns on mobile
@@ -1139,12 +1146,13 @@ button {
   }
 
   // Main title group
+  
   .wellbeing-title-group {
     display: flex;
     flex-direction: column;
     gap: 0;
     align-items: flex-start;
-    margin-bottom: 124px;
+    margin-bottom: 5.25rem;
 
     @media (max-width: (@breakpoint-lg - 1)) {
       margin-bottom: 3rem;
@@ -1157,7 +1165,7 @@ button {
       line-height: @line-height-none; // 1
       color: @tertiary-blue-dark; // #1c3666
       margin: 0;
-      
+
 
       @media (max-width: (@breakpoint-lg - 1)) {
         font-size: clamp(2.5rem, 8vw, 60px);
@@ -1173,13 +1181,15 @@ button {
       text-transform: uppercase;
       color: @tertiary-blue-dark; // #1c3666
       margin: 0;
-      
+
 
       @media (max-width: (@breakpoint-lg - 1)) {
         font-size: clamp(2.5rem, 8vw, 60px);
       }
     }
   }
+
+
 
   // Text blocks row
   .wellbeing-text-blocks-row {
@@ -1201,8 +1211,8 @@ button {
     align-items: flex-start;
     flex-shrink: 0;
 
-    &.wellbeing-text-block-left {
-      width: 301px;
+    &.wellbeing-text-block {
+      flex: 43.25% 0 0;
 
       @media (max-width: (@breakpoint-md - 1)) {
         width: 100%;
@@ -1226,7 +1236,7 @@ button {
       text-transform: uppercase;
       color: @tertiary-blue-dark; // #1c3666
       margin: 0;
-      
+
 
       @media (max-width: (@breakpoint-lg - 1)) {
         font-size: clamp(16px, 3vw, 20px);
@@ -1250,7 +1260,7 @@ button {
       line-height: @line-height-normal; // 1.4
       color: @tertiary-blue-dark; // #1c3666
       margin: 0;
-      
+
       width: min-content;
       min-width: 100%;
 
@@ -1410,7 +1420,7 @@ button {
     letter-spacing: -0.7px;
     color: @color-white;
     margin: 0 0 26px 0;
-    
+
     width: 611px;
     max-width: 100%;
 
@@ -1474,7 +1484,7 @@ button {
     font-size: 15px;
     line-height: 1.4;
     color: @color-white;
-  
+
   }
 
   .testimonial-audio-author {
@@ -1699,7 +1709,7 @@ button {
       letter-spacing: -0.4px;
       color: @tertiary-blue-dark;
       margin: 0;
-      
+
       width: 364.383px;
       max-width: 100%;
 
@@ -1715,7 +1725,7 @@ button {
       line-height: @line-height-normal;
       color: @tertiary-blue-dark;
       margin: 0;
-      
+
       width: min-content;
       min-width: 100%;
 
@@ -1771,7 +1781,7 @@ button {
     letter-spacing: -0.4px;
     color: @tertiary-blue-dark;
     margin: 0;
-    
+
   }
 
   .three-stages-ideal {
@@ -1782,7 +1792,7 @@ button {
     letter-spacing: -0.4px;
     color: @tertiary-blue-dark;
     margin: 0;
-    
+
     width: 100px;
     text-align: right;
   }
@@ -2374,7 +2384,7 @@ button {
       color: #005798;
       text-align: center;
       margin: 0;
-      
+
       transform: translateX(-50%);
 
       &-1 {
@@ -2432,7 +2442,7 @@ button {
       text-align: center;
       text-transform: uppercase;
       margin: 0;
-      
+
       transform: translateX(-50%);
 
       &-1 {
@@ -2598,7 +2608,7 @@ button {
     line-height: @line-height-normal;
     color: @tertiary-blue-dark;
     margin: 0;
-    
+
     width: 325.095px;
     max-width: 100%;
 
@@ -2647,7 +2657,7 @@ button {
     color: @color-white;
     width: 611.758px;
     margin: 0;
-    
+
     z-index: 2;
 
     @media (max-width: (@breakpoint-xl - 1)) {
@@ -2691,6 +2701,7 @@ button {
 
 .breadcrumb-wrap {
   padding: 1rem 0;
+
   .breadcrumb {
     li {
       color: var(--tertiary-blue-dark, #1C3666);
@@ -2703,7 +2714,8 @@ button {
       line-height: 140%;
 
       /* 21px */
-      a { color: var(--tertiary-blue-dark, #1C3666);
+      a {
+        color: var(--tertiary-blue-dark, #1C3666);
         font-weight: bold;
       }
     }
@@ -2711,8 +2723,9 @@ button {
 }
 
 
-a,input{
-  &:focus{
+a,
+input {
+  &:focus {
     border: none;
     outline: none;
     box-shadow: none;
