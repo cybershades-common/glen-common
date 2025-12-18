@@ -1148,85 +1148,217 @@
   }
 
   // ==========================================================================
-  // FEATURES CARDS SLIDER (Swiper)
+  // FEATURES CARDS ELASTIC SLIDER
   // ==========================================================================
 
   function initFeaturesCardsSlider() {
-    // Check if Swiper is loaded
-    if (typeof Swiper === 'undefined') {
-      console.warn('Swiper not loaded');
+    if (typeof gsap === 'undefined') {
+      console.warn('GSAP is required for the features slider');
       return;
     }
 
-    const featuresSlider = document.querySelector('.features-cards-slider');
-    if (!featuresSlider) return;
+    const sliders = document.querySelectorAll('.what-we-do-section .features-cards-slider');
+    if (!sliders.length) return;
 
-    // Initialize Swiper with smooth transitions
-    const swiper = new Swiper('.features-cards-slider', {
-      // Slider settings
-      loop: false,
-      speed: 600,
-      effect: 'slide',
-      slidesPerView: 1.25,
-      spaceBetween: 20,
-      centeredSlides: false, // Start from left, not centered
-      initialSlide: 0, // Start from first slide
-      
-      // Responsive breakpoints
-      breakpoints: {
-        // When window width is >= 576px (sm)
-        576: {
-          slidesPerView: 1.5,
-          spaceBetween: 20,
-          centeredSlides: false,
+    sliders.forEach(setupElasticSlider);
+  }
+
+  function setupElasticSlider(slider) {
+    const track = slider.querySelector('.features-cards-track');
+    const cards = track ? Array.from(track.querySelectorAll('.feature-card')) : [];
+    if (!track || !cards.length) return;
+
+    const body = document.body;
+    const bodyDraggingClass = 'elastic-slider-dragging';
+
+    const state = {
+      current: 0,
+      startX: 0,
+      startPos: 0,
+      isDown: false,
+      velocity: 0,
+      lastX: 0,
+      lastTime: 0,
+      min: 0,
+      max: 0,
+      momentum: null,
+      pointerId: null,
+      gap: parseFloat(getComputedStyle(track).columnGap || getComputedStyle(track).gap || '32') || 32
+    };
+
+    const clamp = gsap.utils.clamp;
+
+    function applyCardSizing() {
+      const sliderWidth = slider.clientWidth;
+      const isCompact = sliderWidth < 768;
+      const totalGap = state.gap * 3;
+      const baseWidth = isCompact
+        ? sliderWidth * 0.82
+        : (sliderWidth - totalGap) / 3;
+      const cardWidth = clamp(240, 540, baseWidth);
+      const imageMultiplier = isCompact ? 0.82 : 1.08;
+
+      cards.forEach(card => {
+        card.style.flex = `0 0 ${cardWidth}px`;
+        card.style.maxWidth = `${cardWidth}px`;
+        const image = card.querySelector('.feature-card-image');
+        if (image) {
+          image.style.height = `${cardWidth * imageMultiplier}px`;
+        }
+      });
+    }
+
+    function recalcBounds() {
+      applyCardSizing();
+      const sliderWidth = slider.clientWidth;
+      const trackWidth = track.scrollWidth;
+      const overshoot = sliderWidth * 0.35;
+      const overflow = Math.max(0, trackWidth - sliderWidth);
+      state.min = -overflow - overshoot;
+      state.max = overshoot;
+      if (overflow <= 0) {
+        state.min = state.max = 0;
+      }
+    }
+
+    function updateDepth() {
+      const sliderCenter = slider.clientWidth / 2;
+      cards.forEach(card => {
+        const cardCenter = card.offsetLeft + card.offsetWidth / 2 + state.current;
+        const distance = Math.abs(sliderCenter - cardCenter);
+        const ratio = Math.min(1, distance / sliderCenter);
+        const scale = 1 - ratio * 0.2;
+        const depthShift = ratio * 110 + (card.classList.contains('feature-card-bottom') ? 30 : 0);
+        card.style.zIndex = String(120 - Math.round(ratio * 80));
+        gsap.to(card, {
+          y: depthShift,
+          scale,
+          duration: 0.55,
+          ease: 'power3.out',
+          overwrite: true,
+          force3D: true
+        });
+      });
+    }
+
+    function setPosition(x) {
+      state.current = x;
+      track.style.transform = `translate3d(${x}px, 0, 0)`;
+      updateDepth();
+    }
+
+    function stopMomentum() {
+      if (state.momentum) {
+        state.momentum.kill();
+        state.momentum = null;
+      }
+    }
+
+    function onPointerDown(event) {
+      event.preventDefault();
+      slider.classList.add('is-dragging');
+      body.classList.add(bodyDraggingClass);
+      if (slider.setPointerCapture) {
+        slider.setPointerCapture(event.pointerId);
+      }
+      state.pointerId = event.pointerId;
+      stopMomentum();
+      state.isDown = true;
+      state.startX = event.clientX;
+      state.startPos = state.current;
+      state.lastX = event.clientX;
+      state.lastTime = performance.now();
+    }
+
+    function onPointerMove(event) {
+      if (!state.isDown) return;
+      event.preventDefault();
+      const delta = event.clientX - state.startX;
+      let next = state.startPos + delta;
+
+      if (next > state.max) {
+        next = state.max + (next - state.max) * 0.35;
+      } else if (next < state.min) {
+        next = state.min + (next - state.min) * 0.35;
+      }
+
+      const now = performance.now();
+      const dt = now - state.lastTime || 1;
+      state.velocity = (event.clientX - state.lastX) / dt;
+      state.lastX = event.clientX;
+      state.lastTime = now;
+
+      setPosition(next);
+    }
+
+    function onPointerUp(event) {
+      if (!state.isDown) return;
+      slider.classList.remove('is-dragging');
+      body.classList.remove(bodyDraggingClass);
+      if (event && state.pointerId !== null && slider.releasePointerCapture) {
+        try {
+          slider.releasePointerCapture(state.pointerId);
+        } catch (err) {
+          // Ignore release errors when pointer is already gone
+        }
+      }
+      state.pointerId = null;
+      state.isDown = false;
+
+      const projected = state.current + state.velocity * 1500;
+      const target = clamp(state.min, state.max, projected);
+
+      state.momentum = gsap.to({ value: state.current }, {
+        value: target,
+        duration: 1.6,
+        ease: 'power4.out',
+        onUpdate: function () {
+          setPosition(this.targets()[0].value);
         },
-        // When window width is >= 768px (md)
-        768: {
-          slidesPerView: 2,
-          spaceBetween: 20,
-          centeredSlides: false,
-        },
-        // When window width is >= 992px (lg) - Desktop: 3 cards visible (first and last half, middle 2 full)
-        992: {
-          slidesPerView: 3,
-          spaceBetween: 20,
-          centeredSlides: true,
-          initialSlide: 1,
-        },
-        // When window width is >= 1200px (xl) - Desktop: 3 cards visible (first and last half, middle 2 full)
-        1200: {
-          slidesPerView: 3,
-          spaceBetween: 20,
-          centeredSlides: true,
-          initialSlide: 1,
-        },
-      },
-      
-      // Smooth dragging with easing
-      resistanceRatio: 0.85,
-      touchRatio: 1,
-      threshold: 5,
-      followFinger: true,
-      grabCursor: true,
-      
-      // Mouse wheel control (optional)
-      mousewheel: {
-        enabled: false,
-      },
-      
-      // Keyboard control
-      keyboard: {
-        enabled: true,
-        onlyInViewport: true,
-      },
-      
-      // Accessibility
-      a11y: {
-        prevSlideMessage: 'Previous feature card',
-        nextSlideMessage: 'Next feature card',
-      },
+        onComplete: () => {
+          state.momentum = null;
+        }
+      });
+    }
+
+    function getPairCenter() {
+      if (cards.length <= 1) {
+        return cards[0].offsetLeft + cards[0].offsetWidth / 2;
+      }
+      const middleIndex = Math.max(1, Math.floor(cards.length / 2));
+      const prev = cards[Math.max(0, middleIndex - 1)];
+      const current = cards[Math.min(cards.length - 1, middleIndex)];
+      return (prev.offsetLeft + prev.offsetWidth / 2 + current.offsetLeft + current.offsetWidth / 2) / 2;
+    }
+
+    function setInitialPosition() {
+      const sliderCenter = slider.clientWidth / 2;
+      const pairCenter = getPairCenter();
+      const desired = sliderCenter - pairCenter;
+      const padding = Math.min(slider.clientWidth * 0.08, 140);
+      const initial = clamp(state.min + padding, state.max - padding, desired);
+      setPosition(initial);
+    }
+
+    function onResize() {
+      const prev = state.current;
+      recalcBounds();
+      const clamped = clamp(state.min, state.max, prev);
+      setPosition(clamped);
+    }
+
+    recalcBounds();
+    setInitialPosition();
+    updateDepth();
+
+    slider.addEventListener('pointerdown', onPointerDown);
+    window.addEventListener('pointermove', onPointerMove);
+    window.addEventListener('pointerup', onPointerUp);
+    window.addEventListener('pointercancel', onPointerUp);
+    window.addEventListener('resize', () => {
+      clearTimeout(slider._resizeTimer);
+      slider._resizeTimer = setTimeout(onResize, 120);
     });
   }
 
 })();
-
