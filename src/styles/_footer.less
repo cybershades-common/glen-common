@@ -3,7 +3,7 @@
 // ==========================================================================
 
 .site-footer {
-  background-image: url('../../figma-design-images/section-bg.jpg');
+  background-image: url('../../assets/images/section-bg.jpg');
   background-size: cover;
   background-position: center center;
   background-repeat: no-repeat;
@@ -193,6 +193,8 @@
 .footer__utilities {
 
   position: relative; // For absolute positioning of button
+  display: flex;
+  gap: 2rem;
 
   p {
     margin: 0;
@@ -202,11 +204,7 @@
   }
 
   .footer__language-btn {
-    position: absolute;
-    left: 120px; // Position between the two time lines
-    top: 50%;
-    transform: translateY(-50%);
-    color: @tertiary-blue-dark;
+     color: @tertiary-blue-dark;
     border-color: @tertiary-blue-dark;
     background-color: transparent;
     padding: 0.625rem 0.8125rem;
@@ -226,9 +224,8 @@
 // Member Logos - Bootstrap Grid (3 columns), aligned with upper links
 .footer__logos {
   display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  gap: 20px;
+    align-items: flex-start;
+  gap:3rem;
   mix-blend-mode: luminosity;
 
 

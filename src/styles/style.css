@@ -3088,7 +3088,7 @@ h1 .hero__title-script {
   width: 100%;
   min-height: 900px;
   overflow: hidden;
-  background-image: url('../images/section-bg.jpg');
+  background-image: url('../../assets/images/section-bg.jpg');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -3601,7 +3601,7 @@ h1 .hero__title-script {
   outline-offset: 2px;
 }
 .site-footer {
-  background-image: url('../../figma-design-images/section-bg.jpg');
+  background-image: url('../../assets/images/section-bg.jpg');
   background-size: cover;
   background-position: center center;
   background-repeat: no-repeat;
@@ -3742,6 +3742,8 @@ h1 .hero__title-script {
 }
 .footer__utilities {
   position: relative;
+  display: flex;
+  gap: 2rem;
 }
 .footer__utilities p {
   margin: 0;
@@ -3750,10 +3752,6 @@ h1 .hero__title-script {
   color: #1c3666;
 }
 .footer__utilities .footer__language-btn {
-  position: absolute;
-  left: 120px;
-  top: 50%;
-  transform: translateY(-50%);
   color: #1c3666;
   border-color: #1c3666;
   background-color: transparent;
@@ -3770,9 +3768,8 @@ h1 .hero__title-script {
 }
 .footer__logos {
   display: flex;
-  justify-content: space-between;
   align-items: flex-start;
-  gap: 20px;
+  gap: 3rem;
   mix-blend-mode: luminosity;
 }
 .footer__logos img {
