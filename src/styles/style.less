@@ -1038,10 +1038,10 @@ button {
 .wellbeing-section {
   position: relative;
   width: 100%;
-   overflow: hidden;
- padding-top: 13rem;
-    padding-bottom: 9.25rem;
- 
+  overflow: hidden;
+  padding-top: 13rem;
+  padding-bottom: 9.25rem;
+
 
   .five-as-section__image-wrapper {
     max-width: 99%;
@@ -1146,7 +1146,7 @@ button {
   }
 
   // Main title group
-  
+
   .wellbeing-title-group {
     display: flex;
     flex-direction: column;
@@ -1286,7 +1286,7 @@ button {
 .full-width-testimonial-audio {
   position: relative;
   width: 100%;
-  height: 100vh;
+  min-height: 100%;
   overflow: hidden;
 
   // Background
@@ -1307,7 +1307,8 @@ button {
   // Background image per slide
   .testimonial-audio-slide {
     position: relative;
-    height: 100vh;
+    min-height: 100%;
+    padding: 13rem  0;
 
     &::before {
       content: '';
@@ -1318,6 +1319,8 @@ button {
       background-position: center;
       background-repeat: no-repeat;
       z-index: 0;
+      display: flex;
+      height: 100%;
     }
 
     &::after {
@@ -1326,6 +1329,9 @@ button {
       inset: 0;
       background: rgba(0, 0, 0, 0.5);
       z-index: 1;
+
+      height: 100%;
+      display: flex;
     }
   }
 
@@ -1333,7 +1339,7 @@ button {
   .testimonial-audio-slider {
     position: relative;
     width: 100%;
-    height: 100vh;
+    min-height: 100%;
     z-index: 1;
   }
 
@@ -1342,10 +1348,14 @@ button {
     .container-fluid {
       position: relative;
       z-index: 2;
-      height: 100vh;
+      min-height: 100%;
       display: flex;
       align-items: center;
-      padding: 0 80px;
+
+      .five-as-section__image-wrapper {
+        max-width: 90%;
+        margin: auto;
+      }
 
       @media (max-width: (@breakpoint-lg - 1)) {
         padding: 0 40px;
@@ -1638,7 +1648,7 @@ button {
     display: flex;
     flex-direction: column;
     gap: 0;
-    margin-bottom: @spacing-lg;
+    margin-bottom:4.375rem;
     text-align: center;
 
     &-script {
@@ -1741,7 +1751,7 @@ button {
     flex-direction: column;
     align-items: flex-end;
     position: relative;
-    gap: 48px;
+    gap: 0.625rem;
 
     @media (max-width: (@breakpoint-lg - 1)) {
       align-items: flex-start;
@@ -2546,37 +2556,33 @@ button {
     }
 
     &-lime::before {
-      background-color: #8fca72;
+   
+      background:url(../../assets/images/lime-tab.png) no-repeat  #8fca72 ;
+      background-size: cover;
     }
 
-    &-lime::after {
-      background-image: url('https://www.figma.com/api/mcp/asset/ddb16fc4-f729-414d-b6b4-43619e19357b');
-    }
+
 
     &-teal {
       padding: 17px 23px;
 
       &::before {
-        background-color: #00a9ac;
+        background:url(../../assets/images/teal-tab.png) #00a9ac no-repeat ;
+        background-size: cover;
       }
 
-      &::after {
-        background-image: url('https://www.figma.com/api/mcp/asset/ddb16fc4-f729-414d-b6b4-43619e19357b');
-      }
+   
     }
 
     &-blue {
       padding: 8px;
 
       &::before {
-        background-color: #005e9c;
+        background:url(../../assets/images/blue-tab.png) no-repeat #005e9c;
+         background-size: cover;
       }
 
-      &::after {
-        background-image: url('https://www.figma.com/api/mcp/asset/7e5256f0-f398-4bd2-9f53-1f1089567bb3');
-        background-size: 155% 620%;
-        background-position: -27.5% -260%;
-      }
+   
     }
   }
 

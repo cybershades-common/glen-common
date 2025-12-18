@@ -3940,6 +3940,10 @@ h1 .hero__title-script {
   body .full-width-video-promo {
     height: inherit;
   }
+  body .wellbeing-section .five-as-section__image-wrapper {
+    max-width: 85%;
+    margin: 2.5rem auto;
+  }
 }
 @media (min-width: 1800px) {
   html {
@@ -4971,7 +4975,7 @@ button {
 .full-width-testimonial-audio {
   position: relative;
   width: 100%;
-  height: 100vh;
+  min-height: 100%;
   overflow: hidden;
 }
 .full-width-testimonial-audio .testimonial-audio-bg {
@@ -4988,7 +4992,8 @@ button {
 }
 .full-width-testimonial-audio .testimonial-audio-slide {
   position: relative;
-  height: 100vh;
+  min-height: 100%;
+  padding: 13rem  0;
 }
 .full-width-testimonial-audio .testimonial-audio-slide::before {
   content: '';
@@ -4999,6 +5004,8 @@ button {
   background-position: center;
   background-repeat: no-repeat;
   z-index: 0;
+  display: flex;
+  height: 100%;
 }
 .full-width-testimonial-audio .testimonial-audio-slide::after {
   content: '';
@@ -5006,20 +5013,25 @@ button {
   inset: 0;
   background: rgba(0, 0, 0, 0.5);
   z-index: 1;
+  height: 100%;
+  display: flex;
 }
 .full-width-testimonial-audio .testimonial-audio-slider {
   position: relative;
   width: 100%;
-  height: 100vh;
+  min-height: 100%;
   z-index: 1;
 }
 .full-width-testimonial-audio .testimonial-audio-slide .container-fluid {
   position: relative;
   z-index: 2;
-  height: 100vh;
+  min-height: 100%;
   display: flex;
   align-items: center;
-  padding: 0 80px;
+}
+.full-width-testimonial-audio .testimonial-audio-slide .container-fluid .five-as-section__image-wrapper {
+  max-width: 90%;
+  margin: auto;
 }
 @media (max-width: 991px) {
   .full-width-testimonial-audio .testimonial-audio-slide .container-fluid {
@@ -5281,7 +5293,7 @@ button {
   display: flex;
   flex-direction: column;
   gap: 0;
-  margin-bottom: 1.875rem;
+  margin-bottom: 4.375rem;
   text-align: center;
 }
 .three-stages-section .title-script {
@@ -5378,7 +5390,7 @@ button {
   flex-direction: column;
   align-items: flex-end;
   position: relative;
-  gap: 48px;
+  gap: 0.625rem;
 }
 @media (max-width: 991px) {
   .three-stages-section .three-stages-list {
@@ -6072,30 +6084,22 @@ button {
   pointer-events: none;
 }
 .three-stages-section .three-stages-card-header-lime::before {
-  background-color: #8fca72;
-}
-.three-stages-section .three-stages-card-header-lime::after {
-  background-image: url('https://www.figma.com/api/mcp/asset/ddb16fc4-f729-414d-b6b4-43619e19357b');
+  background: url(../../assets/images/lime-tab.png) no-repeat #8fca72;
+  background-size: cover;
 }
 .three-stages-section .three-stages-card-header-teal {
   padding: 17px 23px;
 }
 .three-stages-section .three-stages-card-header-teal::before {
-  background-color: #00a9ac;
-}
-.three-stages-section .three-stages-card-header-teal::after {
-  background-image: url('https://www.figma.com/api/mcp/asset/ddb16fc4-f729-414d-b6b4-43619e19357b');
+  background: url(../../assets/images/teal-tab.png) #00a9ac no-repeat;
+  background-size: cover;
 }
 .three-stages-section .three-stages-card-header-blue {
   padding: 8px;
 }
 .three-stages-section .three-stages-card-header-blue::before {
-  background-color: #005e9c;
-}
-.three-stages-section .three-stages-card-header-blue::after {
-  background-image: url('https://www.figma.com/api/mcp/asset/7e5256f0-f398-4bd2-9f53-1f1089567bb3');
-  background-size: 155% 620%;
-  background-position: -27.5% -260%;
+  background: url(../../assets/images/blue-tab.png) no-repeat #005e9c;
+  background-size: cover;
 }
 .three-stages-section .three-stages-card-title {
   font-family: 'Averta', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
