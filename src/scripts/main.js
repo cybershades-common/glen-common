@@ -592,16 +592,31 @@
     if (!header) return;
 
     const scrollThreshold = 50;
+    const hideThreshold = 80;
     let lastScrollY = window.scrollY;
     let ticking = false;
 
     function updateHeader() {
       const currentScrollY = window.scrollY;
+      const scrollDelta = Math.abs(currentScrollY - lastScrollY);
 
       if (currentScrollY > scrollThreshold) {
-        header.classList.add('is-scrolled');
+        // Only react to significant scroll movements for smoother behavior
+        if (scrollDelta > 5) {
+          if (currentScrollY > lastScrollY && currentScrollY > hideThreshold) {
+            // Scrolling down - hide header smoothly but keep sticky state
+            header.classList.add('header-sticky');
+            header.classList.add('header-hidden');
+          } else if (currentScrollY < lastScrollY) {
+            // Scrolling up - show white sticky header with smooth slide-in
+            header.classList.add('header-sticky');
+            header.classList.remove('header-hidden');
+          }
+        }
       } else {
-        header.classList.remove('is-scrolled');
+        // Near top - return to original state
+        header.classList.remove('header-hidden');
+        header.classList.remove('header-sticky');
       }
 
       lastScrollY = currentScrollY;

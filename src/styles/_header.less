@@ -9,7 +9,7 @@
   width: 100%;
   padding: .675rem 1.125rem;
   min-height: @header-height;
-  transition: background @transition-base, box-shadow @transition-base, border-bottom @transition-base;
+  transition: background @transition-base, box-shadow @transition-base, border-bottom @transition-base, transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 
   // Transparent variant (sits on colored/textured background)
   .header-logo {
@@ -33,6 +33,73 @@
     background: transparent;
   }
 
+  // Hidden header state for smooth slide animation
+  &.header-hidden {
+    transform: translateY(-100%);
+    transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  }
+
+  // Sticky white header state (like hamburger menu open)
+  &.header-sticky {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    background-color: @color-white;
+    box-shadow: @shadow-md;
+    z-index: @z-sticky;
+    transform: translateY(0);
+    transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+
+    // When sticky header is hidden, slide it up while keeping white style
+    &.header-hidden {
+      transform: translateY(-100%);
+    }
+
+    // Change logo to dark
+    .header-logo {
+      a {
+        svg {
+          path {
+            fill: var(--tertiary-blue-dark, #1C3666);
+          }
+        }
+      }
+    }
+
+    // Change icons to dark
+    .header-actions {
+      .header-icon {
+        svg {
+          path {
+            fill: @tertiary-blue-dark;
+            stroke: @tertiary-blue-dark;
+          }
+        }
+
+        &.header-profile {
+          svg {
+            path {
+              fill: none;
+              stroke: @tertiary-blue-dark;
+            }
+          }
+        }
+      }
+    }
+
+    // Change hamburger lines to dark
+    .hamburger .line {
+      background-color: @tertiary-blue-dark;
+      border-color: @tertiary-blue-dark;
+    }
+
+    // Change menu button text to dark
+    .menu-button__text {
+      color: @tertiary-blue-dark;
+    }
+  }
+
   // Sticky header variant
   &.sticky {
     position: fixed;
@@ -40,7 +107,7 @@
     left: 0;
     right: 0;
     background: @color-sand-20;
-    transition: background @transition-base, box-shadow @transition-base;
+    transition: background @transition-base, box-shadow @transition-base, transform @transition-base;
 
     &.is-scrolled {
       background: @color-white;
