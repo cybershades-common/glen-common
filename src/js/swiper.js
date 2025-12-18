@@ -1,11 +1,13 @@
 // Testimonial Audio Swiper Initialization
 document.addEventListener('DOMContentLoaded', function() {
     // Initialize the testimonial audio swiper
+    const sliderEl = document.querySelector('.testimonial-audio-slider');
+    const slideCount = sliderEl ? sliderEl.querySelectorAll('.swiper-slide').length : 0;
     const testimonialAudioSwiper = new Swiper('.testimonial-audio-slider', {
         // Basic configuration
         slidesPerView: 1,
         spaceBetween: 0,
-        loop: true,
+        loop: slideCount >= 3,
         speed: 600,
         
         // Navigation
@@ -45,12 +47,8 @@ document.addEventListener('DOMContentLoaded', function() {
         
         // Events
         on: {
-            init: function() {
-                console.log('Testimonial Audio Swiper initialized');
-            },
-            slideChange: function() {
-                console.log('Slide changed to:', this.activeIndex);
-            }
+            init: function() {},
+            slideChange: function() {}
         }
     });
     

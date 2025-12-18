@@ -799,10 +799,11 @@
     const videoTestimonialsSwiperContainer = section.querySelector('.video-testimonials-swiper .swiper');
     let mobileSwiper = null;
     if (videoTestimonialsSwiperContainer && typeof Swiper !== 'undefined') {
+      const slideCount = videoTestimonialsSwiperContainer.querySelectorAll('.swiper-slide').length;
       mobileSwiper = new Swiper(videoTestimonialsSwiperContainer, {
         slidesPerView: 1.25,
         spaceBetween: 20,
-        loop: true,
+        loop: slideCount >= 3,
         autoplay: false,
         breakpoints: {
           320: {
@@ -1197,10 +1198,11 @@
       if (slider.swiper) return;
 
       const paginationEl = slider.querySelector('.features-cards-pagination');
+      const slideCount = slider.querySelectorAll('.swiper-slide').length;
 
       const swiperConfig = {
         speed: 600,
-        loop: true,
+        loop: slideCount >= 3,
         centeredSlides: false,
         spaceBetween: 12,
         slidesPerView: 1.25,
