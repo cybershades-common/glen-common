@@ -4,13 +4,11 @@
 
 .site-footer {
   position: relative;
-  background-image: url('../../assets/images/section-bg.jpg');
+ /* background-image: url('../../assets/images/section-bg.jpg');
   background-size: cover;
   background-position: center center;
   background-repeat: no-repeat;
-
-
-
+  */
   color: @tertiary-blue-dark;
   position: relative;
   padding: 8.25rem 2rem 1.5rem;
@@ -265,6 +263,11 @@
 .site-footer .small {
   color: @tertiary-blue-dark;
 }
+.footer__brand-inner{
+  font-size: 17.5vw;
+  font-weight: bold;
+  text-align: center;
+}
 
 // Responsive
 @media (max-width: @breakpoint-lg) {
@@ -319,6 +322,10 @@
 
 @media (max-width:767px) {
   .site-footer {
+
+    .footer__newsletter{
+      margin-bottom: 5rem;
+    }
 
     .footer__bottom {
       div {
