@@ -84,16 +84,17 @@
 
 @media (max-width:767px) {
   body {
-.three-stages-section{
-  padding:4.75rem 0 6.25rem ;
-}
- .testimonial-audio-slide{
-  .container-fluid{
-    >.row{
-      gap: 3rem 0;
+    .three-stages-section {
+      padding: 4.75rem 0 6.25rem;
     }
-  }
- }
+
+    .testimonial-audio-slide {
+      .container-fluid {
+        >.row {
+          gap: 3rem 0;
+        }
+      }
+    }
 
     .masked-image-block {
       flex-direction: column-reverse;
@@ -149,9 +150,9 @@
     }
 
     .three-stages-section .three-stages-diagram {
-       transform: scale(0.55);
-    margin: -34%;
-    margin-left: -73%;
+      transform: scale(0.55);
+      margin: -34%;
+      margin-left: -73%;
     }
 
     .masked-image-content-block__cta {
@@ -187,8 +188,19 @@
 
     .glenaeon-education-section .body-base-blocks {
       flex-direction: column;
+
       .body-base {
         flex: 100% 0 0;
+      }
+    }
+
+    .section .edge-image {
+      &.bottom-edge {
+        bottom: -1px;
+      }
+
+      &.top-edge {
+        top: -1px;
       }
     }
   }

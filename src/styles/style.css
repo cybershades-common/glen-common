@@ -1991,7 +1991,7 @@ h1 .hero__title-script {
 }
 @media (max-width: 767px) {
   .hero .bottom-edge {
-    bottom: -5px;
+    bottom: -6px;
   }
   .internal-page .hero .hero__slider .hero__slide-overlay {
     padding-bottom: 2rem;
@@ -4368,6 +4368,12 @@ h1 .hero__title-script {
   }
   body .glenaeon-education-section .body-base-blocks .body-base {
     flex: 100% 0 0;
+  }
+  body .section .edge-image.bottom-edge {
+    bottom: -1px;
+  }
+  body .section .edge-image.top-edge {
+    top: -1px;
   }
 }
 @media (min-width: 1800px) {
