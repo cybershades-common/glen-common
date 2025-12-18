@@ -3680,6 +3680,11 @@ h1 .hero__title-script {
   width: 107px;
   height: 48px;
 }
+.site-footer .container-fluid .footer-column {
+  display: flex;
+  flex-direction: column;
+  gap: 0.625rem;
+}
 .site-footer .container-fluid .footer__title {
   font-family: 'Born Ready', cursive;
   font-size: 6.25rem;
