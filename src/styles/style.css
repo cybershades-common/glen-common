@@ -1364,6 +1364,8 @@ body.mega-menu-open {
   }
   .mega-menu .mega-menu__inner {
     padding: 6rem 1.25rem 4rem;
+    max-height: 100vh;
+    overflow-y: auto;
   }
   .mega-menu .mega-menu__inner .mobile-only .header-quick-links {
     display: flex;
