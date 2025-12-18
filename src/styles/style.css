@@ -4323,7 +4323,9 @@ h1 .hero__title-script {
     width: 100%;
   }
   body .three-stages-section .three-stages-diagram {
-    margin-left: -18vw;
+    transform: scale(0.55);
+    margin: -34%;
+    margin-left: -73%;
   }
   body .masked-image-content-block__cta {
     align-self: center;
