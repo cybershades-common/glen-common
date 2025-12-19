@@ -251,7 +251,7 @@ h1 {
     line-height: 1;
     letter-spacing: 0;
     color: @color-white;
-  
+
     text-transform: none;
 
     @media (max-width: (@breakpoint-xl - 1)) {
@@ -554,6 +554,8 @@ h1 {
     gap: @spacing-sm;
     width: 100%;
 
+ 
+
     a {
       width: 100%;
       text-align: center;
@@ -578,14 +580,20 @@ h1 {
   }
 }
 
+@media (min-width:768px) and (max-width:992px){
+     h1 .hero__title-script {
+      font-size: clamp(2.5rem, 7vw, 5rem);
+    }
+}
+
 
 @media (max-width:767px) {
 
-.hero{
-  .bottom-edge{
-    bottom: -6px;
+  .hero {
+    .bottom-edge {
+      bottom: -6px;
+    }
   }
-}
 
   .internal-page .hero .hero__slider .hero__slide-overlay {
     padding-bottom: 2rem;
@@ -600,11 +608,16 @@ h1 {
   }
 }
 
+
+
+
 @media (max-width:1350px) and (min-width:1200px) {
   .hero .bottom-edge {
     bottom: -18px;
   }
 }
+
+
 
 
 @media (min-width:1600px) {

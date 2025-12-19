@@ -1495,7 +1495,7 @@ body.mega-menu-open {
     border-radius: 10px;
     background: var(--tints-sand-20, #FAF7F4);
     margin-bottom: 2rem;
-    padding: 0.625rem 1.25rem;
+    padding: 0.625rem;
     border: none;
   }
   .mega-menu .mega-menu__inner .mega-menu__footer .input-group input {
@@ -1514,7 +1514,7 @@ body.mega-menu-open {
     text-align: center;
     font-size: 1rem;
     font-style: normal;
-    font-weight: 400;
+    font-weight: 700;
     line-height: normal;
   }
   .mega-menu .mega-menu__inner .mega-menu__footer .input-group ::-webkit-input-placeholder {
@@ -1991,6 +1991,11 @@ h1 .hero__title-script {
   position: absolute;
   right: 0;
   bottom: 0;
+}
+@media (min-width: 768px) and (max-width: 992px) {
+  h1 .hero__title-script {
+    font-size: clamp(2.5rem, 7vw, 5rem);
+  }
 }
 @media (max-width: 767px) {
   .hero .bottom-edge {
@@ -4385,6 +4390,15 @@ h1 .hero__title-script {
     top: -1px;
   }
 }
+@media (min-width: 768px) and (max-width: 992px) {
+  html {
+    font-size: 13px;
+  }
+  html body h2,
+  html body h2 span {
+    font-size: 2.75rem;
+  }
+}
 @media (min-width: 1800px) {
   html {
     font-size: 22px;
@@ -4528,7 +4542,6 @@ button {
 @media (max-width: 991px) {
   .masked-image-content-block__content {
     max-width: 100%;
-    text-align: center;
   }
 }
 .masked-image-content-block__heading {
