@@ -2,13 +2,13 @@
 // STAFF SECTION
 // ==========================================================================
 
-// Staff circle animation support
-.batch-item--staff-circle-js {
+// Staff circle reveal animation support
+.staff-circle-expand {
   img {
     clip-path: circle(var(--circle-clip, 0%) at center);
   }
   
-  &.disable-circle-clip img {
+  &.circle-animation-complete img {
     clip-path: none;
   }
 }

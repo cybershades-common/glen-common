@@ -2,19 +2,19 @@
 // VIDEO TESTIMONIALS SECTION
 // ==========================================================================
 
-// Smooth batch animation support (exact same as design inspiration)
-.batch-item--clip-js:not(.disable-clip) {
+// Card reveal animation support
+.card-clip-reveal:not(.clip-animation-complete) {
   --clip-value: 100%;
   -webkit-clip-path: inset(var(--clip-value) 0 0 0);
   clip-path: inset(var(--clip-value) 0 0 0);
 }
 
-.batch-item--clip-js.disable-clip {
+.card-clip-reveal.clip-animation-complete {
   -webkit-clip-path: none;
   clip-path: none;
 }
 
-// Featured cards swiper with dramatic zoom effect (like design inspiration)
+// Featured cards swiper with dynamic scaling effect
 .features-cards-slider {
   .swiper {
     overflow: visible;

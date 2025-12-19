@@ -58,36 +58,34 @@ function initVideoTestimonialsAnimations() {
   if (!section || typeof gsap === 'undefined') return;
   videoTestimonialsAnimationsInitialized = true;
 
-  // Setup batch animations for desktop cards
-  setupBatchForVideoCards(section);
+  // Setup reveal animations for desktop cards
+  setupVideoCardsReveal(section);
   
-  // Setup batch animations for feature cards  
-  setupBatchForFeatureCards();
+  // Setup reveal animations for feature cards  
+  setupFeatureCardsReveal();
   
   // Keep mobile and text animations as they work fine
   setupMobileSlideAnimations(section);
   setupTextHideOnPlay(section);
 }
 
-function setupBatchForVideoCards(section) {
+function setupVideoCardsReveal(section) {
   const desktopCards = section.querySelectorAll('.cards.desktop-only .card');
   
   if (desktopCards.length > 0) {
     desktopCards.forEach(card => {
-      card.classList.add('batch-item-js', 'batch-item--clip-js');
+      card.classList.add('video-reveal-animation', 'card-clip-reveal');
     });
-    console.log(`Added batch classes to ${desktopCards.length} video testimonial cards`);
   }
 }
 
-function setupBatchForFeatureCards() {
+function setupFeatureCardsReveal() {
   const featureCards = document.querySelectorAll('.features-cards-slider .feature-card');
   
   if (featureCards.length > 0) {
     featureCards.forEach(card => {
-      card.classList.add('batch-item-js', 'batch-item--clip-js');
+      card.classList.add('feature-reveal-animation', 'card-clip-reveal');
     });
-    console.log(`Added batch classes to ${featureCards.length} feature cards`);
   }
 }
 
@@ -205,13 +203,13 @@ function initStaffAnimations() {
   const staffCards = staffSection.querySelectorAll('.grid_card');
   if (!staffCards.length) return;
 
-  // Add batch classes to staff cards
+  // Add animation classes to staff cards
   staffCards.forEach(card => {
-    card.classList.add('batch-item-js', 'batch-item--staff-circle-js');
+    card.classList.add('staff-reveal-animation', 'staff-circle-expand');
   });
 
   // Set initial state for staff cards
-  gsap.set('.batch-item--staff-circle-js', {
+  gsap.set('.staff-circle-expand', {
     '--circle-clip': '0%',
   });
 }
@@ -262,14 +260,13 @@ function initFeaturedCardsScrollEffect() {
 
 function initAnimations() {
   if (typeof gsap === 'undefined') {
-    console.error('GSAP is required for animations. Please include GSAP library.');
     return;
   }
 
   initMarqueeAnimation();
   initVideoTestimonialsAnimations();
   initStaffAnimations();
-  initBatchAnimations();
+  initRevealAnimations();
   // Featured cards now use swiper instead of GSAP scroll effect
 
   // Safe ScrollTrigger refresh after animations are set up
@@ -279,21 +276,23 @@ function initAnimations() {
     });
   }
 
-  console.log('Animations initialized successfully');
 }
 
-// Reliable batch animation system (from script.html)
-function initBatchAnimations() {
-  const batchItems = document.querySelectorAll('.batch-item-js');
-  if (!batchItems.length) return;
+// Card reveal animation system
+function initRevealAnimations() {
+  const videoItems = document.querySelectorAll('.video-reveal-animation');
+  const featureItems = document.querySelectorAll('.feature-reveal-animation');
+  const staffItems = document.querySelectorAll('.staff-reveal-animation');
+  
+  const allAnimationItems = [...videoItems, ...featureItems, ...staffItems];
+  if (!allAnimationItems.length) return;
 
-  // Set initial state for clip items
-  const clipItems = document.querySelectorAll('.batch-item--clip-js');
+  // Set initial state for clip reveal items
+  const clipItems = document.querySelectorAll('.card-clip-reveal');
   if (clipItems.length > 0) {
-    gsap.set('.batch-item--clip-js', {
+    gsap.set('.card-clip-reveal', {
       '--clip-value': '100%',
     });
-    console.log(`Set initial clip state for ${clipItems.length} clip items`);
   }
 
   function animation_def({card, ease_default = 'power1.out', index = 0, is_static = false} = {}) {
@@ -307,10 +306,10 @@ function initBatchAnimations() {
     });
   }
 
-  function each_batch(batch) {
-    batch.forEach((card, index) => {
-      if (card.classList.contains('batch-item--clip-js')) {
-        // Exact same smooth animation as design inspiration
+  function animateRevealElements(elements) {
+    elements.forEach((card, index) => {
+      if (card.classList.contains('card-clip-reveal')) {
+        // Smooth clip reveal animation for cards
         gsap.fromTo(card, {
           '--clip-value': '100%',
         }, {
@@ -319,15 +318,15 @@ function initBatchAnimations() {
           '--clip-value': '0%',
           delay: index * 0.2,
           onStart: function() {
-            card.classList.add('start-animation');
+            card.classList.add('animation-started');
           },
           onComplete: function () {
-            card.classList.add('disable-clip', 'end-animation');
+            card.classList.add('clip-animation-complete', 'animation-finished');
           }
         });
       }
       
-      if (card.classList.contains('batch-item--staff-circle-js')) {
+      if (card.classList.contains('staff-circle-expand')) {
         gsap.fromTo(card, {
           '--circle-clip': '0%',
         }, {
@@ -336,19 +335,19 @@ function initBatchAnimations() {
           '--circle-clip': '100%',
           delay: index * 0.15,
           onComplete: function () {
-            card.classList.add('disable-circle-clip');
+            card.classList.add('circle-animation-complete');
           }
         });
       }
     });
   }
 
-  // Use reliable ScrollTrigger batch (same as script.html)
-  ScrollTrigger.batch('.batch-item-js', {
+  // ScrollTrigger reveal animation for all elements
+  ScrollTrigger.batch('.video-reveal-animation, .feature-reveal-animation, .staff-reveal-animation', {
     start: 'top bottom-=100', 
     once: true, 
-    onEnter: batch => {
-      each_batch(batch);
+    onEnter: elements => {
+      animateRevealElements(elements);
     }
   });
 }

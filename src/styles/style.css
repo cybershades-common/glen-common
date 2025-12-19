@@ -2154,12 +2154,12 @@ h1 .hero__title-script {
     min-height: 50vh;
   }
 }
-.batch-item--clip-js:not(.disable-clip) {
+.card-clip-reveal:not(.clip-animation-complete) {
   --clip-value: 100%;
   -webkit-clip-path: inset(var(--clip-value) 0 0 0);
   clip-path: inset(var(--clip-value) 0 0 0);
 }
-.batch-item--clip-js.disable-clip {
+.card-clip-reveal.clip-animation-complete {
   -webkit-clip-path: none;
   clip-path: none;
 }
@@ -2779,10 +2779,10 @@ h1 .hero__title-script {
     height: 50vh;
   }
 }
-.batch-item--staff-circle-js img {
+.staff-circle-expand img {
   clip-path: circle(var(--circle-clip, 0%) at center);
 }
-.batch-item--staff-circle-js.disable-circle-clip img {
+.staff-circle-expand.circle-animation-complete img {
   clip-path: none;
 }
 .staff-section {

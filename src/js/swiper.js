@@ -2,10 +2,10 @@
 document.addEventListener('DOMContentLoaded', function() {
     
     // ==========================================================================
-    // FEATURED CARDS SWIPER (exact same as design inspiration)
+    // FEATURED CARDS SWIPER
     // ==========================================================================
     
-    // Dramatic effect variables (exact same as design inspiration)
+    // Dynamic scaling effect variables
     let lastTime = performance.now();
     let lastTranslate = 0;
     let velocity = 0;
@@ -13,11 +13,11 @@ document.addEventListener('DOMContentLoaded', function() {
 
     const featuresSlider = document.querySelector('.features-cards-carousel');
     if (featuresSlider) {
-        // Check if cards have dramatic effect elements
+        // Check if cards have scaling effect elements
         const hasFeatureCards = !!featuresSlider.querySelectorAll('.swiper-slide .feature-card').length > 0;
         
         const featuredCardsSwiper = new Swiper('.features-cards-carousel', {
-            // Exact same configuration as design inspiration
+            // Core swiper configuration
             speed: 900,
             spaceBetween: 30,
             resistance: false,
@@ -43,95 +43,95 @@ document.addEventListener('DOMContentLoaded', function() {
                 }
             },
             
-            // Navigation (if you want to add arrows later)
+            // Navigation
             navigation: {
                 nextEl: '.swiper-button-next',
                 prevEl: '.swiper-button-prev',
             },
             
-            // Dramatic zoom-out effect on drag (exact same as design inspiration)
+            // Dynamic scaling effect on drag
             on: {
                 setTranslate(swiper, translate) {
                     if(hasFeatureCards) {
-                        trackVelocity(swiper);
+                        trackDragVelocity(swiper);
                     }
                 },
                 touchEnd(swiper) {
                     if(hasFeatureCards) {
-                        continueTracking(swiper);
+                        continueDragTracking(swiper);
                     }
                 },
                 transitionStart(swiper) {
                     if(hasFeatureCards) {
-                        simulateDragTracking(swiper);
+                        simulateTransitionEffect(swiper);
                     }
                 },
                 transitionEnd(swiper) {
                     if(hasFeatureCards) {
-                        stopTracking();
+                        stopDragEffect();
                     }
                 }
             }
         });
     }
 
-    // Velocity tracking functions (exact same as design inspiration)
-    function trackVelocity(swiper) {
+    // Dynamic scaling effect functions
+    function trackDragVelocity(swiper) {
         const currentTime = performance.now();
         const currentTranslate = swiper.translate;
         const deltaTime = currentTime - lastTime;
         const deltaTranslate = currentTranslate - lastTranslate;
         velocity = Math.abs(deltaTranslate / deltaTime);
-        applyScaleEffect(velocity, swiper);
+        applyCardScaling(velocity, swiper);
         lastTranslate = currentTranslate;
         lastTime = currentTime;
     }
 
-    function continueTracking(swiper) {
+    function continueDragTracking(swiper) {
         cancelAnimationFrame(rafId);
         const track = () => {
-            trackVelocity(swiper);
+            trackDragVelocity(swiper);
             if (velocity > 0.01) {
                 rafId = requestAnimationFrame(track);
             } else {
-                stopTracking();
+                stopDragEffect();
             }
         };
         rafId = requestAnimationFrame(track);
     }
 
-    function simulateDragTracking(swiper) {
+    function simulateTransitionEffect(swiper) {
         cancelAnimationFrame(rafId);
         velocity = 2.5;
         const friction = 0.92;
-        const fakeTrack = () => {
-            applyScaleEffect(velocity, swiper);
+        const animate = () => {
+            applyCardScaling(velocity, swiper);
             velocity *= friction;
             if (velocity > 0.01) {
-                rafId = requestAnimationFrame(fakeTrack);
+                rafId = requestAnimationFrame(animate);
             } else {
-                stopTracking();
+                stopDragEffect();
             }
         };
-        rafId = requestAnimationFrame(fakeTrack);
+        rafId = requestAnimationFrame(animate);
     }
 
-    function stopTracking() {
+    function stopDragEffect() {
         cancelAnimationFrame(rafId);
         velocity = 0;
     }
 
-    function applyScaleEffect(velocity, swiper) {
-        const maxV = 3.0;
-        const minV = 0.01;
+    function applyCardScaling(velocity, swiper) {
+        const maxVelocity = 3.0;
+        const minVelocity = 0.01;
         const maxScale = 1;
         const minScale = 0.7; // 30% zoom out effect
-        const norm = 1 - Math.min(Math.max((velocity - minV) / (maxV - minV), 0), 1);
-        const scaleX = minScale + (maxScale - minScale) * norm;
+        const normalized = 1 - Math.min(Math.max((velocity - minVelocity) / (maxVelocity - minVelocity), 0), 1);
+        const scaleValue = minScale + (maxScale - minScale) * normalized;
         
-        // Apply scale to feature cards (same selector as design inspiration)
+        // Apply dynamic scaling to feature cards
         swiper.el.querySelectorAll('.swiper-slide .feature-card').forEach((card) => {
-            card.style.transform = `scale(${scaleX.toFixed(3)})`;
+            card.style.transform = `scale(${scaleValue.toFixed(3)})`;
         });
     }
     
