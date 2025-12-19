@@ -5,7 +5,7 @@
 .five-as-section {
   position: relative;
   padding: 0;
-  min-height: 900px;
+  min-height: 56.25rem;
   overflow: hidden;
 
   // Background Image
@@ -41,7 +41,7 @@
     padding: 6.5rem 0;
 
     @media (max-width: (@breakpoint-md - 1)) {
-      padding-top: 60px;
+      padding-top: 3.75rem;
       padding-bottom: @spacing-xl;
     }
   }
@@ -53,8 +53,8 @@
     gap: 0;
     align-items: center;
     text-align: center;
-    margin-bottom: 19px;
-    max-width: 925.314px;
+    margin-bottom: 1.1875rem;
+    max-width: 57.832125rem;
     margin-left: auto;
     margin-right: auto;
 
@@ -63,14 +63,14 @@
       font-weight: @font-weight-regular;
       font-size: @font-size-h1;
       line-height: @line-height-none;
-      letter-spacing: @letter-spacing-normal;
+      letter-spacing: -0.075rem;
       color: @color-white;
       text-align: center;
       margin: 0;
       width: 100%;
 
       @media (max-width: (@breakpoint-md - 1)) {
-        font-size: clamp(36px, 8vw, 60px);
+        font-size: clamp(2.25rem, 8vw, 3.75rem);
       }
     }
 
@@ -79,7 +79,7 @@
       font-weight: @font-weight-extrabold;
       font-size: @font-size-h1;
       line-height: @line-height-none;
-      letter-spacing: -1.2px;
+      letter-spacing: -0.075rem;
       text-transform: uppercase;
       color: @color-white;
       text-align: center;
@@ -87,8 +87,8 @@
       width: 100%;
 
       @media (max-width: (@breakpoint-md - 1)) {
-        font-size: clamp(36px, 8vw, 60px);
-        letter-spacing: -1.2px;
+        font-size: clamp(2.25rem, 8vw, 3.75rem);
+        letter-spacing: -0.075rem;
       }
     }
   }
@@ -99,10 +99,10 @@
     font-weight: @font-weight-regular;
     font-size: @font-size-lg;
     line-height: @line-height-snug;
-    letter-spacing: -0.4px;
+    letter-spacing: -0.025rem;
     color: @color-white;
     text-align: center;
-    max-width: 808px;
+    max-width: 50.5rem;
     margin: 0 auto 0 auto;
 
     @media (max-width: (@breakpoint-md - 1)) {
@@ -117,12 +117,12 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-top: 50px;
+    margin-top: 3.125rem;
     margin-bottom: @spacing-xl;
     flex-wrap: wrap;
 
     @media (max-width: (@breakpoint-md - 1)) {
- 
+
       margin-top: @spacing-lg;
       margin-bottom: @spacing-lg;
     }
@@ -131,9 +131,9 @@
   &__nav-item {
     font-family: @font-primary;
     font-weight: @font-weight-bold;
-    font-size: 25px;
+    font-size: 1.5625rem;
     line-height: 1.1;
-    letter-spacing: -0.5px;
+    letter-spacing: -0.03125rem;
     color: @color-white;
     background: transparent;
     border: none;
@@ -141,7 +141,7 @@
     cursor: pointer;
     transition: color @transition-base;
     position: relative;
-        padding: 1rem 1.5rem;
+    padding: 1rem 1.5rem;
 
     // &:hover {
     //   color: @color-coral;
@@ -205,13 +205,13 @@
     font-weight: @font-weight-bold;
     font-size: @font-size-h1;
     line-height: @line-height-none;
-    letter-spacing: -3px;
+    letter-spacing: -0.1875rem;
     color: @color-white;
     margin: 0;
 
     @media (max-width: (@breakpoint-md - 1)) {
-      font-size: clamp(36px, 8vw, 60px);
-      letter-spacing: -2px;
+      font-size: clamp(2.25rem, 8vw, 3.75rem);
+      letter-spacing: -0.125rem;
     }
   }
 
@@ -242,7 +242,7 @@
     font-weight: @font-weight-regular;
     font-size: @font-size-lg;
     line-height: @line-height-snug;
-    letter-spacing: -0.4px;
+    letter-spacing: -0.025rem;
     color: @color-white;
     background-color: @color-coral;
     border: none;
@@ -257,7 +257,7 @@
 
     &:hover {
       background-color: darken(@color-coral, 5%);
-      transform: translateY(-2px);
+      transform: translateY(-0.125rem);
       color: @color-white;
       text-decoration: none;
     }
@@ -312,8 +312,26 @@
   padding: 0 2rem;
 }
 
-@media (max-width:767px){
-  .five-as-section__image-wrapper{
+
+@media (min-width:768px) and (max-width:992px) {
+  .five-as-section {
+    .container-fluid {
+      padding: 6.5rem 2rem;
+
+      .five-as-section__content {
+        text-align: left;
+        align-items: flex-start;
+      }
+    }
+
+
+  }
+}
+
+
+
+@media (max-width:767px) {
+  .five-as-section__image-wrapper {
     margin: 0 auto 2rem;
     max-width: 85%;
   }

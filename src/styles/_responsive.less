@@ -82,6 +82,62 @@
   }
 }
 
+
+
+@media (min-width:768px) and (max-width:992px) {
+  html {
+    font-size: 13px;
+
+    body {
+
+      .full-width-video-promo {
+        height: auto;
+      }
+
+      h2,
+      h2 span {
+        font-size: 2.75rem;
+      }
+
+      .section .edge-image {
+        &.bottom-edge {
+          bottom: -1px;
+        }
+
+      }
+
+      .wellbeing-section {
+        .wellbeing-content-row {
+          justify-content: center;
+        }
+      }
+
+      .three-stages-section {
+        padding: 6.25rem 0;
+        .three-stages-content {
+          flex-direction: row;
+          .three-stages-description{
+            width: 50%;
+          }
+        }
+        .three-stages-cards{
+          flex-direction: row;
+        }
+      }
+
+      .cottage-garden-section{
+        min-height: 50vh;
+      }
+
+    }
+
+  }
+
+
+
+
+}
+
 @media (max-width:767px) {
   body {
     .three-stages-section {
@@ -204,22 +260,6 @@
       }
     }
   }
-
-
-}
-
-@media (min-width:768px) and (max-width:992px){
-html{
-  font-size:13px;
-body{
-  h2,h2 span{
-    font-size: 2.75rem;
-  }
-}
-
-}
-
-
 
 
 }

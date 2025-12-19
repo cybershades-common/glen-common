@@ -2150,6 +2150,13 @@ h1 .hero__title-script {
     letter-spacing: 0;
   }
 }
+@media (min-width: 768px) and (max-width: 992px) {
+  .full-width-image-words-animation,
+  .full-width-image-words-animation .container-fluid {
+    height: 50vh;
+    min-height: 50vh;
+  }
+}
 .video-testimonials {
   padding: 10.75rem 0 6.625rem;
 }
@@ -2381,6 +2388,11 @@ h1 .hero__title-script {
     display: block;
   }
 }
+@media (min-width: 768px) and (max-width: 992px) {
+  .video-testimonials {
+    padding: 4.75rem 0;
+  }
+}
 @media (max-width: 767px) {
   .video-testimonials {
     padding: 3.75rem 0;
@@ -2533,7 +2545,7 @@ h1 .hero__title-script {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 10px;
+  gap: 4.35rem;
   pointer-events: none;
 }
 .co-curricular-carousel .slide-title {
@@ -2707,6 +2719,11 @@ h1 .hero__title-script {
     min-height: 56px;
   }
 }
+@media (min-width: 768px) and (max-width: 992px) {
+  .co-curricular-carousel {
+    height: 50vh;
+  }
+}
 .staff-section {
   padding: 6.5rem 0;
 }
@@ -2729,7 +2746,7 @@ h1 .hero__title-script {
 }
 @media (max-width: 767px) {
   .staff-section .title .title-script {
-    font-size: clamp(36px, 8vw, 60px);
+    font-size: clamp(2.25rem, 8vw, 3.75rem);
   }
 }
 .staff-section .title .title-bold {
@@ -2737,7 +2754,7 @@ h1 .hero__title-script {
   font-weight: 800;
   font-size: 3.75rem;
   line-height: 1;
-  letter-spacing: -2px;
+  letter-spacing: -0.125rem;
   text-transform: uppercase;
   color: #1c3666;
   text-align: center;
@@ -2745,8 +2762,8 @@ h1 .hero__title-script {
 }
 @media (max-width: 767px) {
   .staff-section .title .title-bold {
-    font-size: clamp(36px, 8vw, 60px);
-    letter-spacing: -1.2px;
+    font-size: clamp(2.25rem, 8vw, 3.75rem);
+    letter-spacing: -0.075rem;
   }
 }
 .staff-section .filters {
@@ -2788,7 +2805,7 @@ h1 .hero__title-script {
 @media (max-width: 767px) {
   .staff-section .filter-tab {
     font-size: 0.875rem;
-    padding: 8px 0.625rem;
+    padding: 0.5rem 0.625rem;
   }
 }
 .staff-section .grid.row {
@@ -2803,7 +2820,6 @@ h1 .hero__title-script {
   flex-direction: column;
   align-items: center;
   text-align: center;
-  gap: 0.625rem;
   width: 100%;
 }
 .staff-section .grid.row > div .grid_card .image {
@@ -2811,6 +2827,7 @@ h1 .hero__title-script {
   max-width: 100%;
   aspect-ratio: 1/1;
   position: relative;
+  margin-bottom: 1.25rem;
 }
 .staff-section .grid.row > div .grid_card .image .frame {
   position: absolute;
@@ -2824,7 +2841,7 @@ h1 .hero__title-script {
   height: 99%;
   object-fit: cover;
   border-radius: 50%;
-  margin: 2px;
+  margin: 0.125rem;
 }
 @media (max-width: 575px) {
   .staff-section .grid.row > div .grid_card .image {
@@ -2834,20 +2851,20 @@ h1 .hero__title-script {
 .staff-section .grid.row > div .grid_card .name {
   font-family: 'Averta', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   font-weight: 600;
-  font-size: 18px;
+  font-size: 1.125rem;
   line-height: 1.3;
   color: #1c3666;
-  margin: 0;
+  margin: 0 0 0.3125rem;
 }
 @media (max-width: 767px) {
   .staff-section .grid.row > div .grid_card .name {
-    font-size: 16px;
+    font-size: 1rem;
   }
 }
 .staff-section .grid.row > div .grid_card .position {
   font-family: 'Averta', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   font-weight: 400;
-  font-size: 14px;
+  font-size: 0.875rem;
   line-height: 1.4;
   color: #1c3666;
   margin: 0;
@@ -2855,13 +2872,13 @@ h1 .hero__title-script {
 }
 @media (max-width: 767px) {
   .staff-section .grid.row > div .grid_card .position {
-    font-size: 13px;
+    font-size: 0.8125rem;
   }
 }
 .five-as-section {
   position: relative;
   padding: 0;
-  min-height: 900px;
+  min-height: 56.25rem;
   overflow: hidden;
 }
 .five-as-section::before {
@@ -2894,7 +2911,7 @@ h1 .hero__title-script {
 }
 @media (max-width: 767px) {
   .five-as-section .container-fluid {
-    padding-top: 60px;
+    padding-top: 3.75rem;
     padding-bottom: 2.5rem;
   }
 }
@@ -2904,8 +2921,8 @@ h1 .hero__title-script {
   gap: 0;
   align-items: center;
   text-align: center;
-  margin-bottom: 19px;
-  max-width: 925.314px;
+  margin-bottom: 1.1875rem;
+  max-width: 57.832125rem;
   margin-left: auto;
   margin-right: auto;
 }
@@ -2914,7 +2931,7 @@ h1 .hero__title-script {
   font-weight: 400;
   font-size: 3.75rem;
   line-height: 1;
-  letter-spacing: 0;
+  letter-spacing: -0.075rem;
   color: #ffffff;
   text-align: center;
   margin: 0;
@@ -2922,7 +2939,7 @@ h1 .hero__title-script {
 }
 @media (max-width: 767px) {
   .five-as-section__title-script {
-    font-size: clamp(36px, 8vw, 60px);
+    font-size: clamp(2.25rem, 8vw, 3.75rem);
   }
 }
 .five-as-section__title-bold {
@@ -2930,7 +2947,7 @@ h1 .hero__title-script {
   font-weight: 800;
   font-size: 3.75rem;
   line-height: 1;
-  letter-spacing: -1.2px;
+  letter-spacing: -0.075rem;
   text-transform: uppercase;
   color: #ffffff;
   text-align: center;
@@ -2939,8 +2956,8 @@ h1 .hero__title-script {
 }
 @media (max-width: 767px) {
   .five-as-section__title-bold {
-    font-size: clamp(36px, 8vw, 60px);
-    letter-spacing: -1.2px;
+    font-size: clamp(2.25rem, 8vw, 3.75rem);
+    letter-spacing: -0.075rem;
   }
 }
 .five-as-section__subtitle {
@@ -2948,10 +2965,10 @@ h1 .hero__title-script {
   font-weight: 400;
   font-size: 1.25rem;
   line-height: 1.3;
-  letter-spacing: -0.4px;
+  letter-spacing: -0.025rem;
   color: #ffffff;
   text-align: center;
-  max-width: 808px;
+  max-width: 50.5rem;
   margin: 0 auto 0 auto;
 }
 @media (max-width: 767px) {
@@ -2965,7 +2982,7 @@ h1 .hero__title-script {
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-top: 50px;
+  margin-top: 3.125rem;
   margin-bottom: 2.5rem;
   flex-wrap: wrap;
 }
@@ -2978,9 +2995,9 @@ h1 .hero__title-script {
 .five-as-section__nav-item {
   font-family: 'Averta', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   font-weight: 700;
-  font-size: 25px;
+  font-size: 1.5625rem;
   line-height: 1.1;
-  letter-spacing: -0.5px;
+  letter-spacing: -0.03125rem;
   color: #ffffff;
   background: transparent;
   border: none;
@@ -3039,14 +3056,14 @@ h1 .hero__title-script {
   font-weight: 700;
   font-size: 3.75rem;
   line-height: 1;
-  letter-spacing: -3px;
+  letter-spacing: -0.1875rem;
   color: #ffffff;
   margin: 0;
 }
 @media (max-width: 767px) {
   .five-as-section__heading {
-    font-size: clamp(36px, 8vw, 60px);
-    letter-spacing: -2px;
+    font-size: clamp(2.25rem, 8vw, 3.75rem);
+    letter-spacing: -0.125rem;
   }
 }
 .five-as-section__description {
@@ -3074,7 +3091,7 @@ h1 .hero__title-script {
   font-weight: 400;
   font-size: 1.25rem;
   line-height: 1.3;
-  letter-spacing: -0.4px;
+  letter-spacing: -0.025rem;
   color: #ffffff;
   background-color: #db574e;
   border: none;
@@ -3089,7 +3106,7 @@ h1 .hero__title-script {
 }
 .five-as-section__button:hover {
   background-color: #d74339;
-  transform: translateY(-2px);
+  transform: translateY(-0.125rem);
   color: #ffffff;
   text-decoration: none;
 }
@@ -3128,6 +3145,15 @@ h1 .hero__title-script {
 }
 .five-as-section__content {
   padding: 0 2rem;
+}
+@media (min-width: 768px) and (max-width: 992px) {
+  .five-as-section .container-fluid {
+    padding: 6.5rem 2rem;
+  }
+  .five-as-section .container-fluid .five-as-section__content {
+    text-align: left;
+    align-items: flex-start;
+  }
 }
 @media (max-width: 767px) {
   .five-as-section__image-wrapper {
@@ -4303,6 +4329,39 @@ h1 .hero__title-script {
     padding: 1rem 2rem;
   }
 }
+@media (min-width: 768px) and (max-width: 992px) {
+  html {
+    font-size: 13px;
+  }
+  html body .full-width-video-promo {
+    height: auto;
+  }
+  html body h2,
+  html body h2 span {
+    font-size: 2.75rem;
+  }
+  html body .section .edge-image.bottom-edge {
+    bottom: -1px;
+  }
+  html body .wellbeing-section .wellbeing-content-row {
+    justify-content: center;
+  }
+  html body .three-stages-section {
+    padding: 6.25rem 0;
+  }
+  html body .three-stages-section .three-stages-content {
+    flex-direction: row;
+  }
+  html body .three-stages-section .three-stages-content .three-stages-description {
+    width: 50%;
+  }
+  html body .three-stages-section .three-stages-cards {
+    flex-direction: row;
+  }
+  html body .cottage-garden-section {
+    min-height: 50vh;
+  }
+}
 @media (max-width: 767px) {
   body .three-stages-section {
     padding: 4.75rem 0 6.25rem;
@@ -4388,15 +4447,6 @@ h1 .hero__title-script {
   }
   body .section .edge-image.top-edge {
     top: -1px;
-  }
-}
-@media (min-width: 768px) and (max-width: 992px) {
-  html {
-    font-size: 13px;
-  }
-  html body h2,
-  html body h2 span {
-    font-size: 2.75rem;
   }
 }
 @media (min-width: 1800px) {
@@ -4588,6 +4638,14 @@ button {
   .masked-image-content-block__title-bold {
     font-size: clamp(2.25rem, 8vw, 3.75rem);
     letter-spacing: clamp(-0.125rem, -0.02em, -0.075rem);
+  }
+}
+@media (min-width: 768px) and (max-width: 992px) {
+  .masked-image-content-block__title-script,
+  h2,
+  .masked-image-content-block__title-bold {
+    font-size: 2.75rem;
+    margin: 0;
   }
 }
 .masked-image-content-block__description {
@@ -4991,7 +5049,7 @@ button {
 .what-we-do-section .feature-card-title {
   font-family: 'Averta', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   font-weight: 700;
-  font-size: 25px;
+  font-size: 1.5625rem;
   line-height: 1.1;
   letter-spacing: -0.5px;
   color: #1c3666;
@@ -5000,18 +5058,18 @@ button {
 }
 @media (max-width: 767px) {
   .what-we-do-section .feature-card-title {
-    font-size: 22px;
+    font-size: 1.375rem;
   }
 }
 @media (max-width: 575px) {
   .what-we-do-section .feature-card-title {
-    font-size: 20px;
+    font-size: 1.25rem;
   }
 }
 .what-we-do-section .feature-card-description {
   font-family: 'Averta', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   font-weight: 400;
-  font-size: 15px;
+  font-size: 0.9375rem;
   line-height: 1.4;
   color: #1c3666;
   margin: 0;
@@ -5024,7 +5082,7 @@ button {
   padding: 20px;
   font-family: 'Averta', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   font-weight: 400;
-  font-size: 15px;
+  font-size: 0.9375rem;
   line-height: 1.4;
   color: #ffffff;
   background-color: #db574e;
@@ -5135,7 +5193,7 @@ button {
 .full-width-video-promo .video-promo-headings .video-promo-kicker {
   font-family: 'Averta', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   font-weight: 600;
-  font-size: 15px;
+  font-size: 0.9375rem;
   line-height: 1;
   letter-spacing: 1.5px;
   text-transform: uppercase;
@@ -5154,7 +5212,7 @@ button {
 .full-width-video-promo .video-promo-headings .video-promo-title-group .video-promo-title-script {
   font-family: 'Born Ready', cursive;
   font-weight: 400;
-  font-size: 80px;
+  font-size: 5rem;
   line-height: 0.9;
   color: #ffffff;
   margin: 0;
@@ -5162,7 +5220,7 @@ button {
 .full-width-video-promo .video-promo-headings .video-promo-title-group .video-promo-title-bold {
   font-family: 'Averta', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   font-weight: 800;
-  font-size: 60px;
+  font-size: 3.75rem;
   line-height: 1;
   letter-spacing: -1.2px;
   text-transform: uppercase;
@@ -5171,10 +5229,10 @@ button {
 }
 @media (max-width: 991px) {
   .full-width-video-promo .video-promo-headings .video-promo-title-group .video-promo-title-script {
-    font-size: clamp(3rem, 10vw, 80px);
+    font-size: clamp(3rem, 10vw, 5rem);
   }
   .full-width-video-promo .video-promo-headings .video-promo-title-group .video-promo-title-bold {
-    font-size: clamp(2rem, 8vw, 60px);
+    font-size: clamp(2rem, 8vw, 3.75rem);
   }
 }
 .full-width-video-promo .video-promo-description-group {
@@ -5188,7 +5246,7 @@ button {
 .full-width-video-promo .video-promo-description-group .video-promo-description {
   font-family: 'Averta', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   font-weight: 400;
-  font-size: 20px;
+  font-size: 1.25rem;
   line-height: 1.3;
   letter-spacing: -0.4px;
   color: #ffffff;
@@ -5199,7 +5257,7 @@ button {
 }
 @media (max-width: 991px) {
   .full-width-video-promo .video-promo-description-group .video-promo-description {
-    font-size: clamp(16px, 4vw, 20px);
+    font-size: clamp(1rem, 4vw, 1.25rem);
   }
 }
 .full-width-video-promo .video-promo-description-group .btn-philosophy {
@@ -5209,7 +5267,7 @@ button {
   padding: 20px 25px;
   font-family: 'Averta', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   font-weight: 400;
-  font-size: 15px;
+  font-size: 0.9375rem;
   line-height: 1.4;
   color: #ffffff;
   background-color: #db574e;
@@ -5404,7 +5462,7 @@ button {
 .wellbeing-section .wellbeing-text-block .wellbeing-text-heading {
   font-family: 'Averta', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   font-weight: 800;
-  font-size: 20px;
+  font-size: 1.25rem;
   line-height: 1.1;
   letter-spacing: 2px;
   text-transform: uppercase;
@@ -5413,7 +5471,7 @@ button {
 }
 @media (max-width: 991px) {
   .wellbeing-section .wellbeing-text-block .wellbeing-text-heading {
-    font-size: clamp(16px, 3vw, 20px);
+    font-size: clamp(1rem, 3vw, 1.25rem);
   }
 }
 .wellbeing-section .wellbeing-text-block.wellbeing-text-block-left .wellbeing-text-heading {
@@ -5427,7 +5485,7 @@ button {
 .wellbeing-section .wellbeing-text-block .wellbeing-text-body {
   font-family: 'Averta', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   font-weight: 400;
-  font-size: 15px;
+  font-size: 0.9375rem;
   line-height: 1.4;
   color: #1c3666;
   margin: 0;
@@ -5439,7 +5497,7 @@ button {
 }
 @media (max-width: 991px) {
   .wellbeing-section .wellbeing-text-block .wellbeing-text-body {
-    font-size: clamp(14px, 2vw, 15px);
+    font-size: clamp(0.875rem, 2vw, 0.9375rem);
   }
 }
 .full-width-testimonial-audio {
@@ -5556,7 +5614,7 @@ button {
 .full-width-testimonial-audio .testimonial-audio-kicker {
   font-family: 'Averta', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   font-weight: 700;
-  font-size: 15px;
+  font-size: 0.9375rem;
   line-height: 1;
   letter-spacing: 0.75px;
   text-transform: uppercase;
@@ -5567,7 +5625,7 @@ button {
   font-family: 'Averta', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   font-weight: 400;
   font-style: italic;
-  font-size: 35px;
+  font-size: 2.1875rem;
   line-height: 1.2;
   letter-spacing: -0.7px;
   color: #ffffff;
@@ -5577,7 +5635,7 @@ button {
 }
 @media (max-width: 991px) {
   .full-width-testimonial-audio .testimonial-audio-quote {
-    font-size: clamp(24px, 5vw, 35px);
+    font-size: clamp(1.5rem, 5vw, 2.1875rem);
     width: 100%;
   }
 }
@@ -5629,14 +5687,14 @@ button {
 .full-width-testimonial-audio .testimonial-audio-duration {
   font-family: 'Averta', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   font-weight: 400;
-  font-size: 15px;
+  font-size: 0.9375rem;
   line-height: 1.4;
   color: #ffffff;
 }
 .full-width-testimonial-audio .testimonial-audio-author {
   font-family: 'Averta', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   font-weight: 400;
-  font-size: 15px;
+  font-size: 0.9375rem;
   line-height: 1.4;
   color: #ffffff;
   margin: 0;
@@ -5777,7 +5835,7 @@ button {
 }
 @media (max-width: 767px) {
   .three-stages-section .title-script {
-    font-size: clamp(36px, 8vw, 60px);
+    font-size: clamp(2.25rem, 8vw, 3.75rem);
   }
 }
 .three-stages-section .title-bold {
@@ -5792,7 +5850,7 @@ button {
 }
 @media (max-width: 767px) {
   .three-stages-section .title-bold {
-    font-size: clamp(36px, 8vw, 60px);
+    font-size: clamp(2.25rem, 8vw, 3.75rem);
     letter-spacing: -1.2px;
   }
 }
@@ -5827,7 +5885,7 @@ button {
 .three-stages-section .three-stages-description .three-stages-description-large {
   font-family: 'Averta', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   font-weight: 400;
-  font-size: 20px;
+  font-size: 1.25rem;
   line-height: 1.3;
   letter-spacing: -0.4px;
   color: #1c3666;
@@ -5843,7 +5901,7 @@ button {
 .three-stages-section .three-stages-description .three-stages-description-base {
   font-family: 'Averta', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   font-weight: 400;
-  font-size: 15px;
+  font-size: 0.9375rem;
   line-height: 1.4;
   color: #1c3666;
   margin: 0;
@@ -5892,7 +5950,7 @@ button {
 .three-stages-section .three-stages-age {
   font-family: 'Averta', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   font-weight: 700;
-  font-size: 20px;
+  font-size: 1.25rem;
   line-height: 1.3;
   letter-spacing: -0.4px;
   color: #1c3666;
@@ -5901,7 +5959,7 @@ button {
 .three-stages-section .three-stages-ideal {
   font-family: 'Averta', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   font-weight: 400;
-  font-size: 20px;
+  font-size: 1.25rem;
   line-height: 1.3;
   letter-spacing: -0.4px;
   color: #1c3666;
@@ -6409,7 +6467,7 @@ button {
   position: absolute;
   font-family: 'Averta', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   font-weight: 700;
-  font-size: 15px;
+  font-size: 0.9375rem;
   line-height: 1.3;
   color: #005798;
   text-align: center;
@@ -6455,7 +6513,7 @@ button {
   position: absolute;
   font-family: 'Averta', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   font-weight: 700;
-  font-size: 26.25px;
+  font-size: 1.640625rem;
   line-height: 1;
   letter-spacing: 2.625px;
   color: #ffffff;
@@ -6574,7 +6632,7 @@ button {
 .three-stages-section .three-stages-card-title {
   font-family: 'Averta', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   font-weight: 800;
-  font-size: 20px;
+  font-size: 1.25rem;
   line-height: 1.1;
   letter-spacing: 2px;
   text-transform: uppercase;
@@ -6593,7 +6651,7 @@ button {
 .three-stages-section .three-stages-card-text {
   font-family: 'Averta', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   font-weight: 400;
-  font-size: 15px;
+  font-size: 0.9375rem;
   line-height: 1.4;
   color: #1c3666;
   margin: 0;
@@ -6627,7 +6685,7 @@ button {
   top: 72.83px;
   font-family: 'Averta', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   font-weight: 400;
-  font-size: 35px;
+  font-size: 2.1875rem;
   line-height: 1.1;
   letter-spacing: -0.7px;
   color: #ffffff;
@@ -6645,7 +6703,7 @@ button {
 }
 @media (max-width: 991px) {
   .cottage-garden-section .cottage-garden-text {
-    font-size: 28px;
+    font-size: 1.75rem;
     left: 5%;
     top: 8%;
     width: 90%;
@@ -6654,7 +6712,7 @@ button {
 }
 @media (max-width: 767px) {
   .cottage-garden-section .cottage-garden-text {
-    font-size: 24px;
+    font-size: 1.5rem;
     left: 1.5rem;
     top: 5rem;
     width: calc(100% - 3rem);
