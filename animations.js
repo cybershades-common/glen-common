@@ -44,7 +44,7 @@ function initMarqueeAnimation() {
 // ==========================================================================
 const VIDEO_SECTION_SELECTOR = '.video-testimonials';
 const CLIP_REVEAL_DURATION = 0.9;
-const CARD_STAGGER = 0.15;
+const CARD_STAGGER = 0.1;
 let videoTestimonialsAnimationsInitialized = false;
 const hasScrollTrigger = typeof ScrollTrigger !== 'undefined';
 
@@ -65,44 +65,43 @@ function initVideoTestimonialsAnimations() {
 
 function setupDesktopCardReveal(section) {
   const desktopCards = section.querySelectorAll('.cards.desktop-only .card');
-  if (!desktopCards.length) return;
+  const cardsContainer = section.querySelector('.cards.desktop-only');
+  if (!desktopCards.length || !cardsContainer) return;
 
-  gsap.set(desktopCards, {
-    clipPath: 'inset(100% 0% 0% 0%)',
-    yPercent: 20,
-    opacity: 0
+  // Force initial hidden state with !important styles
+  desktopCards.forEach(card => {
+    card.style.clipPath = 'inset(100% 0% 0% 0%)';
+    card.style.opacity = '0';
   });
 
-  const timeline = gsap.timeline({ paused: true });
-  desktopCards.forEach((card, index) => {
-    timeline.to(card, {
-      clipPath: 'inset(0% 0% 0% 0%)',
-      yPercent: 0,
-      opacity: 1,
-      duration: CLIP_REVEAL_DURATION,
-      ease: 'power3.out'
-    }, index * CARD_STAGGER);
+  // Create timeline for better control
+  const tl = gsap.timeline({
+    scrollTrigger: {
+      trigger: cardsContainer,
+      start: 'top 80%',  
+      end: 'bottom 20%',
+      toggleActions: 'play none none reverse',
+      markers: true,
+      onEnter: () => console.log('Cards animation triggered'),
+      onLeave: () => console.log('Cards animation reversed'),
+      onRefresh: () => {
+        // Ensure cards stay hidden on refresh
+        desktopCards.forEach(card => {
+          card.style.clipPath = 'inset(100% 0% 0% 0%)';
+          card.style.opacity = '0';
+        });
+      }
+    }
   });
 
-  if (hasScrollTrigger) {
-    ScrollTrigger.create({
-      trigger: section,
-      start: 'top 90%',
-      once: true,
-      onEnter: () => timeline.play()
-    });
-  } else {
-    const observer = new IntersectionObserver(entries => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          observer.disconnect();
-          timeline.play();
-        }
-      });
-    }, { threshold: 0.3 });
-
-    observer.observe(section);
-  }
+  // Add animations to timeline
+  tl.to(desktopCards, {
+    clipPath: 'inset(0% 0% 0% 0%)',
+    opacity: 1,
+    duration: .8,
+    stagger: 0.15,
+    ease: 'power3.out'
+  });
 }
 
 function setupMobileSlideAnimations(section) {
