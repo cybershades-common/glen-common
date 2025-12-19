@@ -4,7 +4,7 @@
 
 .site-footer {
   position: relative;
- /* background-image: url('../../assets/images/section-bg.jpg');
+  /* background-image: url('../../assets/images/section-bg.jpg');
   background-size: cover;
   background-position: center center;
   background-repeat: no-repeat;
@@ -263,7 +263,8 @@
 .site-footer .small {
   color: @tertiary-blue-dark;
 }
-.footer__brand-inner{
+
+.footer__brand-inner {
   font-size: 17.5vw;
   font-weight: bold;
   text-align: center;
@@ -277,18 +278,7 @@
     padding: 2.5rem 0;
   }
 
-  .footer__newsletter,
-  .footer__title,
-  .footer__acknowledgement,
-  .footer__links,  
-  .footer__utilities,
-  .footer__brand,
-  .footer__bottom {
-    position: static;
-    width: 100%;
-    max-width: 100%;
-    margin-bottom: 30px;
-  }
+
 
   .footer__title {
     text-align: center;
@@ -321,10 +311,20 @@
 
 }
 
+@media (min-width:768px) and (max-width:992px) {
+
+  .site-footer {
+    .footer__title {
+      text-align: left;
+    }
+  }
+}
+
 @media (max-width:767px) {
   .site-footer {
 
-    .footer__newsletter{
+
+    .footer__newsletter {
       margin-bottom: 5rem;
     }
 
@@ -352,5 +352,12 @@
     .footer__logos {
       margin: 0;
     }
+
+    .footer__links-container {
+      .footer-links-columns {
+        gap: 1rem 1.5rem;
+      }
+    }
   }
+
 }

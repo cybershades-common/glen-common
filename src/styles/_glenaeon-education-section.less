@@ -62,7 +62,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  }
+}
 
 // Header Card
 .three-tier-header {
@@ -74,7 +74,7 @@
   background: url(../../assets/images/three-tear-block-bg.png) no-repeat;
   background-size: cover;
 
-   
+
 
   &__bg {
     position: absolute;
@@ -405,6 +405,33 @@
   }
 }
 
+
+@media (min-width:768px) and (max-width:992px) {
+  .glenaeon-education-section {
+    .container-fluid {
+      padding: 0 2.5rem;
+
+      .body-base-blocks {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1rem 2.125rem;
+
+        .body-base {
+          flex: 100% 0 0;
+        }
+      }
+
+      .education-stats{
+        gap: 0;
+        .education-stat{
+         flex: 0 0 calc(33.33% - 1.5625rem);
+         text-align: center;
+        }
+      }
+    }
+  }
+}
+
 @media (max-width: 991px) {
   .education-stats {
     flex-wrap: wrap;
@@ -440,12 +467,11 @@
       text-align: center;
     }
   }
-}
 
-
-@media (max-width:767px) {
   .three-tier-diagram {
     transform: scale(1.325);
     margin: 5rem 0;
   }
+    
+
 }
