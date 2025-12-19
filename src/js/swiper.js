@@ -22,6 +22,7 @@ document.addEventListener('DOMContentLoaded', function() {
             spaceBetween: 30,
             resistance: false,
             slidesPerView: 3, // Shows 2 full cards + 2 half cards (= 4 slides total)
+            grabCursor: false, // Disable grab cursor - use pointer instead
             
             // Responsive breakpoints
             breakpoints: {

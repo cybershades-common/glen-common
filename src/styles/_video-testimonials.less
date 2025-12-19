@@ -18,16 +18,63 @@
 .features-cards-slider {
   .swiper {
     overflow: visible;
+    cursor: pointer !important; // Pointer instead of grab hand
+    
+    // Prevent text selection and blue highlighting on drag
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    
+    -webkit-touch-callout: none;
+    -webkit-tap-highlight-color: transparent;
   }
   
   .swiper-slide {
     width: auto; // Important for slidesPerView calculations
+    
+    // Prevent text selection in slides
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
   }
   
   .feature-card {
     transform-origin: center center;
     transition: transform 0.1s ease-out;
     will-change: transform;
+    
+    // Prevent selection and highlighting
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    
+    -webkit-touch-callout: none;
+    -webkit-tap-highlight-color: transparent;
+    
+    // Prevent drag behavior on images and content
+    * {
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+      user-select: none;
+      
+      -webkit-user-drag: none;
+      -khtml-user-drag: none;
+      -moz-user-drag: none;
+      -o-user-drag: none;
+      user-drag: none;
+    }
+    
+    // Allow text selection for important content (like titles)
+    h2, h3, h4, p, .feature-card-content {
+      -webkit-user-select: text;
+      -moz-user-select: text;
+      -ms-user-select: text;
+      user-select: text;
+    }
   }
 }
 
