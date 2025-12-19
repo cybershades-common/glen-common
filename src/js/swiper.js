@@ -1,5 +1,143 @@
-// Testimonial Audio Swiper Initialization
+// Swiper Initialization
 document.addEventListener('DOMContentLoaded', function() {
+    
+    // ==========================================================================
+    // FEATURED CARDS SWIPER (exact same as design inspiration)
+    // ==========================================================================
+    
+    // Dramatic effect variables (exact same as design inspiration)
+    let lastTime = performance.now();
+    let lastTranslate = 0;
+    let velocity = 0;
+    let rafId = null;
+
+    const featuresSlider = document.querySelector('.features-cards-carousel');
+    if (featuresSlider) {
+        // Check if cards have dramatic effect elements
+        const hasFeatureCards = !!featuresSlider.querySelectorAll('.swiper-slide .feature-card').length > 0;
+        
+        const featuredCardsSwiper = new Swiper('.features-cards-carousel', {
+            // Exact same configuration as design inspiration
+            speed: 900,
+            spaceBetween: 30,
+            resistance: false,
+            slidesPerView: 3, // Shows 2 full cards + 2 half cards (= 4 slides total)
+            
+            // Responsive breakpoints
+            breakpoints: {
+                // Mobile
+                320: {
+                    slidesPerView: 1.2,
+                    spaceBetween: 20,
+                },
+                // Tablet
+                768: {
+                    slidesPerView: 2.5,
+                    spaceBetween: 25,
+                },
+                // Desktop - 4 slides per screen (2 full + 2 half)
+                1024: {
+                    slidesPerView: 3,
+                    spaceBetween: 30,
+                }
+            },
+            
+            // Navigation (if you want to add arrows later)
+            navigation: {
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev',
+            },
+            
+            // Dramatic zoom-out effect on drag (exact same as design inspiration)
+            on: {
+                setTranslate(swiper, translate) {
+                    if(hasFeatureCards) {
+                        trackVelocity(swiper);
+                    }
+                },
+                touchEnd(swiper) {
+                    if(hasFeatureCards) {
+                        continueTracking(swiper);
+                    }
+                },
+                transitionStart(swiper) {
+                    if(hasFeatureCards) {
+                        simulateDragTracking(swiper);
+                    }
+                },
+                transitionEnd(swiper) {
+                    if(hasFeatureCards) {
+                        stopTracking();
+                    }
+                }
+            }
+        });
+    }
+
+    // Velocity tracking functions (exact same as design inspiration)
+    function trackVelocity(swiper) {
+        const currentTime = performance.now();
+        const currentTranslate = swiper.translate;
+        const deltaTime = currentTime - lastTime;
+        const deltaTranslate = currentTranslate - lastTranslate;
+        velocity = Math.abs(deltaTranslate / deltaTime);
+        applyScaleEffect(velocity, swiper);
+        lastTranslate = currentTranslate;
+        lastTime = currentTime;
+    }
+
+    function continueTracking(swiper) {
+        cancelAnimationFrame(rafId);
+        const track = () => {
+            trackVelocity(swiper);
+            if (velocity > 0.01) {
+                rafId = requestAnimationFrame(track);
+            } else {
+                stopTracking();
+            }
+        };
+        rafId = requestAnimationFrame(track);
+    }
+
+    function simulateDragTracking(swiper) {
+        cancelAnimationFrame(rafId);
+        velocity = 2.5;
+        const friction = 0.92;
+        const fakeTrack = () => {
+            applyScaleEffect(velocity, swiper);
+            velocity *= friction;
+            if (velocity > 0.01) {
+                rafId = requestAnimationFrame(fakeTrack);
+            } else {
+                stopTracking();
+            }
+        };
+        rafId = requestAnimationFrame(fakeTrack);
+    }
+
+    function stopTracking() {
+        cancelAnimationFrame(rafId);
+        velocity = 0;
+    }
+
+    function applyScaleEffect(velocity, swiper) {
+        const maxV = 3.0;
+        const minV = 0.01;
+        const maxScale = 1;
+        const minScale = 0.7; // 30% zoom out effect
+        const norm = 1 - Math.min(Math.max((velocity - minV) / (maxV - minV), 0), 1);
+        const scaleX = minScale + (maxScale - minScale) * norm;
+        
+        // Apply scale to feature cards (same selector as design inspiration)
+        swiper.el.querySelectorAll('.swiper-slide .feature-card').forEach((card) => {
+            card.style.transform = `scale(${scaleX.toFixed(3)})`;
+        });
+    }
+    
+    // ==========================================================================
+    // TESTIMONIAL AUDIO SWIPER
+    // ==========================================================================
+    
     // Initialize the testimonial audio swiper
     const sliderEl = document.querySelector('.testimonial-audio-slider');
     const slideCount = sliderEl ? sliderEl.querySelectorAll('.swiper-slide').length : 0;

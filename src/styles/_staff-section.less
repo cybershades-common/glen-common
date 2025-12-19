@@ -2,6 +2,17 @@
 // STAFF SECTION
 // ==========================================================================
 
+// Staff circle animation support
+.batch-item--staff-circle-js {
+  img {
+    clip-path: circle(var(--circle-clip, 0%) at center);
+  }
+  
+  &.disable-circle-clip img {
+    clip-path: none;
+  }
+}
+
 .staff-section {
   padding: 6.5rem 0;
 
