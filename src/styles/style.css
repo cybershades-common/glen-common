@@ -4342,7 +4342,7 @@ h1 .hero__title-script {
     white-space: normal;
   }
   .site-footer .footer__logos {
-    margin: 0;
+    margin: 3rem 0 0 0;
   }
   .site-footer .footer__links-container .footer-links-columns {
     gap: 1rem 1.5rem;
@@ -4573,6 +4573,12 @@ body {
   min-height: 100vh;
   background: url(../../assets/images/section-bg.jpg);
   background-size: 100%;
+}
+body a:focus,
+body input:focus {
+  border: none;
+  outline: none;
+  box-shadow: none;
 }
 .wrapper {
   overflow: hidden;
@@ -6822,10 +6828,4 @@ button {
 .breadcrumb-wrap .breadcrumb li a {
   color: var(--tertiary-blue-dark, #1C3666);
   font-weight: bold;
-}
-a:focus,
-input:focus {
-  border: none;
-  outline: none;
-  box-shadow: none;
 }
