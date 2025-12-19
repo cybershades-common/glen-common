@@ -40,7 +40,7 @@ function initMarqueeAnimation() {
 
 // ==========================================================================
 // VIDEO TESTIMONIALS CLIP/SLIDE ANIMATIONS - START
-// Adjust CLIP_REVEAL_DURATION or CARD_STAGGER to tweak animation feel.
+
 // ==========================================================================
 const VIDEO_SECTION_SELECTOR = '.video-testimonials';
 const CLIP_REVEAL_DURATION = 0.9;

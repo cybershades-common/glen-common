@@ -605,51 +605,42 @@
   // ==========================================================================
 
   function initStickyHeader() {
-    const header = document.querySelector('.site-header');
-    
-    if (!header) return;
+    let isOffsetTop = false;
+    let lastScrollTop = 0;
 
-    const scrollThreshold = 50;
-    const hideThreshold = 80;
-    let lastScrollY = window.scrollY;
-    let ticking = false;
-
-    function updateHeader() {
-      const currentScrollY = window.scrollY;
-      const scrollDelta = Math.abs(currentScrollY - lastScrollY);
-
-      if (currentScrollY > scrollThreshold) {
-        // Only react to significant scroll movements for smoother behavior
-        if (scrollDelta > 5) {
-          if (currentScrollY > lastScrollY && currentScrollY > hideThreshold) {
-            // Scrolling down - hide header smoothly but keep sticky state
-            header.classList.add('header-sticky');
-            header.classList.add('header-hidden');
-          } else if (currentScrollY < lastScrollY) {
-            // Scrolling up - show white sticky header with smooth slide-in
-            header.classList.add('header-sticky');
-            header.classList.remove('header-hidden');
-          }
+    function scroll_offset(scroll) {
+      if (scroll > 50) {
+        if (!isOffsetTop) {
+          document.body.classList.add('is-offset-top');
+          isOffsetTop = true;
         }
       } else {
-        // Near top - return to original state
-        header.classList.remove('header-hidden');
-        header.classList.remove('header-sticky');
+        if (isOffsetTop) {
+          document.body.classList.remove('is-offset-top');
+          isOffsetTop = false;
+        }
       }
-
-      lastScrollY = currentScrollY;
-      ticking = false;
     }
 
-    window.addEventListener('scroll', function () {
-      if (!ticking) {
-        window.requestAnimationFrame(updateHeader);
-        ticking = true;
+    function scroll_dir(currentScrollTop) {
+      if (currentScrollTop > lastScrollTop && currentScrollTop > 80) {
+        document.body.classList.add('scroll-down');
+      } else {
+        document.body.classList.remove('scroll-down');
       }
-    }, { passive: true });
+      lastScrollTop = currentScrollTop <= 0 ? 0 : currentScrollTop;
+    }
+
+    function handleScroll() {
+      const currentScrollY = window.pageYOffset || document.documentElement.scrollTop;
+      scroll_offset(currentScrollY);
+      scroll_dir(currentScrollY);
+    }
 
     // Initial check
-    updateHeader();
+    scroll_offset(window.scrollY);
+    
+    window.addEventListener('scroll', handleScroll, { passive: true });
   }
 
   // ==========================================================================

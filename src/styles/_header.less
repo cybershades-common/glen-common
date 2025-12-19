@@ -33,14 +33,25 @@
     background: transparent;
   }
 
-  // Hidden header state for smooth slide animation
-  &.header-hidden {
-    transform: translateY(-100%);
-    transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-  }
+  // Sticky header variant
+  &.sticky {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    background: @color-sand-20;
+    transition: background @transition-base, box-shadow @transition-base, transform @transition-base;
 
-  // Sticky white header state (like hamburger menu open)
-  &.header-sticky {
+    &.is-scrolled {
+      background: @color-white;
+      box-shadow: @shadow-md;
+    }
+  }
+}
+
+// Body class-based sticky header states (matches working script.html approach)
+body.is-offset-top {
+  .site-header {
     position: fixed;
     top: 0;
     left: 0;
@@ -50,11 +61,6 @@
     z-index: @z-sticky;
     transform: translateY(0);
     transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-
-    // When sticky header is hidden, slide it up while keeping white style
-    &.header-hidden {
-      transform: translateY(-100%);
-    }
 
     // Change logo to dark
     .header-logo {
@@ -99,20 +105,13 @@
       color: @tertiary-blue-dark;
     }
   }
+}
 
-  // Sticky header variant
-  &.sticky {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    background: @color-sand-20;
-    transition: background @transition-base, box-shadow @transition-base, transform @transition-base;
-
-    &.is-scrolled {
-      background: @color-white;
-      box-shadow: @shadow-md;
-    }
+// Header hidden when scrolling down
+body.scroll-down.is-offset-top {
+  .site-header {
+    transform: translateY(-100%);
+    transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
   }
 }
 
