@@ -228,7 +228,31 @@ function initAnimations() {
   initMarqueeAnimation();
   initVideoTestimonialsAnimations();
 
+  // Safe ScrollTrigger refresh after animations are set up
+  if (typeof ScrollTrigger !== 'undefined') {
+    requestAnimationFrame(() => {
+      ScrollTrigger.refresh();
+    });
+  }
+
   console.log('Animations initialized successfully');
+}
+
+
+if (typeof ScrollTrigger !== 'undefined') {
+  // Refresh on window resize (already standard practice)
+  window.addEventListener('resize', () => {
+    ScrollTrigger.refresh();
+  });
+  
+  // Gentle refresh on page visibility change (handles soft refresh)
+  document.addEventListener('visibilitychange', () => {
+    if (!document.hidden) {
+      requestAnimationFrame(() => {
+        ScrollTrigger.refresh();
+      });
+    }
+  });
 }
 
 
