@@ -88,10 +88,13 @@ function setupDesktopCardReveal(section) {
     const containerCards = container === cardsContainer ? desktopCards : featureCards;
     if (!containerCards.length) return;
 
+    // Featured cards start earlier (20% sooner)
+    const startPosition = container === featuresContainer ? 'top 100%' : 'top 80%';
+
     const tl = gsap.timeline({
       scrollTrigger: {
         trigger: container,
-        start: 'top 80%',  
+        start: startPosition,  
         end: 'bottom 20%',
         toggleActions: 'play none none reverse',
         markers: false,
