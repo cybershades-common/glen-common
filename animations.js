@@ -66,41 +66,53 @@ function initVideoTestimonialsAnimations() {
 function setupDesktopCardReveal(section) {
   const desktopCards = section.querySelectorAll('.cards.desktop-only .card');
   const cardsContainer = section.querySelector('.cards.desktop-only');
-  if (!desktopCards.length || !cardsContainer) return;
+  
+  // Also target features cards slider
+  const featureCards = document.querySelectorAll('.features-cards-slider .feature-card');
+  const featuresContainer = document.querySelector('.features-cards-slider');
+  
+  // Combine both sets of cards
+  const allCards = [...desktopCards, ...featureCards];
+  const containers = [cardsContainer, featuresContainer].filter(Boolean);
+  
+  if (!allCards.length || !containers.length) return;
 
-  // Force initial hidden state with !important styles
-  desktopCards.forEach(card => {
+  // Force initial hidden state for all cards
+  allCards.forEach(card => {
     card.style.clipPath = 'inset(100% 0% 0% 0%)';
     card.style.opacity = '0';
   });
 
-  // Create timeline for better control
-  const tl = gsap.timeline({
-    scrollTrigger: {
-      trigger: cardsContainer,
-      start: 'top 80%',  
-      end: 'bottom 20%',
-      toggleActions: 'play none none reverse',
-      markers: false,
-      onEnter: () => console.log('Cards animation triggered'),
-      onLeave: () => console.log('Cards animation reversed'),
-      onRefresh: () => {
-        // Ensure cards stay hidden on refresh
-        desktopCards.forEach(card => {
-          card.style.clipPath = 'inset(100% 0% 0% 0%)';
-          card.style.opacity = '0';
-        });
-      }
-    }
-  });
+  // Create separate animations for each container
+  containers.forEach(container => {
+    const containerCards = container === cardsContainer ? desktopCards : featureCards;
+    if (!containerCards.length) return;
 
-  // Add animations to timeline
-  tl.to(desktopCards, {
-    clipPath: 'inset(0% 0% 0% 0%)',
-    opacity: 1,
-    duration: .8,
-    stagger: 0.15,
-    ease: 'power3.out'
+    const tl = gsap.timeline({
+      scrollTrigger: {
+        trigger: container,
+        start: 'top 80%',  
+        end: 'bottom 20%',
+        toggleActions: 'play none none reverse',
+        markers: false,
+        onRefresh: () => {
+          // Ensure cards stay hidden on refresh
+          containerCards.forEach(card => {
+            card.style.clipPath = 'inset(100% 0% 0% 0%)';
+            card.style.opacity = '0';
+          });
+        }
+      }
+    });
+
+    // Add animations to timeline
+    tl.to(containerCards, {
+      clipPath: 'inset(0% 0% 0% 0%)',
+      opacity: 1,
+      duration: 0.8,
+      stagger: 0.15,
+      ease: 'power3.out'
+    });
   });
 }
 
