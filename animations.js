@@ -81,7 +81,7 @@ function setupDesktopCardReveal(section) {
       start: 'top 80%',  
       end: 'bottom 20%',
       toggleActions: 'play none none reverse',
-      markers: true,
+      markers: false,
       onEnter: () => console.log('Cards animation triggered'),
       onLeave: () => console.log('Cards animation reversed'),
       onRefresh: () => {
