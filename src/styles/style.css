@@ -579,8 +579,6 @@ body.mega-menu-open .site-header .hamburger .hamburger .line:nth-child(3) {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 30px;
-  height: 30px;
   padding: 0;
   border: none;
   background: transparent;
@@ -589,7 +587,7 @@ body.mega-menu-open .site-header .hamburger .hamburger .line:nth-child(3) {
   -webkit-tap-highlight-color: transparent;
 }
 .header-icon:hover {
-  opacity: 0.8;
+  opacity: 1;
 }
 .header-icon:focus {
   outline: none;
@@ -636,7 +634,7 @@ body.mega-menu-open .site-header .hamburger .hamburger .line:nth-child(3) {
   -webkit-tap-highlight-color: transparent !important;
 }
 .menu-button:hover {
-  opacity: 0.8;
+  opacity: 1;
 }
 .menu-button:focus,
 .menu-button:active,
