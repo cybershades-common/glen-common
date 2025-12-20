@@ -55,7 +55,7 @@
     }
   }
 
-  // Video Cards Container
+  // Video Cards Container (now as swiper)
   .video-cards-container {
     display: flex;
     justify-content: center;
@@ -65,6 +65,7 @@
     padding: 0 2rem;
     flex-wrap: nowrap;
     min-height: 550px;
+    overflow: visible; // Allow cards to extend beyond container for arc effect
 
     @media (max-width: (@breakpoint-lg - 1)) {
       gap: 1.5rem;
@@ -85,6 +86,32 @@
       gap: 2rem;
       min-height: auto;
       overflow-x: visible;
+    }
+
+    .swiper-wrapper {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 2rem;
+      width: 100%;
+
+      @media (max-width: (@breakpoint-lg - 1)) {
+        gap: 1.5rem;
+        justify-content: flex-start;
+      }
+
+      @media (max-width: (@breakpoint-md - 1)) {
+        flex-direction: column;
+        gap: 2rem;
+      }
+    }
+
+    .swiper-slide {
+      flex-shrink: 0;
+      width: auto;
+      display: flex;
+      justify-content: center;
+      align-items: center;
     }
   }
 
@@ -218,6 +245,7 @@
       filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.3));
     }
   }
+
 
   // CTA Button (styled as btn-coral from existing project)
   .btn-coral {

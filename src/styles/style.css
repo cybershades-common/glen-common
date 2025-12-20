@@ -3575,6 +3575,7 @@ h1 .hero__title-script {
   padding: 0 2rem;
   flex-wrap: nowrap;
   min-height: 550px;
+  overflow: visible;
 }
 @media (max-width: 991px) {
   .preschoolers-testimonials-section .video-cards-container {
@@ -3597,6 +3598,32 @@ h1 .hero__title-script {
     min-height: auto;
     overflow-x: visible;
   }
+}
+.preschoolers-testimonials-section .video-cards-container .swiper-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+  width: 100%;
+}
+@media (max-width: 991px) {
+  .preschoolers-testimonials-section .video-cards-container .swiper-wrapper {
+    gap: 1.5rem;
+    justify-content: flex-start;
+  }
+}
+@media (max-width: 767px) {
+  .preschoolers-testimonials-section .video-cards-container .swiper-wrapper {
+    flex-direction: column;
+    gap: 2rem;
+  }
+}
+.preschoolers-testimonials-section .video-cards-container .swiper-slide {
+  flex-shrink: 0;
+  width: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 .preschoolers-testimonials-section .video-card {
   flex-shrink: 0;

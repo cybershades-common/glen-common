@@ -20,6 +20,7 @@
     initVideoTestimonials();
     initCoCurricularCarousel();
     initFeaturesCardsSlider();
+    initPreschoolersSwiper();
   });
 
   // ==========================================================================
@@ -1235,6 +1236,50 @@
       }
 
       new Swiper(slider, swiperConfig);
+    });
+  }
+
+  // ==========================================================================
+  // PRESCHOOLERS TESTIMONIALS ARC SWIPER
+  // ==========================================================================
+
+  function initPreschoolersSwiper() {
+    if (typeof Swiper === 'undefined') {
+      console.warn('Swiper is required for the preschoolers testimonials slider');
+      return;
+    }
+
+    const swiperContainer = document.querySelector('.video-cards-container');
+    if (!swiperContainer) return;
+
+    const swiper = new Swiper(swiperContainer, {
+      slidesPerView: 'auto',
+      spaceBetween: 0,
+      centeredSlides: false,
+      loop: false,
+      speed: 600,
+      grabCursor: true,
+      freeMode: true,
+      
+      breakpoints: {
+        320: {
+          slidesPerView: 1,
+          spaceBetween: 20,
+          centeredSlides: true
+        },
+        768: {
+          slidesPerView: 'auto',
+          spaceBetween: 30,
+          centeredSlides: false,
+          freeMode: true
+        },
+        1024: {
+          slidesPerView: 'auto',
+          spaceBetween: 0,
+          centeredSlides: false,
+          freeMode: true
+        }
+      }
     });
   }
 
