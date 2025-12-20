@@ -120,6 +120,7 @@
     min-width: 150%;
     object-position: center;
     left: -22%;
+    filter: blur(160px);
     }
     .site-loader .glen-logo{
       position: absolute;
@@ -3079,13 +3080,13 @@
       duration: 4,
       ease: "power2.inOut",
       
-    }/*, "siteloader_tl").to(".site-loader", {
+    }, "siteloader_tl").to(".site-loader", {
       clipPath: "circle(0% at 50% 50%)",
       duration: 1.5,
       ease: "power2.inOut",onComplete: function() {
         //document.querySelector('.site-loader').style.display = 'none';
       }
-    }*/);
+    });
     siteloader_tl.play();
     document.addEventListener('DOMContentLoaded', function() {
       
