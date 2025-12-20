@@ -4340,6 +4340,7 @@ h1 .hero__title-script {
 }
 html {
   scroll-behavior: smooth;
+  caret-color: transparent !important;
 }
 ::-webkit-scrollbar {
   display: none;
