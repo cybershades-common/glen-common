@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Arc Carousel - Preschoolers Testimonials</title>
+  
+  <!-- Styles -->
+  <link rel="stylesheet" href="src/styles/style.css">
+  
+  <!-- GSAP -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+</head>
+<body>
+
+  <!-- ========================================================================
+     PRESCHOOLERS TESTIMONIALS SECTION
+     ======================================================================== -->
+  <section class="preschoolers-testimonials-section section">
+    <div class="container-fluid">
+      <!-- Title -->
+      <div class="row justify-content-center">
+        <div class="col-auto text-center">
+          <h2 class="section-title">
+            <span class="script-text">Hear from our</span>
+            <span class="caps-text">Preschoolers</span>
+          </h2>
+        </div>
+      </div>
+
+      <!-- Arc Carousel Container -->
+      <div class="arc-carousel-container">
+        <div class="arc-carousel" id="arcCarousel">
+          <div class="video-card" data-index="0">
+            <div class="video-card-inner">
+              <div class="video-thumbnail">
+                <img src="https://images.unsplash.com/photo-1503454537195-1dcabb73ffb9?w=800&h=600&fit=crop" alt="Preschool testimonial">
+                <div class="video-overlay"></div>
+              </div>
+              <div class="video-info">
+                <h3 class="student-name">Sophie</h3>
+                <p class="student-grade">Preschool Student</p>
+              </div>
+              <button class="play-button" aria-label="Play video testimonial">
+                <svg width="55" height="55" viewBox="0 0 55 55" fill="none">
+                  <circle cx="27.5" cy="27.5" r="27.5" fill="#DB574E"/>
+                  <path d="M23 19L35 27.5L23 36V19Z" fill="white"/>
+                </svg>
+              </button>
+            </div>
+          </div>
+
+          <div class="video-card" data-index="1">
+            <div class="video-card-inner">
+              <div class="video-thumbnail">
+                <img src="https://images.unsplash.com/photo-1544776193-352d25ca82cd?w=800&h=600&fit=crop" alt="Preschool testimonial">
+                <div class="video-overlay"></div>
+              </div>
+              <div class="video-info">
+                <h3 class="student-name">Jarrod</h3>
+                <p class="student-grade">Preschool Student</p>
+              </div>
+              <button class="play-button" aria-label="Play video testimonial">
+                <svg width="55" height="55" viewBox="0 0 55 55" fill="none">
+                  <circle cx="27.5" cy="27.5" r="27.5" fill="#DB574E"/>
+                  <path d="M23 19L35 27.5L23 36V19Z" fill="white"/>
+                </svg>
+              </button>
+            </div>
+          </div>
+
+          <div class="video-card" data-index="2">
+            <div class="video-card-inner">
+              <div class="video-thumbnail">
+                <img src="https://images.unsplash.com/photo-1587616211892-cc1b8ff3cd01?w=800&h=600&fit=crop" alt="Preschool testimonial">
+                <div class="video-overlay"></div>
+              </div>
+              <div class="video-info">
+                <h3 class="student-name">Jarrod</h3>
+                <p class="student-grade">Preschool Student</p>
+              </div>
+              <button class="play-button" aria-label="Play video testimonial">
+                <svg width="55" height="55" viewBox="0 0 55 55" fill="none">
+                  <circle cx="27.5" cy="27.5" r="27.5" fill="#DB574E"/>
+                  <path d="M23 19L35 27.5L23 36V19Z" fill="white"/>
+                </svg>
+              </button>
+            </div>
+          </div>
+
+          <div class="video-card" data-index="3">
+            <div class="video-card-inner">
+              <div class="video-thumbnail">
+                <img src="https://images.unsplash.com/photo-1560421683-6856ea585c78?w=800&h=600&fit=crop" alt="Preschool testimonial">
+                <div class="video-overlay"></div>
+              </div>
+              <div class="video-info">
+                <h3 class="student-name">Emma</h3>
+                <p class="student-grade">Preschool Student</p>
+              </div>
+              <button class="play-button" aria-label="Play video testimonial">
+                <svg width="55" height="55" viewBox="0 0 55 55" fill="none">
+                  <circle cx="27.5" cy="27.5" r="27.5" fill="#DB574E"/>
+                  <path d="M23 19L35 27.5L23 36V19Z" fill="white"/>
+                </svg>
+              </button>
+            </div>
+          </div>
+
+          <div class="video-card active" data-index="4">
+            <div class="video-card-inner">
+              <div class="video-thumbnail">
+                <img src="https://images.unsplash.com/photo-1560785477-d43d2b34e0df?w=800&h=600&fit=crop" alt="Preschool testimonial">
+                <div class="video-overlay"></div>
+              </div>
+              <div class="video-info">
+                <h3 class="student-name">Sophie</h3>
+                <p class="student-grade">Preschool Student</p>
+              </div>
+              <button class="play-button" aria-label="Play video testimonial">
+                <svg width="55" height="55" viewBox="0 0 55 55" fill="none">
+                  <circle cx="27.5" cy="27.5" r="27.5" fill="#DB574E"/>
+                  <path d="M23 19L35 27.5L23 36V19Z" fill="white"/>
+                </svg>
+              </button>
+            </div>
+          </div>
+
+          <div class="video-card" data-index="5">
+            <div class="video-card-inner">
+              <div class="video-thumbnail">
+                <img src="https://images.unsplash.com/photo-1503454537195-1dcabb73ffb9?w=800&h=600&fit=crop&sat=-20" alt="Preschool testimonial">
+                <div class="video-overlay"></div>
+              </div>
+              <div class="video-info">
+                <h3 class="student-name">Lucas</h3>
+                <p class="student-grade">Preschool Student</p>
+              </div>
+              <button class="play-button" aria-label="Play video testimonial">
+                <svg width="55" height="55" viewBox="0 0 55 55" fill="none">
+                  <circle cx="27.5" cy="27.5" r="27.5" fill="#DB574E"/>
+                  <path d="M23 19L35 27.5L23 36V19Z" fill="white"/>
+                </svg>
+              </button>
+            </div>
+          </div>
+
+          <div class="video-card" data-index="6">
+            <div class="video-card-inner">
+              <div class="video-thumbnail">
+                <img src="https://images.unsplash.com/photo-1544776193-352d25ca82cd?w=800&h=600&fit=crop&sat=-10" alt="Preschool testimonial">
+                <div class="video-overlay"></div>
+              </div>
+              <div class="video-info">
+                <h3 class="student-name">Olivia</h3>
+                <p class="student-grade">Preschool Student</p>
+              </div>
+              <button class="play-button" aria-label="Play video testimonial">
+                <svg width="55" height="55" viewBox="0 0 55 55" fill="none">
+                  <circle cx="27.5" cy="27.5" r="27.5" fill="#DB574E"/>
+                  <path d="M23 19L35 27.5L23 36V19Z" fill="white"/>
+                </svg>
+              </button>
+            </div>
+          </div>
+
+          <div class="video-card" data-index="7">
+            <div class="video-card-inner">
+              <div class="video-thumbnail">
+                <img src="https://images.unsplash.com/photo-1587616211892-cc1b8ff3cd01?w=800&h=600&fit=crop&sat=-15" alt="Preschool testimonial">
+                <div class="video-overlay"></div>
+              </div>
+              <div class="video-info">
+                <h3 class="student-name">Emma</h3>
+                <p class="student-grade">Preschool Student</p>
+              </div>
+              <button class="play-button" aria-label="Play video testimonial">
+                <svg width="55" height="55" viewBox="0 0 55 55" fill="none">
+                  <circle cx="27.5" cy="27.5" r="27.5" fill="#DB574E"/>
+                  <path d="M23 19L35 27.5L23 36V19Z" fill="white"/>
+                </svg>
+              </button>
+            </div>
+          </div>
+
+          <div class="video-card" data-index="8">
+            <div class="video-card-inner">
+              <div class="video-thumbnail">
+                <img src="https://images.unsplash.com/photo-1560421683-6856ea585c78?w=800&h=600&fit=crop&sat=-5" alt="Preschool testimonial">
+                <div class="video-overlay"></div>
+              </div>
+              <div class="video-info">
+                <h3 class="student-name">Lucas</h3>
+                <p class="student-grade">Preschool Student</p>
+              </div>
+              <button class="play-button" aria-label="Play video testimonial">
+                <svg width="55" height="55" viewBox="0 0 55 55" fill="none">
+                  <circle cx="27.5" cy="27.5" r="27.5" fill="#DB574E"/>
+                  <path d="M23 19L35 27.5L23 36V19Z" fill="white"/>
+                </svg>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- CTA Button -->
+      <div class="row justify-content-center mt-5">
+        <div class="col-auto">
+          <a href="#" class="btn btn-coral">View all Testimonials</a>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- ========================================================================
+     END PRESCHOOLERS TESTIMONIALS SECTION
+     ======================================================================== -->
+
+  <!-- Scripts -->
+  <script>
+    // Arc Carousel JavaScript
+    (function() {
+      function initPreschoolersSwiper() {
+        const carousel = document.querySelector('#arcCarousel');
+        if (!carousel) return;
+
+        const cards = carousel.querySelectorAll('.video-card');
+        if (!cards.length) return;
+
+        const CONFIG = {
+          cardRotationGap: 3,  
+          
+          arcRadius: {
+            desktop: 6450,   
+            tablet: 6100,  
+            mobile: 6000   
+          },
+
+          // ==== INDIVIDUAL CARD ROTATION ====
+          // Additional rotation applied to each card (makes cards tilt inward/outward)
+          // 0 = cards perpendicular to arc, positive = tilt outward, negative = tilt inward
+          // Range: -15 to 15 degrees (0 = no extra tilt)
+          individualCardTilt: 0,
+
+          // ==== DRAG BEHAVIOR ====
+          // How long cards slide after drag: 0.93 = short, 0.97 = long
+          momentumDecay: 0.95,
+
+          // How fast cards snap to position: 0.2 = fast, 0.5 = slow
+          snapDuration: 0.4
+        };
+
+        // ============================================================
+        // CSS ADJUSTMENT GUIDE - Update when changing arcRadius
+        // ============================================================
+        // When you change CONFIG.arcRadius values, update CSS:
+        // File: src/styles/_preschoolers-testimonials-section.less
+        //
+        // transform-origin: 50% XXXpx;
+        //   → Use CONFIG.arcRadius.desktop (e.g., 900px)
+        //
+        // Repeat for @media breakpoints (tablet, mobile)
+        // ============================================================
+
+        let isDragging = false;
+        let startX = 0;
+        let currentX = 0;
+        let lastX = 0;
+        let velocity = 0;
+        let currentRotation = 0;
+        let activeIndex = 4;
+        let lastTime = Date.now();
+        let animationFrame = null;
+
+        const totalCards = cards.length;
+        const degreesPerCard = CONFIG.cardRotationGap;
+        let diameter = CONFIG.arcRadius.desktop;
+        if (window.innerWidth < 768) {
+          diameter = CONFIG.arcRadius.mobile;
+        } else if (window.innerWidth < 992) {
+          diameter = CONFIG.arcRadius.tablet;
+        }
+        const slideWidth = diameter / totalCards;
+
+        function initializeCards() {
+          cards.forEach((card) => {
+            const dataIndex = parseInt(card.getAttribute('data-index'));
+            const rotation = (dataIndex - 4) * degreesPerCard;
+
+            gsap.set(card, {
+              rotation: rotation,
+              transformOrigin: `50% ${diameter}px`
+            });
+
+            if (dataIndex === 4) {
+              card.classList.add('active');
+            } else {
+              card.classList.remove('active');
+            }
+          });
+        }
+
+        function updateCardPositions(dragOffset, duration = 0) {
+          const rotationOffset = dragOffset / (slideWidth / degreesPerCard);
+
+          cards.forEach((card) => {
+            const dataIndex = parseInt(card.getAttribute('data-index'));
+            const baseRotation = (dataIndex - 4) * degreesPerCard;
+            const arcRotation = baseRotation + rotationOffset;
+
+            // Apply individual card tilt (makes cards face inward/outward)
+            const finalRotation = arcRotation + CONFIG.individualCardTilt;
+
+            if (duration > 0) {
+              gsap.to(card, {
+                rotation: finalRotation,
+                duration: duration,
+                ease: 'power2.out'
+              });
+            } else {
+              gsap.set(card, { rotation: finalRotation });
+            }
+          });
+        }
+
+        function applyMomentum() {
+          if (Math.abs(velocity) < 0.5) {
+            velocity = 0;
+            if (animationFrame) {
+              cancelAnimationFrame(animationFrame);
+              animationFrame = null;
+            }
+            return;
+          }
+
+          const decay = CONFIG.momentumDecay;
+          velocity *= decay;
+          currentRotation -= velocity;
+
+          const maxOffset = slideWidth * (totalCards - 5);
+          const minOffset = -slideWidth * 4;
+
+          if (currentRotation > maxOffset || currentRotation < minOffset) {
+            currentRotation = Math.max(minOffset, Math.min(maxOffset, currentRotation));
+            velocity = 0;
+            if (animationFrame) {
+              cancelAnimationFrame(animationFrame);
+              animationFrame = null;
+            }
+            return;
+          }
+
+          updateCardPositions(currentRotation);
+          animationFrame = requestAnimationFrame(applyMomentum);
+        }
+
+        function handleStart(e) {
+          isDragging = true;
+          startX = e.clientX || e.touches[0].clientX;
+          currentX = startX;
+          lastX = startX;
+          velocity = 0;
+          lastTime = Date.now();
+          carousel.style.cursor = 'grabbing';
+
+          if (animationFrame) {
+            cancelAnimationFrame(animationFrame);
+            animationFrame = null;
+          }
+
+          e.preventDefault();
+        }
+
+        function handleMove(e) {
+          if (!isDragging) return;
+
+          const now = Date.now();
+          const dt = now - lastTime;
+
+          currentX = e.clientX || e.touches[0].clientX;
+          const dragOffset = -(currentX - startX) + currentRotation;
+
+          if (dt > 0) {
+            velocity = -(currentX - lastX) / dt * 16;
+          }
+
+          lastX = currentX;
+          lastTime = now;
+
+          const maxOffset = slideWidth * (totalCards - 5);
+          const minOffset = -slideWidth * 4;
+          let constrainedOffset = dragOffset;
+
+          if (dragOffset > maxOffset) {
+            constrainedOffset = maxOffset + (dragOffset - maxOffset) * 0.3;
+          } else if (dragOffset < minOffset) {
+            constrainedOffset = minOffset + (dragOffset - minOffset) * 0.3;
+          }
+
+          updateCardPositions(constrainedOffset);
+          e.preventDefault();
+        }
+
+        function handleEnd(e) {
+          if (!isDragging) return;
+
+          isDragging = false;
+          carousel.style.cursor = 'grab';
+
+          const dragOffset = -(currentX - startX) + currentRotation;
+          const maxOffset = slideWidth * (totalCards - 5);
+          const minOffset = -slideWidth * 4;
+          const constrainedOffset = Math.max(minOffset, Math.min(maxOffset, dragOffset));
+
+          currentRotation = constrainedOffset;
+
+          if (Math.abs(velocity) > 1) {
+            animationFrame = requestAnimationFrame(applyMomentum);
+          }
+
+          e.preventDefault();
+        }
+
+        carousel.addEventListener('mousedown', handleStart);
+        carousel.addEventListener('touchstart', handleStart, { passive: false });
+
+        document.addEventListener('mousemove', handleMove);
+        document.addEventListener('touchmove', handleMove, { passive: false });
+
+        document.addEventListener('mouseup', handleEnd);
+        document.addEventListener('touchend', handleEnd);
+
+        function handleResize() {
+          let newDiameter = CONFIG.arcRadius.desktop;
+          if (window.innerWidth < 768) {
+            newDiameter = CONFIG.arcRadius.mobile;
+          } else if (window.innerWidth < 992) {
+            newDiameter = CONFIG.arcRadius.tablet;
+          }
+          if (newDiameter !== diameter) {
+            location.reload();
+          }
+        }
+
+        window.addEventListener('resize', handleResize);
+
+        initializeCards();
+      }
+
+      // Initialize carousel when DOM is ready
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', initPreschoolersSwiper);
+      } else {
+        initPreschoolersSwiper();
+      }
+    })();
+  </script>
+</body>
+</html>
