@@ -1250,23 +1250,14 @@
     const cards = carousel.querySelectorAll('.video-card');
     if (!cards.length) return;
 
-    // ============================================================
-    // CONFIGURATION - Easy customization controls
-    // ============================================================
     const CONFIG = {
-      // ==== CARD SPACING ====
-      // Gap between cards: Higher = more space between cards
-      // Range: 15-35 degrees (recommended: 20-28)
-      cardRotationGap: 3,  // Degrees of rotation between each card
-
-      // ==== CARD TILT (ARC CURVE) ====
-      // Arc radius: Higher = less curved arc, cards more upright
-      // Lower = more curved arc, cards more tilted
-      // Range: 600-1200px (recommended: 800-1000)
+     
+      cardRotationGap: 3,  
+      
       arcRadius: {
-        desktop: 6530,   // > 992px - Try 800-1200
-        tablet: 800,    // 768-991px - Try 700-1000
-        mobile: 700     // < 768px - Try 600-900
+        desktop: 6530,   
+        tablet: 6300,  
+        mobile: 5900   
       },
 
       // ==== INDIVIDUAL CARD ROTATION ====
@@ -1277,10 +1268,10 @@
 
       // ==== DRAG BEHAVIOR ====
       // How long cards slide after drag: 0.93 = short, 0.97 = long
-      momentumDecay: 0.95,
+      momentumDecay: 0.99,
 
       // How fast cards snap to position: 0.2 = fast, 0.5 = slow
-      snapDuration: 0.3
+      snapDuration: 0.05
     };
 
     // ============================================================
