@@ -112,12 +112,18 @@
     }
     .sunrise{
       position: absolute; 
-      top: 35%;
+      top: 50%;
       margin: auto;
+      position: absolute;
+    width: 150%;
+    object-fit: cover;
+    min-width: 150%;
+    object-position: center;
+    left: -22%;
     }
     .site-loader .glen-logo{
       position: absolute;
-      top: 50%;
+      top: 40%;
       left: 50%;
       transform: translateX(-50%);
       opacity: 0;
@@ -3069,17 +3075,17 @@
       duration: 3,
       ease: "power1.in"
     }, "siteloader_tl").to(".site-loader .sunrise", {
-      y: "-20%",
+      y: "-25%",
       duration: 4,
       ease: "power2.inOut",
       
-    }, "siteloader_tl").to(".site-loader", {
+    }/*, "siteloader_tl").to(".site-loader", {
       clipPath: "circle(0% at 50% 50%)",
       duration: 1.5,
       ease: "power2.inOut",onComplete: function() {
-        document.querySelector('.site-loader').style.display = 'none';
+        //document.querySelector('.site-loader').style.display = 'none';
       }
-    });
+    }*/);
     siteloader_tl.play();
     document.addEventListener('DOMContentLoaded', function() {
       
