@@ -606,52 +606,110 @@
   // ==========================================================================
 
   function initStickyHeader() {
-    let isOffsetTop = false;
-    let lastScrollTop = 0;
 
-    function scroll_offset(scroll) {
-      if (scroll > 50) {
-        if (!isOffsetTop) {
-          document.body.classList.add('is-offset-top');
-          isOffsetTop = true;
-        }
-      } else {
-        if (isOffsetTop) {
-          document.body.classList.remove('is-offset-top');
-          isOffsetTop = false;
-        }
+  let isOffsetTop = false;
+
+  let lastScrollTop = 0;
+
+  let lastMobileTriggerScroll = 0;
+ 
+  function scroll_offset(scroll) {
+
+    if (scroll > 50) {
+
+      if (!isOffsetTop) {
+
+        document.body.classList.add('is-offset-top');
+
+        isOffsetTop = true;
+
       }
+
+    } else {
+
+      if (isOffsetTop) {
+
+        document.body.classList.remove('is-offset-top');
+
+        isOffsetTop = false;
+
+      }
+
     }
 
-    function scroll_dir(currentScrollTop) {
-      if (currentScrollTop > lastScrollTop && currentScrollTop > 80) {
-        document.body.classList.add('scroll-down');
-      } else {
-        document.body.classList.remove('scroll-down');
-      }
-      lastScrollTop = currentScrollTop <= 0 ? 0 : currentScrollTop;
-    }
-
-    function handleScroll() {
-      const currentScrollY = window.pageYOffset || document.documentElement.scrollTop;
-      scroll_offset(currentScrollY);
-      scroll_dir(currentScrollY);
-      
-      // Mobile scroll class
-      if (window.innerWidth < 768) {
-        const header = document.querySelector('.site-header');
-        if (header) {
-          header.classList.toggle('is-scrolled-mobile', currentScrollY > 10);
-        }
-      }
-    }
-
-    // Initial check
-    scroll_offset(window.scrollY);
-    
-    window.addEventListener('scroll', handleScroll, { passive: true });
   }
+ 
+  function handleScroll() {
 
+    const currentScrollY =
+
+      window.pageYOffset || document.documentElement.scrollTop;
+ 
+    scroll_offset(currentScrollY);
+ 
+    const isMobile = window.innerWidth < 768;
+ 
+    if (isMobile) {
+
+      // 📱 MOBILE LOGIC (100px gap before showing)
+
+      if (currentScrollY > lastScrollTop) {
+
+        // scrolling down
+
+        document.body.classList.add('scroll-down');
+
+        lastMobileTriggerScroll = currentScrollY;
+
+      } else {
+
+        // scrolling up
+
+        if (lastMobileTriggerScroll - currentScrollY >= 100) {
+
+          document.body.classList.remove('scroll-down');
+
+        }
+
+      }
+ 
+      const header = document.querySelector('.site-header');
+
+      if (header) {
+
+        header.classList.toggle('is-scrolled-mobile', currentScrollY > 10);
+
+      }
+
+    } else {
+
+      // 🖥 DESKTOP LOGIC (instant show on scroll up)
+
+      if (currentScrollY > lastScrollTop && currentScrollY > 80) {
+
+        document.body.classList.add('scroll-down');
+
+      } else {
+
+        document.body.classList.remove('scroll-down');
+
+      }
+
+    }
+ 
+    lastScrollTop = currentScrollY <= 0 ? 0 : currentScrollY;
+
+  }
+ 
+  // Initial check
+
+  scroll_offset(window.scrollY);
+ 
+  window.addEventListener('scroll', handleScroll, { passive: true });
+
+}
+
+ 
   // ==========================================================================
   // SMOOTH SCROLL FOR ANCHOR LINKS
   // ==========================================================================
