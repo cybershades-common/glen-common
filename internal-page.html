@@ -39,7 +39,6 @@
       align-items: center;
       justify-content: center;
       overflow: hidden;
-      clip-path: circle(100% at 50% 50%);
       margin: 0;
       padding: 0;
       box-sizing: border-box;
@@ -3015,7 +3014,7 @@
     // Set initial states
     gsap.set(".glen-sunrise-container", { y: 0, scale: 0.5 });
     gsap.set(".glen-logo-container", { opacity: 0, y: 100, scale: 0.3, filter: "blur(10px)" });
-    gsap.set("#glen-preloader", { clipPath: "circle(100% at 50% 50%)" });
+    gsap.set("#glen-preloader", { y: 0 });
 
     // Animation sequence
     if (isMobile) {
@@ -3053,11 +3052,11 @@
         ease: "elastic.out(1, 2.15)"
       }, "-=1.5");
     }
-    
-    // Continue timeline for both mobile and desktop
+
+    // Slide out preloader from bottom to top
     glenTl.to("#glen-preloader", {
-      clipPath: "circle(0% at 50% 50%)",
-      duration: 1.5,
+      y: "-100%",
+      duration: 1.2,
       ease: "power2.inOut"
     }, "-=2.5")
     .set("#glen-preloader", { display: "none" });
