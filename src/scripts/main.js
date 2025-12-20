@@ -1240,47 +1240,137 @@
   }
 
   // ==========================================================================
-  // PRESCHOOLERS TESTIMONIALS ARC SWIPER
+  // PRESCHOOLERS TESTIMONIALS ARC CAROUSEL
   // ==========================================================================
 
   function initPreschoolersSwiper() {
-    if (typeof Swiper === 'undefined') {
-      console.warn('Swiper is required for the preschoolers testimonials slider');
-      return;
+    const carousel = document.querySelector('#arcCarousel');
+    if (!carousel) return;
+
+    const cards = carousel.querySelectorAll('.video-card');
+    if (!cards.length) return;
+
+    let isDragging = false;
+    let startX = 0;
+    let currentX = 0;
+    let currentRotation = 0;
+    let activeIndex = 4; // Center card (data-index="4")
+    
+    const totalCards = cards.length;
+    const degreesPerCard = 22; // Based on test.html
+    const diameter = window.innerWidth < 768 ? 800 : 1000;
+    const slideWidth = diameter / totalCards;
+
+    // Initialize card positions
+    function initializeCards() {
+      cards.forEach((card, index) => {
+        const dataIndex = parseInt(card.getAttribute('data-index'));
+        const rotation = (dataIndex - 4) * degreesPerCard; // Center card at 0 rotation
+        
+        card.style.transform = `rotate(${rotation}deg)`;
+        card.style.transformOrigin = `50% ${diameter}px`;
+        
+        if (dataIndex === 4) {
+          card.classList.add('active');
+        } else {
+          card.classList.remove('active');
+        }
+      });
     }
 
-    const swiperContainer = document.querySelector('.video-cards-container');
-    if (!swiperContainer) return;
-
-    const swiper = new Swiper(swiperContainer, {
-      slidesPerView: 'auto',
-      spaceBetween: 0,
-      centeredSlides: false,
-      loop: false,
-      speed: 600,
-      grabCursor: true,
-      freeMode: true,
+    // Update card positions based on drag
+    function updateCardPositions(dragOffset) {
+      const rotationOffset = dragOffset / (slideWidth / degreesPerCard);
       
-      breakpoints: {
-        320: {
-          slidesPerView: 1,
-          spaceBetween: 20,
-          centeredSlides: true
-        },
-        768: {
-          slidesPerView: 'auto',
-          spaceBetween: 30,
-          centeredSlides: false,
-          freeMode: true
-        },
-        1024: {
-          slidesPerView: 'auto',
-          spaceBetween: 0,
-          centeredSlides: false,
-          freeMode: true
-        }
+      cards.forEach((card, index) => {
+        const dataIndex = parseInt(card.getAttribute('data-index'));
+        const baseRotation = (dataIndex - 4) * degreesPerCard;
+        const rotation = baseRotation + rotationOffset;
+        
+        card.style.transform = `rotate(${rotation}deg)`;
+      });
+    }
+
+    // Snap to nearest card
+    function snapToNearest(dragOffset) {
+      const snapTarget = Math.round(dragOffset / slideWidth) * slideWidth;
+      const newActiveIndex = Math.max(0, Math.min(totalCards - 1, 4 - Math.round(snapTarget / slideWidth)));
+      
+      if (newActiveIndex !== activeIndex) {
+        cards[activeIndex].classList.remove('active');
+        cards[newActiveIndex].classList.add('active');
+        activeIndex = newActiveIndex;
       }
-    });
+      
+      currentRotation = snapTarget;
+      updateCardPositions(snapTarget);
+      
+      return snapTarget;
+    }
+
+    // Mouse events
+    function handleMouseDown(e) {
+      isDragging = true;
+      startX = e.clientX || e.touches[0].clientX;
+      currentX = startX;
+      carousel.style.cursor = 'grabbing';
+      e.preventDefault();
+    }
+
+    function handleMouseMove(e) {
+      if (!isDragging) return;
+      
+      currentX = e.clientX || e.touches[0].clientX;
+      const dragOffset = currentX - startX + currentRotation;
+      
+      // Apply constraints
+      const maxOffset = slideWidth * (totalCards - 5); // Can't go past first 4 cards
+      const minOffset = -slideWidth * 4; // Can't go past last 4 cards
+      const constrainedOffset = Math.max(minOffset, Math.min(maxOffset, dragOffset));
+      
+      updateCardPositions(constrainedOffset);
+      e.preventDefault();
+    }
+
+    function handleMouseUp(e) {
+      if (!isDragging) return;
+      
+      isDragging = false;
+      carousel.style.cursor = 'grab';
+      
+      const dragOffset = currentX - startX + currentRotation;
+      const maxOffset = slideWidth * (totalCards - 5);
+      const minOffset = -slideWidth * 4;
+      const constrainedOffset = Math.max(minOffset, Math.min(maxOffset, dragOffset));
+      
+      const snappedOffset = snapToNearest(constrainedOffset);
+      currentRotation = snappedOffset;
+      
+      e.preventDefault();
+    }
+
+    // Touch events
+    carousel.addEventListener('mousedown', handleMouseDown);
+    carousel.addEventListener('touchstart', handleMouseDown, { passive: false });
+    
+    document.addEventListener('mousemove', handleMouseMove);
+    document.addEventListener('touchmove', handleMouseMove, { passive: false });
+    
+    document.addEventListener('mouseup', handleMouseUp);
+    document.addEventListener('touchend', handleMouseUp);
+
+    // Handle window resize
+    function handleResize() {
+      const newDiameter = window.innerWidth < 768 ? 800 : 1000;
+      if (newDiameter !== diameter) {
+        location.reload(); // Reload to recalculate positions
+      }
+    }
+
+    window.addEventListener('resize', handleResize);
+
+    // Initialize
+    initializeCards();
   }
 
 })();

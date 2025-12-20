@@ -1,241 +1,91 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description"
-    content="Glenaeon Rudolf Steiner School - Nurturing the whole child through Steiner education" />
-  <title>Glenaeon Rudolf Steiner School</title>
+import { useState } from "react";
+import { motion } from "framer-motion";
+import cx from "classnames";
 
-  <!-- Google Fonts: DM Sans (primary) + Caveat (script) -->
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link
-    href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;500;600;700&family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap"
-    rel="stylesheet" />
+const slides = [
+  "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8ZmFjZXxlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=300&q=60",
+  "https://images.unsplash.com/photo-1554151228-14d9def656e4?ixid=MnwxMjA3fDB8MHxzZWFyY2h8M3x8ZmFjZXxlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=300&q=60",
+  "https://images.unsplash.com/photo-1592124549776-a7f0cc973b24?ixid=MnwxMjA3fDB8MHxzZWFyY2h8NXx8ZmFjZXxlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=300&q=60",
+  "https://images.unsplash.com/photo-1557296387-5358ad7997bb?ixid=MnwxMjA3fDB8MHxzZWFyY2h8NHx8ZmFjZXxlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=300&q=60",
+  "https://images.unsplash.com/photo-1521146764736-56c929d59c83?ixid=MnwxMjA3fDB8MHxzZWFyY2h8OHx8ZmFjZXxlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=300&q=60",
+  "https://images.unsplash.com/photo-1593529467220-9d721ceb9a78?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTV8fGZhY2V8ZW58MHx8MHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=300&q=60",
+  "https://images.unsplash.com/photo-1544348817-5f2cf14b88c8?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MjB8fGZhY2V8ZW58MHx8MHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=300&q=60",
+  "https://images.unsplash.com/photo-1596215143922-eedeaba0d91c?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MzR8fGZhY2V8ZW58MHx8MHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=300&q=60",
+  "https://images.unsplash.com/photo-1560787313-5dff3307e257?ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mjd8fGZhY2V8ZW58MHx8MHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=300&q=60",
+  "https://images.unsplash.com/photo-1604426633861-11b2faead63c?ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8ZmFjZXxlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=300&q=60",
+  "https://images.unsplash.com/photo-1545167622-3a6ac756afa4?ixid=MnwxMjA3fDB8MHxzZWFyY2h8NDd8fGZhY2V8ZW58MHx8MHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=300&q=60",
+];
 
-  <!-- Bootstrap 5 CSS -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
+export function Example() {
+  const [active, setActive] = useState(0);
+  const [coordX, setCoordX] = useState(0);
 
-  <!-- Swiper CSS -->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-  <!-- Custom Styles (Compiled from LESS) -->
-  <link rel="stylesheet" href="src/styles/style.css" />
-  
-  <style>
-    /* Glen Preloader Styles */
-    .glen-preloader {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100vw;
-      height: 100vh;
-      height: 100dvh;
-      background: rgb(238, 229, 229);
-      z-index: 9999;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      overflow: hidden;
-      clip-path: circle(100% at 50% 50%);
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+  const diameter = 1000;
+  const degrees = 22;
 
-    .glen-sunrise-container {
-      position: absolute;
-      bottom: -1400px;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 1600px;
-      height: 1600px;
-    }
+  const slideWidth = diameter / slides.length;
 
-    .glen-sunrise {
-      width: 100%;
-      height: 100%;
-      opacity: 1;
-      filter: brightness(1.1);
-    }
+  const onUpdate = (latest) => {
+    setCoordX(latest.x);
+  };
 
-    .glen-logo-container {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      opacity: 0;
-      z-index: 10;
-    }
+  const handleModifyTarget = (target) => {
+    const snapTarget = Math.round(target / slideWidth) * slideWidth;
 
-    .glen-logo {
-      width: 400px;
-      height: auto;
-      filter: brightness(0) invert(1);
-      transform-origin: center;
-      backface-visibility: hidden;
-      will-change: transform;
-    }
+    const clampedActive = Math.min(
+      Math.max(Number(-snapTarget / slideWidth)),
+      slides.length - 1
+    );
 
-    /* Mobile Responsive */
-    @media (max-width: 768px) {
-      .glen-sunrise-container {
-        width: 800px;
-        height: 800px;
-        bottom: -400px;
-      }
+    setActive(clampedActive);
 
-      .glen-logo-container {
-        top: 60%;
-      }
+    return snapTarget;
+  };
 
-      .glen-logo {
-        width: 280px;
-      }
-    }
-  </style>
-</head>
-<body>
-    <div class="col-lg-3">
-              <div class="card">
-                <div class="card-inner">
-                  <div class="media">
-                    <video class="testimonial-video full" playsinline muted preload="metadata" loop>
-                      <source src="assets/videos/vt-1.mp4" type="video/mp4" />
-                      Your browser does not support the video tag.
-                    </video>
-                  </div>
+  return (
+    <div className="root">
+      <div className="carousel-container">
+        <motion.div
+          drag="x"
+          onUpdate={onUpdate}
+          dragElastic={0}
+          dragConstraints={{
+            right: 0,
+            left: -(slideWidth * (slides.length - 1)),
+          }}
+          dragTransition={{
+            power: 0.1,
+            timeConstant: 100,
+            modifyTarget: handleModifyTarget,
+          }}
+        >
+          <div className="slides-container">
+            {slides.map((slide, index) => {
+              const rotate = index * degrees;
+              const denominator = (slideWidth / degrees) * 1;
 
-                  <div class="card-overlay">
-                    <div class="card-content">
-                      <div class="card-info">
-                        <p class="card-name">Jordan</p>
-                        <p class="card-title">Year 12 Student</p>
-                      </div>
-                      <div class="play-button-wrapper">
-                        <button class="play-button" type="button" aria-label="Play video with sound"
-                          aria-pressed="false">
-                          <div class="play-button-circle">
-                            <div class="play-button-icon" aria-hidden="true">
-                              <span class="icon icon-play">
-                                
-                              </span>
-                              <span class="icon icon-close">
-                                <svg width="16" height="16" viewBox="0 0 16 16" fill="none"
-                                  xmlns="http://www.w3.org/2000/svg">
-                                  <path d="M3 3L13 13" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
-                                  <path d="M13 3L3 13" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
-                                </svg>
-                              </span>
-                            </div>
-                          </div>
-                        </button>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <!-- Bootstrap 5 JS Bundle (includes Popper) -->
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-
-  <!-- Swiper JS -->
-  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-  <script src="src/js/swiper.js"></script>
-
-  <!-- GSAP -->
-  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
-
-  <!-- Custom Scripts -->
-  <script src="src/scripts/megamenu-animations.js"></script>
-  <script src="src/scripts/main.js"></script>
-
-  <!-- Animations -->
-  <script src="animations.js"></script>
-  
-  <!-- Glen Preloader Script -->
-  <script>
-    // Prevent scroll during preloader
-    document.body.style.overflow = 'hidden';
-
-    // GSAP Timeline for glen preloader animation
-    const glenTl = gsap.timeline();
-
-    // Check if mobile
-    const isMobile = window.innerWidth <= 768;
-    
-    // Calculate exact preloader duration and restore scroll
-    const preloaderDuration = 3000; // 3 seconds for both mobile and desktop
-    setTimeout(() => {
-      document.body.style.overflow = '';
-    }, preloaderDuration);
-    
-    // Set initial states
-    gsap.set(".glen-sunrise-container", { y: 0, scale: 0.5 });
-    gsap.set(".glen-logo-container", { opacity: 0, y: 100, scale: 0.3, filter: "blur(10px)" });
-    gsap.set("#glen-preloader", { clipPath: "circle(100% at 50% 50%)" });
-
-    // Animation sequence
-    if (isMobile) {
-      // Mobile animation - less rise
-      glenTl.to(".glen-sunrise-container", {
-        y: "-30vh",
-        scale: 1,
-        duration: 4,
-        ease: "power1.out"
-      })
-      .to(".glen-logo-container", {
-        opacity: 1,
-        y: "-15vh",
-        scale: 1,
-        rotationY: 0,
-        filter: "blur(0px)",
-        duration: 3.6,
-        ease: "elastic.out(1, 2.2)"
-      }, "-=1.2");
-    } else {
-      // Desktop animation
-      glenTl.to(".glen-sunrise-container", {
-        y: "-50vh",
-        scale: 1.2,
-        duration: 4,
-        ease: "power1.out"
-      })
-      .to(".glen-logo-container", {
-        opacity: 1,
-        y: 0,
-        scale: 1,
-        rotationY: 0,
-        filter: "blur(0px)",
-        duration: 4,
-        ease: "elastic.out(1, 2.15)"
-      }, "-=1.5");
-    }
-    
-    // Continue timeline for both mobile and desktop
-    glenTl.to("#glen-preloader", {
-      clipPath: "circle(0% at 50% 50%)",
-      duration: 1.5,
-      ease: "power2.inOut"
-    }, "-=2.5")
-    .set("#glen-preloader", { display: "none" });
-
-    // Optional: Click to skip preloader
-    document.addEventListener('click', () => {
-      if (glenTl.progress() < 0.8) {
-        glenTl.progress(1);
-        document.body.style.overflow = '';
-      }
-    });
-    
-  </script>
-</body>
-</html>
-
-
-
-
-It is my absolute honour and privilege to lead Glenaeon, and continue to build on the school’s proud 66-year history. 
+              return (
+                <motion.div
+                  key={index}
+                  className={cx("slide", {
+                    active: active === index,
+                  })}
+                  animate={{
+                    rotate: coordX / denominator + rotate,
+                    transformOrigin: `50% ${diameter}px`,
+                  }}
+                  transition={{
+                    ease: "easeOut",
+                    duration: 0.2,
+                  }}
+                >
+                  <img src={slide} alt="" />
+                </motion.div>
+              );
+            })}
+          </div>
+        </motion.div>
+      </div>
+    </div>
+  );
+}
