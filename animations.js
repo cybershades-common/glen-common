@@ -193,29 +193,7 @@ function setupTextHideOnPlay(section) {
 // ==========================================================================
 
 // ==========================================================================
-// STAFF SECTION ANIMATIONS - START
-// ==========================================================================
-
-function initStaffAnimations() {
-  const staffSection = document.querySelector('.staff-section');
-  if (!staffSection) return;
-
-  const staffCards = staffSection.querySelectorAll('.grid_card');
-  if (!staffCards.length) return;
-
-  // Add animation classes to staff cards
-  staffCards.forEach(card => {
-    card.classList.add('staff-reveal-animation', 'staff-circle-expand');
-  });
-
-  // Set initial state for staff cards
-  gsap.set('.staff-circle-expand', {
-    '--circle-clip': '0%',
-  });
-}
-
-// ==========================================================================
-// STAFF SECTION ANIMATIONS - END
+// STAFF SECTION ANIMATIONS - REMOVED
 // ==========================================================================
 
 // ==========================================================================
@@ -265,7 +243,6 @@ function initAnimations() {
 
   initMarqueeAnimation();
   initVideoTestimonialsAnimations();
-  initStaffAnimations();
   initRevealAnimations();
   // Featured cards now use swiper instead of GSAP scroll effect
 
@@ -282,9 +259,8 @@ function initAnimations() {
 function initRevealAnimations() {
   const videoItems = document.querySelectorAll('.video-reveal-animation');
   const featureItems = document.querySelectorAll('.feature-reveal-animation');
-  const staffItems = document.querySelectorAll('.staff-reveal-animation');
   
-  const allAnimationItems = [...videoItems, ...featureItems, ...staffItems];
+  const allAnimationItems = [...videoItems, ...featureItems];
   if (!allAnimationItems.length) return;
 
   // Set initial state for clip reveal items
@@ -325,25 +301,11 @@ function initRevealAnimations() {
           }
         });
       }
-      
-      if (card.classList.contains('staff-circle-expand')) {
-        gsap.fromTo(card, {
-          '--circle-clip': '0%',
-        }, {
-          duration: 1.2,
-          ease: 'power3.out',
-          '--circle-clip': '100%',
-          delay: index * 0.15,
-          onComplete: function () {
-            card.classList.add('circle-animation-complete');
-          }
-        });
-      }
     });
   }
 
   // ScrollTrigger reveal animation for all elements
-  ScrollTrigger.batch('.video-reveal-animation, .feature-reveal-animation, .staff-reveal-animation', {
+  ScrollTrigger.batch('.video-reveal-animation, .feature-reveal-animation', {
     start: 'top bottom-=100', 
     once: true, 
     onEnter: elements => {
