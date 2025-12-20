@@ -386,7 +386,6 @@ body.is-offset-top .site-header .header-logo a svg path {
 }
 body.is-offset-top .site-header .header-actions .header-icon svg path {
   fill: #1c3666;
-  stroke: #1c3666;
 }
 body.is-offset-top .site-header .header-actions .header-icon.header-profile svg path {
   fill: none;
@@ -580,8 +579,6 @@ body.mega-menu-open .site-header .hamburger .hamburger .line:nth-child(3) {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 30px;
-  height: 30px;
   padding: 0;
   border: none;
   background: transparent;
@@ -590,7 +587,7 @@ body.mega-menu-open .site-header .hamburger .hamburger .line:nth-child(3) {
   -webkit-tap-highlight-color: transparent;
 }
 .header-icon:hover {
-  opacity: 0.8;
+  opacity: 1;
 }
 .header-icon:focus {
   outline: none;
@@ -637,7 +634,7 @@ body.mega-menu-open .site-header .hamburger .hamburger .line:nth-child(3) {
   -webkit-tap-highlight-color: transparent !important;
 }
 .menu-button:hover {
-  opacity: 0.8;
+  opacity: 1;
 }
 .menu-button:focus,
 .menu-button:active,
@@ -1400,6 +1397,7 @@ body.mega-menu-open {
   }
   .mega-menu .mega-menu__inner {
     padding: 6rem 1.25rem 4rem;
+    height: 100%;
     max-height: 100vh;
     overflow-y: auto;
   }
@@ -1544,6 +1542,9 @@ body.mega-menu-open {
   }
   .mega-menu .mega-menu__inner .mega-menu__footer .container-fluid > .row .mega-menu__footer-links {
     justify-content: flex-end;
+  }
+  .mega-menu .mega-menu__inner .mega-menu .edge-image.bottom-edge {
+    margin: 0;
   }
 }
 .hero {
@@ -4037,6 +4038,26 @@ h1 .hero__title-script {
   color: #1c3666;
   margin: 0;
 }
+@media (min-width: 768px) and (max-width: 992px) {
+  .glenaeon-education-section .container-fluid {
+    padding: 0 2.5rem;
+  }
+  .glenaeon-education-section .container-fluid .body-base-blocks {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem 2.125rem;
+  }
+  .glenaeon-education-section .container-fluid .body-base-blocks .body-base {
+    flex: 100% 0 0;
+  }
+  .glenaeon-education-section .container-fluid .education-stats {
+    gap: 0;
+  }
+  .glenaeon-education-section .container-fluid .education-stats .education-stat {
+    flex: 0 0 calc(33.33% - 1.5625rem);
+    text-align: center;
+  }
+}
 @media (max-width: 991px) {
   .education-stats {
     flex-wrap: wrap;
@@ -4066,8 +4087,6 @@ h1 .hero__title-script {
     font-size: 1rem;
     text-align: center;
   }
-}
-@media (max-width: 767px) {
   .three-tier-diagram {
     transform: scale(1.325);
     margin: 5rem 0;
@@ -4277,18 +4296,6 @@ h1 .hero__title-script {
     min-height: auto;
     padding: 2.5rem 0;
   }
-  .footer__newsletter,
-  .footer__title,
-  .footer__acknowledgement,
-  .footer__links,
-  .footer__utilities,
-  .footer__brand,
-  .footer__bottom {
-    position: static;
-    width: 100%;
-    max-width: 100%;
-    margin-bottom: 30px;
-  }
   .footer__title {
     text-align: center;
   }
@@ -4311,6 +4318,11 @@ h1 .hero__title-script {
     font-size: 4.25rem;
   }
 }
+@media (min-width: 768px) and (max-width: 992px) {
+  .site-footer .footer__title {
+    text-align: left;
+  }
+}
 @media (max-width: 767px) {
   .site-footer .footer__newsletter {
     margin-bottom: 5rem;
@@ -4328,7 +4340,10 @@ h1 .hero__title-script {
     white-space: normal;
   }
   .site-footer .footer__logos {
-    margin: 0;
+    margin: 3rem 0 0 0;
+  }
+  .site-footer .footer__links-container .footer-links-columns {
+    gap: 1rem 1.5rem;
   }
 }
 @media (max-width: 575px) {
@@ -4404,14 +4419,22 @@ h1 .hero__title-script {
   html body .three-stages-section {
     padding: 6.25rem 0;
   }
-  html body .three-stages-section .three-stages-content {
-    flex-direction: row;
+  html body .three-stages-section .container-fluid {
+    padding: 0 2.5rem;
   }
-  html body .three-stages-section .three-stages-content .three-stages-description {
-    width: 50%;
-  }
-  html body .three-stages-section .three-stages-cards {
+  html body .three-stages-section .container-fluid .three-stages-content {
     flex-direction: row;
+    justify-content: space-between;
+  }
+  html body .three-stages-section .container-fluid .three-stages-content .three-stages-description {
+    width: 70%;
+  }
+  html body .three-stages-section .container-fluid .three-stages-cards {
+    flex-direction: row;
+    padding: 0;
+  }
+  html body .three-stages-section .container-fluid .three-stages-cards .three-stages-card {
+    max-width: 48%;
   }
   html body .cottage-garden-section {
     min-height: 50vh;
@@ -4548,6 +4571,12 @@ body {
   min-height: 100vh;
   background: url(../../assets/images/section-bg.jpg);
   background-size: 100%;
+}
+body a:focus,
+body input:focus {
+  border: none;
+  outline: none;
+  box-shadow: none;
 }
 .wrapper {
   overflow: hidden;
@@ -6797,10 +6826,4 @@ button {
 .breadcrumb-wrap .breadcrumb li a {
   color: var(--tertiary-blue-dark, #1C3666);
   font-weight: bold;
-}
-a:focus,
-input:focus {
-  border: none;
-  outline: none;
-  box-shadow: none;
 }

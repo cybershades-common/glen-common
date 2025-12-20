@@ -99,6 +99,14 @@ body {
   min-height: 100vh;
   background: url(../../assets/images/section-bg.jpg);
   background-size: 100%;
+  a,
+input {
+  &:focus {
+    border: none;
+    outline: none;
+    box-shadow: none;
+  }
+}
 }
 
 .wrapper {
@@ -2763,11 +2771,4 @@ button {
 }
 
 
-a,
-input {
-  &:focus {
-    border: none;
-    outline: none;
-    box-shadow: none;
-  }
-}
+
