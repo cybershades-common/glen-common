@@ -1543,7 +1543,7 @@ body.mega-menu-open {
   .mega-menu .mega-menu__inner .mega-menu__footer .container-fluid > .row .mega-menu__footer-links {
     justify-content: flex-end;
   }
-  .mega-menu .mega-menu__inner .mega-menu .edge-image.bottom-edge {
+  .mega-menu .edge-image.bottom-edge {
     margin: 0;
   }
 }
@@ -3514,45 +3514,44 @@ h1 .hero__title-script {
   }
 }
 .preschoolers-testimonials-section {
-  padding: 10.75rem 0 6.25rem;
+  padding: 10rem 0 6.25rem;
   position: relative;
-  background-color: #faf9f7;
+  background-color: #faf7f4;
+  overflow: hidden;
 }
 @media (max-width: 767px) {
   .preschoolers-testimonials-section {
     padding: 4rem 0;
   }
 }
-.preschoolers-testimonials-section .title {
+.preschoolers-testimonials-section .section-title {
   display: flex;
   flex-direction: column;
-  gap: 0;
-  margin-bottom: 2.5rem;
-  text-align: center;
   align-items: center;
+  gap: 2px;
+  margin-bottom: 4rem;
+  text-align: center;
 }
-.preschoolers-testimonials-section .title-script {
+@media (max-width: 767px) {
+  .preschoolers-testimonials-section .section-title {
+    margin-bottom: 2.5rem;
+  }
+}
+.preschoolers-testimonials-section .section-title .script-text {
   font-family: 'Born Ready', cursive;
   font-weight: 400;
   font-size: 3.75rem;
   line-height: 1;
   letter-spacing: 0;
   color: #1c3666;
-  text-align: center;
-  margin: 0;
-  padding: 0.5rem 1.5rem;
-  border: 2px dashed #1c3666;
-  border-radius: 8px;
-  display: inline-block;
-  margin-bottom: 0.5rem;
+  display: block;
 }
 @media (max-width: 767px) {
-  .preschoolers-testimonials-section .title-script {
+  .preschoolers-testimonials-section .section-title .script-text {
     font-size: clamp(36px, 8vw, 60px);
-    padding: 0.4rem 1rem;
   }
 }
-.preschoolers-testimonials-section .title-bold {
+.preschoolers-testimonials-section .section-title .caps-text {
   font-family: 'Averta', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   font-weight: 800;
   font-size: 3.75rem;
@@ -3560,117 +3559,144 @@ h1 .hero__title-script {
   letter-spacing: -1.2px;
   text-transform: uppercase;
   color: #1c3666;
-  text-align: center;
-  margin: 0;
+  display: block;
 }
 @media (max-width: 767px) {
-  .preschoolers-testimonials-section .title-bold {
+  .preschoolers-testimonials-section .section-title .caps-text {
     font-size: clamp(36px, 8vw, 60px);
-    letter-spacing: -1.2px;
   }
 }
-.preschoolers-testimonials-section .cards {
+.preschoolers-testimonials-section .video-cards-container {
   display: flex;
-  gap: 1.875rem;
   justify-content: center;
-  align-items: flex-start;
-  flex-wrap: wrap;
-  margin-bottom: 2.5rem;
+  align-items: center;
+  gap: 2rem;
+  margin-bottom: 3.5rem;
+  padding: 0 2rem;
+  flex-wrap: nowrap;
+  min-height: 550px;
 }
 @media (max-width: 991px) {
-  .preschoolers-testimonials-section .cards {
-    gap: 1.25rem;
+  .preschoolers-testimonials-section .video-cards-container {
+    gap: 1.5rem;
+    padding: 0 1rem;
+    overflow-x: auto;
+    justify-content: flex-start;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+  .preschoolers-testimonials-section .video-cards-container::-webkit-scrollbar {
+    display: none;
   }
 }
 @media (max-width: 767px) {
-  .preschoolers-testimonials-section .cards {
+  .preschoolers-testimonials-section .video-cards-container {
     flex-direction: column;
     align-items: center;
+    gap: 2rem;
+    min-height: auto;
+    overflow-x: visible;
   }
 }
-.preschoolers-testimonials-section .card {
+.preschoolers-testimonials-section .video-card {
+  flex-shrink: 0;
+  transition: transform 0.3s ease;
+}
+@media (min-width: 768px) {
+  .preschoolers-testimonials-section .video-card[data-rotation="-5"] {
+    transform: rotate(-5deg) translateY(31px);
+  }
+  .preschoolers-testimonials-section .video-card[data-rotation="-2.5"] {
+    transform: rotate(-2.5deg) translateY(8px);
+  }
+  .preschoolers-testimonials-section .video-card[data-rotation="0"] {
+    transform: rotate(0deg);
+  }
+  .preschoolers-testimonials-section .video-card[data-rotation="2.5"] {
+    transform: rotate(2.5deg) translateY(8px);
+  }
+  .preschoolers-testimonials-section .video-card[data-rotation="5"] {
+    transform: rotate(5deg) translateY(31px);
+  }
+}
+@media (max-width: 767px) {
+  .preschoolers-testimonials-section .video-card {
+    transform: none !important;
+  }
+}
+.preschoolers-testimonials-section .video-card-inner {
   position: relative;
   width: 300px;
   height: 503.731px;
   border: 7.063px solid #ffffff;
   border-radius: 20px;
   overflow: hidden;
-  flex-shrink: 0;
   background-color: #000;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
 }
 @media (max-width: 767px) {
-  .preschoolers-testimonials-section .card {
-    width: 100%;
-    max-width: 300px;
+  .preschoolers-testimonials-section .video-card-inner {
+    width: 280px;
     height: auto;
     aspect-ratio: 300 / 503.731;
   }
 }
-.preschoolers-testimonials-section .card-inner {
+.preschoolers-testimonials-section .video-thumbnail {
   position: relative;
   width: 100%;
   height: 100%;
-  border-radius: calc(20px - 7.063px);
   overflow: hidden;
+  border-radius: calc(20px - 7.063px);
 }
-.preschoolers-testimonials-section .card-image {
+.preschoolers-testimonials-section .video-thumbnail img {
   position: absolute;
   inset: 0;
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: 50% 50%;
-  border-radius: calc(20px - 7.063px);
+  object-position: center;
 }
-.preschoolers-testimonials-section .card-overlay {
+.preschoolers-testimonials-section .video-overlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0) 67.244%, rgba(0, 0, 0, 0.65) 100%);
-  border-radius: calc(20px - 7.063px);
-  pointer-events: none;
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0) 67%, rgba(0, 0, 0, 0.65) 100%);
   z-index: 1;
-  padding: 2rem;
-  display: flex;
-  align-items: flex-end;
 }
-.preschoolers-testimonials-section .card-content {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 1rem;
-  width: 100%;
-  pointer-events: auto;
-}
-.preschoolers-testimonials-section .card-info {
+.preschoolers-testimonials-section .video-info {
+  position: absolute;
+  bottom: 31.48px;
+  left: 27.5px;
+  right: 110px;
   color: #ffffff;
-  text-align: left;
-  flex: 1;
+  z-index: 2;
 }
-.preschoolers-testimonials-section .card-info .card-name {
+.preschoolers-testimonials-section .video-info .student-name {
   font-family: 'Averta', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   font-weight: 700;
-  font-size: 1.5625rem;
+  font-size: 25px;
   line-height: 1.1;
   letter-spacing: -0.5px;
-  margin: 0 0 0.25rem 0;
+  margin: 0 0 4px 0;
 }
-.preschoolers-testimonials-section .card-info .card-title {
+.preschoolers-testimonials-section .video-info .student-grade {
   font-family: 'Averta', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   font-weight: 400;
-  font-size: 0.9375rem;
+  font-size: 15px;
   line-height: 1.4;
   margin: 0;
 }
-.preschoolers-testimonials-section .play-button-wrapper {
-  flex-shrink: 0;
-}
 .preschoolers-testimonials-section .play-button {
-  position: relative;
+  position: absolute;
+  bottom: 31.48px;
+  right: 27.5px;
+  width: 54.65px;
+  height: 55.454px;
   padding: 0;
   border: none;
-  background: none;
+  background: transparent;
   cursor: pointer;
   transition: transform 0.3s ease;
+  z-index: 2;
 }
 .preschoolers-testimonials-section .play-button:hover {
   transform: scale(1.1);
@@ -3678,38 +3704,17 @@ h1 .hero__title-script {
 .preschoolers-testimonials-section .play-button:active {
   transform: scale(0.95);
 }
-.preschoolers-testimonials-section .play-button-circle {
-  position: relative;
-  width: 54.65px;
-  height: 55.454px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background: url(../../assets/images/circle-btn-bg.svg) no-repeat center;
-  background-size: contain;
-}
-.preschoolers-testimonials-section .play-button-icon {
-  width: 18px;
-  height: 20px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-.preschoolers-testimonials-section .play-button-icon svg {
+.preschoolers-testimonials-section .play-button svg {
   width: 100%;
   height: 100%;
+  display: block;
+  filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.3));
 }
-.preschoolers-testimonials-section .button-wrapper {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-top: 2.5rem;
-}
-.preschoolers-testimonials-section .view-all-btn {
-  padding: 1.25rem 1.875rem;
+.preschoolers-testimonials-section .btn-coral {
+  padding: 20px 25px;
   border-radius: 10px;
   font-family: 'Averta', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-  font-size: 0.9375rem;
+  font-size: 15px;
   font-weight: 400;
   line-height: 1.4;
   letter-spacing: 0;
@@ -3721,16 +3726,17 @@ h1 .hero__title-script {
   display: inline-block;
   transition: background-color 250ms ease, transform 150ms ease;
 }
-.preschoolers-testimonials-section .view-all-btn:hover {
+.preschoolers-testimonials-section .btn-coral:hover {
   background-color: #d74339;
-  transform: translateY(-1px);
+  transform: translateY(-2px);
   color: #ffffff;
+  text-decoration: none;
 }
-.preschoolers-testimonials-section .view-all-btn:active {
+.preschoolers-testimonials-section .btn-coral:active {
   transform: translateY(0);
   background-color: #cc342a;
 }
-.preschoolers-testimonials-section .view-all-btn:focus-visible {
+.preschoolers-testimonials-section .btn-coral:focus-visible {
   outline: 2px solid #db574e;
   outline-offset: 2px;
 }

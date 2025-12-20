@@ -635,6 +635,14 @@
       const currentScrollY = window.pageYOffset || document.documentElement.scrollTop;
       scroll_offset(currentScrollY);
       scroll_dir(currentScrollY);
+      
+      // Mobile scroll class
+      if (window.innerWidth < 768) {
+        const header = document.querySelector('.site-header');
+        if (header) {
+          header.classList.toggle('is-scrolled-mobile', currentScrollY > 10);
+        }
+      }
     }
 
     // Initial check
