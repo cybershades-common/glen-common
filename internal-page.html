@@ -33,7 +33,7 @@
       width: 100vw;
       height: 100vh;
       height: 100dvh;
-      background: rgb(238, 229, 229);
+      background: rgb(255, 255, 255);
       z-index: 9999;
       display: flex;
       align-items: center;
@@ -46,7 +46,7 @@
 
     .glen-sunrise-container {
       position: absolute;
-      bottom: -1400px;
+      bottom: -1430px;
       left: 50%;
       transform: translateX(-50%);
       width: 1600px;
@@ -83,7 +83,7 @@
       .glen-sunrise-container {
         width: 800px;
         height: 800px;
-        bottom: -400px;
+        bottom: -700px;
       }
 
       .glen-logo-container {
@@ -3020,10 +3020,10 @@
     if (isMobile) {
       // Mobile animation - less rise
       glenTl.to(".glen-sunrise-container", {
-        y: "-30vh",
-        scale: 1,
-        duration: 4,
-        ease: "power1.out"
+        y: "-80vh",
+        scale: 1.8,
+        duration: 3,
+        ease: "none"
       })
       .to(".glen-logo-container", {
         opacity: 1,
@@ -3037,10 +3037,10 @@
     } else {
       // Desktop animation
       glenTl.to(".glen-sunrise-container", {
-        y: "-50vh",
-        scale: 1.2,
-        duration: 4,
-        ease: "power1.out"
+        y: "-120vh",
+        scale: 1.6,
+        duration: 3,
+        ease: "none"
       })
       .to(".glen-logo-container", {
         opacity: 1,
