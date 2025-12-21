@@ -1389,7 +1389,7 @@ body.mega-menu-open {
 }
 @media (max-width: 767px) {
   body.mega-menu-open {
-    overflow-y: auto;
+    overflow: hidden;
   }
   .hide-mobile {
     display: none;
@@ -1399,6 +1399,7 @@ body.mega-menu-open {
     height: 100%;
     max-height: 100vh;
     overflow-y: auto;
+    justify-content: flex-start;
   }
   .mega-menu .mega-menu__inner .mobile-only .header-quick-links {
     display: flex;
