@@ -21,25 +21,24 @@ document.addEventListener('DOMContentLoaded', function() {
             speed: 900,
             spaceBetween: 30,
             resistance: false,
-            slidesPerView: 3, // Shows 2 full cards + 2 half cards (= 4 slides total)
-            grabCursor: false, // Disable grab cursor - use pointer instead
+            slidesPerView: 3, 
+            grabCursor: false, 
             
-            // Responsive breakpoints
             breakpoints: {
                 // Mobile
                 320: {
-                    slidesPerView: 1.2,
-                    spaceBetween: 20,
+                    slidesPerView: 1.25,
+                    spaceBetween: 10,
                 },
                 // Tablet
                 768: {
                     slidesPerView: 2.5,
                     spaceBetween: 25,
                 },
-                // Desktop - 4 slides per screen (2 full + 2 half)
+                // Desktop 
                 1024: {
-                    slidesPerView: 3,
-                    spaceBetween: 30,
+                    slidesPerView: 3.5,
+                    
                 }
             },
             
