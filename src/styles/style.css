@@ -1592,7 +1592,7 @@ body.mega-menu-open {
   position: absolute;
   inset: 0;
   background: linear-gradient(0deg, rgba(0, 0, 0, 0.2) 0%, rgba(0, 0, 0, 0.2) 100%);
-  padding: 6.5rem 2.5rem 7.5rem;
+  padding: 6.5rem 2.75rem 7.5rem;
   align-items: flex-end;
   display: flex;
   height: 100%;
@@ -4307,7 +4307,7 @@ h1 .hero__title-script {
 }
 @media (min-width: 1800px) {
   html {
-    font-size: 22px;
+    font-size: 18.5px;
   }
 }
 :root {
@@ -4340,7 +4340,6 @@ h1 .hero__title-script {
 html {
   scroll-behavior: smooth;
   caret-color: transparent !important;
-  font-size: clamp(14px, 1.3333vw, 20px);
 }
 ::-webkit-scrollbar {
   display: none;
@@ -4551,9 +4550,9 @@ button {
   position: absolute;
   border-radius: 50%;
   overflow: hidden;
-  max-width: 61%;
+  max-width: 69%;
   aspect-ratio: 1/1;
-  top: 11.5%;
+  top: -2.5%;
   bottom: 0;
   left: 0;
   right: 0;
