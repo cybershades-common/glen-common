@@ -20,7 +20,7 @@
     initVideoTestimonials();
     initCoCurricularCarousel();
     initFeaturesCardsSlider();
-    initPreschoolersSwiper();
+   
   });
 
   // ==========================================================================
@@ -1297,10 +1297,7 @@
     });
   }
 
-  // ==========================================================================
-  // PRESCHOOLERS TESTIMONIALS ARC CAROUSEL
-  // ==========================================================================
-
-  // initPreschoolersSwiper() function moved to arc-carousel-demo.html
+ 
+  
 
 })();
