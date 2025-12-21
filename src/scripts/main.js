@@ -1243,59 +1243,59 @@
   // FEATURES CARDS SWIPER SLIDER
   // ==========================================================================
 
-  function initFeaturesCardsSlider() {
-    if (typeof Swiper === 'undefined') {
-      console.warn('Swiper is required for the features cards slider');
-      return;
-    }
+  // function initFeaturesCardsSlider() {
+  //   if (typeof Swiper === 'undefined') {
+  //     console.warn('Swiper is required for the features cards slider');
+  //     return;
+  //   }
 
-    const sliders = document.querySelectorAll('.what-we-do-section .features-cards-carousel');
-    if (!sliders.length) return;
+  //   const sliders = document.querySelectorAll('.what-we-do-section .features-cards-carousel');
+  //   if (!sliders.length) return;
 
-    sliders.forEach(slider => {
-      if (slider.swiper) return;
+  //   sliders.forEach(slider => {
+  //     if (slider.swiper) return;
 
-      const paginationEl = slider.querySelector('.features-cards-pagination');
-      const slideCount = slider.querySelectorAll('.swiper-slide').length;
+  //     const paginationEl = slider.querySelector('.features-cards-pagination');
+  //     const slideCount = slider.querySelectorAll('.swiper-slide').length;
 
-      const swiperConfig = {
-        speed: 600,
-        loop: slideCount >= 3,
-        centeredSlides: false,
-        spaceBetween: 12,
-        slidesPerView: 1.25,
-        breakpoints: {
-          576: {
-            slidesPerView: 1.35
-          },
-          768: {
-            slidesPerView: 1.6,
-            centeredSlides: true,
-            spaceBetween: 20
-          },
-          1024: {
-            slidesPerView: 3,
-            centeredSlides: true,
-            spaceBetween: 10
-          },
-          1400: {
-            slidesPerView: 4,
-            centeredSlides: true,
-            spaceBetween: 8
-          }
-        }
-      };
+  //     const swiperConfig = {
+  //       speed: 600,
+  //       loop: slideCount >= 3,
+  //       centeredSlides: false,
+  //       spaceBetween: 12,
+  //       slidesPerView: 1.25,
+  //       breakpoints: {
+  //         576: {
+  //           slidesPerView: 1.35
+  //         },
+  //         768: {
+  //           slidesPerView: 1.6,
+  //           centeredSlides: true,
+  //           spaceBetween: 20
+  //         },
+  //         1024: {
+  //           slidesPerView: 3,
+  //           centeredSlides: true,
+  //           spaceBetween: 10
+  //         },
+  //         1400: {
+  //           slidesPerView: 4,
+  //           centeredSlides: true,
+  //           spaceBetween: 8
+  //         }
+  //       }
+  //     };
 
-      if (paginationEl) {
-        swiperConfig.pagination = {
-          el: paginationEl,
-          clickable: true
-        };
-      }
+  //     if (paginationEl) {
+  //       swiperConfig.pagination = {
+  //         el: paginationEl,
+  //         clickable: true
+  //       };
+  //     }
 
-      new Swiper(slider, swiperConfig);
-    });
-  }
+  //     new Swiper(slider, swiperConfig);
+  //   });
+  // }
 
  
   
