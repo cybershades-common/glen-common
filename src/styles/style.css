@@ -1342,9 +1342,6 @@ body.mega-menu-open .site-header .hamburger .hamburger .line:nth-child(3) {
   width: 1600px;
   height: auto;
 }
-body.mega-menu-open {
-  overflow: hidden;
-}
 @media (max-width: 992px) {
   .mega-menu__inner {
     height: auto;
