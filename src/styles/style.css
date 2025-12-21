@@ -901,7 +901,6 @@ body.mega-menu-open .site-header .hamburger .hamburger .line:nth-child(3) {
   padding-left: 1.875rem;
   padding-right: 1.875rem;
   background-color: #ffffff;
-  background-image: url("data:image/svg+xml;base64,...");
   background-repeat: repeat;
   background-size: 819.2px 409.6px;
   position: relative;
@@ -1307,10 +1306,10 @@ body.mega-menu-open .site-header .hamburger .hamburger .line:nth-child(3) {
 }
 .mega-menu__circle-image {
   position: fixed;
-  right: 83.28px;
-  top: 215.2px;
-  width: 307.151px;
-  height: 309.331px;
+  right: 9vw;
+  top: 14vw;
+  width: 309.151px;
+  height: 310.331px;
   z-index: 1001;
   pointer-events: none;
 }
@@ -4341,6 +4340,7 @@ h1 .hero__title-script {
 html {
   scroll-behavior: smooth;
   caret-color: transparent !important;
+  font-size: clamp(14px, 1.3333vw, 20px);
 }
 ::-webkit-scrollbar {
   display: none;
