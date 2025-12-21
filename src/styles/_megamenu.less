@@ -130,14 +130,14 @@
   }
 
   .mega-menu__quick-links-dropdown {
-    background-color: @color-white;
+    
     border-radius: 10px;
-    margin-top: 10px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    
+    
     overflow: hidden;
-    z-index: 99999; // Must be higher than submenu overlays (1000-1004)
+    z-index: 99999; 
 
-    // Initial state - hidden and slid up
+   
     opacity: 0;
     visibility: hidden;
     transform: translateY(-10px);
@@ -674,7 +674,7 @@ body.mega-menu-open {
     .mega-menu__quick-links-dropdown {
       width: 100%;
       box-shadow: none;
-      border: 1px solid fade(@color-blue-dark, 10%);
+      background-color: #FAF7F4;
     }
   }
 }

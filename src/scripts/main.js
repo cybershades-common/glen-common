@@ -551,18 +551,87 @@
       layer3: circleImageContainer.querySelector('.circle-image-layer-3')
     };
     
-    // Function to switch to specific layer image
-    function switchToLayerImage(layerNumber) {
-      // Remove active class from all images
+    // Initialize circle images with GSAP if available
+    if (typeof gsap !== 'undefined') {
       Object.values(circleImages).forEach(img => {
-        if (img) img.classList.remove('active');
+        if (img) {
+          // Set initial state for non-active images
+          if (!img.classList.contains('active')) {
+            gsap.set(img, {
+              scale: 0,
+              opacity: 0,
+              transformOrigin: 'center center'
+            });
+          } else {
+            // Set active image to normal state
+            gsap.set(img, {
+              scale: 1,
+              opacity: 1,
+              transformOrigin: 'center center'
+            });
+          }
+        }
       });
-      
-      // Add active class to target layer image
-      const targetImage = circleImages[`layer${layerNumber}`];
-      if (targetImage) {
-        targetImage.classList.add('active');
+    }
+    
+    // Function to switch to specific layer image with zoom animation
+    function switchToLayerImage(layerNumber) {
+      // Check if GSAP is available for animations
+      if (typeof gsap === 'undefined') {
+        // Fallback to simple class switching if no GSAP
+        Object.values(circleImages).forEach(img => {
+          if (img) img.classList.remove('active');
+        });
+        
+        const targetImage = circleImages[`layer${layerNumber}`];
+        if (targetImage) {
+          targetImage.classList.add('active');
+        }
+        
+        circleImageContainer.setAttribute('data-layer', layerNumber);
+        return;
       }
+      
+      // Get current active image
+      const currentImage = circleImageContainer.querySelector('.circle-image-layer-1.active, .circle-image-layer-2.active, .circle-image-layer-3.active');
+      const targetImage = circleImages[`layer${layerNumber}`];
+      
+      if (!targetImage) return;
+      
+      // Don't animate if it's the same image
+      if (currentImage === targetImage) return;
+      
+      // Animation timeline for smooth transition
+      const timeline = gsap.timeline();
+      
+      if (currentImage) {
+        // Animate out current image (zoom out and fade)
+        timeline.to(currentImage, {
+          scale: 0,
+          opacity: 0,
+          duration: 0.3,
+          ease: 'power2.in',
+          transformOrigin: 'center center',
+          onComplete: () => {
+            currentImage.classList.remove('active');
+          }
+        });
+      }
+      
+      // Animate in new image (zoom in and fade in) 
+      timeline.fromTo(targetImage, {
+        scale: 0,
+        opacity: 0
+      }, {
+        scale: 1,
+        opacity: 1,
+        duration: 0.4,
+        ease: 'back.out(1.2)', // Bouncy zoom effect like menu opening
+        transformOrigin: 'center center',
+        onStart: () => {
+          targetImage.classList.add('active');
+        }
+      }, currentImage ? 0.15 : 0); // Small overlap for smooth transition
       
       // Update container data attribute
       circleImageContainer.setAttribute('data-layer', layerNumber);
@@ -575,18 +644,27 @@
           const target = mutation.target;
           
           if (target.classList.contains('mega-menu__subnav') && 
-              target.classList.contains('is-active') && 
-              target.hasAttribute('data-layer')) {
+              target.classList.contains('is-active')) {
             
-            const layerNumber = target.getAttribute('data-layer');
-            switchToLayerImage(layerNumber);
+            // Check if submenu has data-layer attribute
+            if (target.hasAttribute('data-layer')) {
+              const layerNumber = target.getAttribute('data-layer');
+              switchToLayerImage(layerNumber);
+            } else {
+              // No data-layer means it's a main submenu (layer 1)
+              // Check submenu content to confirm it's a main submenu
+              const submenuContent = target.getAttribute('data-submenu-content');
+              if (submenuContent && ['learning', 'school-life', 'admissions', 'community'].includes(submenuContent)) {
+                switchToLayerImage(1);
+              }
+            }
           }
         }
       });
     });
     
-    // Start observing all submenus for class changes
-    const allSubmenus = document.querySelectorAll('.mega-menu__subnav[data-layer]');
+    // Start observing all submenus for class changes (both with and without data-layer)
+    const allSubmenus = document.querySelectorAll('.mega-menu__subnav');
     allSubmenus.forEach(submenu => {
       observer.observe(submenu, { attributes: true, attributeFilter: ['class'] });
     });
@@ -615,7 +693,7 @@
  
   function scroll_offset(scroll) {
 
-    if (scroll > 50) {
+    if (scroll > 0) {
 
       if (!isOffsetTop) {
 
@@ -647,7 +725,7 @@
  
     scroll_offset(currentScrollY);
  
-    const isMobile = window.innerWidth < 768;
+    const isMobile = window.innerWidth <68;
  
     if (isMobile) {
 
@@ -665,7 +743,7 @@
 
         // scrolling up
 
-        if (lastMobileTriggerScroll - currentScrollY >= 100) {
+        if (lastMobileTriggerScroll - currentScrollY >= 0) {
 
           document.body.classList.remove('scroll-down');
 
@@ -677,7 +755,7 @@
 
       if (header) {
 
-        header.classList.toggle('is-scrolled-mobile', currentScrollY > 10);
+        header.classList.toggle('is-scrolled-mobile', currentScrollY > 0);
 
       }
 

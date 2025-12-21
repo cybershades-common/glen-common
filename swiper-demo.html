@@ -1,411 +1,212 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Full-width Swiper (½ + 2 + ½)</title>
+<head>
+<meta charset="UTF-8" />
+<title>GSAP Gradient Preloader</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+ 
+  <!-- GSAP CDN -->
+<script src="https://unpkg.com/gsap@3/dist/gsap.min.js"></script>
+ 
+  <style>
 
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    :root {
 
-    <style>
-      :root {
-        --bg: #0b0c10;
-        --text: rgba(255, 255, 255, 0.92);
-        --muted: rgba(255, 255, 255, 0.62);
-        --stroke: rgba(255, 255, 255, 0.12);
+      --tertiary-yellow-40: #FFF1B0;
 
-        /* Desktop target: ½ + 2 + ½ */
-        --card-w: 360px;
-        --gap: 22px;
-        --peek: calc(var(--card-w) / 2);
+      --secondary-yellow: #FFDD39;
 
-        /* This is the magic: viewport width that fits exactly:
-           (½ + 2 + ½) = 3 cards + 3 gaps */
-        --viewport-w: calc((3 * var(--card-w)) + (3 * var(--gap)));
+      --tertiary-coral: #DB574E;
 
-        --radius: 18px;
-      }
+    }
+ 
+    html, body {
 
-      * { box-sizing: border-box; }
+      margin: 0;
 
-      body {
-        margin: 0;
-        font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
-        background:
-          radial-gradient(1200px 600px at 20% -10%, rgba(120, 90, 255, 0.28), transparent 60%),
-          radial-gradient(900px 500px at 90% 0%, rgba(0, 205, 255, 0.18), transparent 55%),
-          var(--bg);
-        color: var(--text);
-      }
+      padding: 0;
 
-      /* ===== Minimal top section ===== */
-      .top-minimal {
-        padding: 54px 22px 18px;
-        max-width: 1180px;
-        margin: 0 auto;
-      }
+      height: 100%;
 
-      .pill {
-        display: inline-flex;
-        align-items: center;
-        gap: 10px;
-        padding: 8px 12px;
-        border: 1px solid var(--stroke);
-        background: rgba(255, 255, 255, 0.04);
-        border-radius: 999px;
-        font-size: 13px;
-        color: var(--muted);
-      }
-      .dot {
-        width: 8px; height: 8px; border-radius: 999px;
-        background: rgba(255, 255, 255, 0.65);
-        box-shadow: 0 0 0 4px rgba(255, 255, 255, 0.08);
-      }
+    }
+ 
+    body {
 
-      .top-minimal h2 {
-        margin: 14px 0 8px;
-        font-size: clamp(22px, 3.2vw, 36px);
-        line-height: 1.1;
-        letter-spacing: -0.6px;
-      }
+      font-family: system-ui, sans-serif;
 
-      .top-minimal p {
-        margin: 0;
-        max-width: 70ch;
-        color: var(--muted);
-        font-size: 15px;
-        line-height: 1.6;
-      }
+    }
+ 
+    /* Preloader */
 
-      /* ===== Full width slider section ===== */
-      .slider-section {
-        width: 100%;
-        padding: 18px 0 26px;
-      }
+    #preloader {
 
-      .slider-shell {
-        width: 100%;
-        border-top: 1px solid var(--stroke);
-        border-bottom: 1px solid var(--stroke);
-        background: linear-gradient(180deg, rgba(255,255,255,0.04), rgba(255,255,255,0.02));
-        position: relative;
-        overflow: hidden;
-      }
+      position: fixed;
 
-      .slider-head {
-        max-width: 1180px;
-        margin: 0 auto;
-        padding: 18px 22px 8px;
-        display: flex;
-        align-items: flex-end;
-        justify-content: space-between;
-        gap: 18px;
-      }
+      inset: 0;
 
-      .kicker {
-        font-size: 12px;
-        color: var(--muted);
-        letter-spacing: 0.22em;
-        text-transform: uppercase;
-      }
+      background: #ffffff;
 
-      .title {
-        margin: 6px 0 0;
-        font-size: 18px;
-        letter-spacing: -0.2px;
-      }
+      z-index: 9999;
 
-      .hint {
-        color: var(--muted);
-        font-size: 13px;
-        line-height: 1.35;
-        text-align: right;
-      }
+      overflow: hidden;
 
-      /* ===== THIS ensures only 2 full cards in the middle on desktop ===== */
-      .swiper-viewport {
-        width: 100%;
-        max-width: var(--viewport-w);   /* cap it */
-        margin: 0 auto;                 /* center */
-      }
+      display: flex;
 
-      .swiper {
-        width: 100%;
-        overflow: visible;              /* show peeks */
-        padding: 10px var(--peek) 18px; /* half card visible on both sides */
-      }
+      align-items: flex-end;
 
-      .swiper-slide {
-        width: var(--card-w);
-        height: auto;
-      }
+      justify-content: center;
+ 
+      transform-origin: bottom;
 
-      /* Card */
-      .card {
-        height: 230px;
-        border-radius: var(--radius);
-        border: 1px solid var(--stroke);
-        background: linear-gradient(180deg, rgba(255,255,255,0.08), rgba(255,255,255,0.04));
-        padding: 16px;
-        display: flex;
-        flex-direction: column;
-        gap: 12px;
-        position: relative;
-        user-select: none;
-        -webkit-user-select: none;
-      }
+      will-change: transform;
+    }
 
-      .card::before {
-        content: "";
-        position: absolute;
-        inset: 0;
-        border-radius: inherit;
-        background: radial-gradient(700px 260px at 20% 0%, rgba(255,255,255,0.12), transparent 55%);
-        pointer-events: none;
-        opacity: 0.85;
-      }
+    /* Logo styles */
+    #preloader-logo {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      opacity: 0;
+      width: 320px;
+      max-width: 60vw;
+      z-index: 2;
+      pointer-events: none;
+    }
 
-      .card-top {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        gap: 12px;
-      }
+    /* Curtain styles */
+    #preloader-curtain {
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 100%;
+      height: 100%;
+      background: #fff;
+      z-index: 3;
+      transform: translateY(100%);
+      will-change: transform;
 
-      .badge {
-        font-size: 12px;
-        color: rgba(255, 255, 255, 0.75);
-        padding: 6px 10px;
-        border-radius: 999px;
-        border: 1px solid rgba(255, 255, 255, 0.14);
-        background: rgba(0, 0, 0, 0.18);
-      }
+    }
+ 
+    /* Gradient blob */
 
-      .icon {
-        width: 34px; height: 34px;
-        border-radius: 12px;
-        border: 1px solid rgba(255, 255, 255, 0.14);
-        background: rgba(255, 255, 255, 0.06);
-        display: grid;
-        place-items: center;
-        font-weight: 700;
-        color: rgba(255, 255, 255, 0.8);
-      }
+    .gradient-rise {
 
-      .card h3 {
-        margin: 0;
-        font-size: 18px;
-        letter-spacing: -0.3px;
-      }
+      width: 93.5rem;
 
-      .card p {
-        margin: 0;
-        color: var(--muted);
-        font-size: 14px;
-        line-height: 1.55;
-      }
+      height: 93.5rem;
 
-      .card-footer {
-        margin-top: auto;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        gap: 10px;
-        padding-top: 10px;
-        border-top: 1px solid rgba(255, 255, 255, 0.12);
-      }
+      border-radius: 93.5rem;
 
-      .meta {
-        font-size: 12px;
-        color: rgba(255, 255, 255, 0.62);
-      }
+      background: radial-gradient(
 
-      .btn {
-        border: 1px solid rgba(255, 255, 255, 0.14);
-        background: rgba(255, 255, 255, 0.06);
-        color: rgba(255, 255, 255, 0.85);
-        padding: 8px 10px;
-        border-radius: 12px;
-        font-size: 13px;
-        cursor: pointer;
-      }
+        50% 50% at 50% 50%,
 
-      .swiper-pagination {
-        position: relative !important;
-        bottom: auto !important;
-        margin-top: 8px;
-      }
-      .swiper-pagination-bullet { opacity: 0.35; }
-      .swiper-pagination-bullet-active { opacity: 1; }
+        var(--tertiary-yellow-40) 0%,
 
-      /* ===== Minimal bottom section ===== */
-      .bottom-minimal {
-        max-width: 1180px;
-        margin: 0 auto;
-        padding: 18px 22px 64px;
-      }
-      .bottom-box {
-        border: 1px solid var(--stroke);
-        border-radius: calc(var(--radius) + 6px);
-        background: rgba(255, 255, 255, 0.03);
-        padding: 18px;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        gap: 16px;
-        flex-wrap: wrap;
-      }
-      .bottom-box .label {
-        font-size: 12px;
-        color: var(--muted);
-        letter-spacing: 0.18em;
-        text-transform: uppercase;
-      }
-      .bottom-box .line {
-        margin: 6px 0 0;
-        font-size: 14px;
-        color: rgba(255, 255, 255, 0.78);
-        line-height: 1.5;
-      }
+        var(--secondary-yellow) 35.58%,
 
-      /* Responsive: tablet/mobile can naturally show less */
-      @media (max-width: 1024px) {
-        :root { --card-w: 320px; --gap: 18px; --viewport-w: calc((2.2 * var(--card-w)) + (2 * var(--gap))); }
-        .hint { text-align: left; }
-      }
-      @media (max-width: 640px) {
-        :root { --card-w: 280px; --gap: 14px; --viewport-w: calc((1.15 * var(--card-w)) + (1 * var(--gap))); }
-        .card { height: 210px; }
-      }
-    </style>
-  </head>
+        #FFAAA5 66.35%,
 
-  <body>
-    <header class="top-minimal">
-      <div class="pill"><span class="dot"></span> Drag to explore</div>
-      <h2>Now it will be: ½ + 2 + ½</h2>
-      <p>
-        Section is full-width, but the slider “window” is capped so you always see only
-        <b>2 full cards</b> in the center with <b>half peeks</b> on both sides.
-      </p>
-    </header>
+        var(--tertiary-coral) 100%
 
-    <section class="slider-section">
-      <div class="slider-shell">
-        <div class="slider-head">
-          <div>
-            <div class="kicker">Featured</div>
-            <h3 class="title">8 Cards • Drag / Grab</h3>
-          </div>
-          <div class="hint">Grab & drag anywhere<br />to slide</div>
-        </div>
+      );
 
-        <!-- centered viewport inside full-width section -->
-        <div class="swiper-viewport">
-          <div class="swiper mySwiper">
-            <div class="swiper-wrapper">
-              <!-- 8 cards -->
-              <div class="swiper-slide">
-                <article class="card">
-                  <div class="card-top"><span class="badge">Card 01</span><span class="icon">A</span></div>
-                  <h3>Clean layout</h3><p>Minimal design with subtle gradients and borders.</p>
-                  <div class="card-footer"><span class="meta">Updated • Today</span><button class="btn">Open</button></div>
-                </article>
-              </div>
-              <div class="swiper-slide">
-                <article class="card">
-                  <div class="card-top"><span class="badge">Card 02</span><span class="icon">B</span></div>
-                  <h3>Perfect peek</h3><p>Half card visible on both sides makes it obvious.</p>
-                  <div class="card-footer"><span class="meta">Mode • Free</span><button class="btn">Open</button></div>
-                </article>
-              </div>
-              <div class="swiper-slide">
-                <article class="card">
-                  <div class="card-top"><span class="badge">Card 03</span><span class="icon">C</span></div>
-                  <h3>Drag / swipe</h3><p>Mouse drag on desktop and touch swipe on mobile.</p>
-                  <div class="card-footer"><span class="meta">UX • Smooth</span><button class="btn">Open</button></div>
-                </article>
-              </div>
-              <div class="swiper-slide">
-                <article class="card">
-                  <div class="card-top"><span class="badge">Card 04</span><span class="icon">D</span></div>
-                  <h3>Snap feel</h3><p>Controlled movement with a premium slider feel.</p>
-                  <div class="card-footer"><span class="meta">Speed • 650ms</span><button class="btn">Open</button></div>
-                </article>
-              </div>
-              <div class="swiper-slide">
-                <article class="card">
-                  <div class="card-top"><span class="badge">Card 05</span><span class="icon">E</span></div>
-                  <h3>Modern cards</h3><p>Simple typography, spacing, and tiny UI accents.</p>
-                  <div class="card-footer"><span class="meta">Theme • Dark</span><button class="btn">Open</button></div>
-                </article>
-              </div>
-              <div class="swiper-slide">
-                <article class="card">
-                  <div class="card-top"><span class="badge">Card 06</span><span class="icon">F</span></div>
-                  <h3>Responsive</h3><p>Automatically adapts to smaller screens.</p>
-                  <div class="card-footer"><span class="meta">Mobile • Ready</span><button class="btn">Open</button></div>
-                </article>
-              </div>
-              <div class="swiper-slide">
-                <article class="card">
-                  <div class="card-top"><span class="badge">Card 07</span><span class="icon">G</span></div>
-                  <h3>Pagination</h3><p>Minimal dots to show progress without clutter.</p>
-                  <div class="card-footer"><span class="meta">Dots • Minimal</span><button class="btn">Open</button></div>
-                </article>
-              </div>
-              <div class="swiper-slide">
-                <article class="card">
-                  <div class="card-top"><span class="badge">Card 08</span><span class="icon">H</span></div>
-                  <h3>Plug & play</h3><p>Single file with CDN links. Paste & run.</p>
-                  <div class="card-footer"><span class="meta">Setup • 1 file</span><button class="btn">Open</button></div>
-                </article>
-              </div>
-            </div>
+      filter: blur(160.76539611816406px);
+ 
+      transform: translateY(100%) scale(0.9);
 
-            <div class="swiper-pagination"></div>
-          </div>
-        </div>
+      will-change: transform;
+
+    }
+ 
+    /* Demo content */
+
+    .page-content {
+
+      min-height: 200vh;
+
+      padding: 4rem;
+
+    }
+</style>
+</head>
+ 
+<body>
+ 
+  <!-- Preloader -->
+  <div id="preloader">
+    <div class="gradient-rise"></div>
+    <img id="preloader-logo" src="assets/images/Logo%20Landscape%20Simple.png" alt="Logo" />
+    <div id="preloader-curtain"></div>
+  </div>
+ 
+
+  <!-- White background overlay to prevent website showing during curtain animation -->
+  <div id="preloader-bg" style="position:fixed;inset:0;background:#fff;z-index:9998;transition:opacity 0.01s;pointer-events:none;"></div>
+
+  <!-- Page Content -->
+  <div class="page-content">
+    <h1 style="font-size:3rem;margin-bottom:2rem;">Welcome to Glenaeon Demo</h1>
+    <p style="font-size:1.5rem;max-width:700px;">This is a demonstration of a smooth sunrise preloader, logo fade-in, and curtain reveal effect using GSAP. The content below is for layout demonstration and fills the screen for a more realistic preview.</p>
+    <div style="display:flex;flex-wrap:wrap;gap:2rem;margin-top:3rem;justify-content:center;">
+      <div style="background:#f5f5f5;padding:2rem 1.5rem;border-radius:1rem;min-width:320px;flex:1 1 320px;max-width:400px;">
+        <h2>Section 1</h2>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque euismod, nisi eu consectetur.</p>
       </div>
-    </section>
-
-    <footer class="bottom-minimal">
-      <div class="bottom-box">
-        <div>
-          <div class="label">Control</div>
-          <p class="line">
-            Want bigger cards? Increase <code>--card-w</code>. Want more gap? change <code>--gap</code>.
-            The viewport auto-stays at “½ + 2 + ½”.
-          </p>
-        </div>
-        <button class="btn" type="button" onclick="document.querySelector('.mySwiper')?.swiper?.slideTo(1, 500)">
-          Go to peek start
-        </button>
+      <div style="background:#f5f5f5;padding:2rem 1.5rem;border-radius:1rem;min-width:320px;flex:1 1 320px;max-width:400px;">
+        <h2>Section 2</h2>
+        <p>Vivamus luctus urna sed urna ultricies ac tempor dui sagittis. In condimentum facilisis porta.</p>
       </div>
-    </footer>
+      <div style="background:#f5f5f5;padding:2rem 1.5rem;border-radius:1rem;min-width:320px;flex:1 1 320px;max-width:400px;">
+        <h2>Section 3</h2>
+        <p>Morbi in sem quis dui placerat ornare. Pellentesque odio nisi, euismod in, pharetra a, ultricies in, diam.</p>
+      </div>
+    </div>
+    <div style="margin-top:4rem;text-align:center;">
+      <img src="assets/images/Logo%20Landscape%20Simple.png" alt="Logo" style="width:300px;max-width:80vw;opacity:0.15;" />
+    </div>
+  </div>
+ 
+  <script>
 
-    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-    <script>
-      const swiper = new Swiper(".mySwiper", {
-        slidesPerView: "auto",
-        spaceBetween: 22,
+    // Animation sequence: sunrise, logo fade, curtain reveal
+    window.addEventListener("load", () => {
+      const tl = gsap.timeline({ defaults: { ease: "power4.inOut" } });
 
-        grabCursor: true,
-        resistanceRatio: 0.85,
-        speed: 650,
-        touchStartPreventDefault: false,
-
-        // start at 1 => left half visible immediately
-        initialSlide: 1,
-
-        pagination: { el: ".swiper-pagination", clickable: true },
-
-        breakpoints: {
-          0: { spaceBetween: 14 },
-          768: { spaceBetween: 18 },
-          1024: { spaceBetween: 22 },
-        },
+      // 1. Sunrise rises slowly and stays centered
+      tl.to(".gradient-rise", {
+        y: "55%",
+        scale: 1,
+        duration: 4.5 // slower rise
+      })
+      // 2. Sunrise stays in center while logo fades in
+      .to("#preloader-logo", {
+        opacity: 1,
+        duration: 1.2
+      }, ">-2") // logo starts appearing just after sunrise is centered
+      // 3. Curtain reveals from bottom to top
+      .to("#preloader-curtain", {
+        y: "0%",
+        duration: 1.1
+      })
+      // 4. Fade out white background overlay after curtain is up
+      .to("#preloader-bg", {
+        opacity: 0,
+        duration: 0.01,
+        onComplete: () => {
+          const bg = document.getElementById("preloader-bg");
+          if (bg) bg.remove();
+        }
+      }, ">-1.05")
+      // 5. Remove preloader from DOM
+      .add(() => {
+        document.getElementById("preloader").remove();
       });
-    </script>
-  </body>
+    });
+</script>
+ 
+</body>
 </html>
+
+ 
