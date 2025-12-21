@@ -901,7 +901,6 @@ body.mega-menu-open .site-header .hamburger .hamburger .line:nth-child(3) {
   padding-left: 1.875rem;
   padding-right: 1.875rem;
   background-color: #ffffff;
-  background-image: url("data:image/svg+xml;base64,...");
   background-repeat: repeat;
   background-size: 819.2px 409.6px;
   position: relative;
@@ -1342,6 +1341,9 @@ body.mega-menu-open .site-header .hamburger .hamburger .line:nth-child(3) {
   width: 1600px;
   height: auto;
 }
+body.mega-menu-open {
+  overflow: hidden;
+}
 @media (max-width: 992px) {
   .mega-menu__inner {
     height: auto;
@@ -1386,6 +1388,9 @@ body.mega-menu-open .site-header .hamburger .hamburger .line:nth-child(3) {
   }
 }
 @media (max-width: 767px) {
+  body.mega-menu-open {
+    overflow-y: auto;
+  }
   .hide-mobile {
     display: none;
   }
