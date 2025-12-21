@@ -4302,10 +4302,8 @@ h1 .hero__title-script {
     top: -1px;
   }
 }
-@media (min-width: 1800px) {
-  html {
-    font-size: 18.5px;
-  }
+html {
+  font-size: clamp(14px, 1.739vmin, 18px);
 }
 :root {
   --color-white: #ffffff;
@@ -4337,6 +4335,7 @@ h1 .hero__title-script {
 html {
   scroll-behavior: smooth;
   caret-color: transparent !important;
+  font-size: clamp(14px, 1.739vmin, 18px);
 }
 ::-webkit-scrollbar {
   display: none;
