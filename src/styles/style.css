@@ -507,12 +507,11 @@ body.mega-menu-open .site-header .hamburger .hamburger .line:nth-child(3) {
 .header-quick-links button:hover {
   /* background-color: darken(@color-sand-20, 3%);*/
 }
-.header-quick-links button [aria-expanded="true"] {
+.header-quick-links button.is-open {
   border-radius: 10px 10px 0 0;
 }
 .header-quick-links button:focus {
   outline: none;
-  border-radius: 10px;
 }
 .header-quick-links button svg {
   width: 20px;
@@ -929,6 +928,13 @@ body.mega-menu-open .site-header .hamburger .hamburger .line:nth-child(3) {
   min-height: auto;
   height: auto;
 }
+.mega-menu__inner .five-as-section__image-wrapper {
+  max-width: 92.75%;
+  position: relative;
+  display: flex;
+  height: 100%;
+  align-items: center;
+}
 .mega-menu__quick-links {
   position: absolute;
   top: 1.875rem;
@@ -1203,6 +1209,12 @@ body.mega-menu-open .site-header .hamburger .hamburger .line:nth-child(3) {
 .mega-menu__subnav-item:hover .mega-menu__subnav-icon svg path {
   fill: #0a1629 !important;
   stroke: #0a1629 !important;
+}
+.mega-menu__subnav-item:not(.mega-menu__subnav-item--clickable) .mega-menu__subnav-icon {
+  display: none;
+}
+.mega-menu__subnav-item.mega-menu__subnav-item--back a .mega-menu__subnav-icon {
+  display: flex;
 }
 .mega-menu__subnav[data-layer] {
   opacity: 0;
