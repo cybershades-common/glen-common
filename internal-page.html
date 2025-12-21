@@ -24,12 +24,126 @@
   <!-- Custom Styles (Compiled from LESS) -->
   <link rel="stylesheet" href="src/styles/style.css" />
   
+  <style>
+    body.internal-page {
+      width: 100%;
+      min-height: 100vh;
+      overflow: hidden;
+      position: relative;
+    }
+
+    body.internal-page:not(.loaded) .wrapper {
+      opacity: 0;
+      visibility: hidden;
+    }
+
+    body.internal-page.loaded {
+      overflow: visible;
+      transition: opacity 0.3s ease;
+    }
+
+    body.internal-page.loaded .wrapper {
+      opacity: 1;
+      visibility: visible;
+      transition: opacity 0.3s ease;
+    }
+
+    #preloader {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: #ffffff;
+      z-index: 9999;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      visibility: hidden;
+    }
+
+    #gradient-blob {
+      width: 93.5rem;
+      height: 93.5rem;
+      max-width: 200vw;
+      max-height: 200vw;
+      min-width: 100vw;
+      min-height: 100vw;
+      border-radius: 93.5rem;
+      background: radial-gradient(50% 50% at 50% 50%, #FFF1B0 0%, #FFDD39 35.58%, #FFAAA5 66.35%, #DB574E 100%);
+      filter: blur(160.76539611816406px);
+      -webkit-backface-visibility: hidden;
+      backface-visibility: hidden;
+      -webkit-transform-style: preserve-3d;
+      transform-style: preserve-3d;
+      will-change: transform;
+    }
+
+    @media (max-width: 768px) {
+      #gradient-blob {
+        width: 150vw;
+        height: 150vw;
+        filter: blur(80px);
+      }
+    }
+
+    @media (max-width: 480px) {
+      #gradient-blob {
+        width: 180vw;
+        height: 180vw;
+        filter: blur(60px);
+      }
+    }
+
+    #unveil-curtain {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: #ffffff;
+      z-index: 10000;
+      transform-origin: bottom;
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    .preloader-logo {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      z-index: 10001;
+      width: 33vw;
+      height: auto;
+      will-change: opacity;
+      -webkit-backface-visibility: hidden;
+      backface-visibility: hidden;
+      pointer-events: none;
+    }
+
+    .preloader-logo object,
+    .preloader-logo img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+  </style>
   
 </head>
 
 <body class="internal-page">
 
-  
+  <div id="preloader">
+    <div id="gradient-blob"></div>
+  </div>
+
+  <div class="preloader-logo">
+    <object data="https://www.glenaeon.nsw.edu.au/static/images/logo.svg" type="image/svg+xml">
+      <img alt="" src="https://www.glenaeon.nsw.edu.au/static/images/logo.png">
+    </object>
+  </div>
 
   <div class="wrapper">
     <header class="site-header transparent">
@@ -2913,6 +3027,89 @@
   <!-- GSAP -->
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+  <script>
+    (function () {
+      const body = document.body;
+      if (!body || !body.classList.contains('internal-page')) {
+        return;
+      }
+
+      const preloader = document.getElementById('preloader');
+      const gradientBlob = document.getElementById('gradient-blob');
+      const logo = document.querySelector('.preloader-logo');
+
+      if (!preloader || !gradientBlob || !logo || typeof gsap === 'undefined') {
+        body.classList.add('loaded');
+        return;
+      }
+
+      let riseAnimationComplete = false;
+      let pageLoaded = false;
+
+      const checkAndUnveil = () => {
+        if (riseAnimationComplete && pageLoaded) {
+          startUnveilAnimation();
+        }
+      };
+
+      gsap.set('#preloader', {
+        visibility: 'visible'
+      });
+
+      gsap.set('#gradient-blob', {
+        yPercent: 110
+      });
+
+      gsap.set('.preloader-logo', {
+        opacity: 0
+      });
+
+      gsap.to('#gradient-blob', {
+        yPercent: 40,
+        scale: 1,
+        duration: 2.5,
+        ease: 'none',
+        onComplete: function () {
+          riseAnimationComplete = true;
+          checkAndUnveil();
+        }
+      });
+
+      gsap.to('.preloader-logo', {
+        opacity: 1,
+        duration: 2,
+        ease: 'none',
+        delay: 0
+      });
+
+      window.addEventListener('load', function () {
+        pageLoaded = true;
+        checkAndUnveil();
+      });
+
+      function startUnveilAnimation() {
+        const tl = gsap.timeline({
+          onComplete: function () {
+            body.classList.add('loaded');
+            preloader.style.display = 'none';
+            logo.style.display = 'none';
+          }
+        });
+
+        tl.to('.preloader-logo', {
+          opacity: 0,
+          duration: 1.5,
+          ease: 'power2.inOut'
+        }, 0);
+
+        tl.to('#preloader', {
+          yPercent: -100,
+          duration: 2,
+          ease: 'power4.inOut'
+        }, 0);
+      }
+    })();
+  </script>
 
   <!-- Custom Scripts -->
   <script src="src/scripts/megamenu-animations.js"></script>
