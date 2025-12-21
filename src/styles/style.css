@@ -1481,7 +1481,7 @@ body.mega-menu-open {
     z-index: 1004;
   }
   .mega-menu .mega-menu__inner .mega-menu__footer {
-    /*  margin-top: auto;*/
+    margin-top: 0.5rem;
   }
   .mega-menu .mega-menu__inner .mega-menu__footer .container-fluid {
     padding: 0;
