@@ -532,10 +532,6 @@ body.mega-menu-open .site-header .hamburger .hamburger .line:nth-child(3) {
   clip-path: inset(0 0 100% 0);
   transition: clip-path 0.8s cubic-bezier(0.22, 1, 0.36, 1);
 }
-.header-quick-links-dropdown.is-open {
-  clip-path: inset(0 0 0% 0);
-  transform: translateX(-50%) translateY(0);
-}
 .header-quick-links-dropdown a {
   display: flex;
   padding: 0.3125rem 1.25rem;
@@ -918,6 +914,7 @@ body.mega-menu-open .site-header .hamburger .hamburger .line:nth-child(3) {
   padding-left: 1.875rem;
   padding-right: 1.875rem;
   background-color: #ffffff;
+  background-image: url("data:image/svg+xml;base64,...");
   background-repeat: repeat;
   background-size: 819.2px 409.6px;
   position: relative;
