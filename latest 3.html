@@ -279,18 +279,29 @@
                 }
             });
 
-            // Fade out logo and slide up preloader together
+            // Fade out logo with blur
             tl.to('.logo', {
-                opacity: 0,
-                duration: 1.5,
-                ease: 'power2.inOut'
+                opacity: 1,
+               filter: 'blur(200px)',
+                duration: 1.4,
+                ease: 'power1.in'
             }, 0);
 
-            tl.to('#preloader', {
-                yPercent: -100,
+            // Circular expansion animation - gradient blob expands from bottom
+            tl.to('#gradient-blob', {
+                scale: 5,
+                yPercent: 10,
                 duration: 2,
                 ease: 'power4.inOut'
             }, 0);
+
+            // Fade out the entire preloader as it expands with blur
+            tl.to('#preloader', {
+                opacity: 0,
+                filter: 'blur(300px)',
+                duration: .8,
+                ease: 'power2.inOut'
+            }, 0.5);
         }
     </script>
 </body>
