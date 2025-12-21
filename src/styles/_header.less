@@ -7,7 +7,7 @@
   position: relative;
   z-index: @z-sticky;
   width: 100%;
-  padding: .675rem 1.125rem;
+  padding: .675rem 1.125rem 1rem;
   min-height: @header-height;
   transition: background @transition-base, box-shadow @transition-base, border-bottom @transition-base, transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 
@@ -79,7 +79,7 @@ body.is-offset-top {
         svg {
           path {
             fill: @tertiary-blue-dark;
-           
+
           }
         }
 
@@ -123,6 +123,19 @@ body.mega-menu-open {
     border-bottom: none;
     z-index: 10000; // Higher than submenu overlays (1000-1004)
 
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 1.90625rem;
+      right: 1.84375rem;
+      height: 1px;
+      background-image: repeating-linear-gradient(to right, #1c3666 0, #1c3666 0.25rem, transparent 0.25rem, transparent 0.5rem);
+      background-repeat: repeat-x;
+      background-size: 0.5rem 0.125rem;
+      background-position: 0 50%;
+
+    }
 
 
     // Change logo to dark
@@ -339,7 +352,7 @@ body.mega-menu-open {
     padding-bottom: 2rem;
     height: auto;
     max-height: 60vh;
-    
+
     // Simple smooth clip-path animation - no fade
     clip-path: inset(0 0 100% 0);
     transition: clip-path 0.36s ease-out;
@@ -390,7 +403,7 @@ body.mega-menu-open {
   -webkit-tap-highlight-color: transparent;
 
   &:hover {
-    opacity:1;
+    opacity: 1;
   }
 
   &:focus {
@@ -680,5 +693,15 @@ body.mega-menu-open {
 
   .menu-button__text {
     display: none;
+  }
+}
+
+@media (max-width:767px){
+  body{
+    .site-header{
+      &:after{
+        display: none;
+      }
+    }
   }
 }
