@@ -19,7 +19,7 @@
     // initHeroSlider();
     initVideoTestimonials();
     initCoCurricularCarousel();
-    initFeaturesCardsSlider();
+    // initFeaturesCardsSlider();
    
   });
 
