@@ -1590,7 +1590,7 @@ body.mega-menu-open {
   position: absolute;
   inset: 0;
   background: linear-gradient(0deg, rgba(0, 0, 0, 0.2) 0%, rgba(0, 0, 0, 0.2) 100%);
-  padding: 6.5rem 2.75rem 7.5rem;
+  padding: 6.5rem 2.875rem 7.5rem;
   align-items: flex-end;
   display: flex;
   height: 100%;
@@ -2360,6 +2360,7 @@ h1 .hero__title-script {
   justify-content: center;
   align-items: center;
   background: url(../../assets/images/circle-btn-bg.svg) no-repeat center;
+  background-size: cover;
 }
 .video-testimonials .card-overlay .card-content .play-button-wrapper .play-button-icon {
   position: relative;
