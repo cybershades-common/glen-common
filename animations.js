@@ -240,7 +240,6 @@ function initAnimations() {
     return;
   }
 
-  initPreloaderAnimation();
   initMarqueeAnimation();
   initVideoTestimonialsAnimations();
   initRevealAnimations();
@@ -330,7 +329,6 @@ if (typeof ScrollTrigger !== 'undefined') {
     }
   });
 }
-
 
 
 
