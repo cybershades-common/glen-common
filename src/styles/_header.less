@@ -44,7 +44,7 @@
 
     &.is-scrolled {
       background: @color-white;
-      box-shadow: @shadow-md;
+     /* box-shadow: @shadow-md;*/
     }
   }
 }
@@ -57,7 +57,7 @@ body.is-offset-top {
     left: 0;
     right: 0;
     background-color: @color-white;
-    box-shadow: @shadow-md;
+ /*   box-shadow: @shadow-md;*/
     z-index: @z-sticky;
     transform: translateY(0);
     transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
@@ -277,11 +277,16 @@ body.mega-menu-open {
     -webkit-tap-highlight-color: transparent;
 
     &:hover {
-      background-color: darken(@color-sand-20, 3%);
+     /* background-color: darken(@color-sand-20, 3%);*/
+
+    }
+    [aria-expanded="true"]{
+      border-radius: 10px 10px 0 0;
     }
 
     &:focus {
       outline: none;
+      border-radius: 10px;
     }
 
     svg {
@@ -298,12 +303,12 @@ body.mega-menu-open {
 
 .header-quick-links-dropdown {
   position: absolute;
-  top: calc(100% + 10px);
+  top: 100%;
   left: 50%;
-  transform: translateX(-50%) translateY(-10px);
+  transform: translateX(-50%) ;
   width: 100%;
-  background-color: @color-white;
-  border-radius: 10px;
+  background-color: #faf7f4;
+  border-radius: 10px 10px;
   box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
   overflow: hidden;
   z-index: 99999; // Must be higher than mega menu (999) and submenu overlays (1000-1004)
@@ -320,7 +325,7 @@ body.mega-menu-open {
 
   &.is-open {
     clip-path: inset(0 0 0% 0);
-    transform: translateX(-50%) translateY(0);
+    transform: translateX(-50%) ;
   }
 
   a {
@@ -337,14 +342,14 @@ body.mega-menu-open {
     transition: background-color 0.2s ease;
 
     &:hover {
-      background-color: @color-sand-20;
+      /*background-color: @color-sand-20;*/
     }
   }
 
   // Mobile styling
   @media (max-width: 767px) {
     left: 50%;
-    transform: translateX(-50%) translateY(-10px);
+    transform: translateX(-50%) ;
     width: 100%;
     box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
     border-radius: 10px;
@@ -359,7 +364,7 @@ body.mega-menu-open {
 
     &.is-open {
       clip-path: inset(0 0 0% 0);
-      transform: translateX(-50%) translateY(0);
+      transform: translateX(-50%) ;
     }
   }
 }
