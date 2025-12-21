@@ -1481,7 +1481,8 @@ body.mega-menu-open {
     z-index: 1004;
   }
   .mega-menu .mega-menu__inner .mega-menu__footer {
-    margin-top: 2.5rem;
+    margin-top: 0;
+    padding-top: 1.5rem;
   }
   .mega-menu .mega-menu__inner .mega-menu__footer .container-fluid {
     padding: 0;
