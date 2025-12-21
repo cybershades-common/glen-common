@@ -901,6 +901,7 @@ body.mega-menu-open .site-header .hamburger .hamburger .line:nth-child(3) {
   padding-left: 1.875rem;
   padding-right: 1.875rem;
   background-color: #ffffff;
+  background-image: url("data:image/svg+xml;base64,...");
   background-repeat: repeat;
   background-size: 819.2px 409.6px;
   position: relative;
@@ -4302,8 +4303,10 @@ h1 .hero__title-script {
     top: -1px;
   }
 }
-html {
-  font-size: clamp(14px, 1.739vmin, 18px);
+@media (min-width: 1800px) {
+  html {
+    font-size: 18.5px;
+  }
 }
 :root {
   --color-white: #ffffff;
@@ -4335,7 +4338,6 @@ html {
 html {
   scroll-behavior: smooth;
   caret-color: transparent !important;
-  font-size: clamp(14px, 1.739vmin, 18px);
 }
 ::-webkit-scrollbar {
   display: none;
