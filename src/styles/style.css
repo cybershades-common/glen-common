@@ -4392,6 +4392,15 @@ h1 .hero__title-script {
   html {
     font-size: 14px;
   }
+  html body .hero {
+    height: 95svh;
+  }
+  html body .hero h1 .hero__title-script {
+    font-size: 5rem;
+  }
+  html body .section .edge-image.bottom-edge {
+    bottom: -1px;
+  }
   html body .wellbeing-section {
     padding: 5.25rem 0;
   }
