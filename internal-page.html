@@ -60,6 +60,7 @@
       -moz-transform-style: preserve-3d;
       transform-style: preserve-3d;
       will-change: transform;
+      opacity: 0;
     }
 
     /* Mobile optimization */
@@ -110,6 +111,11 @@
 </head>
 
 <body class="internal-page" style="overflow: hidden;">
+  
+  <style>
+    body { background: #ffffff; }
+    #preloader { visibility: visible !important; }
+  </style>
 
   <!-- Gradient Layer (stays in place, fades out) -->
   <div id="preloader">
@@ -3037,20 +3043,17 @@
     });
 
     gsap.set('#gradient-blob', {
-      yPercent: 110
+      yPercent: 110,
+      opacity: 1
     });
 
-    // Set logo initial opacity to 0
-    gsap.set('.logo', {
-      opacity: 0
-    });
-
-    // Rise animation - starts IMMEDIATELY when page loads
+    // Start animation immediately - no delay
     gsap.to('#gradient-blob', {
       yPercent: 40,
       scale: 1,
       duration: 2.5,
       ease: 'none',
+      delay: 0,
       onComplete: function() {
         riseAnimationComplete = true;
         checkAndUnveil();
@@ -3063,6 +3066,11 @@
       duration: 2,
       ease: 'none',
       delay: 0
+    });
+
+    // Set logo initial opacity to 0  
+    gsap.set('.logo', {
+      opacity: 0
     });
 
     // Listen for window load event
