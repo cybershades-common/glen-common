@@ -44,7 +44,7 @@
 
     &.is-scrolled {
       background: @color-white;
-     /* box-shadow: @shadow-md;*/
+      /* box-shadow: @shadow-md;*/
     }
   }
 }
@@ -57,7 +57,7 @@ body.is-offset-top {
     left: 0;
     right: 0;
     background-color: @color-white;
- /*   box-shadow: @shadow-md;*/
+    /*   box-shadow: @shadow-md;*/
     z-index: @z-sticky;
     transform: translateY(0);
     transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
@@ -277,16 +277,17 @@ body.mega-menu-open {
     -webkit-tap-highlight-color: transparent;
 
     &:hover {
-     /* background-color: darken(@color-sand-20, 3%);*/
+      /* background-color: darken(@color-sand-20, 3%);*/
 
     }
-   &.is-open{
+
+    &.is-open {
       border-radius: 10px 10px 0 0;
     }
 
     &:focus {
       outline: none;
-     
+
     }
 
     svg {
@@ -305,11 +306,12 @@ body.mega-menu-open {
   position: absolute;
   top: 100%;
   left: 50%;
-  transform: translateX(-50%) ;
+  transform: translateX(-50%);
   width: 100%;
   background-color: #faf7f4;
-  border-radius: 10px 10px;
- /* box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);*/
+  padding: 1.25rem 0;
+  border-radius: 0.625rem;
+  /* box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);*/
   overflow: hidden;
   z-index: 99999; // Must be higher than mega menu (999) and submenu overlays (1000-1004)
 
@@ -319,20 +321,20 @@ body.mega-menu-open {
   transition: clip-path 0.8s cubic-bezier(0.22, 1, 0.36, 1);
   // transition: clip-path 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
   // transition: clip-path 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-padding-bottom: 0.5rem;
-margin-top: -1px;
+
+  margin-top: -1px;
 
 
 
   &.is-open {
     clip-path: inset(0 0 0% 0);
-    transform: translateX(-50%) ;
+    transform: translateX(-50%);
     border-radius: 0 0 10px 10px;
   }
 
   a {
     display: flex;
-    padding: 0.3125rem 1.25rem;
+    padding: 0.475rem  1.25rem;
     align-items: center;
     gap: var(--spacing-sm, 0.625rem);
     align-self: stretch;
@@ -353,7 +355,7 @@ margin-top: -1px;
   // Mobile styling
   @media (max-width: 767px) {
     left: 50%;
-    transform: translateX(-50%) ;
+    transform: translateX(-50%);
     width: 100%;
     box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
     border-radius: 10px;
@@ -368,7 +370,7 @@ margin-top: -1px;
 
     &.is-open {
       clip-path: inset(0 0 0% 0);
-      transform: translateX(-50%) ;
+      transform: translateX(-50%);
     }
   }
 }
@@ -705,10 +707,10 @@ margin-top: -1px;
   }
 }
 
-@media (max-width:767px){
-  body{
-    .site-header{
-      &:after{
+@media (max-width:767px) {
+  body {
+    .site-header {
+      &:after {
         display: none;
       }
     }
