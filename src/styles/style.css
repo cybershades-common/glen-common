@@ -550,7 +550,7 @@ body.mega-menu-open .site-header .hamburger .hamburger .line:nth-child(3) {
   align-self: stretch;
   font-family: 'Averta', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   font-size: 0.9375rem;
-  line-height: 1.4;
+  line-height: 140%;
   color: #1c3666;
   text-decoration: none;
   transition: background-color 0.2s ease;
@@ -1637,7 +1637,7 @@ body.mega-menu-open {
 .hero .hero__slider .hero__slide-video {
   position: absolute;
   inset: 0;
-  width: 100%;
+  aspect-ratio: 1440/900;
   height: 100%;
   object-fit: cover;
   object-position: center 50%;
@@ -4373,6 +4373,16 @@ h1 .hero__title-script {
 @media (min-width: 1800px) {
   html {
     font-size: 20px;
+  }
+}
+@media (min-width: 2100px) {
+  html {
+    font-size: 24px;
+  }
+}
+@media (min-width: 3000px) {
+  html {
+    font-size: 32px;
   }
 }
 :root {
