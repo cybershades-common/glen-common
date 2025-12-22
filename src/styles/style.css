@@ -829,6 +829,11 @@ body.mega-menu-open .site-header .hamburger .hamburger .line:nth-child(3) {
     display: none;
   }
 }
+@media (min-width: 992px) and (max-width: 1290px) {
+  body .site-header .header-quick-links {
+    max-width: 212px;
+  }
+}
 @media (max-width: 767px) {
   body .site-header:after {
     display: none;
@@ -1440,6 +1445,19 @@ body.mega-menu-open {
   }
   .mega-menu__header-actions .header-cta {
     display: none;
+  }
+}
+@media (min-width: 992px) and (max-width: 1290px) {
+  .mega-menu__nav-item a {
+    font-size: 2.75rem;
+  }
+  .mega-menu__circle-image {
+    width: 20vw;
+    height: 20vw;
+    left: inherit;
+  }
+  .mega-menu__nav {
+    margin: 4rem 0;
   }
 }
 @media (max-width: 767px) {
@@ -2950,8 +2968,8 @@ h1 .hero__title-script {
   right: 0;
 }
 .staff-section .grid.row > div .grid_card .image > img {
-  width: 98%;
-  height: 99%;
+  width: 99%;
+  height: 98%;
   object-fit: cover;
   border-radius: 50%;
   margin: 0.125rem;
@@ -4368,6 +4386,32 @@ h1 .hero__title-script {
   }
   body .site-footer .container-fluid .footer__acknowledgement {
     margin-bottom: 2rem;
+  }
+}
+@media (min-width: 992px) and (max-width: 1290px) {
+  html {
+    font-size: 14px;
+  }
+  html body .wellbeing-section {
+    padding: 5.25rem 0;
+  }
+  html body .wellbeing-section .container-fluid {
+    padding: 0 2rem;
+    flex-direction: column;
+  }
+  html body .wellbeing-section .container-fluid .wellbeing-title-group {
+    margin-bottom: 2.5rem;
+  }
+  html body .wellbeing-section .container-fluid .wellbeing-text-blocks-row {
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+  html body .wellbeing-section .container-fluid .wellbeing-text-blocks-row > div {
+    width: 100%;
+  }
+  html body .wellbeing-section .container-fluid .wellbeing-text-blocks-row > div p.wellbeing-text-heading {
+    width: 100%;
+    max-width: 100%;
   }
 }
 @media (min-width: 1800px) {

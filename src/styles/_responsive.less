@@ -277,7 +277,8 @@
         top: -1px;
       }
     }
-    .site-footer .container-fluid .footer__acknowledgement{
+
+    .site-footer .container-fluid .footer__acknowledgement {
       margin-bottom: 2rem;
     }
   }
@@ -285,11 +286,50 @@
 
 }
 
+
+@media (min-width:992px) and (max-width:1290px) {
+  html {
+    font-size: 14px;
+
+    body {
+
+      .wellbeing-section {
+        padding: 5.25rem 0;
+
+        .container-fluid {
+          padding: 0 2rem;
+          flex-direction: column;
+
+          .wellbeing-title-group {
+            margin-bottom: 2.5rem;
+          }
+
+          .wellbeing-text-blocks-row {
+            flex-direction: column;
+            gap: 1.5rem;
+
+            >div {
+              width: 100%;
+
+
+              p.wellbeing-text-heading {
+                width: 100%;
+                max-width: 100%;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
 @media (min-width:1800px) {
   html {
     font-size: 20px;
   }
 }
+
 @media (min-width:2100px) {
   html {
     font-size: 24px;
