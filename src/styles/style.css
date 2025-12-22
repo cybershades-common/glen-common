@@ -529,7 +529,7 @@ body.mega-menu-open .site-header .hamburger .hamburger .line:nth-child(3) {
   width: 100%;
   background-color: #faf7f4;
   border-radius: 10px 10px;
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+  /* box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);*/
   overflow: hidden;
   z-index: 99999;
   clip-path: inset(0 0 100% 0);
@@ -554,6 +554,8 @@ body.mega-menu-open .site-header .hamburger .hamburger .line:nth-child(3) {
 }
 .header-quick-links-dropdown a:hover {
   /*background-color: @color-sand-20;*/
+  font-weight: bold;
+  color: #1c3666;
 }
 @media (max-width: 767px) {
   .header-quick-links-dropdown {
