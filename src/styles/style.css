@@ -1363,11 +1363,12 @@ body.mega-menu-open .site-header .hamburger .hamburger .line:nth-child(3) {
   position: absolute;
   top: 0;
   left: 0;
-  width: 99%;
+  right: 0;
+  width: 98%;
   height: 98%;
   object-fit: cover;
   border-radius: 50%;
-  margin: 0.125rem;
+  margin: 0.125rem auto;
   opacity: 0;
   visibility: hidden;
   transition: opacity 0.3s ease, visibility 0.3s ease;
