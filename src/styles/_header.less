@@ -273,7 +273,7 @@ body.mega-menu-open {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    transition: background-color 0.2s ease;
+    transition: 0.2s ease all;
     -webkit-tap-highlight-color: transparent;
 
     &:hover {
@@ -319,13 +319,15 @@ body.mega-menu-open {
   transition: clip-path 0.8s cubic-bezier(0.22, 1, 0.36, 1);
   // transition: clip-path 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
   // transition: clip-path 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-
+padding-bottom: 0.5rem;
+margin-top: -1px;
 
 
 
   &.is-open {
     clip-path: inset(0 0 0% 0);
     transform: translateX(-50%) ;
+    border-radius: 0 0 10px 10px;
   }
 
   a {
