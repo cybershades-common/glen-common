@@ -1467,6 +1467,9 @@ body.mega-menu-open {
   .hide-mobile {
     display: none;
   }
+  .mega-menu .header-quick-links-dropdown a {
+    font-size: 1.25rem;
+  }
   .mega-menu .mega-menu__inner {
     padding: 6rem 1.25rem 4rem;
     height: 100%;
@@ -2844,10 +2847,10 @@ h1 .hero__title-script {
   }
   .co-curricular-carousel .navigation.arrow-navigation .arrow-navigation__arrow {
     display: block;
-    width: 56px;
-    height: 56px;
-    min-width: 56px;
-    min-height: 56px;
+    width: 3.5rem;
+    height: 3.5rem;
+    min-width: 3.5rem;
+    min-height: 3.5rem;
   }
 }
 @media (min-width: 768px) and (max-width: 992px) {
@@ -4386,6 +4389,10 @@ h1 .hero__title-script {
   }
   body .site-footer .container-fluid .footer__acknowledgement {
     margin-bottom: 2rem;
+  }
+  body .full-width-testimonial-audio .testimonial-audio-navigation .arrow-navigation__arrow {
+    height: 3.5rem;
+    width: 3.5rem;
   }
 }
 @media (min-width: 992px) and (max-width: 1290px) {
