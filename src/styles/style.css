@@ -549,11 +549,12 @@ body.mega-menu-open .site-header .hamburger .hamburger .line:nth-child(3) {
   gap: var(--spacing-sm, 0.625rem);
   align-self: stretch;
   font-family: 'Averta', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-  font-size: 0.9375rem;
-  line-height: 1.4;
+  font-size: 1.25rem;
+  line-height: 130%;
   color: #1c3666;
   text-decoration: none;
   transition: background-color 0.2s ease;
+  letter-spacing: -2%;
 }
 .header-quick-links-dropdown a:hover {
   /*background-color: @color-sand-20;*/
