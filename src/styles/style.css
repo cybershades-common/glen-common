@@ -1344,20 +1344,37 @@ body.mega-menu-open .site-header .hamburger .hamburger .line:nth-child(3) {
   z-index: 1001;
   pointer-events: none;
 }
-.mega-menu__circle-image img {
+.mega-menu__circle-image .frame {
   position: absolute;
-  top: 0;
   left: 0;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  z-index: 2;
+  pointer-events: none;
+}
+.mega-menu__circle-image .frame img {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  border: none;
+  border-radius: 0;
+}
+.mega-menu__circle-image img:not(.frame img) {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 98%;
+  height: 99%;
+  object-fit: cover;
   border-radius: 50%;
   border: 4.8px solid #ffffff;
+  margin: 0.125rem;
   opacity: 0;
   visibility: hidden;
   transition: opacity 0.3s ease, visibility 0.3s ease;
 }
-.mega-menu__circle-image img.active {
+.mega-menu__circle-image img:not(.frame img).active {
   opacity: 1;
   visibility: visible;
 }

@@ -81,6 +81,7 @@
 
     // Add circle image zoom animation (runs simultaneously with menu items)
     if (circleImage) {
+      // Animate the entire circle image container (this includes both frame and images)
       menuTimeline.fromTo(
         circleImage,
         {
@@ -91,7 +92,7 @@
           scale: 1,
           opacity: 1,
           duration: 0.6,
-          ease: 'power2.out',
+          ease: 'none',
           transformOrigin: 'center center'
         },
         0.3 // Start slightly after menu appears
@@ -416,6 +417,7 @@
         if (targetImage) {
           targetImage.classList.add('active');
         }
+
         
         circleImageContainer.setAttribute('data-layer', layerNumber);
         return;
@@ -432,8 +434,8 @@
         timeline.to(currentImage, {
           scale: 0,
           opacity: 0,
-          duration: 0.3,
-          ease: 'power2.in',
+          duration: 0.4,
+          ease: 'none',
           transformOrigin: 'center center',
           onComplete: () => {
             currentImage.classList.remove('active');
@@ -448,7 +450,7 @@
         scale: 1,
         opacity: 1,
         duration: 0.4,
-        ease: 'back.out(1.2)',
+        ease: 'none',
         transformOrigin: 'center center',
         onStart: () => {
           targetImage.classList.add('active');
