@@ -27,10 +27,10 @@
     // Create timeline (paused initially)
     let menuTimeline = gsap.timeline({ paused: true });
     const animationSettings = {
-      closeTimeScale: 3.35,
+      closeTimeScale: 5.35,
       overlay: {
         fadeIn: 0.35,
-        fadeOut: 0.25,
+        fadeOut: 0.001,
         closeDelay: 0,
         yOffset: 12
       }
