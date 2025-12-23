@@ -26,6 +26,16 @@
 
     // Create timeline (paused initially)
     let menuTimeline = gsap.timeline({ paused: true });
+    const animationSettings = {
+      closeTimeScale: 3.35,
+      overlay: {
+        fadeIn: 0.35,
+        fadeOut: 0.25,
+        closeDelay: 0,
+        yOffset: 12
+      }
+    };
+    let overlayTween = null;
 
     // Get menu items, circle image, footer links, and mobile elements
     const navItems = megaMenu.querySelectorAll('.mega-menu__nav-item');
@@ -103,6 +113,8 @@
      * Open menu - play timeline forward
      */
     function openMenu() {
+      // Ensure opening animation runs at the baseline speed
+      menuTimeline.timeScale(1);
       // Reset timeline to start
       menuTimeline.progress(0);
       
@@ -150,6 +162,7 @@
       // Set menu active states
       megaMenu.classList.add('is-active');
       megaMenuOverlay.classList.add('is-active');
+      playOverlayEnter();
       body.classList.add('mega-menu-open');
       menuToggle.setAttribute('aria-expanded', 'true');
       
@@ -171,7 +184,10 @@
       const activeSubmenus = megaMenu.querySelectorAll('.mega-menu__subnav.is-active');
       const isMobile = window.innerWidth < 768;
       
-      if (activeSubmenus.length > 0 && !isMobile) {
+      const shouldDelayReverse = activeSubmenus.length > 0 && !isMobile;
+      playOverlayExit();
+      
+      if (shouldDelayReverse) {
         // Desktop/tablet: Animate submenu items out with stagger (similar to main menu)
         activeSubmenus.forEach(submenu => {
           const submenuItems = submenu.querySelectorAll('.mega-menu__subnav-item, .mobile-only');
@@ -197,6 +213,7 @@
         
         // Delay main menu reverse animation to let submenu items animate out first
         setTimeout(() => {
+          menuTimeline.timeScale(animationSettings.closeTimeScale);
           menuTimeline.reverse(0);
         }, 200);
       } else {
@@ -207,11 +224,15 @@
             resetSubmenuItems(submenu);
           });
         }
+        menuTimeline.timeScale(animationSettings.closeTimeScale);
         menuTimeline.reverse(0);
       }
       
       // Set reverse complete callback
       menuTimeline.eventCallback('onReverseComplete', () => {
+        // Reset speed so the next open animation runs normally
+        menuTimeline.timeScale(1);
+
         megaMenu.classList.remove('is-active');
         megaMenuOverlay.classList.remove('is-active');
         body.classList.remove('mega-menu-open');
@@ -266,6 +287,40 @@
         
         // Return focus to menu toggle
         menuToggle.focus();
+      });
+    }
+
+    function playOverlayEnter() {
+      if (!megaMenuOverlay) return;
+      if (overlayTween) overlayTween.kill();
+      gsap.set(megaMenuOverlay, {
+        autoAlpha: 0,
+        y: -animationSettings.overlay.yOffset
+      });
+      overlayTween = gsap.to(megaMenuOverlay, {
+        autoAlpha: 1,
+        y: 0,
+        duration: animationSettings.overlay.fadeIn,
+        ease: 'power2.out'
+      });
+    }
+
+    function playOverlayExit() {
+      if (!megaMenuOverlay) return;
+      if (overlayTween) overlayTween.kill();
+      overlayTween = gsap.to(megaMenuOverlay, {
+        autoAlpha: 0,
+        y: -animationSettings.overlay.yOffset,
+        duration: animationSettings.overlay.fadeOut,
+        delay: animationSettings.overlay.closeDelay,
+        ease: 'power2.in',
+        onComplete: () => {
+          megaMenuOverlay.classList.remove('is-active');
+          gsap.set(megaMenuOverlay, {
+            autoAlpha: 0,
+            y: -animationSettings.overlay.yOffset
+          });
+        }
       });
     }
 
