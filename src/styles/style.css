@@ -2943,6 +2943,43 @@ h1 .hero__title-script {
 .staff-section .grid.row > div {
   padding: 0 1.5625rem;
 }
+.staff-section .grid.row > div.is-hidden {
+  display: none !important;
+}
+.staff-section .grid.row > div.is-filtering-in,
+.staff-section .grid.row > div.is-filtering-out {
+  display: block !important;
+}
+.staff-section .grid.row > div.is-filtering-in .grid_card {
+  animation: staff-card-in 0.4s ease forwards;
+}
+.staff-section .grid.row > div.is-filtering-out .grid_card {
+  animation: staff-card-out 0.3s ease forwards;
+}
+@keyframes staff-card-in {
+  from {
+    opacity: 0;
+    transform: translateY(30px) scale(0.94);
+    filter: blur(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    filter: blur(0);
+  }
+}
+@keyframes staff-card-out {
+  from {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    filter: blur(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateY(-30px) scale(0.9);
+    filter: blur(6px);
+  }
+}
 .staff-section .grid.row > div .grid_card {
   display: flex;
   flex-direction: column;

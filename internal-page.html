@@ -1613,20 +1613,23 @@
         </div>
         <div class="row">
           <div class="col-lg-12">
-            <div class="filters">
+            <div class="filters" role="tablist">
               <button class="filter-tab filter-tab--active" type="button" data-filter="all">
+                All Staff
+              </button>
+              <button class="filter-tab" type="button" data-filter="executive">
                 Executive
               </button>
-              <button class="filter-tab" type="button" data-filter="category1">
+              <button class="filter-tab" type="button" data-filter="early-childhood">
                 Early Childhood
               </button>
-              <button class="filter-tab" type="button" data-filter="category2">
+              <button class="filter-tab" type="button" data-filter="k-class-3">
                 K - Class 3
               </button>
-              <button class="filter-tab" type="button" data-filter="category3">
+              <button class="filter-tab" type="button" data-filter="classes-4-12">
                 Classes 4 - 12
               </button>
-              <button class="filter-tab" type="button" data-filter="category3">
+              <button class="filter-tab" type="button" data-filter="operational">
                 Operational Staff
               </button>
             </div>
@@ -1634,10 +1637,10 @@
         </div>
         <div class="row">
           <div class="col-lg-10 offset-lg-1">
-            <div class="grid row">
+            <div class="grid row" data-staff-grid>
 
-              <div class="col-lg-3 col-md-4 col-sm-6">
-                <div class="grid_card" data-category="category1">
+              <div class="col-lg-3 col-md-4 col-sm-6" data-staff-card data-groups="executive" aria-hidden="false">
+                <div class="grid_card">
                   <div class="image">
                     <div class="frame">
                       <img src="assets/images/normal-white-frame.svg" alt="" aria-hidden="true"></div>
@@ -1647,9 +1650,9 @@
                   <p class="position">Position Title</p>
                 </div>
               </div>
-              <div class="col-lg-3 col-md-4 col-sm-6">
+              <div class="col-lg-3 col-md-4 col-sm-6" data-staff-card data-groups="early-childhood" aria-hidden="false">
 
-                <div class="grid_card" data-category="category2">
+                <div class="grid_card">
                   <div class="image">
                     <div class="frame"><img src="assets/images/normal-white-frame.svg" alt="" aria-hidden="true"></div>
                     <img src="assets/images/img.jpg" alt="Staff Member 2" />
@@ -1658,8 +1661,8 @@
                   <p class="position">Position Title</p>
                 </div>
               </div>
-              <div class="col-lg-3 col-md-4 col-sm-6">
-                <div class="grid_card" data-category="category1">
+              <div class="col-lg-3 col-md-4 col-sm-6" data-staff-card data-groups="executive" aria-hidden="false">
+                <div class="grid_card">
                   <div class="image">
                     <div class="frame"><img src="assets/images/normal-white-frame.svg" alt="" aria-hidden="true"></div>
                     <img src="assets/images/img.jpg" alt="Staff Member 3" />
@@ -1669,8 +1672,8 @@
                 </div>
               </div>
 
-              <div class="col-lg-3 col-md-4 col-sm-6">
-                <div class="grid_card" data-category="category3">
+              <div class="col-lg-3 col-md-4 col-sm-6" data-staff-card data-groups="k-class-3" aria-hidden="false">
+                <div class="grid_card">
                   <div class="image">
                     <div class="frame"><img src="assets/images/normal-white-frame.svg" alt="" aria-hidden="true"></div>
                     <img src="assets/images/img.jpg" alt="Staff Member 4" />
@@ -1680,8 +1683,8 @@
                 </div>
               </div>
 
-              <div class="col-lg-3 col-md-4 col-sm-6">
-                <div class="grid_card" data-category="category2">
+              <div class="col-lg-3 col-md-4 col-sm-6" data-staff-card data-groups="executive" aria-hidden="false">
+                <div class="grid_card">
                   <div class="image">
                     <div class="frame"><img src="assets/images/normal-white-frame.svg" alt="" aria-hidden="true"></div>
                     <img src="assets/images/img.jpg" alt="Staff Member 5" />
@@ -1691,9 +1694,9 @@
                 </div>
               </div>
 
-              <div class="col-lg-3 col-md-4 col-sm-6">
+              <div class="col-lg-3 col-md-4 col-sm-6" data-staff-card data-groups="classes-4-12" aria-hidden="false">
 
-                <div class="grid_card" data-category="category1">
+                <div class="grid_card">
                   <div class="image">
                     <div class="frame"><img src="assets/images/normal-white-frame.svg" alt="" aria-hidden="true"></div>
                     <img src="assets/images/img.jpg" alt="Staff Member 6" />
@@ -1703,8 +1706,8 @@
                 </div>
               </div>
 
-              <div class="col-lg-3 col-md-4 col-sm-6">
-                <div class="grid_card" data-category="category3">
+              <div class="col-lg-3 col-md-4 col-sm-6" data-staff-card data-groups="classes-4-12" aria-hidden="false">
+                <div class="grid_card">
                   <div class="image">
                     <div class="frame"><img src="assets/images/normal-white-frame.svg" alt="" aria-hidden="true"></div>
                     <img src="assets/images/img.jpg" alt="Staff Member 7" />
@@ -1714,8 +1717,8 @@
                 </div>
               </div>
 
-              <div class="col-lg-3 col-md-4 col-sm-6">
-                <div class="grid_card" data-category="category2">
+              <div class="col-lg-3 col-md-4 col-sm-6" data-staff-card data-groups="k-class-3" aria-hidden="false">
+                <div class="grid_card">
                   <div class="image">
                     <div class="frame"><img src="assets/images/normal-white-frame.svg" alt="" aria-hidden="true"></div>
                     <img src="assets/images/img.jpg" alt="Staff Member 8" />
@@ -1724,8 +1727,8 @@
                   <p class="position">Position Title</p>
                 </div>
               </div>
-              <div class="col-lg-3 col-md-4 col-sm-6">
-                <div class="grid_card" data-category="category1">
+              <div class="col-lg-3 col-md-4 col-sm-6" data-staff-card data-groups="k-class-3" aria-hidden="false">
+                <div class="grid_card">
                   <div class="image">
                     <div class="frame"><img src="assets/images/normal-white-frame.svg" alt="" aria-hidden="true"></div>
                     <img src="assets/images/img.jpg" alt="Staff Member 9" />
@@ -1734,8 +1737,8 @@
                   <p class="position">Position Title</p>
                 </div>
               </div>
-              <div class="col-lg-3 col-md-4 col-sm-6">
-                <div class="grid_card" data-category="category3">
+              <div class="col-lg-3 col-md-4 col-sm-6" data-staff-card data-groups="operational,k-class-3" aria-hidden="false">
+                <div class="grid_card">
                   <div class="image">
                     <div class="frame"><img src="assets/images/normal-white-frame.svg" alt="" aria-hidden="true"></div>
                     <img src="assets/images/img.jpg" alt="Staff Member 10" />

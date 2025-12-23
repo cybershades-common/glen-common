@@ -21,6 +21,7 @@
     // initHeroSlider();
     initVideoTestimonials();
     initCoCurricularCarousel();
+    initStaffFilters();
     // initFeaturesCardsSlider();
    
   });
@@ -671,6 +672,109 @@
     window.addEventListener('mouseup', onPointerUp);
 
     handlePointer();
+  }
+
+  // ==========================================================================
+  // STAFF FILTERS
+  // ==========================================================================
+
+  function initStaffFilters() {
+    const staffSections = document.querySelectorAll('.staff-section');
+    if (!staffSections.length) return;
+
+    staffSections.forEach(section => {
+      const filterButtons = Array.from(section.querySelectorAll('.filters .filter-tab'));
+      const staffCards = Array.from(section.querySelectorAll('[data-staff-card]'));
+      if (!filterButtons.length || !staffCards.length) return;
+
+      const animationTimers = new WeakMap();
+      const animationDuration = 350;
+
+      let activeFilter =
+        section.querySelector('.filter-tab.filter-tab--active')?.getAttribute('data-filter') || 'all';
+
+      filterButtons.forEach(button => {
+        button.addEventListener('click', () => {
+          const filterValue = button.getAttribute('data-filter') || 'all';
+          if (filterValue === activeFilter) return;
+          activeFilter = filterValue;
+          filterButtons.forEach(btn => btn.classList.toggle('filter-tab--active', btn === button));
+          applyFilter(filterValue);
+        });
+      });
+
+      applyFilter(activeFilter, { skipAnimation: true });
+
+      function cardGroups(card) {
+        return (card.getAttribute('data-groups') || '')
+          .split(',')
+          .map(group => group.trim())
+          .filter(Boolean);
+      }
+
+      function clearTimer(card) {
+        const timer = animationTimers.get(card);
+        if (timer) {
+          clearTimeout(timer);
+          animationTimers.delete(card);
+        }
+      }
+
+      function showCard(card, skipAnimation) {
+        clearTimer(card);
+        card.classList.remove('is-hidden');
+        card.setAttribute('aria-hidden', 'false');
+
+        if (skipAnimation) {
+          card.classList.remove('is-filtering-in', 'is-filtering-out');
+          return;
+        }
+
+        card.classList.remove('is-filtering-out');
+        card.classList.add('is-filtering-in');
+        const timer = setTimeout(() => {
+          card.classList.remove('is-filtering-in');
+          animationTimers.delete(card);
+        }, animationDuration);
+        animationTimers.set(card, timer);
+      }
+
+      function hideCard(card, skipAnimation) {
+        clearTimer(card);
+
+        if (skipAnimation) {
+          card.classList.add('is-hidden');
+          card.classList.remove('is-filtering-in', 'is-filtering-out');
+          card.setAttribute('aria-hidden', 'true');
+          return;
+        }
+
+        card.classList.remove('is-filtering-in');
+        card.classList.add('is-filtering-out');
+        const timer = setTimeout(() => {
+          card.classList.remove('is-filtering-out');
+          card.classList.add('is-hidden');
+          card.setAttribute('aria-hidden', 'true');
+          animationTimers.delete(card);
+        }, animationDuration);
+        animationTimers.set(card, timer);
+      }
+
+      function applyFilter(filterValue, options = {}) {
+        const { skipAnimation = false } = options;
+
+        staffCards.forEach(card => {
+          const shouldShow =
+            filterValue === 'all' || cardGroups(card).some(group => group === filterValue);
+
+          if (shouldShow) {
+            showCard(card, skipAnimation);
+          } else {
+            hideCard(card, skipAnimation);
+          }
+        });
+      }
+    });
   }
 
   // ==========================================================================
