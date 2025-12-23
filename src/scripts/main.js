@@ -688,7 +688,7 @@
       if (!filterButtons.length || !staffCards.length) return;
 
       const animationTimers = new WeakMap();
-      const animationDuration = 350;
+      const animationDuration = 650;
 
       let activeFilter =
         section.querySelector('.filter-tab.filter-tab--active')?.getAttribute('data-filter') || 'all';
@@ -763,16 +763,45 @@
       function applyFilter(filterValue, options = {}) {
         const { skipAnimation = false } = options;
 
-        staffCards.forEach(card => {
+        if (skipAnimation) {
+          staffCards.forEach(card => {
+            const shouldShow =
+              filterValue === 'all' || cardGroups(card).some(group => group === filterValue);
+
+            if (shouldShow) {
+              showCard(card, true);
+            } else {
+              hideCard(card, true);
+            }
+          });
+          return;
+        }
+
+        const cardsToHide = staffCards.filter(card => !card.classList.contains('is-hidden'));
+        const cardsToShow = staffCards.filter(card => {
           const shouldShow =
             filterValue === 'all' || cardGroups(card).some(group => group === filterValue);
-
-          if (shouldShow) {
-            showCard(card, skipAnimation);
-          } else {
-            hideCard(card, skipAnimation);
-          }
+          return shouldShow;
         });
+
+        if (!cardsToShow.length && !cardsToHide.length) return;
+
+        cardsToHide.forEach(card => hideCard(card, false));
+
+        const startShow = () => {
+          staffCards.forEach(card => {
+            const shouldShow = cardsToShow.includes(card);
+            if (shouldShow) {
+              showCard(card, false);
+            } else {
+              // ensure cards not in this filter remain hidden after the cycle
+              card.classList.add('is-hidden');
+              card.setAttribute('aria-hidden', 'true');
+            }
+          });
+        };
+
+        setTimeout(startShow, animationDuration);
       }
     });
   }

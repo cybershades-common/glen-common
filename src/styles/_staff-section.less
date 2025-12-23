@@ -112,11 +112,11 @@
       }
 
       &.is-filtering-in .grid_card {
-        animation: staff-card-in 0.4s ease forwards;
+        animation: staff-card-in 0.6s ease forwards;
       }
 
       &.is-filtering-out .grid_card {
-        animation: staff-card-out 0.3s ease forwards;
+        animation: staff-card-out 0.6s ease forwards;
       }
 
       .grid_card {
@@ -125,6 +125,9 @@
         align-items: center;
         text-align: center;
         width: 100%;
+        clip-path: inset(0 0 0 0);
+        -webkit-clip-path: inset(0 0 0 0);
+        will-change: clip-path, opacity, transform;
 
 
         .image {
@@ -195,13 +198,15 @@
 @keyframes staff-card-in {
   from {
     opacity: 0;
-    transform: translateY(30px) scale(0.94);
-    filter: blur(10px);
+    transform: translateY(-40px) scale(0.98);
+    clip-path: inset(0 0 100% 0);
+    -webkit-clip-path: inset(0 0 100% 0);
   }
   to {
     opacity: 1;
     transform: translateY(0) scale(1);
-    filter: blur(0);
+    clip-path: inset(0 0 0 0);
+    -webkit-clip-path: inset(0 0 0 0);
   }
 }
 
@@ -209,11 +214,13 @@
   from {
     opacity: 1;
     transform: translateY(0) scale(1);
-    filter: blur(0);
+    clip-path: inset(0 0 0 0);
+    -webkit-clip-path: inset(0 0 0 0);
   }
   to {
     opacity: 0;
-    transform: translateY(-30px) scale(0.9);
-    filter: blur(6px);
+    transform: translateY(-35px) scale(0.95);
+    clip-path: inset(0 0 100% 0);
+    -webkit-clip-path: inset(0 0 100% 0);
   }
 }
