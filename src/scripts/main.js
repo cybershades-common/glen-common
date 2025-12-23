@@ -688,7 +688,7 @@
       if (!filterButtons.length || !staffCards.length) return;
 
       const animationTimers = new WeakMap();
-      const animationDuration = 650;
+      const animationDuration = 360;
 
       let activeFilter =
         section.querySelector('.filter-tab.filter-tab--active')?.getAttribute('data-filter') || 'all';
